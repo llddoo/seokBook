@@ -16,8 +16,8 @@ public class Pager {
 	private long endRow;
 	private long totalPage;
 	private long totalBlock;
-	private long startNum;
-	private long endNum;
+	private long startBlock;
+	private long endBlock;
 	private boolean pre;
 	private boolean next;
 	
@@ -29,8 +29,17 @@ public class Pager {
 															: (this.totalPage/this.perBlock+1));
 		this.curBlock = ((this.curPage%this.perBlock==0) ? (this.curPage/this.perBlock) 
 														: (this.curPage/this.perBlock+1));
-		
-		
+		this.endBlock = this.curBlock / this.perBlock;
+		this.startBlock = this.endBlock - this.perBlock + 1;
+		if(this.curBlock == this.totalBlock) {
+			this.endBlock = this.totalPage;
+		}
+		if(this.curBlock>1) {
+			this.pre=true;
+		}
+		if(this.curBlock != this.totalBlock) {
+			this.next=true;
+		}
 	}
 	
 	private String kind;
@@ -72,17 +81,17 @@ public class Pager {
 	public void setTotalPage(long totalPage) {
 		this.totalPage = totalPage;
 	}
-	public long getStartNum() {
-		return startNum;
+	public long getStartBlock() {
+		return startBlock;
 	}
-	public void setStartNum(long startNum) {
-		this.startNum = startNum;
+	public void setStartBlock(long startBlock) {
+		this.startBlock = startBlock;
 	}
-	public long getEndNum() {
-		return endNum;
+	public long getEndBlock() {
+		return endBlock;
 	}
-	public void setEndNum(long endNum) {
-		this.endNum = endNum;
+	public void setEndBlock(long endBlock) {
+		this.endBlock = endBlock;
 	}
 	public boolean isPre() {
 		return pre;
