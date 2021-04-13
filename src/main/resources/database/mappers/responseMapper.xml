@@ -3,7 +3,7 @@
 
 <mapper namespace="com.sb.s1.response.ResponseDAO">
 	<select id="getList" parameterType="Pager" resultType="ResponseDTO">
-		SELECT * FROM RESPONSE
+		SELECT * FROM RESPONSE WHERE SUBNUM=#{kind}
 	</select>
 	<select id="getTotal" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE
@@ -11,4 +11,10 @@
 	<insert id="insertResponse" parameterType="ResponseDTO">
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{ref}, #{step}, #{depth})
 	</insert>
+	<update id="updateResponse">
+		UPDATE RESPONSE SET CONTENT=#{content}
+	</update>
+	<update id="insertResponse" parameterType="ResponseDTO">
+		UPDATE RESPONSE SET ID="", CONTENT="삭제된 내용입니다." WHERE RESNUM = #{resnum}
+	</update>
 </mapper>

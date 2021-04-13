@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sb.s1.util.Pager;
+
 @Controller
 @RequestMapping("/response/**")
 public class ResponseController {
@@ -14,8 +16,9 @@ public class ResponseController {
 	private ResponseService responseService;
 	
 	@GetMapping("responseList")
-	public void responseList()throws Exception{
-		
+	public void responseList(Pager pager)throws Exception{
+		pager.setPerPage(15);
+		pager.setPerBlock(5);
 	}
 	
 	@GetMapping("responseDelete")
@@ -24,11 +27,13 @@ public class ResponseController {
 	}
 	
 	@GetMapping("responseUpdate")
-	public void responseUpdate() throws Exception{	}
+	public void responseUpdate() throws Exception{	
+		
+	}
 	
 	@PostMapping("responseUpdate")
 	public void responseUpdate(ResponseDTO responseDTO) throws Exception{
-		
+		int result = responseService.updateResponse(responseDTO);
 	}
 	
 	@PostMapping("responseInsert")
