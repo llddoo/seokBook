@@ -2,5 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sb.s1.board.BoardDAO">
-
+	<select id="getList" parameterType="Pager" resultType="BoardDTO">
+		SELECT * FROM (SELECT ROWNUM RN, B.* FROM BOARD B WHERE BOARDSP = #{kind}) WHERE RN BETWEEN #{startRow} AND #{endRow} 
+	</select>
+	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT * FROM BOARD WHERE SUBNUM=#{subnum}
+	</select>
+	<insert id="setBoard" parameterType="BoardDTO">
+		INSERT INTO BOARD VALUES(B_SN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, 
+								#{subname}, #{boardsp}, #{actdata}, 0, #{changedata})
+	</insert>
+	<delete id="delBoard" parameterType="BoardDTO">
+		DELETE FROM BOARD WHERE SUBNUM = #{subnum}
+	</delete>
+	<update id="updateBoard" parameterType="BoardDTO">
+		UPDATE BOARD SET CONTENT = #{content}, SUBNAME = #{subname}, ACTDATA = #{actdata}, VISITCOUNT = #{visitcount}, 
+									CHANGEDDATA = #{changeddata} WHERE SUBNUM = #{subnum}
+	</update>
+	<update id="setHit" parameterType="BoardDTO">
+		UPDATE BOARD SET VISITCOUNT = #{visitcount+1} WHERE SUBNUM - #{subnum};
+	</update>
 </mapper>

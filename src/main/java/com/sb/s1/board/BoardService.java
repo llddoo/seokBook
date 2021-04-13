@@ -18,7 +18,10 @@ public class BoardService {
 	}
 	
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
-		return boardDAO.getSelect(boardDTO);
+		boardDTO = boardDAO.getSelect(boardDTO);
+		boardDAO.setHit(boardDTO);
+		boardDTO.setVisitcount(boardDTO.getVisitcount()+1);
+		return boardDTO;
 	}
 	
 	public int setBoard(BoardDTO boardDTO) throws Exception {

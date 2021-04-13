@@ -10,6 +10,8 @@ public class BoardDTO {
 	private String subname;
 	private String boardsp;
 	private String actdata;
+	private long visitcount;
+	private String changeddata;
 	
 	public long getSubnum() {
 		return subnum;
@@ -52,5 +54,17 @@ public class BoardDTO {
 	}
 	public void setActdata(String actdata) {
 		this.actdata = actdata;
+	}
+	public long getVisitcount() {
+		return visitcount;
+	}
+	public void setVisitcount(long visitcount) {
+		this.visitcount = visitcount;
+	}
+	public String getChangeddata() {
+		return changeddata;
+	}
+	public void setChangeddata(String changeddata) {
+		this.changeddata = changeddata;
 	}
 }

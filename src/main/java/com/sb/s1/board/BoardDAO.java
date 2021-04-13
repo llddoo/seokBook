@@ -35,4 +35,8 @@ public class BoardDAO {
 	public int updateBoard(BoardDTO boardDTO) throws Exception {
 		return sqlSession.update(NAMESPACE+"updateBoard", boardDTO);
 	}
+	
+	public int setHit(BoardDTO boardDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setHit", boardDTO);
+	}
 }
