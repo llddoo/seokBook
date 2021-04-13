@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sb.s1.response.ResponseDAO">
+	<select id="getList" parameterType="Pager" resultType="ResponseDTO">
+		SELECT * FROM RESPONSE
+	</select>
+	<select id="getTotal" resultType="Long">
+		SELECT COUNT(*) FROM RESPONSE
+	</select>
+	<insert id="insertResponse" parameterType="ResponseDTO">
+		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{ref}, #{step}, #{depth})
+	</insert>
+</mapper>

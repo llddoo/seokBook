@@ -5,7 +5,8 @@
   
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="com.sb.s1.board.BoardDTO" alias="BoardDTO"/>
+		<typeAlias type="com.sb.s1.response.ResponseDTO" alias="ResponseDTO"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 </configuration>
