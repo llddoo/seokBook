@@ -106,7 +106,7 @@ public class Pager {
 		this.next = next;
 	}
 	public String getKind() {
-		return ((kind==null) ? "" : this.kind);
+		return this.kind;
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
