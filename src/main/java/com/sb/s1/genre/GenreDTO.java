@@ -1,4 +1,4 @@
-package com.sb.s1.Genre;
+package com.sb.s1.genre;
 
 public class GenreDTO {
 

@@ -5,7 +5,10 @@
   
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="com.sb.s1.bookList.BookListDTO" alias="BookListDTO"/>
+		<typeAlias type="com.sb.s1.genre.GenreDTO" alias="GenreDTO"/>
+		
+		
 		<typeAlias type="java.lang.Long" alias="Long"/>
 	</typeAliases>
 </configuration>

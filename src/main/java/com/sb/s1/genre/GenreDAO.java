@@ -1,4 +1,4 @@
-package com.sb.s1.Genre;
+package com.sb.s1.genre;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,6 @@ public class GenreDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.sb.s1.Genre.GenreDAO.";
+	private final String NAMESPACE="com.sb.s1.genre.GenreDAO.";
 	
 }

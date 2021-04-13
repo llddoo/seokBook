@@ -1,4 +1,4 @@
-package com.sb.s1.Genre;
+package com.sb.s1.genre;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

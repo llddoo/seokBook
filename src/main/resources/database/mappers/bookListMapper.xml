@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sb.s1.bookList.BookListDAO">
+
+	<update id="setUpdate" parameterType="BookListDTO">
+		update booklist set bookName=#{bookName}, price=#{price},gNumber=#{gNumber},eBookPrice=#{eBookPrice}, 
+		bookContent=#{bookContent},bookEx=#{bookEx},bookIdx=#{bookIdx},bookPub=#{bookPub} where icbn=#{icbn}
+	</update>
+
+	<!-- icbn??
+	<insert id="setWrite" parameterType="BookListDTO">
+		insert into booklist values(
+			#{icbn}, #{bookName},#{price},#{gNumber},#{eBookPrice},#{bookContent},#{bookEx},#{bookIdx},#{bookPub})
+	</insert> 
+	-->
+
+	<select id="getSelect" parameterType="BookListDTO" resultType="BookListDTO">
+		select * from booklist where icbn=#{icbn}
+	</select>
+	
+	<select id="getList" resultType="BookListDTO">
+		select * from booklist order by icbn desc
+	</select>
+	
+	<delete id="setDelete" parameterType="BookListDTO">
+		delete booklist where icbn = #{icbn}
+	</delete>
+
+
+
+
+</mapper>

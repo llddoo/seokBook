@@ -1,4 +1,4 @@
-package com.sb.s1.BookList;
+package com.sb.s1.bookList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
