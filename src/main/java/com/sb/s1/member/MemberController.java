@@ -57,10 +57,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberIdCheck")
-	public ModelAndView memberIDCheck (MemberDTO memberDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		return mv;
+	public String memberIDCheck (MemberDTO memberDTO)throws Exception{
+		memberDTO = memberService.membereIdCheck(memberDTO);
+		String result = "0";
+		if(memberDTO==null) {
+			result="1";
+		}
+		return result;
 	}
 	
 	
