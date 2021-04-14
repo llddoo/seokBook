@@ -37,6 +37,32 @@ public class MemberController {
 		return mv;
 	}
 	
+	@RequestMapping("memberJoinCheck")
+	public ModelAndView memberJoinCheck()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("member/memberJoinCheck");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping("memberJoin")
+	public ModelAndView memberJoin()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("member/memberJoin");
+		
+		return mv;
+	}
+	
+	@RequestMapping("memberIdCheck")
+	public ModelAndView memberIDCheck (MemberDTO memberDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		return mv;
+	}
+//	
 //
 //	@RequestMapping("memberUpdate")
 //	public void memberUpdate()throws Exception{
@@ -54,11 +80,6 @@ public class MemberController {
 //		
 //	}
 //	
-	@RequestMapping("memberJoin")
-	public void memberJoin()throws Exception{
-		
-	}
-	
 	
 	
 }

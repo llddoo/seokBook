@@ -23,9 +23,19 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
 	}
 	
-//	//맴버 로그인
-//	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-//		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
+	//맴버 로그인
+	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
+	}
+	
+	public MemberDTO memberIdCeck(MemberDTO memberDTO)throws Exception{
+		
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
+	}
+	
+//	//맴버 가입
+//	public int memberJoin(MemberDTO memberDTO)throws Exception{
+//		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 //	}
 
 //	//맴버 업데이트
@@ -42,9 +52,5 @@ public class MemberDAO {
 //		
 //	}
 //	
-	//맴버 가입
-	public int memberJoin(MemberDTO memberDTO)throws Exception{
-		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
-	}
 
 }

@@ -20,6 +20,15 @@ public class MemberService {
 		return memberDAO.getSelect(memberDTO);
 	}
 	
+	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
+		memberDTO = memberDAO.memberLogin(memberDTO);
+		
+		return memberDTO;
+	}
+	
+	public MemberDTO membereIdCheck(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberLogin(memberDTO);
+	}
 	
 //	public int memberUpdate(MemberDTO memberDTO)throws Exception{
 //		return memberDAO.memberUpdate(memberDTO);
@@ -29,18 +38,13 @@ public class MemberService {
 //		return memberDAO.memberDelete(memberDTO);
 //	}
 //	
-//	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-//		memberDTO = memberDAO.memberLogin(memberDTO);
+//	
+//	public int memberJoin(MemberDTO memberDTO)throws Exception{
 //		
-//	return memberDTO;
+//		int result = memberDAO.memberJoin(memberDTO);
+//		
+//		
+//		return result;
 //	}
 //	
-	public int memberJoin(MemberDTO memberDTO)throws Exception{
-		
-		int result = memberDAO.memberJoin(memberDTO);
-		
-		
-		return result;
-	}
-	
 }
