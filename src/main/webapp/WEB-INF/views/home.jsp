@@ -18,10 +18,8 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/carousel/">
 
-    
-
     <!-- Bootstrap core CSS -->
-<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	<link href="/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
 
 
@@ -199,10 +197,6 @@
 <c:import url="./navbar/footer.jsp"></c:import>
   
 </main>
-
-
-   
-
       
   </body>
 </html>
