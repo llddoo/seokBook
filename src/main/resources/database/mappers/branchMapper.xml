@@ -5,9 +5,7 @@
 
 <mapper namespace="com.sb.s1.branch.BranchDAO">
 	
-	<insert id="setInsert" parameterType="BranchDTO">
-		insert into branch values(br_bn_seq.nextval, #{branchName}, #{branchCall})
-	</insert>
+
 
 	
 </mapper>

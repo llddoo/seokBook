@@ -28,6 +28,10 @@ public class BranchDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", branchDTO);
 	}
 	
+	public BranchDTO getSelect(BranchDTO branchDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getSelect", branchDTO);
+	}
+	
 	public List<BranchDTO> getList() throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE+"getList");

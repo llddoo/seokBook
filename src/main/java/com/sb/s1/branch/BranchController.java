@@ -15,7 +15,7 @@ public class BranchController {
 	@RequestMapping("branchInsert")
 	public ModelAndView setInsert() throws Exception {
 		ModelAndView mv = new ModelAndView();
-
+		
 		return mv;
 	}
 	

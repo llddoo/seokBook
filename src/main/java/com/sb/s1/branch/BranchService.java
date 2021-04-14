@@ -28,6 +28,11 @@ public class BranchService {
 		return branchDAO.setUpdate(branchDTO);
 	}
 
+	public BranchDTO getSelect(BranchDTO branchDTO) throws Exception {
+		
+		return branchDAO.getSelect(branchDTO);
+	}
+	
 	public List<BranchDTO> getList() throws Exception {
 		
 		return branchDAO.getList();
