@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.s1.util.Pager;
+
 @Service
 public class BranchService {
 
@@ -33,9 +35,9 @@ public class BranchService {
 		return branchDAO.getSelect(branchDTO);
 	}
 	
-	public List<BranchDTO> getList() throws Exception {
+	public List<BranchDTO> getList(Pager pager) throws Exception {
 		
-		return branchDAO.getList();
+		return branchDAO.getList(pager);
 	}
 	
 	
