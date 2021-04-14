@@ -8,10 +8,10 @@
 	<select id="getTotal" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE
 	</select>
-	<insert id="insertResponse" parameterType="ResponseDTO">
-		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{ref}, #{step}, #{depth})
-	</insert>
-	<update id="updateResponse">
+	<!-- <insert id="insertResponse" parameterType="ResponseDTO">
+		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum})
+	</insert> -->
+	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content}
 	</update>
 	<update id="insertResponse" parameterType="ResponseDTO">
