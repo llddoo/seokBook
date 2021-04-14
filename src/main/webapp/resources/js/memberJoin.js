@@ -34,13 +34,13 @@ id.addEventListener("blur", function(){
 $("#id").blur(function(){
 	id=$("id").val();
 	$get(".memerIdCheck?id="+id,function(result){
-		reslut = relust.trim();
+		result = result.trim();
 		let str="사용 가능한 ID 입니다"
 		if(result='0'){
 			str="중복 ID입니다"
 			
 		}
-
+		$("#idCheckResult").html(str);
 	})
 })
 
