@@ -11,8 +11,22 @@ public class BookListDTO {
 	private String bookEx;
 	private String bookIdx;
 	private String bookPub;
+	private String bookImg;
+	private long bookScore;
 	
-	
+		
+	public String getBookImg() {
+		return bookImg;
+	}
+	public void setBookImg(String bookImg) {
+		this.bookImg = bookImg;
+	}
+	public long getBookScore() {
+		return bookScore;
+	}
+	public void setBookScore(long bookScore) {
+		this.bookScore = bookScore;
+	}
 	public String getIcbn() {
 		return icbn;
 	}

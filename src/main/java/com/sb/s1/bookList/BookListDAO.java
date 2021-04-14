@@ -13,19 +13,7 @@ public class BookListDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sb.s1.bookListDAO.";
 	
-	public int setUpdate(BookListDTO bookListDTO)throws Exception{
-		return sqlSession.update(NAMESPACE+"setUpdate", bookListDTO);
-	}
 	
-	public int setDelete(BookListDTO bookListDTO)throws Exception{
-		return sqlSession.delete(NAMESPACE+"setDelete", bookListDTO);
-	}
-	
-	public int setWrite(BookListDTO bookListDTO)throws Exception{
-		int result = sqlSession.insert(NAMESPACE+"setWrite", bookListDTO);
-		return result;
-	}
-
 	public BookListDTO getSelect(BookListDTO bookListDTO)throws Exception{
 		bookListDTO = sqlSession.selectOne(NAMESPACE+"getSelect", bookListDTO);
 		System.out.println(bookListDTO.getIcbn());

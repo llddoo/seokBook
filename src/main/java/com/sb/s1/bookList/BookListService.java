@@ -11,13 +11,6 @@ public class BookListService {
 	@Autowired
 	private BookListDAO bookListDAO;
 	
-	public int setUpdate(BookListDTO bookListDTO)throws Exception{
-		return bookListDAO.setUpdate(bookListDTO);
-	}
-	
-	public int setDelete(BookListDTO bookListDTO)throws Exception{
-		return bookListDAO.setDelete(bookListDTO);
-	}
 	
 	public List<BookListDTO> getList()throws Exception{
 		return bookListDAO.getList();
