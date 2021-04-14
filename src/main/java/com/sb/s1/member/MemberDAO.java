@@ -23,7 +23,6 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
 	}
 	
-<<<<<<< Updated upstream
 	//맴버 로그인
 	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
@@ -34,36 +33,10 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
 	}
 	
-//	//맴버 가입
-//	public int memberJoin(MemberDTO memberDTO)throws Exception{
-//		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
-=======
-//	//맴버 로그인
-//	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-//		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberDTO);
->>>>>>> Stashed changes
-//	}
 
-//	//맴버 업데이트
-//	public int memberUpdate(MemberDTO memberDTO)throws Exception{
-//	
-//		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
-//	}
-//	
-//	
-//	
-//	//맴버 삭제
-//	public int memberDelete(MemberDTO memberDTO)throws Exception{
-//		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
-//		
-//	}
-//	
-<<<<<<< Updated upstream
-=======
 	//맴버 가입
 	public int memberJoin(MemberDTO memberDTO)throws Exception{
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
->>>>>>> Stashed changes
 
 }

@@ -14,11 +14,10 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <a href="${pageContext.request.contextPath}/member/getSelect">아이디 조회</a> 
-<<<<<<< Updated upstream
+
 <a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a> 
 <a href="${pageContext.request.contextPath}/member/memberJoinCheck">아이디생성</a>
-=======
-<a href="${pageContext.request.contextPath}/member/memberLogin">로그인</a>
->>>>>>> Stashed changes
+
+
 </body>
 </html>

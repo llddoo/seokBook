@@ -20,7 +20,7 @@ public class MemberService {
 		return memberDAO.getSelect(memberDTO);
 	}
 	
-<<<<<<< Updated upstream
+
 	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 		memberDTO = memberDAO.memberLogin(memberDTO);
 		
@@ -30,34 +30,7 @@ public class MemberService {
 	public MemberDTO membereIdCheck(MemberDTO memberDTO)throws Exception{
 		return memberDAO.memberLogin(memberDTO);
 	}
-=======
->>>>>>> Stashed changes
-	
-//	public int memberUpdate(MemberDTO memberDTO)throws Exception{
-//		return memberDAO.memberUpdate(memberDTO);
-//	}
-//	
-//	public int memberDelete(MemberDTO memberDTO, HttpSession session)throws Exception{	
-//		return memberDAO.memberDelete(memberDTO);
-//	}
-//	
-<<<<<<< Updated upstream
-//	
-//	public int memberJoin(MemberDTO memberDTO)throws Exception{
-//		
-//		int result = memberDAO.memberJoin(memberDTO);
-//		
-//		
-//		return result;
-//	}
-//	
-=======
-//	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
-//		memberDTO = memberDAO.memberLogin(memberDTO);
-//		
-//	return memberDTO;
-//	}
-//	
+
 	public int memberJoin(MemberDTO memberDTO)throws Exception{
 		
 		int result = memberDAO.memberJoin(memberDTO);
@@ -66,5 +39,5 @@ public class MemberService {
 		return result;
 	}
 	
->>>>>>> Stashed changes
+
 }
