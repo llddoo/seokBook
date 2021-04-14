@@ -37,6 +37,7 @@ public class MemberController {
 		return mv;
 	}
 	
+<<<<<<< Updated upstream
 	@RequestMapping("memberJoinCheck")
 	public ModelAndView memberJoinCheck()throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -63,6 +64,8 @@ public class MemberController {
 		return mv;
 	}
 //	
+=======
+>>>>>>> Stashed changes
 //
 //	@RequestMapping("memberUpdate")
 //	public void memberUpdate()throws Exception{
@@ -80,6 +83,14 @@ public class MemberController {
 //		
 //	}
 //	
+<<<<<<< Updated upstream
+=======
+	@RequestMapping("memberJoin")
+	public void memberJoin()throws Exception{
+		
+	}
+	
+>>>>>>> Stashed changes
 	
 	
 }
