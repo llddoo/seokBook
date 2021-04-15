@@ -2,21 +2,21 @@ package com.sb.s1.genre;
 
 public class GenreDTO {
 
-	private long gnumber;
-	private String gname;
+	private long gNumber;
+	private String gName;
 	
 	
 	public long getGnumber() {
-		return gnumber;
+		return gNumber;
 	}
 	public void setGnumber(long gnumber) {
-		this.gnumber = gnumber;
+		this.gNumber = gnumber;
 	}
 	public String getGname() {
-		return gname;
+		return gName;
 	}
 	public void setGname(String gname) {
-		this.gname = gname;
+		this.gName = gname;
 	}
 	
 	

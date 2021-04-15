@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sb.s1.genre.GenreDAO">
+
+	<select id="getSelect" parameterType="GenreDTO" resultType="GenreDTO">
+		select * from genre where gnumber=#{gnumber}
+	</select>
+	
+	<select id="getList" resultType="GenreDTO">
+		select * from genre order by gnumber asc
+	</select>
+
+</mapper>

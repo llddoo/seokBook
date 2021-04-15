@@ -64,7 +64,7 @@
 </header>
 
 <main role="main">
-<c:import url="./navbar/body.jsp"></c:import>
+<c:import url="./template/body.jsp"></c:import>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -196,7 +196,7 @@
 
   </div><!-- /.container -->
 
-<c:import url="./navbar/footer.jsp"></c:import>
+<c:import url="./template/footer.jsp"></c:import>
   
 </main>
       
