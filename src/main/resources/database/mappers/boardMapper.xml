@@ -23,6 +23,6 @@
 									CHANGEDDATA = #{changeddata} WHERE SUBNUM = #{subnum}
 	</update>
 	<update id="setHit" parameterType="BoardDTO">
-		UPDATE BOARD SET VISITCOUNT = #{visitcount} WHERE SUBNUM = #{subnum};
+		UPDATE BOARD SET VISITCOUNT = #{visitcount}+1 WHERE SUBNUM = #{subnum}
 	</update>
 </mapper>

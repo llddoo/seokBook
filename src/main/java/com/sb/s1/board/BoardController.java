@@ -1,5 +1,6 @@
 package com.sb.s1.board;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.Pager;
 
 @Controller
@@ -32,7 +32,10 @@ public class BoardController {
 	
 	
 	@GetMapping("boardList")
-	public void boardList(Pager pager, Model model) throws Exception {
+	public void boardList(Pager pager, Model model, HttpSession session) throws Exception {
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setId("admin");
+		session.setAttribute("member", boardDTO);
 		model.addAttribute("list", boardService.getList(pager));
 	}
 	
@@ -42,11 +45,14 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardUpdate")
-	public void boardUpdate() throws Exception {}
+	public void boardUpdate(BoardDTO boardDTO, Model model) throws Exception {
+		model.addAttribute("boardDTO", boardService.getSelect(boardDTO));
+	}
 	
 	@PostMapping("boardUpdate")
-	public void boardUpdate(BoardDTO boardDTO) throws Exception {
-		
+	public String boardUpdate(BoardDTO boardDTO) throws Exception {
+		boardService.updateBoard(boardDTO);
+		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
 	}
 	
 	@GetMapping("boardDelete")

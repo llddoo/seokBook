@@ -55,7 +55,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="../resources/css/carousel.css" rel="stylesheet">
+    <link href="/resources/css/carousel.css" rel="stylesheet">
   </head>
   
   

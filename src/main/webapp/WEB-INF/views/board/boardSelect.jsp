@@ -14,10 +14,10 @@
 	  <table class="table">
 	    <thead class="thead-dark">
 	      <tr>
-	        <th>${select.subname}</th>
-	        <th>${select.id}</th>
-	        <th>${select.regdate}</th>
-	        <th>${select.visitcount}</th>
+	        <th>글제목 : ${select.subname}</th>
+	        <th>작성자 :${select.id}</th>
+	        <th>작성일자 : ${select.regdate}</th>
+	        <th>조회수 : ${select.visitcount}</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -26,7 +26,12 @@
 	    	</tr>
 	    </tbody>
 	  </table>
+	  <c:if test="${select.id eq member.id}">
+		  <a class="btn btn-primary" href="./boardUpdate?boardsp=${select.boardsp}&subnum=${select.subnum}">글 수정</a>
+  	 	 <a class="btn btn-danger" href="./boardDelete?subnum=${select.subnum}">글 삭제</a>
+  	  </c:if>
   </div>
+  
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
