@@ -196,7 +196,7 @@
 
   </div><!-- /.container -->
 
-<c:import url="./navbar/footer.jsp"></c:import>
+<c:import url="./template/footer.jsp"></c:import>
   
 </main>
       
