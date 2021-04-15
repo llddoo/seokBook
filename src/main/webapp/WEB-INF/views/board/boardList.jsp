@@ -32,6 +32,7 @@
 	      </c:forEach>
 	    </tbody>
 	  </table>
+	  <a class="btn btn-primary" href="./boardInsert?boardsp=${list[0].boardsp}">글쓰기</a>
   </div>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
