@@ -11,27 +11,23 @@
 <body>
 <c:import url="../template/body.jsp"></c:import>
 
-<h1>Genre List Page</h1>
+<br><br><br>
 
-<c:forEach items="${list}" var="dto">
-	<ul class="ul">
-		<a href="./genreSelect?gNumber=${dto.gNumber}"><c:out value="${dto.gName}"/></a>
-	</ul>
-	<style>
-	ul{
-    list-style: none;
-    padding-left: 0px;
-	}
-	</style>
-
-</c:forEach>
+<ul class="ul">
+	<c:forEach items="${list}" var="dto">
+		<li>
+		<a href="./genreSelect?gNumber=${dto.gnumber}"><c:out value="${dto.gname}"/></a>
+		</li>
+	</c:forEach>
+</ul>
 
 
 
+	
 
 
 
-
+<link rel="stylesheet" href="resources/css/bookNGenre/genre.css">
 
 <c:import url="../template/footer.jsp"></c:import>
 </body>
