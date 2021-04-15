@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
+<link rel="stylesheet" href="../resources/css/bookNGenre/genre.css">
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
@@ -27,7 +28,6 @@
 
 
 
-<link rel="stylesheet" href="resources/css/bookNGenre/genre.css">
 
 <c:import url="../template/footer.jsp"></c:import>
 </body>
