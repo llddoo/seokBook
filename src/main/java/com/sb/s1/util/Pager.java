@@ -44,7 +44,14 @@ public class Pager {
 	
 	private String kind;
 	private String search;
+	private String boardsp;
 	
+	public String getBoardsp() {
+		return boardsp;
+	}
+	public void setBoardsp(String boardsp) {
+		this.boardsp = boardsp;
+	}
 	public long getPerPage() {
 		return perPage;
 	}

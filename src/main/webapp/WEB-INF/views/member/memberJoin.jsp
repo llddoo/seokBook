@@ -68,6 +68,6 @@
 			
 		</form>
 	</div>
-<script type="text/javascript" src="../resources/js/memberJoin.js"></script>	
+<script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
 </body>
 </html>

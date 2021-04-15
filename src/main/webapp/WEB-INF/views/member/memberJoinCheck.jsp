@@ -64,7 +64,7 @@
 		</div>
 		
 		<button class="btn btn-dange" id="btn">JOIN</button>
-		<script type="text/javascript" src="../resources/js/memberJoinCheck.js"></script>
+		<script type="text/javascript" src="../resources/js/member/memberJoinCheck.js"></script>
 		
 	</div>
 

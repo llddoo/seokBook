@@ -15,6 +15,9 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@GetMapping("qna/qnaInsert")
+	public void moveQnaInsert() {}
+	
 	@GetMapping("boardList")
 	public void boardList(Pager pager) throws Exception {
 		
