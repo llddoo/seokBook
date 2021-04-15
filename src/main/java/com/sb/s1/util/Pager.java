@@ -22,6 +22,7 @@ public class Pager {
 	private boolean next;
 	
 	public void makecal(long totalcount) {
+		this.totalPage=totalcount;
 		this.endRow = this.curPage*this.perPage;
 		this.startRow = this.endRow - this.perPage + 1;
 		this.totalPage = ((totalcount%perPage==0) ? (totalcount/perPage) : (totalcount/perPage+1));

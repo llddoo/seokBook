@@ -1,6 +1,3 @@
-/**
- * 
- */
  
  $("#btn").click(function(){
 	let check = true;

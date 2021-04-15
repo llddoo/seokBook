@@ -14,17 +14,22 @@ public class BoardService {
 	private BoardDAO boardDAO;
 	
 	public List<BoardDTO> getList(Pager pager) throws Exception {
+		pager.makecal(boardDAO.getTotalcount(pager));
 		return boardDAO.getList(pager);
 	}
 	
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		boardDTO = boardDAO.getSelect(boardDTO);
-		boardDAO.setHit(boardDTO);
 		boardDTO.setVisitcount(boardDTO.getVisitcount()+1);
+		boardDAO.setHit(boardDTO);
 		return boardDTO;
 	}
 	
 	public int setBoard(BoardDTO boardDTO) throws Exception {
+		if(boardDTO.getActdata()==null) {
+			boardDTO.setActdata("");
+			boardDTO.setChangeddata("");
+		}
 		return boardDAO.setBoard(boardDTO);
 	}
 	

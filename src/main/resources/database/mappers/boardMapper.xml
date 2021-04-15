@@ -3,14 +3,17 @@
 
 <mapper namespace="com.sb.s1.board.BoardDAO">
 	<select id="getList" parameterType="Pager" resultType="BoardDTO">
-		SELECT * FROM (SELECT ROWNUM RN, B.* FROM BOARD B WHERE BOARDSP = #{kind}) WHERE RN BETWEEN #{startRow} AND #{endRow} 
+		SELECT subnum,id,regdate,content,subname,boardsp,actdata,visitcount,changeddata FROM (SELECT B.*, ROWNUM RN FROM BOARD B WHERE BOARDSP = #{boardsp}) WHERE RN BETWEEN #{startRow} AND #{endRow} 
 	</select>
 	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT * FROM BOARD WHERE SUBNUM=#{subnum}
 	</select>
+	<select id="getTotalcount" parameterType="Pager" resultType="Long">
+		SELECT COUNT(SUBNUM) FROM BOARD WHERE BOARDSP = #{boardsp}
+	</select>
 	<insert id="setBoard" parameterType="BoardDTO">
 		INSERT INTO BOARD VALUES(B_SN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, 
-								#{subname}, #{boardsp}, #{actdata}, 0, #{changedata})
+								#{subname}, #{boardsp}, #{actdata}, 0, #{changeddata})
 	</insert>
 	<delete id="delBoard" parameterType="BoardDTO">
 		DELETE FROM BOARD WHERE SUBNUM = #{subnum}
@@ -20,6 +23,6 @@
 									CHANGEDDATA = #{changeddata} WHERE SUBNUM = #{subnum}
 	</update>
 	<update id="setHit" parameterType="BoardDTO">
-		UPDATE BOARD SET VISITCOUNT = #{visitcount+1} WHERE SUBNUM - #{subnum};
+		UPDATE BOARD SET VISITCOUNT = #{visitcount} WHERE SUBNUM = #{subnum};
 	</update>
 </mapper>

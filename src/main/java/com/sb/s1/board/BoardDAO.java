@@ -24,6 +24,10 @@ public class BoardDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", boardDTO);
 	}
 	
+	public long getTotalcount(Pager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalcount", pager);
+	}
+	
 	public int setBoard(BoardDTO boardDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setBoard", boardDTO);
 	}
