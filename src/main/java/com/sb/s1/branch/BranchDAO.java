@@ -43,4 +43,7 @@ public class BranchDAO {
 		
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
+	public long getNum()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
 }

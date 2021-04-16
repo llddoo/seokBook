@@ -4,6 +4,7 @@ public class BranchDTO {
 
 	private long branchNum;
 	private String branchName;
+	private String branchManager;
 	private String branchCall;
 	
 	public long getBranchNum() {
@@ -17,6 +18,12 @@ public class BranchDTO {
 	}
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
+	}
+	public String getBranchManager() {
+		return branchManager;
+	}
+	public void setBranchManager(String branchManager) {
+		this.branchManager = branchManager;
 	}
 	public String getBranchCall() {
 		return branchCall;

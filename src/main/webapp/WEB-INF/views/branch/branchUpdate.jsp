@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지점 정보 수정</title>
+<c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
 
