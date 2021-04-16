@@ -72,6 +72,18 @@
 			$("#forsend").submit();
 		}
 	});
+	
+	$("#commentrewrite").click(function(){
+		
+	});
+	$(".commentdelete").click(function(){
+		let commentcheck = confrim("삭제하시겠습니까?");
+		if(commentcheck){
+			$(".commentsend").each(function(){
+				
+			});
+		}
+	});
 </script>
 </body>
 </html>

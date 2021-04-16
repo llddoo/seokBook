@@ -11,8 +11,11 @@
 	    		<td>${select.regdate}</td>
 	    		<c:if test="${member.id eq  select.id}">
 	    		<td>
-	    			<button id="commentrewrite" class="btn btn-secondary">수정</button>
-	    			<button id="commentdelete" class="btn btn-danger">삭제</button>
+	    			<form class="commentsend" action="./responseDelete" method="get">
+	    				<input type="hidden" readonly="readonly" name="resnum" value="${select.resnum}">
+	    			</form>
+	    			<button class="commentrewrite" class="btn btn-secondary">수정</button>
+	    			<button class="commentdelete" class="btn btn-danger">삭제</button>
 	    		</td>
 	    		</c:if>
 	    	</tr>

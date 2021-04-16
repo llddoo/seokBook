@@ -29,7 +29,6 @@ $("#comment").on("click", "#remove", function(){
 
 function getList(){
 	$.get("./response/responseList?subnum="+subnum, function(data){
-		console.log(data);
 		$("#comment").html(data.trim());
 	});
 }
