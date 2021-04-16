@@ -27,7 +27,7 @@ public class BoardController {
 	@PostMapping("boardInsert")
 	public String boardInsert(BoardDTO boardDTO) throws Exception{
 		boardService.setBoard(boardDTO);
-		return "redirect:/board/boardList";
+		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
 	}
 	
 	
@@ -56,10 +56,8 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardDelete")
-	public void boardDelete(BoardDTO boardDTO) throws Exception {
-		
+	public String boardDelete(BoardDTO boardDTO) throws Exception {
+		boardService.delBoard(boardDTO);
+		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
 	}
-	
-	
-	
 }

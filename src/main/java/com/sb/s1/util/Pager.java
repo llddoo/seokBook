@@ -45,14 +45,7 @@ public class Pager {
 	
 	private String kind;
 	private String search;
-	private String boardsp;
 	
-	public String getBoardsp() {
-		return boardsp;
-	}
-	public void setBoardsp(String boardsp) {
-		this.boardsp = boardsp;
-	}
 	public long getPerPage() {
 		return perPage;
 	}
@@ -136,5 +129,21 @@ public class Pager {
 	}
 	public void setTotalBlock(long totalBlock) {
 		this.totalBlock = totalBlock;
+	}
+	
+	private String boardsp;
+	private long subnum;
+	
+	public long getSubnum() {
+		return subnum;
+	}
+	public void setSubnum(int subnum) {
+		this.subnum = subnum;
+	}
+	public String getBoardsp() {
+		return boardsp;
+	}
+	public void setBoardsp(String boardsp) {
+		this.boardsp = boardsp;
 	}
 }

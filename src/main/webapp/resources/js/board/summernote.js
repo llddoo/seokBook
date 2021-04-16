@@ -3,7 +3,9 @@
  */
  
  $("#content").summernote({
-			height:500,
+			disableResizeEditor: true,
+			 disableDragAndDrop: true,
+			height:200,
 			placeholder: 'write here...',
 			callbacks: {
 				onImageUpload: function(files) {

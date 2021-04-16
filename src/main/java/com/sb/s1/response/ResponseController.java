@@ -2,6 +2,7 @@ package com.sb.s1.response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sb.s1.util.Pager;
 
 @Controller
-@RequestMapping("/response/**")
+@RequestMapping("/board/response/**")
 public class ResponseController {
 
 	@Autowired
 	private ResponseService responseService;
 	
 	@GetMapping("responseList")
-	public void responseList(Pager pager)throws Exception{
-		pager.setPerPage(15);
-		pager.setPerBlock(5);
+	public void responseList(Pager pager, Model model)throws Exception{
+		model.addAttribute("commentList", responseService.getList(pager));
 	}
 	
 	@GetMapping("responseDelete")
@@ -33,11 +33,12 @@ public class ResponseController {
 	
 	@PostMapping("responseUpdate")
 	public void responseUpdate(ResponseDTO responseDTO) throws Exception{
-		int result = responseService.updateResponse(responseDTO);
+		responseService.updateResponse(responseDTO);
 	}
 	
 	@PostMapping("responseInsert")
-	public void responseInsert(ResponseDTO responseDTO) throws Exception{
-		
+	public void responseInsert(ResponseDTO responseDTO, Model model) throws Exception{
+		int result = responseService.insertResponse(responseDTO);
+		model.addAttribute("result", result);
 	}
 }
