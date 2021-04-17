@@ -14,7 +14,7 @@
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content}
 	</update>
-	<update id="deleteResponse" parameterType="ResponseDTO">
-		UPDATE RESPONSE SET ID="", CONTENT="삭제된 내용입니다." WHERE RESNUM = #{resnum}
-	</update>
+	<delete id="delResponse" parameterType="ResponseDTO">
+		DELETE RESPONSE WHERE RESNUM = #{resnum}
+	</delete>
 </mapper>

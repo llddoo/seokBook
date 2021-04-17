@@ -22,8 +22,8 @@ public class ResponseController {
 	}
 	
 	@GetMapping("responseDelete")
-	public void responseDelete(ResponseDTO responseDTO) throws Exception{
-		
+	public void responseDelete(ResponseDTO responseDTO, Model model) throws Exception{
+		model.addAttribute("result", responseService.delResponse(responseDTO));
 	}
 	
 	@GetMapping("responseUpdate")

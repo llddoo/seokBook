@@ -1,29 +1,22 @@
 /**
  * 
  */
- const subnum = $("#subnum").val();
-	getList();
+ const subnum=$("#subnum").val();
+$(document).ready(getList());
 
-
-$("#comment").on("click", "#remove", function(){
-	const ar = [];
-	$(".del").each(function(){
-		let ch = $(this).prop("checked");
-		if(ch){
-			ar.push($(this).val());
-		}
-	});
-	
+$("#comment").on("click", ".commentdelete",function(){
+	const resnum = $(this).siblings("input").val();
 	$.ajax({
-		type: "POST",
+		type: "get",
 		url: "./response/responseDelete",
-		traditional: true,
-		data:{commentNum:ar},
-		success:function(data){
-			alert(data);
+		data:{resnum:resnum},
+		success:function(){
+			getList();
 		}
 	});
-	
+});
+$(".commentdelete").click(function(){
+	alert("확인");
 });
 
 
@@ -31,7 +24,7 @@ function getList(){
 	$.get("./response/responseList?subnum="+subnum, function(data){
 		$("#comment").html(data.trim());
 	});
-}
+};
 
 $("#write").click(function(){
 	let id = $("#id").val();
@@ -46,13 +39,11 @@ $("#write").click(function(){
 	function(data){
 		data = data.trim();
 		if(data==1){
-			alert('등록 성공');
-			$("#id").val('');
 			$("#content").val('');
+			$('#content').summernote('reset');
 			getList();
 		}else {
 			alert('등록 실패');
 		}
 	});
-	
 });
