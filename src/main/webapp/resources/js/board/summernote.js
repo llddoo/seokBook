@@ -23,6 +23,7 @@
 			}// -- callbacks
 	});
 	$('.note-statusbar').hide();
+	$('.note-toolbar').hide();
 });
 
 

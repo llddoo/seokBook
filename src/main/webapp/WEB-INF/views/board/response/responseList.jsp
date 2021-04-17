@@ -4,8 +4,8 @@
 
 <div class="container">
 	  <table class="table">
+	  <c:forEach items="${commentList}" var="select">
 	    <tbody>
-	    	<c:forEach items="${commentList}" var="select">
 	    	<tr>
 	    		<td>${select.id}</td>
 	    		<td>${select.regdate}</td>
@@ -20,8 +20,7 @@
 	    	<tr>
 	    		<td colspan="3">${select.content}</td>
 	    	</tr>
-	    	
-	    	</c:forEach>
 	    </tbody>
+	    </c:forEach>
 	  </table>
   </div>
