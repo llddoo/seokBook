@@ -20,7 +20,7 @@ public class ResponseDAO {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	public int delResponse(ResponseDTO responseDTO) throws Exception{
-		return sqlSession.update(NAMESPACE+"delResponse", responseDTO);
+		return sqlSession.delete(NAMESPACE+"delResponse", responseDTO);
 	}
 	
 	public int insertResponse(ResponseDTO responseDTO) throws Exception{

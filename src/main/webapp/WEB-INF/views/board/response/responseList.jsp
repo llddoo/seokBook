@@ -12,7 +12,7 @@
 	    		<c:if test="${member.id eq select.id}">
 	    		<td>
 	    			<input type="hidden" readonly="readonly" value="${select.resnum}">
-	    			<button class="commentrewrite btn btn-secondary">수정</button>
+	    			<button class="commentupdate btn btn-secondary">수정</button>
 	    			<button class="commentdelete btn btn-danger">삭제</button>
 	    		</td>
 	    		</c:if>

@@ -15,6 +15,9 @@
 		UPDATE RESPONSE SET CONTENT=#{content}
 	</update>
 	<delete id="delResponse" parameterType="ResponseDTO">
-		DELETE RESPONSE WHERE RESNUM = #{resnum}
+		DELETE (SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum}) 
+		WHERE RESNUM between #{resnum} and (select min(resnum) from (select * from
+		(select * from response where subnum=#{subnum})
+		where depth >= (select depth from response where resnum=#{resnum}) and resnum>= #{resnum}))
 	</delete>
 </mapper>

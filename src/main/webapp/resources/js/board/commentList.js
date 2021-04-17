@@ -9,14 +9,23 @@ $("#comment").on("click", ".commentdelete",function(){
 	$.ajax({
 		type: "get",
 		url: "./response/responseDelete",
-		data:{resnum:resnum},
+		data:{resnum:resnum, subnum:subnum},
 		success:function(){
 			getList();
 		}
 	});
 });
-$(".commentdelete").click(function(){
-	alert("확인");
+
+$("#comment").on("click", ".commentupdate",function(){
+	const resnum = $(this).siblings("input").val();
+	$.ajax({
+		type: "get",
+		url: "./response/responseUpdate",
+		data:{resnum:resnum, subnum:subnum},
+		success:function(){
+			getList();
+		}
+	});
 });
 
 
