@@ -12,7 +12,7 @@
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, 0, 0, 0)
 	</insert>
 	<update id="updateResponse" parameterType="ResponseDTO">
-		UPDATE RESPONSE SET CONTENT=#{content}
+		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}
 	</update>
 	<delete id="delResponse" parameterType="ResponseDTO">
 		DELETE (SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum}) 

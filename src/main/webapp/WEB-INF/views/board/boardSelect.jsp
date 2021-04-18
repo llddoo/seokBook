@@ -40,8 +40,6 @@
 	    	</tr>
 	    </tbody>
 	  </table>
-	  
-
   
  	<div id="comment">
 		
@@ -63,7 +61,6 @@
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/board/commentList.js"></script>
-<script type="text/javascript" src="../resources/js/board/summernote.js"></script>
 <script type="text/javascript">
 	const forsend = document.getElementById("forsend");
 	$("#deleteCheck").click(function(){

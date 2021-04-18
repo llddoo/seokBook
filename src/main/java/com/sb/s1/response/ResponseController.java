@@ -26,14 +26,10 @@ public class ResponseController {
 		model.addAttribute("result", responseService.delResponse(responseDTO));
 	}
 	
-	@GetMapping("responseUpdate")
-	public void responseUpdate() throws Exception{	
-		
-	}
-	
 	@PostMapping("responseUpdate")
-	public void responseUpdate(ResponseDTO responseDTO) throws Exception{
-		responseService.updateResponse(responseDTO);
+	public void responseUpdate(ResponseDTO responseDTO, Model model) throws Exception{
+		int result = responseService.updateResponse(responseDTO);
+		model.addAttribute("result", result);
 	}
 	
 	@PostMapping("responseInsert")

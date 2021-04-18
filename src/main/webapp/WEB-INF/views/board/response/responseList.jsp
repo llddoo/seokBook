@@ -18,7 +18,7 @@
 	    		</c:if>
 	    	</tr>
 	    	<tr>
-	    		<td colspan="3">${select.content}</td>
+	    		<td class="commentcontent" colspan="3">${select.content}</td>
 	    	</tr>
 	    </tbody>
 	    </c:forEach>
