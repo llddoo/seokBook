@@ -2,10 +2,13 @@
  * 
  */
  const subnum=$("#subnum").val();
+let resnum;
 $(document).ready(getList());
 
+
+
 $("#comment").on("click", ".commentdelete",function(){
-	const resnum = $(this).siblings("input").val();
+	resnum = $(this).siblings("input").val();
 	$.ajax({
 		type: "get",
 		url: "./response/responseDelete",
@@ -17,10 +20,10 @@ $("#comment").on("click", ".commentdelete",function(){
 });
 
 $("#comment").on("click", ".commentupdate",function(){
-	const resnum = $(this).siblings("input").val();
+	resnum = $(this).siblings("input").val();
 	const content = $(this).parents("tr").siblings("tr").find("td");
 	let comment = content.html();
-	content.html("<input type=\"hidden\" readonly=\"readonly\" id=\"\"><textarea id=\"rewrite\"></textarea>");
+	content.append("<input type=\"hidden\" readonly=\"readonly\" id=\"\"><textarea id=\"rewrite\"></textarea>");
 	$("#rewrite").val(comment);
 	content.append("<br><button id=\"transrewrite\">작성</button>");
 });

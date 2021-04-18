@@ -23,7 +23,6 @@
 			}// -- callbacks
 	});
 	$('.note-statusbar').hide();
-	$('.note-toolbar').hide();
 });
 
 
@@ -42,7 +41,7 @@ function uploadFile(files) {
 	let fileName="";
 	$.ajax({
 		type: "POST",
-		url: "../fileUpload",
+		url: "./boardFileUpload",
 		data:formData,
 		enctype:"multipart/form-data",
 		cache:false,

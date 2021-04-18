@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
-<link href="${pageContext.request.contextPath}/resources/summernote/summernote-bs4.min.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/summernote/summernote-bs4.min.js"></script>
+<link href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.js"></script>
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
