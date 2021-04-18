@@ -10,15 +10,15 @@
 	    		<td>${select.id}</td>
 	    		<td>${select.regdate}</td>
 	    		<c:if test="${member.id eq select.id}">
-	    		<td>
-	    			<input type="hidden" readonly="readonly" value="${select.resnum}">
-	    			<button class="commentupdate btn btn-secondary">수정</button>
-	    			<button class="commentdelete btn btn-danger">삭제</button>
-	    		</td>
+		    		<td>
+		    			<input type="hidden" readonly="readonly" value="${select.resnum}">
+		    			<button class="commentupdate btn btn-secondary">수정</button>
+		    			<button class="commentdelete btn btn-danger">삭제</button>
+		    		</td>
 	    		</c:if>
 	    	</tr>
 	    	<tr>
-	    		<td class="commentcontent" colspan="3">${select.content}</td>
+	    		<td colspan="3"><div class="commentcontent">${select.content}</div></td>
 	    	</tr>
 	    </tbody>
 	    </c:forEach>

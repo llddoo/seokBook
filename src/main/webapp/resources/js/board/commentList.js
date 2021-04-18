@@ -1,7 +1,7 @@
 /**
  * 
  */
- let updatecount = 0;
+ let updatecount=0;
  const subnum=$("#subnum").val();
  $(document).ready(function(){
 	$('#content').summernote({
@@ -24,17 +24,22 @@ $("#comment").on("click", ".commentdelete",function(){
 		type: "get",
 		url: "./response/responseDelete",
 		data:{resnum:resnum, subnum:subnum},
-		success:function(){
-			getList();
+		success:function(result){
+			result=result.trim();
+			if(result>0){
+				getList();
+			}else{
+				alert('이미 삭제된 글이거나, 삭제할 수 없습니다.');
+				getList();
+			}
 		}
 	});
 });
 
 $("#comment").on("click", ".commentupdate",function(){
+	console.log($(this).siblings("input").val());
 	if(updatecount>0){
-		$("#forupdate").siblings().each(function(){
-			$(this).remove();
-		});
+		getList();
 		updatecount--;
 	}
 	const resnum = $(this).siblings("input").val();
