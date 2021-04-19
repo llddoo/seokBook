@@ -107,6 +107,7 @@ $("#comment").on("click", ".commentreply", function(){
 });
 
 $("#comment").on("click", "#transreply", function(){
+	const resnum = $("#forinsert").val();
 	const id = $("#id").val();
 	const content = $("#rewrite").val();
 	const step = parseInt($("#replystep").val())+1;
@@ -119,6 +120,7 @@ $("#comment").on("click", "#transreply", function(){
 		method: "post",
 		url:"./response/responseInsert",
 		data:{
+			resnum:resnum,
 			id:id,
 			content:content,
 			subnum:subnum,

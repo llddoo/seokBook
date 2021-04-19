@@ -11,9 +11,20 @@
 	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
 		select * from response where subnum=#{subnum} and step >= #{step} and depth > #{depth} or resnum=#{resnum}
 	</select>
+	<select id="getListForUpdate" parameterType="ResponseDTO" resultType="ResponseDTO">
+		select * from response where subnum=#{subnum} and step >= #{step}
+	</select>
 	<insert id="insertResponse" parameterType="ResponseDTO">
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{step}, #{depth})
 	</insert>
+	<update id="updateForInsert" parameterType="java.util.List">
+		update response set step=step+1
+		<where>
+			<foreach collection="list" item="item" separator="OR">
+				(resnum=#{item.resnum})
+			</foreach>
+		</where>
+	</update>
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}
 	</update>

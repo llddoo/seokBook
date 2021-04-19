@@ -25,7 +25,7 @@ public class ResponseService {
 		if(responseDTO.getDepth()==0) {
 			responseDTO.setStep(responseDAO.getTotal(responseDTO)+1L);
 		}else {
-			responseDTO.setStep(responseDTO.getStep()+1L);
+			responseDAO.updateForInsert(responseDAO.getListForUpdate(responseDTO));
 		}
 		return responseDAO.insertResponse(responseDTO);
 	}
