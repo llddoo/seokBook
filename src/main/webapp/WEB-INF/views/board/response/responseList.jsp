@@ -7,10 +7,7 @@
 	  <c:forEach items="${commentList}" var="select">
 	    <tbody>
 	    	<tr>
-	    		<c:forEach begin="2" end="${select.depth}"><td> </td></c:forEach>
-	    		<c:if test="${select.depth ge 1}"><td><span class="glyphicon glyphicon-triangle-top"></span></c:if>
-	    		<td>${select.id}</td>
-	    		<td>${select.regdate}</td>
+	    		<td><c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach>${select.id}&emsp;${select.regdate}</td>
 	    		<td>
 	    			<input class="selectresnum" type="hidden" readonly="readonly" value="${select.resnum}">
 	    			<input class="selectstep" type="hidden" readonly="readonly" value="${select.step}">
@@ -24,8 +21,11 @@
 	    		
 	    	</tr>
 	    	<tr>
-	    		<c:forEach begin="1" end="${select.depth}"><td> </td></c:forEach>
-	    		<td colspan="4"><div class="commentcontent">${select.content}</div></td>
+	    		<td colspan="2">
+	    			<div class="forpacking">
+	    				<c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach><div class="commentcontent">${select.content}</div>
+	    			</div>
+	    		</td>
 	    	</tr>
 	    </tbody>
 	    </c:forEach>

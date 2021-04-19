@@ -40,14 +40,14 @@ $("#comment").on("click", ".commentdelete",function(){
 
 $("#comment").on("click", ".commentupdate",function(){
 	if(updatenum!=-1){
-		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='4']");
-		const reservetext = preupdate.find("div.commentcontent").html();
+		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
+		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
-		preupdate.append("<div class=\"commentcontent\">"+reservetext+"</div>");
+		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
 	}
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const content = $(this).parents("tr").siblings("tr").find("td");
-	const comment = content.html();
+	const comment = content.find("div.commentcontent").html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
 	$("#rewrite").summernote();
@@ -86,10 +86,10 @@ $("#comment").on("click", "#transrewrite",function(){
 
 $("#comment").on("click", ".commentreply", function(){
 	if(updatenum!=-1){
-		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='4']");
-		const reservetext = preupdate.find("div.commentcontent").html();
+		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
+		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
-		preupdate.append("<div class=\"commentcontent\">"+reservetext+"</div>");
+		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
 	}
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const content = $(this).parents("tr").siblings("tr").find("td");
@@ -109,8 +109,8 @@ $("#comment").on("click", ".commentreply", function(){
 $("#comment").on("click", "#transreply", function(){
 	const id = $("#id").val();
 	const content = $("#rewrite").val();
-	const step = $("#replystep").val();
-	const depth = $("#replydepth").val();
+	const step = parseInt($("#replystep").val())+1;
+	const depth = parseInt($("#replydepth").val())+1;
 	if(content.trim()==""){
 		alert("입력할 수 없습니다.");
 		return;
@@ -122,8 +122,8 @@ $("#comment").on("click", "#transreply", function(){
 			id:id,
 			content:content,
 			subnum:subnum,
-			step:step+1,
-			depth:depth+1
+			step:step,
+			depth:depth
 		},
 		success:function(result){
 			result=result.trim();
@@ -139,6 +139,9 @@ $("#comment").on("click", "#transreply", function(){
 function getList(){
 	$.get("./response/responseList?subnum="+subnum, function(data){
 		$("#comment").html(data.trim());
+		$(".commentcontent").each(function(){
+			$(this).css("display","inline-block");
+		});
 	});
 };
 

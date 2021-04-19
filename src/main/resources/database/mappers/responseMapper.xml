@@ -9,7 +9,7 @@
 		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}
 	</select>
 	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
-		select * from response where subnum=#{subnum} and depth >= #{depth} and step >= #{step}
+		select * from response where subnum=#{subnum} and step >= #{step} and depth > #{depth} or resnum=#{resnum}
 	</select>
 	<insert id="insertResponse" parameterType="ResponseDTO">
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{step}, #{depth})
