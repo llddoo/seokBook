@@ -18,7 +18,6 @@
 		    			<button class="commentdelete btn btn-danger">삭제</button>
 		    		</c:if>
 		    	</td>
-	    		
 	    	</tr>
 	    	<tr>
 	    		<td colspan="2">

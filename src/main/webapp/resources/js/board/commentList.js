@@ -39,14 +39,18 @@ $("#comment").on("click", ".commentdelete",function(){
 });
 
 $("#comment").on("click", ".commentupdate",function(){
-	if(updatenum!=-1){
+	const content = $(this).parents("tr").siblings("tr").find("[colspan='2']");
+	const resnum = $(this).siblings("input.selectresnum").val();
+	const temp = content.find("input[value='"+updatenum+"']").attr("id");
+	if(updatenum==resnum&&temp=="forupdate"){
+		getList();
+		return;
+	}else if(updatenum!=-1){
 		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
 		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
 		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
 	}
-	const resnum = $(this).siblings("input.selectresnum").val();
-	const content = $(this).parents("tr").siblings("tr").find("td");
 	const comment = content.find("div.commentcontent").html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
@@ -85,14 +89,18 @@ $("#comment").on("click", "#transrewrite",function(){
 });
 
 $("#comment").on("click", ".commentreply", function(){
-	if(updatenum!=-1){
+	const resnum = $(this).siblings("input.selectresnum").val();
+	const content = $(this).parents("tr").siblings("tr").find("td[colspan='2']");
+	const temp = content.find("input[value='"+updatenum+"']").attr("id");
+	if(updatenum==resnum&&temp=="forinsert"){
+		getList();
+		return;
+	}else if(updatenum!=-1){
 		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
 		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
 		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
 	}
-	const resnum = $(this).siblings("input.selectresnum").val();
-	const content = $(this).parents("tr").siblings("tr").find("td");
 	const step = $(this).siblings("input.selectstep").val();
 	const depth = $(this).siblings("input.selectdepth").val();
 	content.append("<br><input id=\"forinsert\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
