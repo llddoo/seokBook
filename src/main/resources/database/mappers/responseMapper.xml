@@ -3,21 +3,26 @@
 
 <mapper namespace="com.sb.s1.response.ResponseDAO">
 	<select id="getList" parameterType="Pager" resultType="ResponseDTO">
-		SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum}
+		SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum} order by step asc
 	</select>
-	<select id="getTotal" resultType="Long">
-		SELECT COUNT(*) FROM RESPONSE
+	<select id="getTotal" parameterType="ResponseDTO" resultType="Long">
+		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}
+	</select>
+	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
+		select * from response where subnum=#{subnum} and depth >= #{depth} and step >= #{step}
 	</select>
 	<insert id="insertResponse" parameterType="ResponseDTO">
-		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, 0, 0, 0)
+		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{step}, #{depth})
 	</insert>
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}
 	</update>
-	<delete id="delResponse" parameterType="ResponseDTO">
-		DELETE (SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum}) 
-		WHERE RESNUM between #{resnum} and (select min(resnum) from (select * from
-		(select * from response where subnum=#{subnum})
-		where depth >= (select depth from response where resnum=#{resnum}) and resnum>= #{resnum}))
+	<delete id="delResponse" parameterType="java.util.List">
+		DELETE from response 
+		<where>
+			<foreach collection="list" item="item" separator="OR">
+				(resnum=#{item.resnum})
+			</foreach>
+		</where>
 	</delete>
 </mapper>

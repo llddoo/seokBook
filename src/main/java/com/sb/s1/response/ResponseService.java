@@ -18,12 +18,15 @@ public class ResponseService {
 	}
 	
 	public int delResponse(ResponseDTO responseDTO) throws Exception{
-		responseDTO.setId("deleted");
-		responseDTO.setContent("<p>삭제된 글입니다.</p>");
-		return responseDAO.delResponse(responseDTO);
+		return responseDAO.delResponse(responseDAO.getListfordelete(responseDTO));
 	}
 	
 	public int insertResponse(ResponseDTO responseDTO) throws Exception{
+		if(responseDTO.getDepth()==0) {
+			responseDTO.setStep(responseDAO.getTotal(responseDTO)+1L);
+		}else {
+			responseDTO.setStep(responseDTO.getStep()+1L);
+		}
 		return responseDAO.insertResponse(responseDTO);
 	}
 	

@@ -19,8 +19,17 @@ public class ResponseDAO {
 	public List<ResponseDTO> getList(Pager pager) {
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
-	public int delResponse(ResponseDTO responseDTO) throws Exception{
-		return sqlSession.delete(NAMESPACE+"delResponse", responseDTO);
+	
+	public List<ResponseDTO> getListfordelete(ResponseDTO responseDTO){
+		return sqlSession.selectList(NAMESPACE+"getListfordelete", responseDTO);
+	}
+	
+	public long getTotal(ResponseDTO responseDTO) {
+		return sqlSession.selectOne(NAMESPACE+"getTotal", responseDTO);
+	}
+	
+	public int delResponse(List<ResponseDTO> list) throws Exception{
+		return sqlSession.delete(NAMESPACE+"delResponse", list);
 	}
 	
 	public int insertResponse(ResponseDTO responseDTO) throws Exception{
