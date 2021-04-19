@@ -1,7 +1,7 @@
 /**
  * 
  */
- let updatecount=0;
+ let updatenum=-1;
  const subnum=$("#subnum").val();
  $(document).ready(function(){
 	$('#content').summernote({
@@ -37,10 +37,11 @@ $("#comment").on("click", ".commentdelete",function(){
 });
 
 $("#comment").on("click", ".commentupdate",function(){
-	console.log($(this).siblings("input").val());
-	if(updatecount>0){
-		getList();
-		updatecount--;
+	if(updatenum!=-1){
+		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='3']");
+		const reservetext = preupdate.find("div.commentcontent").text();
+		preupdate.empty();
+		preupdate.append("<div class=\"commentcontent\">"+reservetext+"</div>");
 	}
 	const resnum = $(this).siblings("input").val();
 	const content = $(this).parents("tr").siblings("tr").find("td");
@@ -53,7 +54,7 @@ $("#comment").on("click", ".commentupdate",function(){
 	$("#rewrite").summernote('insertText',comment);
 	$('#rewrite').val(comment);
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
-	updatecount++;
+	updatenum=resnum;
 });
 
 $("#comment").on("click", "#transrewrite",function(){
