@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
-<link href="${pageContext.request.contextPath}/resources/summernote/summernote-bs4.min.css" rel="stylesheet">
-<script src="${pageContext.request.contextPath}/resources/summernote/summernote-bs4.min.js"></script>
+<link href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.js"></script>
 <style type="text/css">
 	#sample{
 		display:none;
@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="content">Contents:</label>
+				<label for="content">Content:</label>
 				<textarea class="form-control frmCheck" rows="5" id="content" name="content"></textarea>
 			</div>
 
@@ -66,8 +66,8 @@
 		</div>
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="../resources/js/board/insertCheck.js"></script>
-<script type="text/javascript" src="../resources/js/board/fileAdd.js"></script>
-<script type="text/javascript" src="../resources/js/board/summernote.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/insertCheck.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/fileAdd.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
 </body>
 </html>
