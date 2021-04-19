@@ -39,19 +39,19 @@ $("#comment").on("click", ".commentdelete",function(){
 $("#comment").on("click", ".commentupdate",function(){
 	if(updatenum!=-1){
 		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='3']");
-		const reservetext = preupdate.find("div.commentcontent").text();
+		const reservetext = preupdate.find("div.commentcontent").html();
 		preupdate.empty();
 		preupdate.append("<div class=\"commentcontent\">"+reservetext+"</div>");
 	}
 	const resnum = $(this).siblings("input").val();
 	const content = $(this).parents("tr").siblings("tr").find("td");
-	const comment = content.text();
+	const comment = content.html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
 	$("#rewrite").summernote();
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
-	$("#rewrite").summernote('insertText',comment);
+	$("#rewrite").summernote('code',comment);
 	$('#rewrite').val(comment);
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
 	updatenum=resnum;
