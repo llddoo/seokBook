@@ -18,12 +18,9 @@
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{step}, #{depth})
 	</insert>
 	<update id="updateForInsert" parameterType="java.util.List">
-		update response set step=step+1
-		<where>
-			<foreach collection="list" item="item" separator="OR">
-				(resnum=#{item.resnum})
-			</foreach>
-		</where>
+		<foreach collection="list" item="item">
+			update response set step= #{item.step}+1 where (resnum=#{item.resnum})
+		</foreach>
 	</update>
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}

@@ -23,9 +23,12 @@ public class ResponseService {
 	
 	public int insertResponse(ResponseDTO responseDTO) throws Exception{
 		if(responseDTO.getDepth()==0) {
-			responseDTO.setStep(responseDAO.getTotal(responseDTO)+1L);
+			responseDTO.setStep(responseDAO.getTotal(responseDTO));
 		}else {
-			responseDAO.updateForInsert(responseDAO.getListForUpdate(responseDTO));
+			List<ResponseDTO> list = responseDAO.getListForUpdate(responseDTO);
+			if(list.size()!=0) {
+				responseDAO.updateForInsert(list);
+			}
 		}
 		return responseDAO.insertResponse(responseDTO);
 	}
