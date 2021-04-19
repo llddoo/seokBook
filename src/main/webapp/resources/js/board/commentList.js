@@ -17,6 +17,14 @@
 	getList();
 });
 
+function getList(){
+	$.get("./response/responseList?subnum="+subnum, function(data){
+		$("#comment").html(data.trim());
+		$(".commentcontent").each(function(){
+			$(this).css("display","inline-block");
+		});
+	});
+};
 
 $("#comment").on("click", ".commentdelete",function(){
 	const resnum = $(this).siblings("input.selectresnum").val();
@@ -145,15 +153,6 @@ $("#comment").on("click", "#transreply", function(){
 		}
 	});
 });
-
-function getList(){
-	$.get("./response/responseList?subnum="+subnum, function(data){
-		$("#comment").html(data.trim());
-		$(".commentcontent").each(function(){
-			$(this).css("display","inline-block");
-		});
-	});
-};
 
 $("#write").click(function(){
 	const id = $("#id").val();
