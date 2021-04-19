@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +17,7 @@
 		<thead class="thead-dark">
 			<tr>
 				<th>지점명</th>
-				<th>지점장</th>
-				<th>연락처</th>
+				<th>지점연락처</th>
 			</tr>
 			</thead>
 			
@@ -26,7 +25,6 @@
 			<c:forEach items="${list}" var="dto">
 				<tr>
 					<td><a href="./${branch}Select?branchNum=${dto.branchNum}">${dto.branchName}</a></td>
-					<td>${dto.branchManager}</td>
 					<td>${dto.branchCall}</td>	
 				</tr>
 			</c:forEach>
@@ -46,8 +44,7 @@
      <div class="input-group-prepend">
       <select class="form-control" name="kind" id="kind" >
        <option class="sel">지점명</option>
-       <option class="sel">지점장</option>
-       <option class="sel">연락처</option>
+       <option class="sel">지점연락처</option>
      </select>
      </div>
      <input type="text" class="form-control" name="search" id="search" value="${pager.search}" placeholder="">

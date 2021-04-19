@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sb.s1.util.Pager;
@@ -59,7 +60,7 @@ public class BranchController {
 		return mv;
 	}
 	
-	@PostMapping("branchDelete")
+	@RequestMapping(value = "branchDelete", method= RequestMethod.POST)
 	public ModelAndView setDelete(BranchDTO branchDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = branchService.setDelete(branchDTO);
@@ -73,7 +74,7 @@ public class BranchController {
 		
 		mv.addObject("msg", message);
 		mv.addObject("path", path);
-		mv.setViewName("branch/branchDelete");
+		mv.setViewName("branch/branchResult");
 		
 		return mv;
 	}
@@ -103,7 +104,7 @@ public class BranchController {
 		}else {
 			mv.addObject("msg", "수정 실패ㅠ");
 			mv.addObject("path", "./branchList");
-			mv.setViewName("branch/branchUpdate");
+			mv.setViewName("branch/branchResult");
 		}
 		return mv;
 	}

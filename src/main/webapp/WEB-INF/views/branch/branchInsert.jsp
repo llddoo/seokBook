@@ -19,11 +19,6 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="title">지점장:</label> <input type="text"
-					class="form-control myCheck" id="branchManager" name="branchManager">
-			</div>
-			
-			<div class="form-group">
 				<label for="title">연락처:</label> <input type="text"
 					class="form-control myCheck" id="branchCall" name="branchCall">
 			</div>

@@ -13,11 +13,7 @@
                      <when test="kind == 'BranchCall'">
                         branchcall
                      </when>
-                     
-                     <when test="kind == 'BranchManager'">
-                        branchmanager
-                     </when>
-                     
+                  
                      <otherwise>
                         branchname
                      </otherwise>
@@ -33,11 +29,7 @@
                      <when test="kind == 'BranchCall'">
                         branchcall
                      </when>
-                     
-                      <when test="kind == 'BranchManager'">
-                        branchmanager
-                     </when>
-                     
+                         
                      <otherwise>
                         branchname
                      </otherwise>
@@ -47,7 +39,7 @@
 	
 	
 	<insert id="setInsert" parameterType="BranchDTO">
-		insert into branch values(br_bn_seq.nextval, #{branchName}, #{branchManager}, #{branchCall})
+		insert into branch values(br_bn_seq.nextval, #{branchName}, #{branchCall})
 	</insert>
 
 	<delete id="setDelete" parameterType="BranchDTO">
@@ -55,7 +47,7 @@
 	</delete>
 	
 	<update id="setUpdate" parameterType="BranchDTO">
-		update branch set branchname=#{branchName}, branchmanager=#{branchManager}, branchcall=#{branchCall}
+		update branch set branchname=#{branchName}, branchcall=#{branchCall}
 	</update>
 	
 	<select id="getSelect" parameterType="BranchDTO" resultType="BranchDTO">

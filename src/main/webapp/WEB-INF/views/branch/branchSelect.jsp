@@ -12,16 +12,15 @@
 <body>
 
 <div class="container">
-	<h1>관리자 전용 페이지</h1>
+	<h1>관리자 전용 페이지</h1><br>
 	
 	<h3>지점명 : ${dto.branchName}</h3>
-	<h3>지점장 : ${dto.branchManager}</h3>
-	<h3>연락처 : ${dto.branchCall}</h3>
-<a href="./${branch}Update?branchNum=${dto.branchnum}" class="btn btn-danger">수정</a>
-<a href="#" id="del" class="btn btn=info">삭제</a>
+	<h3>지점연락처 : ${dto.branchCall}</h3>
+<a href="./${branch}Update?branchNum=${dto.branchNum}" class="btn btn-danger">수정</a>
+<a href="#" id="del" class="btn btn-info">삭제</a>
 
 <form action="./${branch}Delete" id="frm" method="get">
-	<input type="hidden" name="branchnum" value="${dto.branchnum}">
+	<input type="hidden" name="branchNum" value="${dto.branchNum}">
 </form>
 
 </div>
@@ -34,12 +33,13 @@
 		let result = confirm("삭제하시겠습니까?");
 		
 		if(result){
+			frm.method="post";
 			frm.setAttribute("method", "post");
 			frm.submit();
+			location.href="./${branch}Delete?branchNum=${dto.branchNum}";
 		}
 	});
-
+	
 </script>
-
 </body>
 </html>
