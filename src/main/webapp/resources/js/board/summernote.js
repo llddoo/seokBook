@@ -1,6 +1,4 @@
-/**
- * 
- */
+
  $(document).ready(function(){
 	$('#content').summernote({
 			height: 200,
@@ -54,7 +52,6 @@ $("#write").click(function(){
 		}
 	});
 });
-
 
 function deleteFile(files){
 	let fileName = $(files[0]).attr("src");

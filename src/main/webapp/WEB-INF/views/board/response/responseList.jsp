@@ -35,7 +35,7 @@
 	  <input type="hidden" readonly="readonly" id="curBlock" value="${pager.curBlock}">
 	  <input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">
 	  <input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
-		<c:if test="${listsize ne 0}">
+	  <c:if test="${listsize ne 0}">
 		<ul class="pagination pagination-sm justify-content-center" id="pagerList">
 		  <li class="page-item" id="prebutton"><button class="page-link">Previous</button></li>
 		  <c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
@@ -43,5 +43,5 @@
 		  </c:forEach>
 		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
 		</ul>
-		</c:if>
+	</c:if>
   </div>

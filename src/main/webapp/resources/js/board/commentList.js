@@ -1,19 +1,7 @@
 
- let updatenum=-1;
- const subnum=$("#subnum").val();
- $(document).ready(function(){
-	$('#content').summernote({
-			height: 200,
-			mingheight: 200,
-			maxheight: 200,
-			disableResizeEditor: true,
-			placeholder: '글 작성',
-	});
-	$('.note-statusbar').hide();
-	$('.note-toolbar').hide();
-	getList();
-});
-
+let updatenum=-1;
+const subnum=$("#subnum").val();
+ 
 function getList(){
 	const curPage = $("#currentPage").val();
 	const curBlock = $("#curBlock").val();
@@ -43,6 +31,19 @@ function getList(){
 		}
 	});
 };
+ 
+ $(document).ready(function(){
+	$('#content').summernote({
+			height: 200,
+			mingheight: 200,
+			maxheight: 200,
+			disableResizeEditor: true,
+			placeholder: '글 작성',
+	});
+	$('.note-statusbar').hide();
+	$('.note-toolbar').hide();
+	getList();
+});
 
 $("#comment").on("click", ".commentdelete",function(){
 	const resnum = $(this).siblings("input.selectresnum").val();

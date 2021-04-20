@@ -11,7 +11,7 @@
 <body>
 <c:import url="../template/body.jsp"></c:import>
 	<div class="container">
-	  <h2>${list[0].boardsp}</h2>
+	  <h2 id="boardsp">${list[0].boardsp}</h2>
 	  <table class="table">
 	    <thead class="thead-dark">
 	      <tr>
@@ -42,7 +42,15 @@
 		</ul>
 		</c:if>
 	  <a class="btn btn-primary" href="./boardInsert?boardsp=${list[0].boardsp}">글쓰기</a>
+	  <form action="./boardList" id="getListSearching">
+	  	<input type="hidden" readonly="readonly" id="boardsp" name="boardsp" value="${list[0].boardsp}">
+		<input type="hidden" readonly="readonly" id="currentPage" name="curPage" value="${pager.curPage}">
+		<input type="hidden" readonly="readonly" id="curBlock" name="curBlock" value="${pager.curBlock}">
+		<input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">
+		<input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
+	  </form>
   </div>
 <c:import url="../template/footer.jsp"></c:import>
+<script type="text/javascript" src="../resources/js/board/boardPager.js"></script>
 </body>
 </html>
