@@ -10,9 +10,6 @@
 	<select id="getTotal" parameterType="ResponseDTO" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}
 	</select>
-	<select id="getMax" parameterType="ResponseDTO" resultType="Long">
-		select Max(step) from response where subnum=#{subnum}
-	</select>
 	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
 		select * from response where subnum=#{subnum} and step >= #{step} and depth > #{depth} or resnum=#{resnum}
 	</select>
@@ -24,6 +21,10 @@
 	</update>
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}
+	</update>
+	<update id="updateAfterDelete" parameterType="Pager">
+		update (select * from response where subnum=#{subnum}) set step=step-#{curBlock} 
+		where step>=#{curPage} 
 	</update>
 	<delete id="delResponse" parameterType="java.util.List">
 		DELETE from response

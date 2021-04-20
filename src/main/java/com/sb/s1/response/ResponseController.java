@@ -33,13 +33,13 @@ public class ResponseController {
 	
 	@PostMapping("responseUpdate")
 	public void responseUpdate(ResponseDTO responseDTO, Model model) throws Exception{
-		int result = responseService.updateResponse(responseDTO);
+		long result = responseService.updateResponse(responseDTO);
 		model.addAttribute("result", result);
 	}
 	
 	@PostMapping("responseInsert")
 	public void responseInsert(ResponseDTO responseDTO, Model model) throws Exception{
-		int result = responseService.insertResponse(responseDTO);
+		long result = responseService.insertResponse(responseDTO);
 		model.addAttribute("result", result);
 	}
 }

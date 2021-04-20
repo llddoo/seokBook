@@ -24,27 +24,27 @@ public class ResponseDAO {
 		return sqlSession.selectList(NAMESPACE+"getListfordelete", responseDTO);
 	}
 	
-	public long getMax(ResponseDTO responseDTO)throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getMax", responseDTO);
-	}
-	
 	public long getTotal(ResponseDTO responseDTO)throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotal", responseDTO);
 	}
 	
-	public int delResponse(List<ResponseDTO> list) throws Exception{
+	public long delResponse(List<ResponseDTO> list) throws Exception{
 		return sqlSession.delete(NAMESPACE+"delResponse", list);
 	}
 	
-	public int insertResponse(ResponseDTO responseDTO) throws Exception{
+	public long insertResponse(ResponseDTO responseDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"insertResponse", responseDTO);
 	}
 	
-	public int updateResponse(ResponseDTO responseDTO) throws Exception{
+	public long updateResponse(ResponseDTO responseDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"updateResponse", responseDTO);
 	}
 	
-	public int updateForInsert(ResponseDTO responseDTO) throws Exception{
+	public long updateForInsert(ResponseDTO responseDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"updateForInsert", responseDTO);
+	}
+	
+	public long updateAfterDelete(Pager pager) throws Exception{
+		return sqlSession.update(NAMESPACE+"updateAfterDelete", pager);
 	}
 }

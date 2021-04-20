@@ -22,25 +22,27 @@ public class ResponseService {
 		return responseDAO.getList(pager);
 	}
 	
-	public int delResponse(ResponseDTO responseDTO) throws Exception{
-		return responseDAO.delResponse(responseDAO.getListfordelete(responseDTO));
+	public long delResponse(ResponseDTO responseDTO) throws Exception{
+		List<ResponseDTO> list = responseDAO.getListfordelete(responseDTO);
+		responseDAO.delResponse(list);
+		int listsize = list.size();
+		Pager pager = new Pager();
+		pager.setCurBlock(listsize);
+		pager.setCurPage(list.get(listsize-1).getStep()+1);
+		pager.setSubnum((int)list.get(listsize-1).getSubnum());
+		return responseDAO.updateAfterDelete(pager);
 	}
 	
-	public int insertResponse(ResponseDTO responseDTO) throws Exception{
+	public long insertResponse(ResponseDTO responseDTO) throws Exception{
 		if(responseDTO.getDepth()==0) {
-			long totalcount = responseDAO.getTotal(responseDTO);
-			if(totalcount!=0) {
-				totalcount=responseDAO.getMax(responseDTO);
-			}
-			totalcount++;
-			responseDTO.setStep(totalcount);
+			responseDTO.setStep(responseDAO.getTotal(responseDTO)+1L);
 		}else {
 			responseDAO.updateForInsert(responseDTO);
 		}
 		return responseDAO.insertResponse(responseDTO);
 	}
 	
-	public int updateResponse(ResponseDTO responseDTO) throws Exception{
+	public long updateResponse(ResponseDTO responseDTO) throws Exception{
 		return responseDAO.updateResponse(responseDTO);
 	}
 }
