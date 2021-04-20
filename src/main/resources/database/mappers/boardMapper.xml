@@ -3,7 +3,9 @@
 
 <mapper namespace="com.sb.s1.board.BoardDAO">
 	<select id="getList" parameterType="Pager" resultType="BoardDTO">
-		SELECT subnum,id,regdate,content,subname,boardsp,visitcount FROM (SELECT B.*, ROWNUM RN FROM BOARD B WHERE BOARDSP = #{boardsp}) WHERE RN BETWEEN #{startRow} AND #{endRow} 
+		SELECT subnum,id,regdate,content,subname,boardsp,visitcount FROM 
+		(SELECT B.*, ROWNUM RN FROM BOARD B WHERE BOARDSP = #{boardsp}) 
+		WHERE RN BETWEEN #{startRow} AND #{endRow} 
 	</select>
 	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT * FROM BOARD WHERE SUBNUM=#{subnum}

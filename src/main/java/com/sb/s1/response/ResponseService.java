@@ -14,6 +14,11 @@ public class ResponseService {
 	private ResponseDAO responseDAO;
 	
 	public List<ResponseDTO> getList(Pager pager)throws Exception{
+		pager.setCurPage(pager.getCurPage() == 0 ? 1 : pager.getCurPage());
+		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
+		ResponseDTO responseDTO = new ResponseDTO();
+		responseDTO.setSubnum(pager.getSubnum());
+		pager.makecal(responseDAO.getTotal(responseDTO));
 		return responseDAO.getList(pager);
 	}
 	

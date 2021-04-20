@@ -1,6 +1,4 @@
-/**
- * 
- */
+
  let updatenum=-1;
  const subnum=$("#subnum").val();
  $(document).ready(function(){
@@ -17,11 +15,32 @@
 });
 
 function getList(){
-	$.get("./response/responseList?subnum="+subnum, function(data){
-		$("#comment").html(data.trim());
-		$(".commentcontent").each(function(){
-			$(this).css("display","inline-block");
-		});
+	const curPage = $("#currentPage").val();
+	const curBlock = $("#curBlock").val();
+	$.ajax({
+		type:"get",
+		url:"./response/responseList",
+		data:{
+			subnum:subnum,
+			curPage:curPage,
+			curBlock:curBlock,
+			perPage:10,
+			perBlock:5
+		},
+		success:function(data){
+			$("#comment").html(data.trim());
+			$(".commentcontent").each(function(){
+				$(this).css("display","inline-block");
+			});
+			const preavail = $("#preavail").val();
+			const nextavail = $("#nextavail").val();
+			if(preavail==='false'){
+				$("#prebutton").attr("class","page-item disabled");
+			}
+			if(nextavail==='false'){
+				$("#nextbutton").attr("class","page-item disabled");
+			}
+		}
 	});
 };
 
@@ -177,4 +196,27 @@ $("#write").click(function(){
 			alert('등록 실패');
 		}
 	});
+});
+
+$("#comment").on("click", ".pagesetting", function(){
+	$("#currentPage").val($(this).val());
+	getList();
+});
+
+$("#comment").on("click", "#prebutton", function(){
+	if($("#prebutton").attr("class")==="page-item disabled"){
+		return;
+	}
+	const curBlock = $("#curBlock").val();
+	$("#curBlock").val(Number(curBlock)-1);
+	getList();
+});
+
+$("#comment").on("click", "#nextbutton", function(){
+	if($("#nextbutton").attr("class")==="page-item disabled"){
+		return;
+	}
+	const curBlock = $("#curBlock").val();
+	$("#curBlock").val(Number(curBlock)+1);
+	getList();
 });

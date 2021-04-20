@@ -3,13 +3,15 @@
 
 <mapper namespace="com.sb.s1.response.ResponseDAO">
 	<select id="getList" parameterType="Pager" resultType="ResponseDTO">
-		SELECT * FROM RESPONSE WHERE SUBNUM=#{subnum} order by step asc
+		SELECT res.resnum, res.id, res.regdate, res.content, res.subnum, res.step, res.depth 
+		FROM (select rownum r, re.* from RESPONSE re where subnum=#{subnum}) res 
+		WHERE res.r between #{startRow} and #{endRow} order by step asc
 	</select>
 	<select id="getTotal" parameterType="ResponseDTO" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}
 	</select>
 	<select id="getMax" parameterType="ResponseDTO" resultType="Long">
-		select Max(step) from response
+		select Max(step) from response where subnum=#{subnum}
 	</select>
 	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
 		select * from response where subnum=#{subnum} and step >= #{step} and depth > #{depth} or resnum=#{resnum}

@@ -1,6 +1,8 @@
 package com.sb.s1.board;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping("boardInsert")
-	public void boardInsert(Pager pager) {
-		
-	}
+	public void boardInsert(Pager pager) { }
 	
 	@PostMapping("boardInsert")
 	public String boardInsert(BoardDTO boardDTO) throws Exception{
@@ -36,7 +36,10 @@ public class BoardController {
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO.setId("admin");
 		session.setAttribute("member", boardDTO);
-		model.addAttribute("list", boardService.getList(pager));
+		List<BoardDTO> list = boardService.getList(pager);
+		model.addAttribute("list", list);
+		model.addAttribute("pager", pager);
+		model.addAttribute("listsize", list.size());
 	}
 	
 	@GetMapping("boardSelect")

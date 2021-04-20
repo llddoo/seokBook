@@ -1,5 +1,7 @@
 package com.sb.s1.response;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,10 @@ public class ResponseController {
 	
 	@GetMapping("responseList")
 	public void responseList(Pager pager, Model model)throws Exception{
-		model.addAttribute("commentList", responseService.getList(pager));
+		List<ResponseDTO> list = responseService.getList(pager);
+		model.addAttribute("commentList", list);
+		model.addAttribute("pager", pager);
+		model.addAttribute("listsize", list.size());
 	}
 	
 	@GetMapping("responseDelete")

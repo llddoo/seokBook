@@ -14,6 +14,8 @@ public class BoardService {
 	private BoardDAO boardDAO;
 	
 	public List<BoardDTO> getList(Pager pager) throws Exception {
+		pager.setCurPage(pager.getCurPage() == 0 ? 1 : pager.getCurPage());
+		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
 		pager.makecal(boardDAO.getTotalcount(pager));
 		return boardDAO.getList(pager);
 	}

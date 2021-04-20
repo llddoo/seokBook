@@ -22,15 +22,16 @@ public class Pager {
 	private boolean next;
 	
 	public void makecal(long totalcount) {
-		this.totalPage=totalcount;
-		this.endRow = this.curPage*this.perPage;
+		this.endRow = this.curPage * this.perPage;
 		this.startRow = this.endRow - this.perPage + 1;
 		this.totalPage = ((totalcount%perPage==0) ? (totalcount/perPage) : (totalcount/perPage+1));
 		this.totalBlock = ((this.totalPage%this.perBlock==0) ? (this.totalPage/this.perBlock) 
 															: (this.totalPage/this.perBlock+1));
-		this.curBlock = ((this.curPage%this.perBlock==0) ? (this.curPage/this.perBlock) 
-														: (this.curPage/this.perBlock+1));
-		this.endBlock = this.curBlock / this.perBlock;
+		this.makeblock(totalcount);
+	}
+	
+	public void makeblock(long totalcount) {
+		this.endBlock = this.curBlock * this.perBlock;
 		this.startBlock = this.endBlock - this.perBlock + 1;
 		if(this.curBlock == this.totalBlock) {
 			this.endBlock = this.totalPage;

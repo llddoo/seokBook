@@ -32,6 +32,15 @@
 	      </c:forEach>
 	    </tbody>
 	  </table>
+	  <c:if test="${listsize ne 0}">
+		<ul class="pagination justify-content-center" id="pagerList">
+		  <li class="page-item" id="prebutton"><button class="page-link">Previous</button></li>
+		  <c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
+		  	<li class="page-item"><button class="page-link pagesetting" value="${i}">${i}</button></li>
+		  </c:forEach>
+		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
+		</ul>
+		</c:if>
 	  <a class="btn btn-primary" href="./boardInsert?boardsp=${list[0].boardsp}">글쓰기</a>
   </div>
 <c:import url="../template/footer.jsp"></c:import>

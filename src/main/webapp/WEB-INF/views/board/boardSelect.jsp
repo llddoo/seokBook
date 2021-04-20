@@ -40,11 +40,9 @@
 	    	</tr>
 	    </tbody>
 	  </table>
-  
  	<div id="comment">
 		
 	</div>
-	
 	<div>
 		<div class="form-group">
   			<input type="hidden" class="form-control" id="id" value="${member.id}" readonly="readonly">
