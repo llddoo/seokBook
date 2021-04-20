@@ -24,11 +24,11 @@ public class ResponseDAO {
 		return sqlSession.selectList(NAMESPACE+"getListfordelete", responseDTO);
 	}
 	
-	public List<ResponseDTO> getListForUpdate(ResponseDTO responseDTO){
-		return sqlSession.selectList(NAMESPACE+"getListForUpdate", responseDTO);
+	public long getMax(ResponseDTO responseDTO)throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getMax", responseDTO);
 	}
 	
-	public long getTotal(ResponseDTO responseDTO) {
+	public long getTotal(ResponseDTO responseDTO)throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotal", responseDTO);
 	}
 	
@@ -44,7 +44,7 @@ public class ResponseDAO {
 		return sqlSession.update(NAMESPACE+"updateResponse", responseDTO);
 	}
 	
-	public int updateForInsert(List<ResponseDTO> list) throws Exception{
-		return sqlSession.update(NAMESPACE+"updateForInsert", list);
+	public int updateForInsert(ResponseDTO responseDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"updateForInsert", responseDTO);
 	}
 }

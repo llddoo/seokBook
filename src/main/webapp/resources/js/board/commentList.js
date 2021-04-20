@@ -5,7 +5,6 @@
  const subnum=$("#subnum").val();
  $(document).ready(function(){
 	$('#content').summernote({
-			lang:"ko-KR",
 			height: 200,
 			mingheight: 200,
 			maxheight: 200,
@@ -62,16 +61,15 @@ $("#comment").on("click", ".commentupdate",function(){
 	const comment = content.find("div.commentcontent").html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
-	$("#rewrite").summernote();
+	$("#rewrite").summernote('code',comment);
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
-	$("#rewrite").summernote('code',comment);
-	$('#rewrite').val(comment);
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
 	updatenum=resnum;
 });
 
 $("#comment").on("click", "#transrewrite",function(){
+	$("#rewrite").summernote('focus');
 	const resnum = parseInt($("#forupdate").val());
 	const content = $("#rewrite").val();
 	if(content.trim()==""){
@@ -126,8 +124,8 @@ $("#comment").on("click", "#transreply", function(){
 	const resnum = $("#forinsert").val();
 	const id = $("#id").val();
 	const content = $("#rewrite").val();
-	const step = parseInt($("#replystep").val())+1;
-	const depth = parseInt($("#replydepth").val())+1;
+	const step = Number($("#replystep").val())+1;
+	const depth = Number($("#replydepth").val())+1;
 	if(content.trim()==""){
 		alert("입력할 수 없습니다.");
 		return;
@@ -155,6 +153,7 @@ $("#comment").on("click", "#transreply", function(){
 });
 
 $("#write").click(function(){
+	$("#rewrite").summernote('focus');
 	const id = $("#id").val();
 	let content = $("#content").val();
 	if(content.trim()==""){

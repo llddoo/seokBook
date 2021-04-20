@@ -26,10 +26,6 @@ public class BoardService {
 	}
 	
 	public int setBoard(BoardDTO boardDTO) throws Exception {
-		if(boardDTO.getActdata()==null) {
-			boardDTO.setActdata("");
-			boardDTO.setChangeddata("");
-		}
 		return boardDAO.setBoard(boardDTO);
 	}
 	
@@ -38,10 +34,6 @@ public class BoardService {
 	}
 	
 	public int updateBoard(BoardDTO boardDTO) throws Exception {
-		if(boardDTO.getActdata()==null) {
-			boardDTO.setActdata("");
-			boardDTO.setChangeddata("");
-		}
 		return boardDAO.updateBoard(boardDTO);
 	}
 }

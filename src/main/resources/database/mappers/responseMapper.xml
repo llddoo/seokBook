@@ -8,25 +8,23 @@
 	<select id="getTotal" parameterType="ResponseDTO" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}
 	</select>
+	<select id="getMax" parameterType="ResponseDTO" resultType="Long">
+		select Max(step) from response
+	</select>
 	<select id="getListfordelete" parameterType="ResponseDTO" resultType="ResponseDTO">
 		select * from response where subnum=#{subnum} and step >= #{step} and depth > #{depth} or resnum=#{resnum}
-	</select>
-	<select id="getListForUpdate" parameterType="ResponseDTO" resultType="ResponseDTO">
-		select * from response where subnum=#{subnum} and step >= #{step}
 	</select>
 	<insert id="insertResponse" parameterType="ResponseDTO">
 		INSERT INTO RESPONSE VALUES(RES_RN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, #{subnum}, #{step}, #{depth})
 	</insert>
-	<update id="updateForInsert" parameterType="java.util.List">
-		<foreach collection="list" item="item">
-			update response set step= #{item.step}+1 where (resnum=#{item.resnum})
-		</foreach>
+	<update id="updateForInsert" parameterType="ResponseDTO">
+			update response set step = step+1 where (subnum = #{subnum}) and (step >= #{step})
 	</update>
 	<update id="updateResponse" parameterType="ResponseDTO">
 		UPDATE RESPONSE SET CONTENT=#{content} where resnum = #{resnum}
 	</update>
 	<delete id="delResponse" parameterType="java.util.List">
-		DELETE from response 
+		DELETE from response
 		<where>
 			<foreach collection="list" item="item" separator="OR">
 				(resnum=#{item.resnum})
