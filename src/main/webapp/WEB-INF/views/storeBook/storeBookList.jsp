@@ -5,10 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지점별 책보관 수량</title>
+<title>지점별 책수량</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
 <body>
+<div class="container">
+	<h2>지점별 책수량</h2>
+	
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+	
+	</table>
 
+</div>
 </body>
 </html>
