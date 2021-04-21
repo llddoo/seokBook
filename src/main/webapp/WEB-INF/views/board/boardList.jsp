@@ -7,11 +7,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
+<style>
+	#searchingform{
+		width: 85%
+	}
+	#searchbar{
+		width: 35%
+	}
+	#searchselectbar{
+		width: 13%
+	}
+</style>
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
 	<div class="container">
-	  <h2 id="boardsp">${list[0].boardsp}</h2>
+	  <h2 id="boardsp">${pager.boardsp}</h2>
 	  <table class="table">
 	    <thead class="thead-dark">
 	      <tr>
@@ -41,9 +52,21 @@
 		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
 		</ul>
 		</c:if>
-	  <a class="btn btn-primary" href="./boardInsert?boardsp=${list[0].boardsp}">글쓰기</a>
+	<div>
+	 	<a class="btn btn-primary" href="./boardInsert?boardsp=${pager.boardsp}">글쓰기</a>
+	 	<form class="float-right" method="get" action="./boardList" id="searchingform">
+	 		<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}">
+		 	<button class="btn btn-success float-right" id="searchingButton">Search</button>
+			<input type="text" class="form-control float-right" placeholder="Search" id="searchbar" name="search">
+			<select name="cars" class="custom-select float-right" id="searchselectbar" name="kind">
+				<option value="subname" selected>제목</option>
+				<option value="content">내용</option>
+				<option value="id">작성자</option>
+			</select>
+		</form>
+	</div>
 	  <form action="./boardList" id="getListSearching">
-	  	<input type="hidden" readonly="readonly" id="boardsp" name="boardsp" value="${list[0].boardsp}">
+	  	<input type="hidden" readonly="readonly" id="boardsp" name="boardsp" value="${pager.boardsp}">
 		<input type="hidden" readonly="readonly" id="currentPage" name="curPage" value="${pager.curPage}">
 		<input type="hidden" readonly="readonly" id="curBlock" name="curBlock" value="${pager.curBlock}">
 		<input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">

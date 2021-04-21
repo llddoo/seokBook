@@ -66,8 +66,6 @@
 		</div>
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/insertCheck.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/fileAdd.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
 </body>
 </html>

@@ -30,27 +30,19 @@
 	});
 	$('.note-statusbar').hide();
 });
-
-$("#write").click(function(){
-	let id = $("#id").val();
-	let content = $("#content").val();
-	
-	$.post("./response/responseInsert", 
-	{
-		subnum:subnum,
-		id:id,
-		content:content
-	}, 
-	function(data){
-		data = data.trim();
-		if(data==1){
-			$("#content").val('');
-			$('#content').summernote('reset');
-			getList();
-		}else {
-			alert('등록 실패');
+ 
+ $("#btn").click(function(){
+	let check = true;
+	$(".frmCheck").each(function(){
+		if($(this).val()==""){
+			check=false;
 		}
 	});
+	if(check){
+		$("#frm").submit();
+	}else{
+		alert("입력되지 않은 칸이 존재합니다. 모두 입력해 주세요.");
+	}
 });
 
 function deleteFile(files){

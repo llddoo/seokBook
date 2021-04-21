@@ -34,4 +34,3 @@ $(".pagesetting").click(function(){
 	$("#curPage").val(Number(curPage));
 	$("#getListSearching").submit();
 });
-	
