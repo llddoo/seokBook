@@ -16,10 +16,14 @@
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			callbacks: {
 				onImageUpload: function(files) {
-					uploadFile(files[0]);	
+					for(file of files){
+						uploadFile(file);	
+					}
 				 },
 				onMediaDelete: function(files){
-					deleteFile(files);
+					for(file of files){
+						deleteFile(file);
+					}
 				}
 					
 			}// -- callbacks
@@ -41,36 +45,35 @@
 	}
 });
 
-function uploadFile(files) {
-	const multipartFile = new FormData();
+function uploadFile(file) {
+	const formData = new FormData();
 	let fileName="";
 	const name = $("#forimageupload").val();
-	multipartFile.append('file', files[0]);
+	formData.append('file', file);
+	formData.append('name', name);
 	$.ajax({
 		type: "POST",
 		url: "./boardFileUpload",
-		data:multipartFile,
+		data:formData,
 		enctype:"multipart/form-data",
 		cache:false,
 		processData:false,
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			$("#content").summernote('editor.insertImage', fileName);
+			let node = '<img alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
+			$("#content").summernote('pasteHTML', node);
 		} 
 	});		
 }
 
-function deleteFile(files){
-	const name = $("#forimageupload").val();
-	let fileName = $(files[0]).attr("src");
-	fileName = fileName.substring(fileName.lastIndexOf('/')+1);
+function deleteFile(file){
+	const path = $(file).attr("src").replace("/s1/", "/");
 	$.ajax({
-		type: "get",
+		type: "post",
 		url: "./boardFileDelete", 
 		data: {
-			fileName:fileName, 
-			name:name
+			path:path
 			}, 
 		success: function(result){
 			result=result.trim();

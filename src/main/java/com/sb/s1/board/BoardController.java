@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,14 +70,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("boardFileUpload")
-	public void boardFileUpload(@Param("file")MultipartFile multipartFile, HttpSession session, Model model) throws Exception{
-		System.out.println(multipartFile.getOriginalFilename());
-		
-		//		model.addAttribute("result", fileManager.upload(multipartFile, session));
+	public void boardFileUpload(MultipartFile file, String name, Model model) throws Exception{
+		model.addAttribute("result", fileManager.upload(file, name));
 	}
 	
-	@GetMapping("boardFileDelete")
-	public void boardFileDelete(String name, String filename, HttpSession httpSession, Model model) throws Exception{
-		model.addAttribute("result", fileManager.delete(name, filename, httpSession));
+	@PostMapping("boardFileDelete")
+	public void boardFileDelete(String path, Model model) throws Exception{
+		model.addAttribute("result", fileManager.delete(path));
 	}
 }
