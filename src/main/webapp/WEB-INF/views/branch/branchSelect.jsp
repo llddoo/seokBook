@@ -33,10 +33,10 @@
 		let result = confirm("삭제하시겠습니까?");
 		
 		if(result){
-			frm.method="post";
+			//frm.method="post";
 			frm.setAttribute("method", "post");
 			frm.submit();
-			location.href="./${branch}Delete?branchNum=${dto.branchNum}";
+			//location.href="./${branch}Delete?branchNum=${dto.branchNum}"; //get방식임
 		}
 	});
 	

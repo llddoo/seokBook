@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sb.s1.util.Pager;
 
 @Repository
 public class BranchDAO {
@@ -34,14 +33,14 @@ public class BranchDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", branchDTO);
 	}
 	
-	public List<BranchDTO> getList(Pager pager) throws Exception {
+	public List<BranchDTO> getList(BranchPager branchPager) throws Exception {
 		
-		return sqlSession.selectList(NAMESPACE+"getList", pager);
+		return sqlSession.selectList(NAMESPACE+"getList", branchPager);
 	}
 	
-	public long getTotalCount(Pager pager) throws Exception {
+	public long getTotalCount(BranchPager branchPager) throws Exception {
 		
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", branchPager);
 	}
 	public long getNum()throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getNum");

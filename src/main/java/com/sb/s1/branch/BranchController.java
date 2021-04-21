@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.util.Pager;
 
 @Controller
 @RequestMapping("/branch/**")
@@ -32,12 +31,12 @@ public class BranchController {
 	}
 	
 	@GetMapping("branchList")
-	public ModelAndView getList(Pager pager) throws Exception {
+	public ModelAndView getList(BranchPager branchPager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<BranchDTO> ar = branchService.getList(pager);
+		List<BranchDTO> ar = branchService.getList(branchPager);
 		mv.addObject("list", ar);
 		mv.addObject("branch", "branch");
-		mv.addObject("pager", pager);
+		mv.addObject("branchPager", branchPager);
 		mv.setViewName("branch/branchList");
 		
 		return mv;
@@ -60,7 +59,7 @@ public class BranchController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "branchDelete", method= RequestMethod.POST)
+	@PostMapping("branchDelete")
 	public ModelAndView setDelete(BranchDTO branchDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = branchService.setDelete(branchDTO);
@@ -99,13 +98,23 @@ public class BranchController {
 		
 		int result = branchService.setUpdate(branchDTO);
 		
+		String message = "수정 실패ㅠ";
+		String path = "./branchList";
+		
 		if(result>0) {
-			mv.setViewName("redirect:./branchList"); //성공 시 리스트로 이동
-		}else {
-			mv.addObject("msg", "수정 실패ㅠ");
-			mv.addObject("path", "./branchList");
-			mv.setViewName("branch/branchResult");
+			message = "수정 성공ㅎ";
 		}
+		mv.addObject("msg", message);
+		mv.addObject("path", path);
+		mv.setViewName("branch/branchResult");
+		
+//		if(result>0) {
+//			mv.setViewName("redirect:./branchList"); //성공 시 리스트로 이동
+//		}else {
+//			mv.addObject("msg", "수정 실패ㅠ");
+//			mv.addObject("path", "./branchList");
+//			mv.setViewName("branch/branchResult");
+//		}
 		return mv;
 	}
 }

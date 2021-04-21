@@ -5,34 +5,38 @@
 
 <mapper namespace="com.sb.s1.branch.BranchDAO">
 	
- <select id="getList" resultType="BranchDTO" parameterType="Pager">
+ <select id="getList" resultType="BranchDTO" parameterType="BranchPager">
 		select * from
          (select rownum R, B.* from
             (select * from branch where
                <choose>
+              
                      <when test="kind == 'BranchCall'">
                         branchcall
                      </when>
-                  
+                     
                      <otherwise>
-                        branchname
+                    	branchname
                      </otherwise>
+                    
                </choose>   
-            like '%' || #{search} || '%' and branchnum > 0 order by branchnum desc ) B)
+            like '%' || #{search} || '%' and branchnum > 0 order by branchnum desc) B)
             where R between #{startRow} and #{endRow}
 	</select>
 	
-	<select id="getTotalCount" resultType="Long" parameterType="Pager">	
+	<select id="getTotalCount" resultType="Long" parameterType="BranchPager">	
 		 select count(branchnum) from branch
          where
                <choose>
+               
                      <when test="kind == 'BranchCall'">
                         branchcall
                      </when>
-                         
+                     
                      <otherwise>
-                        branchname
+                    	branchname
                      </otherwise>
+                    
                </choose>   
             like '%' || #{search} || '%' and branchnum > 0 
 	</select>
@@ -47,7 +51,7 @@
 	</delete>
 	
 	<update id="setUpdate" parameterType="BranchDTO">
-		update branch set branchname=#{branchName}, branchcall=#{branchCall}
+		update branch set branchname=#{branchName}, branchcall=#{branchCall} where branchnum=#{branchNum}
 	</update>
 	
 	<select id="getSelect" parameterType="BranchDTO" resultType="BranchDTO">
