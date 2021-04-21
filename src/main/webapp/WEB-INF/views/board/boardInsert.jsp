@@ -43,27 +43,11 @@
 
 			<div class="form-group">
 				<label for="content">Content:</label>
-				<textarea class="form-control frmCheck" rows="5" id="content" name="content"></textarea>
+				<textarea class="form-control frmCheck" rows="10" id="content" name="content"></textarea>
 			</div>
-
-			<input type="button" id="add" value="ADD" class="btn btn-danger">
-			
-			<div id="files" title="0"></div>
-
+			<input type="hidden" readonly="readonly" name="name" value="${pager.boardsp}" id="forimageupload">
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
-	</div>
-	<div id="sample">
-		<div class="input-group">
-			<div class="custom-file">
-				<input type="file"  id="inputGroupFile04"
-					class="form-control-file border" name="actdata">
-			</div>
-			<div class="input-group-append delete">
-				<input class="btn btn-outline-secondary" type="button"
-					id="inputGroupFileAddon04" value="Delete">
-			</div>
-		</div>
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>

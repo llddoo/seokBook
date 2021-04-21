@@ -1,9 +1,7 @@
 
  $(document).ready(function(){
 	$('#content').summernote({
-			height: 200,
-			mingheight: 200,
-			maxheight: 200,
+			height: 500,
 			disableResizeEditor: true,
 			placeholder: '글 작성',
 			toolbar:[
@@ -45,32 +43,40 @@
 	}
 });
 
-function deleteFile(files){
-	let fileName = $(files[0]).attr("src");
-	fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-	$.post("summerFileDelete", {fileName:fileName}, function(result){
-		console.log(result);
-	});
-}
-
-
 function uploadFile(files) {
-	const formData = new FormData();
-	formData.append('file', files[0]);
+	const multipartFile = new FormData();
+	const name = $("#forimageupload").val();
+	multipartFile.append('file', files);
 	let fileName="";
 	$.ajax({
 		type: "POST",
 		url: "./boardFileUpload",
-		data:formData,
+		data:multipartFile,
 		enctype:"multipart/form-data",
 		cache:false,
 		processData:false,
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			$("#content").summernote('insertImage', fileName);
+			$("#content").summernote('editor.insertImage', fileName);
 		} 
-		
 	});		
 }
 
+function deleteFile(files){
+	const name = $("#forimageupload").val();
+	let fileName = $(files[0]).attr("src");
+	fileName = fileName.substring(fileName.lastIndexOf('/')+1);
+	$.ajax({
+		type: "get",
+		url: "./boardFileDelete", 
+		data: {
+			fileName:fileName, 
+			name:name
+			}, 
+		success: function(result){
+			result=result.trim();
+			console.log(result);
+		}
+	});
+}

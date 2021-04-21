@@ -58,7 +58,7 @@
 	 		<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}">
 		 	<button class="btn btn-success float-right" id="searchingButton">Search</button>
 			<input type="text" class="form-control float-right" placeholder="Search" id="searchbar" name="search">
-			<select name="cars" class="custom-select float-right" id="searchselectbar" name="kind">
+			<select class="custom-select float-right" id="searchselectbar" name="kind">
 				<option value="subname" selected>제목</option>
 				<option value="content">내용</option>
 				<option value="id">작성자</option>
