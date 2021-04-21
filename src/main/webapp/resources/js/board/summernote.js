@@ -61,7 +61,7 @@ function uploadFile(file) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			let node = '<img alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
+			let node = '<img class="fordeleteimg" alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
 			$("#content").summernote('pasteHTML', node);
 		} 
 	});		
@@ -77,7 +77,9 @@ function deleteFile(file){
 			}, 
 		success: function(result){
 			result=result.trim();
-			console.log(result);
+			if(result==='false'){
+				alert('이미 삭제되었거나 삭제할 수 없는 이미지 입니다.');	
+			}
 		}
 	});
 }

@@ -64,6 +64,22 @@
 	$("#deleteCheck").click(function(){
 		let check = confirm("삭제하시겠습니까?");
 		if(check){
+			$(".fordeleteimg").each(function(){
+				const path = $(this).attr("src").replace("/s1/", "/");
+				$.ajax({
+					type: "post",
+					url: "./boardFileDelete", 
+					data: {
+						path:path
+						}, 
+					success: function(result){
+						result=result.trim();
+						if(result==='false'){
+							alert('이미 삭제되었거나 삭제할 수 없는 이미지 입니다.');	
+						}
+					}
+				});
+			});
 			$("#forsend").submit();
 		}
 	});
