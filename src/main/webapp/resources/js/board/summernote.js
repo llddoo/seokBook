@@ -16,10 +16,10 @@
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			callbacks: {
 				onImageUpload: function(files) {
-				   // upload image to server and create imgNode...
-				   //$summernote.summernote('insertNode', imgNode);
-				   uploadFile(files);
-				 }, // -- onImageUpload
+					for(file of files){
+						uploadFile(file);	
+					}
+				 },
 				onMediaDelete: function(files){
 					deleteFile(files);
 				}
@@ -43,11 +43,11 @@
 	}
 });
 
-function uploadFile(files) {
-	const multipartFile = new FormData();
-	const name = $("#forimageupload").val();
-	multipartFile.append('file', files);
+function uploadFile(file) {
+	let multipartFile = new FormData();
 	let fileName="";
+	const name = $("#forimageupload").val();
+	multipartFile.append('file', file);
 	$.ajax({
 		type: "POST",
 		url: "./boardFileUpload",

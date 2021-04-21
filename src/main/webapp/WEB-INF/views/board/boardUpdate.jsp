@@ -49,28 +49,10 @@
 				<textarea class="form-control frmCheck" rows="5" id="content" name="content">${boardDTO.content}</textarea>
 			</div>
 
-			<input type="button" id="add" value="ADD" class="btn btn-danger">
-			
-			<div id="files" title="0"></div>
-
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
 	</div>
-	<div id="sample">
-		<div class="input-group">
-			<div class="custom-file">
-				<input type="file"  id="inputGroupFile04"
-					class="form-control-file border" name="actdata">
-			</div>
-			<div class="input-group-append delete">
-				<input class="btn btn-outline-secondary" type="button"
-					id="inputGroupFileAddon04" value="Delete">
-			</div>
-		</div>
-	</div>
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="../resources/js/board/fileAdd.js"></script>
-<script type="text/javascript" src="../resources/js/board/insertCheck.js"></script>
-<script type="text/javascript" src="../resources/js/board/summernote.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
 </body>
 </html>

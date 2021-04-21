@@ -71,7 +71,9 @@ public class BoardController {
 	
 	@PostMapping("boardFileUpload")
 	public void boardFileUpload(MultipartFile multipartFile, HttpSession session, Model model) throws Exception{
-		model.addAttribute("result", fileManager.upload(multipartFile, session));
+		System.out.println(multipartFile.getOriginalFilename());
+		
+		//		model.addAttribute("result", fileManager.upload(multipartFile, session));
 	}
 	
 	@GetMapping("boardFileDelete")
