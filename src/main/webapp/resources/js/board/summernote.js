@@ -16,9 +16,7 @@
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
 			callbacks: {
 				onImageUpload: function(files) {
-					for(file of files){
-						uploadFile(file);	
-					}
+					uploadFile(files[0]);	
 				 },
 				onMediaDelete: function(files){
 					deleteFile(files);
@@ -43,11 +41,11 @@
 	}
 });
 
-function uploadFile(file) {
-	let multipartFile = new FormData();
+function uploadFile(files) {
+	const multipartFile = new FormData();
 	let fileName="";
 	const name = $("#forimageupload").val();
-	multipartFile.append('file', file);
+	multipartFile.append('file', files[0]);
 	$.ajax({
 		type: "POST",
 		url: "./boardFileUpload",

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,7 +71,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("boardFileUpload")
-	public void boardFileUpload(MultipartFile multipartFile, HttpSession session, Model model) throws Exception{
+	public void boardFileUpload(@Param("file")MultipartFile multipartFile, HttpSession session, Model model) throws Exception{
 		System.out.println(multipartFile.getOriginalFilename());
 		
 		//		model.addAttribute("result", fileManager.upload(multipartFile, session));
