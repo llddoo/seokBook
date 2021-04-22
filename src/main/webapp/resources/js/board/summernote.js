@@ -1,4 +1,5 @@
 
+let delfilearray=new Array();
  $(document).ready(function(){
 	$('#content').summernote({
 			height: 500,
@@ -17,12 +18,12 @@
 			callbacks: {
 				onImageUpload: function(files) {
 					for(file of files){
-						uploadFile(file);	
+						uploadFile(file);
 					}
 				 },
 				onMediaDelete: function(files){
 					for(file of files){
-						deleteFile(file);
+						delfilearray.push(file);
 					}
 				}
 					
@@ -39,6 +40,9 @@
 		}
 	});
 	if(check){
+		for(file of delfilearray){
+			deleteFile(file);
+		}
 		$("#frm").submit();
 	}else{
 		alert("입력되지 않은 칸이 존재합니다. 모두 입력해 주세요.");

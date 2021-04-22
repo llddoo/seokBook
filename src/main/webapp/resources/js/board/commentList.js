@@ -17,6 +17,7 @@ function getList(){
 		},
 		success:function(data){
 			$("#comment").html(data.trim());
+			$('#rewrite').summernote('disable');
 			$(".commentcontent").each(function(){
 				$(this).css("display","inline-block");
 			});
@@ -38,10 +39,12 @@ function getList(){
 			mingheight: 200,
 			maxheight: 200,
 			disableResizeEditor: true,
+			disableDragAndDrop:true,
 			placeholder: '글 작성',
 	});
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
+	$('#rewrite').summernote('disable');
 	getList();
 });
 
@@ -82,6 +85,7 @@ $("#comment").on("click", ".commentupdate",function(){
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
 	$("#rewrite").summernote('code',comment);
+	$('#rewrite').summernote('disable');
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
@@ -89,7 +93,6 @@ $("#comment").on("click", ".commentupdate",function(){
 });
 
 $("#comment").on("click", "#transrewrite",function(){
-	$("#rewrite").summernote('focus');
 	const resnum = parseInt($("#forupdate").val());
 	const content = $("#rewrite").val();
 	if(content.trim()==""){
@@ -134,6 +137,7 @@ $("#comment").on("click", ".commentreply", function(){
 	content.append("<input id=\"replystep\" type=\"hidden\" readonly=\"readonly\" value=\""+step+"\">");
 	content.append("<input id=\"replydepth\" type=\"hidden\" readonly=\"readonly\" value=\""+depth+"\">");
 	$("#rewrite").summernote();
+	$('#rewrite').summernote('disable');
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
 	content.append("<br><button id=\"transreply\" class=\"btn btn-danger\">작성</button>");
@@ -173,7 +177,6 @@ $("#comment").on("click", "#transreply", function(){
 });
 
 $("#write").click(function(){
-	$("#rewrite").summernote('focus');
 	const id = $("#id").val();
 	let content = $("#content").val();
 	if(content.trim()==""){

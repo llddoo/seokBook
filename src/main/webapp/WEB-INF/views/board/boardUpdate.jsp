@@ -15,9 +15,15 @@
 	}
 </style>
 </head>
-<c:import url="../template/body.jsp"></c:import>
-<body>
+<script type="text/javascript">
+window.history.forward();
+function noBack(){
+	 window.history.forward();
+}
+</script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <div class="container">
+<c:import url="../template/body.jsp"></c:import>
 		<h2>${boardDTO.boardsp}작성</h2>
 		<form id="frm" action="./boardUpdate" method="post" enctype="multipart/form-data">
 			<input type="hidden" readonly="readonly" name="boardsp" value="${boardDTO.boardsp}">

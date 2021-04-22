@@ -15,7 +15,13 @@
 	}
 </style>
 </head>
-<body>
+<script type="text/javascript">
+window.history.forward();
+function noBack(){
+	window.history.forward();
+}
+</script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <c:import url="../template/body.jsp"></c:import>
 	<div class="container">
 		<h2>${pager.boardsp}작성</h2>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sb.s1.util.FileManager;
 import com.sb.s1.util.Pager;
@@ -30,9 +31,12 @@ public class BoardController {
 	public void boardInsert(Pager pager) { }
 	
 	@PostMapping("boardInsert")
-	public String boardInsert(BoardDTO boardDTO) throws Exception{
+	public ModelAndView boardInsert(BoardDTO boardDTO) throws Exception{
 		boardService.setBoard(boardDTO);
-		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardsp", boardDTO.getBoardsp());
+		mav.setViewName("/board/boardCheck");
+		return mav;
 	}
 	
 	
