@@ -28,6 +28,9 @@ public class BoardService {
 	}
 	
 	public int setBoard(BoardDTO boardDTO) throws Exception {
+		String content = boardDTO.getContent();
+		content=content.replaceAll("/resources/uploaded/temp", "/resources/uploaded/"+boardDTO.getBoardsp());
+		boardDTO.setContent(content);
 		return boardDAO.setBoard(boardDTO);
 	}
 	

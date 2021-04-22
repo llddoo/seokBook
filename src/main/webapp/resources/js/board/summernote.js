@@ -106,9 +106,7 @@ function moveFile(origin, fixloca, filename){
 		success: function(result){
 			result=result.trim();
 			if(result==='false'){
-				$("img[alt='"+filename+"']").remove();
-			}else{
-				$("img[alt='"+filename+"']").attr("src", $("#rootcontext").val()+fixloca+"/"+filename);
+				alert(filename+"을 이동시킬 수 없습니다.");
 			}
 		}
 	});

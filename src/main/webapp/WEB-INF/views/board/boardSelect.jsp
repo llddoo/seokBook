@@ -63,15 +63,17 @@ function noBack(){
 		
 	</div>
 	</div>
+	<input type="hidden" readonly="readonly" id="contextpath" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/board/commentList.js"></script>
 <script type="text/javascript">
 	const forsend = document.getElementById("forsend");
+	const contextpath = document.getElementById("contextpath").value;
 	$("#deleteCheck").click(function(){
 		let check = confirm("삭제하시겠습니까?");
 		if(check){
-			$(".fordeleteimg").each(function(){
-				const path = $(this).attr("src").replace("/s1/", "/");
+			$(".formoveimg").each(function(){
+				const path = $(this).attr("src").replace(contextpath, "/");
 				$.ajax({
 					type: "post",
 					url: "./boardFileDelete", 
