@@ -53,14 +53,14 @@ function noBack(){
 		<div class="form-group">
   			<input type="hidden" class="form-control" id="id" value="${member.id}" readonly="readonly">
 		</div>
-	
-		<div class="form-group">
-  			<label for="comment">Comment:</label>
-  			<textarea class="form-control" rows="5" id="content"></textarea>
-		</div>
+		<c:if test="${(select.boardsp eq 'oldbooksale') || (select.boardsp eq 'saleend')}">
+			<div class="form-group">
+  				<label for="comment">Comment:</label>
+  				<textarea class="form-control" rows="5" id="content"></textarea>
+			</div>
 		
-		<button type="button" class="btn btn-success" id="write">글쓰기</button>
-		
+			<button type="button" class="btn btn-success" id="write">글쓰기</button>
+		</c:if>
 	</div>
 	</div>
 	<input type="hidden" readonly="readonly" id="contextpath" value="${pageContext.request.contextPath}">

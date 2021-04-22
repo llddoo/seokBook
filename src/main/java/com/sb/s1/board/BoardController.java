@@ -1,6 +1,5 @@
 package com.sb.s1.board;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,6 +25,18 @@ public class BoardController {
 	@Autowired
 	private FileManager fileManager;
 	
+	private String[] boardlist = {"notice", "event", "qna", "oldbooksale", "saleend"};
+	
+	private boolean boardchecking(String boardsp) throws Exception{
+		boolean check = false;
+		for(int i = 0 ; i < boardlist.length; i++) {
+			if(boardlist[i].equals(boardsp)) {
+				check=true;
+			}
+		}
+		return check;
+	}
+	
 	@GetMapping("boardInsert")
 	public void boardInsert(Pager pager) { }
 	
@@ -40,19 +51,32 @@ public class BoardController {
 	
 	
 	@GetMapping("boardList")
-	public void boardList(Pager pager, Model model, HttpSession session) throws Exception {
+	public ModelAndView boardList(Pager pager, ModelAndView mav, HttpSession session) throws Exception {
+		boolean check = boardchecking(pager.getBoardsp());
+		if(!check) {
+			mav.setViewName("/errorPage");
+			return mav;
+		}
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO.setId("admin");
 		session.setAttribute("member", boardDTO);
 		List<BoardDTO> list = boardService.getList(pager);
-		model.addAttribute("list", list);
-		model.addAttribute("pager", pager);
-		model.addAttribute("listsize", list.size());
+		mav.addObject("list", list);
+		mav.addObject("pager", pager);
+		mav.addObject("listsize", list.size());
+		return mav;
 	}
 	
 	@GetMapping("boardSelect")
-	public void boardSelect(BoardDTO boardDTO, Model model) throws Exception {
-		model.addAttribute("select", boardService.getSelect(boardDTO));
+	public ModelAndView boardSelect(BoardDTO boardDTO, ModelAndView mav) throws Exception {
+		boolean check = boardchecking(boardDTO.getBoardsp());
+		if(!check) {
+			mav.setViewName("/errorPage");
+			return mav;
+		}
+		boardDTO = boardService.getSelect(boardDTO);
+		mav.addObject("select", boardDTO);
+		return mav;
 	}
 	
 	@GetMapping("boardUpdate")

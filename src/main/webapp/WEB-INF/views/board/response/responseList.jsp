@@ -6,22 +6,23 @@
 	  <c:forEach items="${commentList}" var="select">
 	    <tbody>
 	    	<tr>
-	    		<td><c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach>${select.id}&emsp;${select.regdate}</td>
-	    		<td>
+	    		<td><c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach>${select.id}</td>
+	    		<td>${select.regdate}</td>
+	    		<td class="buttonloca">
 	    			<input class="selectresnum" type="hidden" readonly="readonly" value="${select.resnum}">
 	    			<input class="selectstep" type="hidden" readonly="readonly" value="${select.step}">
 	    			<input class="selectdepth" type="hidden" readonly="readonly" value="${select.depth}">
-	    			<c:if test="(boardsp=='중고책 판매' || boardsp=='중고책 판매 완료')">
-		    			<button class="commentreply btn">답글</button>
-		    		</c:if>
+		    		<c:if test="${(pager.boardsp eq 'oldbooksale') || (pager.boardsp eq 'saleend')}">
+			    		<button class="commentreply btn">답글</button>
+			    	</c:if>
 		    		<c:if test="${member.id eq select.id}">	
-		    			<button class="commentupdate btn btn-secondary">수정</button>
-		    			<button class="commentdelete btn btn-danger">삭제</button>
-		    		</c:if>
+			    		<button class="commentupdate btn btn-secondary">수정</button>
+			    		<button class="commentdelete btn btn-danger">삭제</button>
+			    	</c:if>
 		    	</td>
 	    	</tr>
 	    	<tr>
-	    		<td colspan="2">
+	    		<td colspan="3">
 	    			<div class="forpacking">
 	    				<c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach><div class="commentcontent">${select.content}</div>
 	    			</div>

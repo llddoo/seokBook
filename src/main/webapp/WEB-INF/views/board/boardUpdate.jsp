@@ -46,7 +46,12 @@ function noBack(){
 					</select>
 				</c:if>
 				<c:if test="${pager.boardsp ne 'qna'}">
-					<input type="text" name="subname" class="frmCheck" value="${boardDTO.subname}">
+					<div class="input-group mb-3">
+					    <div class="input-group-prepend">
+					      <span class="input-group-text">글 제목</span>
+					    </div>
+					    <input type="text" class="form-control" name="subname" value="${boardDTO.subname}" placeholder="제목을 입력해 주세요.">
+					</div>
 				</c:if>
 			</div>
 

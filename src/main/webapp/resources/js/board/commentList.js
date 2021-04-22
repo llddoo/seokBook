@@ -5,11 +5,13 @@ const subnum=$("#subnum").val();
 function getList(){
 	const curPage = $("#currentPage").val();
 	const curBlock = $("#curBlock").val();
+	const boardsp = $("#boardsp").val();
 	$.ajax({
 		type:"get",
 		url:"./response/responseList",
 		data:{
 			subnum:subnum,
+			boardsp:boardsp,
 			curPage:curPage,
 			curBlock:curBlock,
 			perPage:10,
@@ -17,7 +19,6 @@ function getList(){
 		},
 		success:function(data){
 			$("#comment").html(data.trim());
-			$('#rewrite').summernote('disable');
 			$(".commentcontent").each(function(){
 				$(this).css("display","inline-block");
 			});
@@ -29,6 +30,7 @@ function getList(){
 			if(nextavail==='false'){
 				$("#nextbutton").attr("class","page-item disabled");
 			}
+			$(".buttonloca").css("width", '40%');
 		}
 	});
 };
@@ -44,7 +46,6 @@ function getList(){
 	});
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
-	$('#rewrite').summernote('disable');
 	getList();
 });
 
@@ -69,14 +70,14 @@ $("#comment").on("click", ".commentdelete",function(){
 });
 
 $("#comment").on("click", ".commentupdate",function(){
-	const content = $(this).parents("tr").siblings("tr").find("[colspan='2']");
+	const content = $(this).parents("tr").siblings("tr").find("td[colspan='3']");
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const temp = content.find("input[value='"+updatenum+"']").attr("id");
 	if(updatenum==resnum&&temp=="forupdate"){
 		getList();
 		return;
 	}else if(updatenum!=-1){
-		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
+		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='3']");
 		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
 		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
@@ -84,8 +85,7 @@ $("#comment").on("click", ".commentupdate",function(){
 	const comment = content.find("div.commentcontent").html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
-	$("#rewrite").summernote('code',comment);
-	$('#rewrite').summernote('disable');
+	$('#rewrite').summernote('code', comment);
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
@@ -119,13 +119,13 @@ $("#comment").on("click", "#transrewrite",function(){
 
 $("#comment").on("click", ".commentreply", function(){
 	const resnum = $(this).siblings("input.selectresnum").val();
-	const content = $(this).parents("tr").siblings("tr").find("td[colspan='2']");
+	const content = $(this).parents("tr").siblings("tr").find("td[colspan='3']");
 	const temp = content.find("input[value='"+updatenum+"']").attr("id");
 	if(updatenum==resnum&&temp=="forinsert"){
 		getList();
 		return;
 	}else if(updatenum!=-1){
-		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='2']");
+		const preupdate = $("input[value='"+updatenum+"']").parents("td[colspan='3']");
 		const reservetext = preupdate.find("div.forpacking").html();
 		preupdate.empty();
 		preupdate.append("<div class=\"forpacking\">"+reservetext+"</div>");
@@ -136,8 +136,14 @@ $("#comment").on("click", ".commentreply", function(){
 	content.append("<textarea id=\"rewrite\"></textarea>");
 	content.append("<input id=\"replystep\" type=\"hidden\" readonly=\"readonly\" value=\""+step+"\">");
 	content.append("<input id=\"replydepth\" type=\"hidden\" readonly=\"readonly\" value=\""+depth+"\">");
-	$("#rewrite").summernote();
-	$('#rewrite').summernote('disable');
+	$('#rewrite').summernote({
+			height: 200,
+			mingheight: 200,
+			maxheight: 200,
+			disableResizeEditor: true,
+			disableDragAndDrop:true,
+			placeholder: '글 작성',
+	});
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
 	content.append("<br><button id=\"transreply\" class=\"btn btn-danger\">작성</button>");
