@@ -43,4 +43,12 @@ public class BoardDAO {
 	public int setHit(BoardDTO boardDTO) throws Exception{
 		return sqlSession.update(NAMESPACE+"setHit", boardDTO);
 	}
+	
+	public List<BoardDTO> searchResultList(String mainsearch)throws Exception{
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setSubname(mainsearch);
+		boardDTO.setContent(mainsearch);
+		boardDTO.setId(mainsearch);
+		return sqlSession.selectList(NAMESPACE+"searchResultList", mainsearch);
+	}
 }

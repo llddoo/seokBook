@@ -40,4 +40,7 @@
 	<update id="setHit" parameterType="BoardDTO">
 		UPDATE BOARD SET VISITCOUNT = #{visitcount}+1 WHERE SUBNUM = #{subnum}
 	</update>
+	<select id="searchResultList" parameterType="BoardDTO" resultType="BoardDTO">
+		select * from board where subname like #{subname} or id like #{id} of content like #{content}
+	</select>
 </mapper>
