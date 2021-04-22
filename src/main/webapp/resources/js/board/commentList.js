@@ -85,9 +85,13 @@ $("#comment").on("click", ".commentupdate",function(){
 	const comment = content.find("div.commentcontent").html();
 	content.append("<br><input id=\"forupdate\" type=\"hidden\" readonly=\"readonly\" value=\""+resnum+"\">");
 	content.append("<textarea id=\"rewrite\"></textarea>");
+	$('#rewrite').summernote({
+  		disableDragAndDrop: true
+	});
 	$('#rewrite').summernote('code', comment);
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
+	
 	content.append("<br><button id=\"transrewrite\" class=\"btn btn-danger\">작성</button>");
 	updatenum=resnum;
 });
@@ -137,9 +141,6 @@ $("#comment").on("click", ".commentreply", function(){
 	content.append("<input id=\"replystep\" type=\"hidden\" readonly=\"readonly\" value=\""+step+"\">");
 	content.append("<input id=\"replydepth\" type=\"hidden\" readonly=\"readonly\" value=\""+depth+"\">");
 	$('#rewrite').summernote({
-			height: 200,
-			mingheight: 200,
-			maxheight: 200,
 			disableResizeEditor: true,
 			disableDragAndDrop:true,
 			placeholder: '글 작성',
