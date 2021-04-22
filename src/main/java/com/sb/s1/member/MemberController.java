@@ -17,14 +17,33 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
-
-
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
 	
+	
+	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping(value = "memberFindID")
+	public ModelAndView memberFindID(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberDTO = memberService.memberFindID(memberDTO);
+		String message="";
+		String id="";
+		if (memberDTO == null) {
+			System.out.println("alert('가입된 아이디가 없습니다.');");
+			message="가입된 아이디가 없습니다";
+		} else {
+			 id = memberDTO.getId();
+		}
+		
+		mv.addObject(message,"msg");
+		mv.addObject(id ,"id");
+		mv.setViewName("member/memberFindID");
+		return mv;
+	}
 	
 	@RequestMapping("memberDelete")
 	public String memberDelete(HttpSession session)throws Exception{
@@ -44,20 +63,19 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping(value="memberPoint", method = RequestMethod.GET)
-	public void memberPoint()throws Exception{
-			
-	}
+//	@RequestMapping(value="memberPoint")
+//	public void memberPoint()throws Exception{
+//			
+//	}
 	
-	@RequestMapping(value="memberPoint", method = RequestMethod.POST)
+	@RequestMapping(value="memberPoint")
 	public String memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
-		int result = memberService.memberPoint(memberDTO);
+		int result = memberService.memberPoint(memberDTO,session);
 		
-		if(result>0) {
-			session.setAttribute("member", memberDTO);
-		}
+		session.invalidate();
 		
-		return "redirect:";
+		return "redirect:../../";
+	
 	}
 	
 	

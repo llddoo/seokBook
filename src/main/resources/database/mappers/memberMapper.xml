@@ -10,6 +10,11 @@
 
 </update>
 
+	<select id="memberFindID" parameterType="MemberDTO">
+		select id from member where email = #{email}
+	</select>
+
+
 <delete id="memberDelete" parameterType="MemberDTO">
 	delete member where id=#{id}
 </delete>
@@ -19,7 +24,7 @@
    </update>
 
 <select id = "getSelect" parameterType="MemberDTO" resultType="MemberDTO">
-	select * from member where id = 'ID'
+	select * from member where id = #{id}
 </select>
 
 <select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">

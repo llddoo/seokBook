@@ -18,9 +18,14 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public int memberPoint(MemberDTO memberDTO)throws Exception{
+	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
 		
 		return memberDAO.memberPoint(memberDTO);
+	}
+	
+	public MemberDTO memberFindID(MemberDTO memberDTO)throws Exception{
+		
+		return memberDAO.memberFindID(memberDTO);
 	}
 
 

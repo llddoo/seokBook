@@ -55,7 +55,7 @@ text-align:center;
 			<ul class ="nav nav-pillsflex-column">
 
 				<li class="nav-item"><a class="btn btn-link"
-					href="javascript:void(0)">Active</a></li>
+					href="javascript:void(0)">문의내역</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="./memberUpdate">회원정보 수정</a></li>
 				<li class="nav-item"><a class="btn btn-link"
@@ -67,10 +67,15 @@ text-align:center;
 
 <div id = "div_con">
 		<h1>오른쪽가라고</h1>
-		<h1>${member.grade}</h1>
+		<h1>회원등급 ${member.grade}</h1>
 		<h1>${member.totalmoney}</h1>
-		<input type="button" value="memberPoint Up" id="memberPoint" name="memberPoint">
- 
+		<h1>${member.point}</h1>
+		<a class="btn btn-link"
+					href="./memberPoint"
+				onclick=""	>포인트!!23222223</a>
+				
+
+
 
 
 	

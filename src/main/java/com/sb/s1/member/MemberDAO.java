@@ -24,6 +24,10 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
 		}
 	
+	public MemberDTO memberFindID(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne("memberFindID",memberDTO);
+	}
+	
 	//맴버 선택
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 

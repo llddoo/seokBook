@@ -31,5 +31,8 @@
 		</div>
 		<button type="submit" class="btn btn-primary">Login</button>
 	</form>
+	<a class="btn btn-link" href="./memberFindID">아이디찾기</a>
+	<a class="btn btn-link" href="./memberFindPW">비밀번호찾기</a>
+	
 </body>
 </html>
