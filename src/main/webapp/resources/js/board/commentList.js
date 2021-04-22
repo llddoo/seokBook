@@ -30,7 +30,8 @@ function getList(){
 			if(nextavail==='false'){
 				$("#nextbutton").attr("class","page-item disabled");
 			}
-			$(".buttonloca").css("width", '40%');
+			$(".regdateloca").css("width", '20%');
+			$(".buttonloca").css("width", '25%');
 		}
 	});
 };

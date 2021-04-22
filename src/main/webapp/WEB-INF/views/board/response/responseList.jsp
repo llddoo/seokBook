@@ -6,8 +6,8 @@
 	  <c:forEach items="${commentList}" var="select">
 	    <tbody>
 	    	<tr>
-	    		<td><c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach>${select.id}</td>
-	    		<td>${select.regdate}</td>
+	    		<td><c:forEach begin="1" end="${select.depth}">&emsp;</c:forEach>작성자 : ${select.id}</td>
+	    		<td class="regdateloca">${select.regdate}</td>
 	    		<td class="buttonloca">
 	    			<input class="selectresnum" type="hidden" readonly="readonly" value="${select.resnum}">
 	    			<input class="selectstep" type="hidden" readonly="readonly" value="${select.step}">

@@ -17,12 +17,34 @@
 	#searchselectbar{
 		width: 13%
 	}
+	#nametag{
+		margin: 30px;
+	}
 </style>
+
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
 	<div class="container">
-	  <h2 id="boardsp">${pager.boardsp}</h2>
+	<div id="nametag">
+	<c:choose>
+		<c:when test="${pager.boardsp eq 'notice'}">
+			<h2 id="boardsp">공지사항</h2>
+		</c:when>
+		<c:when test="${pager.boardsp eq 'event'}">
+			<h2 id="boardsp">이벤트</h2>
+		</c:when>
+		<c:when test="${pager.boardsp eq 'oldbooksale'}">
+			<h2 id="boardsp">중고 서적 판매 게시판</h2>
+		</c:when>
+		<c:when test="${pager.boardsp eq 'saleend'}">
+			<h2 id="boardsp">중고 서적 판매 완료 게시판</h2>
+		</c:when>
+		<c:otherwise>
+			<h2 id="boardsp">QNA</h2>
+		</c:otherwise>
+	</c:choose>
+	</div>
 	  <table class="table">
 	    <thead class="thead-dark">
 	      <tr>
