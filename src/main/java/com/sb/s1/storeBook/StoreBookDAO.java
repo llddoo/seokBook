@@ -13,7 +13,7 @@ public class StoreBookDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.sb.s1.storeBook.storeBookDAO.";
+	private final String NAMESPACE="com.sb.s1.storeBook.StoreBookDAO.";
 	
 	public int setInsert(StoreBookDTO storeBookDTO) throws Exception {
 	

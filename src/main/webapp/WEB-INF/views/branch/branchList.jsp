@@ -38,7 +38,7 @@
   <ul class="pagination">
   
   <c:if test="${branchPager.pre}">
-  <li class="page=item"><a class="page-link p" href="#" branchName="${branchPager.startBlock-1}">이전</a></li>
+  <li class="page-item"><a class="page-link p" href="#" branchName="${branchPager.startBlock-1}">이전</a></li>
   </c:if>
   
   <c:forEach begin="${branchPager.startBlock}" end="${branchPager.endBlock}" var="i">
@@ -90,7 +90,7 @@
    });
 </script>
 
-
+</div>
 
 </body>
 </html>

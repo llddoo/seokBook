@@ -6,7 +6,7 @@ public class PurchaseDTO {
 
 	private long purnum;
 	private Date purdate;
-	private String icbn;
+	private String isbn;
 	private Date remdate;
 	private String id;
 	private long price;
@@ -23,11 +23,11 @@ public class PurchaseDTO {
 	public void setPurdate(Date purdate) {
 		this.purdate = purdate;
 	}
-	public String getIcbn() {
-		return icbn;
+	public String getIsbn() {
+		return isbn;
 	}
-	public void setIcbn(String icbn) {
-		this.icbn = icbn;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 	public Date getRemdate() {
 		return remdate;
