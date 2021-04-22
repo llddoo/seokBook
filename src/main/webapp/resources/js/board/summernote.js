@@ -43,6 +43,13 @@ let delfilearray=new Array();
 		for(file of delfilearray){
 			deleteFile(file);
 		}
+		const name = $("#forimageupload").val();
+		$(".formoveimg").each(function(){
+			const filename = $(this).attr("alt");
+			const origin = $(this).attr("src").replace($("#rootcontext").val()+"/", "/");
+			const fixloca = origin.replace("temp/"+filename, name);
+			moveFile(origin, fixloca, filename);
+		});
 		$("#frm").submit();
 	}else{
 		alert("입력되지 않은 칸이 존재합니다. 모두 입력해 주세요.");
@@ -52,7 +59,7 @@ let delfilearray=new Array();
 function uploadFile(file) {
 	const formData = new FormData();
 	let fileName="";
-	const name = $("#forimageupload").val();
+	const name = "temp";
 	formData.append('file', file);
 	formData.append('name', name);
 	$.ajax({
@@ -65,14 +72,14 @@ function uploadFile(file) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			let node = '<img class="fordeleteimg" alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
+			let node = '<img class="formoveimg" alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
 			$("#content").summernote('pasteHTML', node);
 		} 
 	});		
 }
 
 function deleteFile(file){
-	const path = $(file).attr("src").replace("/s1/", "/");
+	const path = $(file).attr("src").replace($("#rootcontext").val()+"/", "/");
 	$.ajax({
 		type: "post",
 		url: "./boardFileDelete", 
@@ -83,6 +90,25 @@ function deleteFile(file){
 			result=result.trim();
 			if(result==='false'){
 				alert('이미 삭제되었거나 삭제할 수 없는 이미지 입니다.');	
+			}
+		}
+	});
+}
+
+function moveFile(origin, fixloca, filename){
+	$.ajax({
+		type: "post",
+		url: "./boardFileMove", 
+		data: {
+			origin:origin,
+			fixloca:fixloca
+			}, 
+		success: function(result){
+			result=result.trim();
+			if(result==='false'){
+				$("img[alt='"+filename+"']").remove();
+			}else{
+				$("img[alt='"+filename+"']").attr("src", $("#rootcontext").val()+fixloca+"/"+filename);
 			}
 		}
 	});

@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,5 +32,18 @@ public class FileManager {
 		path = application.getRealPath(path);
 		File file = new File(path);
 		return file.exists()?file.delete():false;
+	}
+	
+	public boolean move(String origin, String fixloca){
+		File dir = new File(application.getRealPath(fixloca));
+		File file = new File(application.getRealPath(origin));
+		boolean result = true;
+		try {
+			FileUtils.moveFileToDirectory(file, dir,  true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result=false;
+		}
+		return result;
 	}
 }

@@ -23,7 +23,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-	
 	@Autowired
 	private FileManager fileManager;
 	
@@ -68,9 +67,12 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardDelete")
-	public String boardDelete(BoardDTO boardDTO) throws Exception {
+	public ModelAndView boardDelete(BoardDTO boardDTO) throws Exception {
 		boardService.delBoard(boardDTO);
-		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardsp", boardDTO.getBoardsp());
+		mav.setViewName("/board/boardCheck");
+		return mav;
 	}
 	
 	@PostMapping("boardFileUpload")
@@ -81,5 +83,10 @@ public class BoardController {
 	@PostMapping("boardFileDelete")
 	public void boardFileDelete(String path, Model model) throws Exception{
 		model.addAttribute("result", fileManager.delete(path));
+	}
+	
+	@PostMapping("boardFileMove")
+	public void boardFileMove(String origin, String fixloca, Model model) throws Exception{
+		model.addAttribute("result", fileManager.move(origin, fixloca));
 	}
 }

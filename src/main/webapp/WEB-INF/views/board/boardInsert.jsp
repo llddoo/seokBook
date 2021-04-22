@@ -55,6 +55,7 @@ function noBack(){
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
 	</div>
+	<input type="hidden" readonly="readonly" id="rootcontext" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
 </body>

@@ -10,7 +10,13 @@
 <link href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.js"></script>
 </head>
-<body>
+<script type="text/javascript">
+window.history.forward();
+function noBack(){
+	window.history.forward();
+}
+</script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <c:import url="../template/body.jsp"></c:import>
 <div class="container">
 	  <table class="table">
