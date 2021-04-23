@@ -52,29 +52,38 @@ public class MemberController {
 //		
 //	}
 	
+	@RequestMapping("memberFindPW")
+	public void memberFindPw()throws Exception{
+		
+	}
+	
+	@GetMapping("memberSearchPw")
+	public void membersearchPw(MemberDTO memberDTO, Model model) throws Exception{
+		memberDTO = memberService.memberFindPw(memberDTO);
+		String str;
+		if(memberDTO==null) {
+			str="null";
+		}else {
+			str=memberDTO.getPw();
+		}
+		model.addAttribute("result", str);
+	}
+	
 	@RequestMapping("memberFindID")
 	public void memberFindID()throws Exception{
 		
 	}
 	
-	@RequestMapping(value = "memberFindID", method = RequestMethod.POST)
-	public ModelAndView memberFindID(MemberDTO memberDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@GetMapping("memberSearchId")
+	public void membersearchId(MemberDTO memberDTO, Model model) throws Exception{
 		memberDTO = memberService.memberFindID(memberDTO);
-		String message="";
-		String id="";
-		if (memberDTO == null) {
-			System.out.println("가입된 아이디가 없습니다.");
-			message="가입된 아이디가 없습니다";
-			
-		} else {
-			 id = memberDTO.getId();
+		String str;
+		if(memberDTO==null) {
+			str="null";
+		}else {
+			str=memberDTO.getId();
 		}
-		
-		mv.addObject(message,"msg");
-		mv.addObject(id ,"id");
-		mv.setViewName("member/memberFindID");
-		return mv;
+		model.addAttribute("result", str);
 	}
 	
 	@RequestMapping("memberDelete")

@@ -12,6 +12,11 @@
 	update member set totalmoney=totalmoney+100 where id=#{id}
 
 </update>
+	
+	<select id="memberFindPw" parameterType="MemberDTO" resultType="MemberDTO">
+		select pw from member where email = #{email} and id = #{id}
+	</select>
+
 
 	<select id="memberFindID" parameterType="MemberDTO" resultType="MemberDTO">
 		select id from member where email = #{email}

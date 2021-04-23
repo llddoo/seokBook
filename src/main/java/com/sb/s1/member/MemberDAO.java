@@ -40,8 +40,13 @@ public class MemberDAO {
 		}
 	
 	public MemberDTO memberFindID(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectOne("memberFindID",memberDTO);
+		return sqlSession.selectOne(NAMESPACE+"memberFindID",memberDTO);
 	}
+	
+	public MemberDTO memberFindPw(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberFindPw",memberDTO);
+	}
+	
 	
 	//맴버 선택
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{

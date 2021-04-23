@@ -46,6 +46,10 @@ public class MemberService {
 		return memberDAO.memberFindID(memberDTO);
 	}
 
+	public MemberDTO memberFindPw(MemberDTO memberDTO)throws Exception{
+		
+		return memberDAO.memberFindPw(memberDTO);
+	}
 
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 
