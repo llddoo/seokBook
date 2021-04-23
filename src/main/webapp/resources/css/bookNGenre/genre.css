@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.box1{
+	width:200px;
+	border-style:solid;
+	border-color:skyblue;
+}
+h4.box1{
+	padding: 10px 20px 10px 20px;
+	background-color:skyblue;
+	margin:0px;
+}
+ul.box1{
+	padding: 20px 20px 20px 20px;
+	list-style: none;
+	
+	
+}
+

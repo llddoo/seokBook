@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sb.s1.util.Pager;
+
 @Service
 public class BookListService {
 
@@ -12,14 +14,16 @@ public class BookListService {
 	private BookListDAO bookListDAO;
 	
 	
-	public List<BookListDTO> getList()throws Exception{
-		return bookListDAO.getList();
+	public List<BookListDTO> getList(Pager pager)throws Exception{
+		pager.setCurPage(pager.getCurPage() == 0 ? 1 : pager.getCurPage());
+		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
+		pager.makecal(bookListDAO.getTotalCount(pager));
+		return bookListDAO.getList(pager);
 	}
 	
 	public BookListDTO getSelect(BookListDTO bookListDTO) throws Exception{
-		System.out.println("select service");
 		return bookListDAO.getSelect(bookListDTO);
 	}
-
 	
+
 }

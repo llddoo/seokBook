@@ -9,14 +9,14 @@ public class GenreDTO {
 	public long getGnumber() {
 		return gNumber;
 	}
-	public void setGnumber(long gnumber) {
-		this.gNumber = gnumber;
+	public void setGnumber(long gNumber) {
+		this.gNumber = gNumber;
 	}
 	public String getGname() {
 		return gName;
 	}
-	public void setGname(String gname) {
-		this.gName = gname;
+	public void setGname(String gName) {
+		this.gName = gName;
 	}
 	
 	

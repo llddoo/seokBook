@@ -13,11 +13,11 @@
 <c:import url="../template/body.jsp"></c:import>
 
 <br><br><br>
-
-<ul class="ul">
+<h4 class="box1">도서장르</h4>
+<ul class="box1">
 	<c:forEach items="${list}" var="dto">
 		<li>
-		<a href="./genreSelect?gNumber=${dto.gnumber}"><c:out value="${dto.gname}"/></a>
+		<a href="../bookList/listBook?gnumber=${dto.gnumber}">${dto.gname}</a>
 		</li>
 	</c:forEach>
 </ul>

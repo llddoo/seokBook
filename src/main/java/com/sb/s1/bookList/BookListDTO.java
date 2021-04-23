@@ -2,7 +2,7 @@ package com.sb.s1.bookList;
 
 public class BookListDTO {
 
-	private String icbn;
+	private String isbn;
 	private String bookName;
 	private long price;
 	private long gNumber;
@@ -13,8 +13,24 @@ public class BookListDTO {
 	private String bookPub;
 	private String bookImg;
 	private long bookScore;
+	private String author;
+	private String bookPubDate;
+	
+	
 	
 		
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getBookPubDate() {
+		return bookPubDate;
+	}
+	public void setBookPubDate(String bookPubDate) {
+		this.bookPubDate = bookPubDate;
+	}
 	public String getBookImg() {
 		return bookImg;
 	}
@@ -27,11 +43,11 @@ public class BookListDTO {
 	public void setBookScore(long bookScore) {
 		this.bookScore = bookScore;
 	}
-	public String getIcbn() {
-		return icbn;
+	public String getIsbn() {
+		return isbn;
 	}
-	public void setIcbn(String icbn) {
-		this.icbn = icbn;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 	public String getBookName() {
 		return bookName;
