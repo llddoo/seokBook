@@ -30,6 +30,6 @@
 </div>
 
 
-<script type="text/javascript" src="../resources/jquery/branchInsert.js"></script>
+<script type="text/javascript" src="../resources/js/branch/branchInsert.js"></script>
 </body>
 </html>
