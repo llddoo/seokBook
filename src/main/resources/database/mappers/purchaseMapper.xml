@@ -49,5 +49,8 @@
 	<select id="getSelect" parameterType="PurchaseDTO" resultType="PurchaseDTO">
 		select * from purchase where purnum=#{purnum}
 	</select>
+	
+	
+	
 
 </mapper>
