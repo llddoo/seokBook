@@ -17,11 +17,13 @@
 
          <form action="memberUpdate" method="post">
          ID <input type="text" name="id" readonly="readonly" value="${member.id}"><br>
-         PW <input type="password" name="pw" value="${member.pw}"><br>
+         PW <input type="text" name="pw" value="${member.pw}"><br>
          Name <input type="text" name="name" value="${member.name}"><br>
          Email <input type="text" name="email" value="${member.email}"><br>
          Phone <input type="text" name="phonenum" value="${member.phonenum}"><br>
-         <button>Update</button>
+         <button class="btn btn-primary" onclick="alert('업데이트 되었습니다.')">업데이트</button>
       </form>
+      <a class="btn btn-danger"  
+					href="./memberPage">취소</a>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.sb.s1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+
+
 @Service
 public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	
+//	public List<cartDTO> cartList(MemberPager pager)throws Exception{
+//		// ---- startRow, lastRow ----
+//		pager.makeRow();
+//
+//		// ---- 페이징 계산 -------------
+//		long totalCount = memberDAO.getTotalCount(pager);
+//		pager.makeNum(totalCount);
+//		
+//		
+//		return memberDAO.cartList(pager);
+//	}
 	
 	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
 		

@@ -1,5 +1,7 @@
 package com.sb.s1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 
+
+
+
+
 @Controller
 @RequestMapping("/member/**")
 public class MemberController {
@@ -26,15 +32,41 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping(value = "memberFindID")
+//	@RequestMapping("cart")	
+//	public void main()throws Exception{
+//		
+//	}
+//	
+//	@RequestMapping("cart")
+//	public ModelAndView cartList(MemberPager pager)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println(pager.getCurPage());
+//		
+//		List<cartDTO> ar = memberService.cartList(pager);
+//		
+//		//List<memberDTO> ar = memberService.cartList(curPage);
+//		mv.addObject("list", ar);
+//		mv.setViewName("member/cartList");
+//		mv.addObject("memberPager", pager);
+//		return mv;
+//		
+//	}
+	
+	@RequestMapping("memberFindID")
+	public void memberFindID()throws Exception{
+		
+	}
+	
+	@RequestMapping(value = "memberFindID", method = RequestMethod.POST)
 	public ModelAndView memberFindID(MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.memberFindID(memberDTO);
 		String message="";
 		String id="";
 		if (memberDTO == null) {
-			System.out.println("alert('가입된 아이디가 없습니다.');");
+			System.out.println("가입된 아이디가 없습니다.");
 			message="가입된 아이디가 없습니다";
+			
 		} else {
 			 id = memberDTO.getId();
 		}
@@ -118,13 +150,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberLogin")
-	public ModelAndView memberLogin()throws Exception{
-		
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("member/memberLogin");
-		
-		return mv;
+	public void memberLogin()throws Exception{
+
 	}
 	
 	@RequestMapping(value="memberLogin", method = RequestMethod.POST)

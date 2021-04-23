@@ -53,7 +53,8 @@ text-align:center;
 		<p>??????????????????????</p>
 
 			<ul class ="nav nav-pillsflex-column">
-
+				<li class="nav-item"><a class="btn btn-link"
+					href="./cart">장바구니</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="javascript:void(0)">문의내역</a></li>
 				<li class="nav-item"><a class="btn btn-link"
@@ -70,17 +71,17 @@ text-align:center;
 		<h1>회원등급 ${member.grade}</h1>
 		<h1>${member.totalmoney}</h1>
 		<h1>${member.point}</h1>
-		<a class="btn btn-link"
-					href="./memberPoint"
-				onclick=""	>포인트!!23222223</a>
-				
+<form action="../memberPoint" method="post">
+    <input value="id" name="id">
+    <input value="point" name="point">
+</form>
 
 
 
 
 	
 </div>
-
+</div>
 
 <script type="text/javascript" src="../resources/js/member/memberPoint.js"></script>	
 
