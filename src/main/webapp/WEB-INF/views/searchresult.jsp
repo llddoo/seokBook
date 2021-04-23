@@ -42,9 +42,11 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>글 번호</th>
+        <th>글 제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
       </tr>
     </thead>
     <tbody>
