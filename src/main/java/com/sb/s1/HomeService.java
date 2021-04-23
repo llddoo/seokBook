@@ -8,6 +8,7 @@ import com.sb.s1.board.BoardDTO;
 import com.sb.s1.bookList.BookListDAO;
 import com.sb.s1.bookList.BookListDTO;
 import com.sb.s1.genre.GenreDAO;
+import com.sb.s1.genre.GenreDTO;
 
 @Service
 public class HomeService {
@@ -29,10 +30,12 @@ public class HomeService {
 		bookListDTO.setBookName(mainsearch);
 		bookListDTO.setIsbn(mainsearch);
 		bookListDTO.setBookPub(mainsearch);
-		bookListDTO.setgNumber(genreDAO.getGenrenum(mainsearch));
+		GenreDTO genreDTO = new GenreDTO();
+		genreDTO.setGname(mainsearch);
+		bookListDTO.setgNumber(genreDAO.getGenrenum(genreDTO));
 		SearchDTO searchDTO = new SearchDTO();
 		searchDTO.setOldbooksaleDTOs(boardDAO.searchOldbooksaleList(boardDTO));
-		//searchDTO.setBookListDTOs(bookListDAO.searchBookList(bookListDTO));
+		searchDTO.setBookListDTOs(bookListDAO.searchBookList(bookListDTO));
 		return searchDTO;
 	}
 }

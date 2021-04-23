@@ -18,8 +18,8 @@ public class GenreDAO {
 	}
 	
 	
-	public long getGenrenum(String mainsearch) throws Exception{
-		GenreDTO genreDTO = sqlSession.selectOne(NAMESPACE+"getGenrenum", mainsearch);
+	public long getGenrenum(GenreDTO genreDTO) throws Exception{
+		genreDTO = sqlSession.selectOne(NAMESPACE+"getGenrenum", genreDTO);
 		return genreDTO==null ? -1 : genreDTO.getGnumber();
 	}
 }

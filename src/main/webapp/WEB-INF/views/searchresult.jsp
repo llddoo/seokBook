@@ -15,17 +15,17 @@
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th></th>
+        <th>검색결과</th>
+       	<th></th>
       </tr>
     </thead>
     <tbody>
-    <c:forEach items="bookList" var="bookdto">
+    <c:forEach items="${bookSearchList}" var="bookdto">
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td><img></td>
+        <td></td><!-- 상세 내역을 적을 태그 -->
+        <td></td><!-- 버튼 세개가 들어갈 td태그 -->
       </tr>
       </c:forEach>
     </tbody>
@@ -54,64 +54,6 @@
         <td class="writer">${oldbook.id}</td>
         <td class="regdate">${oldbook.regdate}</td>
         <td class="visitcount">${oldbook.visitcount}</td>
-      </tr>
-      </c:forEach>
-    </tbody>
-  </table>
-  
-  <h3>공지사항 검색 결과</h3>
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th>글제목</th>
-        <th></th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회수</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${noticeSearchList}" var="notice">
-      <tr class="likeButton">
-        <td class="subname">${notice.subname}</td>
-        <td>
-        	<form action="./board/boardSelect" method="get">
-        		<input type="hidden" value="${notice.boardsp}" class="transferboardsp">
-        		<input type="hidden" value="${notice.subnum}" class="transfersubnum">
-        	</form>
-        </td>
-        <td class="writer">${notice.id}</td>
-        <td class="regdate">${notice.regdate}</td>
-        <td class="visitcount">${notice.visitcount}</td>
-      </tr>
-      </c:forEach>
-    </tbody>
-  </table>
-  	
-	<h3>이벤트 검색 결과</h3>
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th>글제목</th>
-        <th></th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회수</th>
-      </tr>
-    </thead>
-    <tbody>
-      <c:forEach items="${eventSearchList}" var="event">
-      <tr class="likeButton">
-        <td class="subname">${event.subname}</td>
-        <td>
-        	<form action="./board/boardSelect" method="get">
-        		<input type="hidden" value="${event.boardsp}" class="transferboardsp">
-        		<input type="hidden" value="${event.subnum}" class="transfersubnum">
-        	</form>
-        </td>
-        <td class="writer">${event.id}</td>
-        <td class="regdate">${event.regdate}</td>
-        <td class="visitcount">${event.visitcount}</td>
       </tr>
       </c:forEach>
     </tbody>

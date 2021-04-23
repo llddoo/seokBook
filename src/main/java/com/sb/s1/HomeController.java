@@ -31,5 +31,6 @@ public class HomeController {
 	public void searchpage(String mainsearch, Model model) throws Exception{
 		SearchDTO searchDTO = homeService.getSearchResultList(mainsearch);
 		model.addAttribute("oldbookSearchList", searchDTO.getOldbooksaleDTOs());
+		model.addAttribute("bookSearchList", searchDTO.getBookListDTOs());
 	}
 }
