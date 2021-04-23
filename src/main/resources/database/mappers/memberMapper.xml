@@ -38,7 +38,7 @@
 
 
 <insert id="memberJoin" parameterType="MemberDTO">
-	insert into member values(#{id},#{pw},#{name},#{email},#{phonenum},'D',0,0)
+	insert into member values(#{id},#{pw},#{name},#{email},#{phonenum},'D',0)
 </insert>
 
 

@@ -8,17 +8,10 @@ public class MemberDTO {
 	private String email;
 	private String phonenum;
 	private String grade;
-	private long totalmoney;
 	private long point;
 
 	
 	
-	public long getTotalmoney() {
-		return totalmoney;
-	}
-	public void setTotalmoney(long totalmoney) {
-		this.totalmoney = totalmoney;
-	}
 	public String getId() {
 		return id;
 	}
