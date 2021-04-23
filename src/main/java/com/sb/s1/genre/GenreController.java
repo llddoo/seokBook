@@ -23,12 +23,4 @@ public class GenreController {
 		model.addAttribute("list", ar);
 	}
 	
-	@RequestMapping("genreSelect")
-	public ModelAndView getSelect(GenreDTO genreDTO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		genreDTO = genreService.getSelect(genreDTO);
-		mv.addObject("dto", genreDTO);
-		mv.setViewName("genre/genreSelect");
-		return mv;
-	}
 }

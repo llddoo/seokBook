@@ -15,9 +15,6 @@ public class GenreService {
 		return genreDAO.getList();
 	}
  	
-	public GenreDTO getSelect(GenreDTO genreDTO)throws Exception{
-		return genreDAO.getSelect(genreDTO);
-	}
 	
 	
 }

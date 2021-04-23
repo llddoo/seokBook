@@ -20,9 +20,9 @@ public class ResponseController {
 	
 	@GetMapping("responseList")
 	public void responseList(Pager pager, Model model)throws Exception{
+		model.addAttribute("pager", pager);
 		List<ResponseDTO> list = responseService.getList(pager);
 		model.addAttribute("commentList", list);
-		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());
 	}
 	

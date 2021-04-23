@@ -32,6 +32,11 @@ function getList(){
 			}
 			$(".regdateloca").css("width", '20%');
 			$(".buttonloca").css("width", '25%');
+			if($("#boardsp").val()=='oldbooksale'||$("#boardsp").val()=='saleend'){
+				$(".commentreply").each(function(){
+					$(this).remove();
+				});
+			}
 		}
 	});
 };

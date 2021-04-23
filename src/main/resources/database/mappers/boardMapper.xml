@@ -18,7 +18,7 @@
 			</otherwise>
 		</choose>
 		like '%' || #{search} || '%')
-		WHERE (RN BETWEEN #{startRow} AND #{endRow})
+		WHERE (RN BETWEEN #{startRow} AND #{endRow}) order by subnum asc
 	</select>
 	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
 		SELECT * FROM BOARD WHERE SUBNUM=#{subnum}
@@ -40,16 +40,10 @@
 	<update id="setHit" parameterType="BoardDTO">
 		UPDATE BOARD SET VISITCOUNT = #{visitcount}+1 WHERE SUBNUM = #{subnum}
 	</update>
-	<select id="searchEventList" parameterType="BoardDTO" resultType="BoardDTO">
-		select * from (select * from board where boardsp='event')
-		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
-	</select>
+
 	<select id="searchOldbooksaleList" parameterType="BoardDTO" resultType="BoardDTO">
 		select * from (select * from board where boardsp='oldbooksale' or boardsp = 'saleend')
 		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
-	</select>
-	<select id="searchNoticeList" parameterType="BoardDTO" resultType="BoardDTO">
-		select * from (select * from board where boardsp='notice')
-		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
+		order by subnum asc
 	</select>
 </mapper>

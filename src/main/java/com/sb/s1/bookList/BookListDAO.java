@@ -27,5 +27,9 @@ public class BookListDAO {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
-		
+	
+	
+	public List<BookListDTO> searchBookList(BookListDTO bookListDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"searchBookList", bookListDTO);
+	}
 }

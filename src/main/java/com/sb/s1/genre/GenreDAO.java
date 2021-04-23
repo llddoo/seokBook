@@ -13,13 +13,13 @@ public class GenreDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.sb.s1.genre.GenreDAO.";
 	
-	public GenreDTO getSelect(GenreDTO genreDTO)throws Exception{
-		genreDTO = sqlSession.selectOne(NAMESPACE+"getSelect", genreDTO);
-		return genreDTO;
-	}	
-
 	public List<GenreDTO> getList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
+	
+	public long getGenrenum(String mainsearch) throws Exception{
+		GenreDTO genreDTO = sqlSession.selectOne(NAMESPACE+"getGenrenum", mainsearch);
+		return genreDTO==null ? -1 : genreDTO.getGnumber();
+	}
 }

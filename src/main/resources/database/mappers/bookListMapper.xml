@@ -23,6 +23,8 @@
 	
 
 
-
+	<select id="searchBookList" parameterType="BookListDTO" resultType="BookListDTO">
+		select * from booklist where author=#{author}
+	</select>
 
 </mapper>

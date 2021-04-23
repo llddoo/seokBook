@@ -21,21 +21,13 @@
       </tr>
     </thead>
     <tbody>
+    <c:forEach items="bookList" var="bookdto">
       <tr>
         <td>John</td>
         <td>Doe</td>
         <td>john@example.com</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      </c:forEach>
     </tbody>
   </table>
   <h2>중고서적 검색 결과</h2>

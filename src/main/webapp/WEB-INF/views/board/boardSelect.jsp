@@ -50,7 +50,7 @@
 	    </thead>
 	    <tbody>
 	    <tr>
-	    	<td colspan="2"><h2>글제목 : ${select.subname}</h2></td>
+	    	<td colspan="2"><h3>글제목 : ${select.subname}</h3></td>
 	    	<td id="mainbuttonright">
 	    	<c:if test="${select.id eq member.id}">
 		  <form id="forsend" method="get" action="./boardDelete">
