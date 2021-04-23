@@ -65,6 +65,7 @@
 
 <main role="main">
 <c:import url="./template/body.jsp"></c:import>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

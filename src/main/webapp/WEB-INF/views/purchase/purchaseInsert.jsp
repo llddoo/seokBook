@@ -11,11 +11,11 @@
 <body>
 
 <div class="container">
-	<h2>지점 입력</h2>
-	<form id="frm" action="./${branch}Insert" method="post">
+	<h2>구매내역입력</h2>
+	<form id="frm" action="./purchaseInsert" method="post">
 		<div class="form-group">
-				<label for="branchname">지점명:</label> <input type="text"
-					class="form-control myCheck" id="branchName" name="branchName">
+				<label for="isbn">ICBN:</label> <input type="text"
+					class="form-control myCheck" id="isbn" name="isbn">
 			</div>
 			
 			<div class="form-group">

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class BranchService {
 
@@ -33,9 +34,14 @@ public class BranchService {
 		return branchDAO.getSelect(branchDTO);
 	}
 	
-	public List<BranchDTO> getList() throws Exception {
+	public List<BranchDTO> getList(BranchPager branchPager) throws Exception {
 		
-		return branchDAO.getList();
+		branchPager.makeRow();
+		
+		long totalCount=branchDAO.getTotalCount(branchPager);
+		branchPager.makeNum(totalCount);		
+		
+		return branchDAO.getList(branchPager);
 	}
 	
 	

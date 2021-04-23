@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class BranchDAO {
 
@@ -32,9 +33,16 @@ public class BranchDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", branchDTO);
 	}
 	
-	public List<BranchDTO> getList() throws Exception {
+	public List<BranchDTO> getList(BranchPager branchPager) throws Exception {
 		
-		return sqlSession.selectList(NAMESPACE+"getList");
+		return sqlSession.selectList(NAMESPACE+"getList", branchPager);
 	}
 	
+	public long getTotalCount(BranchPager branchPager) throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", branchPager);
+	}
+	public long getNum()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
 }

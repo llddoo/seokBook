@@ -5,7 +5,61 @@
 
 <mapper namespace="com.sb.s1.branch.BranchDAO">
 	
+ <select id="getList" resultType="BranchDTO" parameterType="BranchPager">
+		select * from
+         (select rownum R, B.* from
+            (select * from branch where
+               <choose>
+              
+                     <when test="kind == 'BranchCall'">
+                        branchcall
+                     </when>
+                     
+                     <otherwise>
+                    	branchname
+                     </otherwise>
+                    
+               </choose>   
+            like '%' || #{search} || '%' and branchnum > 0 order by branchnum desc) B)
+            where R between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getTotalCount" resultType="Long" parameterType="BranchPager">	
+		 select count(branchnum) from branch
+         where
+               <choose>
+               
+                     <when test="kind == 'BranchCall'">
+                        branchcall
+                     </when>
+                     
+                     <otherwise>
+                    	branchname
+                     </otherwise>
+                    
+               </choose>   
+            like '%' || #{search} || '%' and branchnum > 0 
+	</select>
+	
+	
+	<insert id="setInsert" parameterType="BranchDTO">
+		insert into branch values(br_bn_seq.nextval, #{branchName}, #{branchCall})
+	</insert>
 
-
+	<delete id="setDelete" parameterType="BranchDTO">
+		delete branch where branchnum=#{branchNum}
+	</delete>
+	
+	<update id="setUpdate" parameterType="BranchDTO">
+		update branch set branchname=#{branchName}, branchcall=#{branchCall} where branchnum=#{branchNum}
+	</update>
+	
+	<select id="getSelect" parameterType="BranchDTO" resultType="BranchDTO">
+		select * from branch where branchnum=#{branchNum}
+	</select>
+	
+	<select id="getNum" resultType="java.lang.Long">
+		select br_bn_seq.nextval from dual
+	</select>
 	
 </mapper>
