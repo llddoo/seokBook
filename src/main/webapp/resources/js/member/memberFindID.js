@@ -2,7 +2,7 @@
  * 
  */
 let email = document.getElementById("email");
-let find = document.getElementById("find");
+
 btn.addEventListener("click", function(){
 	for(let e of etc){
 		if(e.value == ""){
@@ -13,7 +13,7 @@ btn.addEventListener("click", function(){
 	
 	//조건이 만족하면
 	if(idCheckResult && pwCheckResult && pwEqualResult && etcResult){
-
+		let find = document.getElementById("find");
 		//frm.submit();
 		alert("11111111111");
 	}else {
