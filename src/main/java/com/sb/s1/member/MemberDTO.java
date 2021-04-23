@@ -7,13 +7,18 @@ public class MemberDTO {
 	private String name;
 	private String email;
 	private String phonenum;
-	private long balance;
 	private String grade;
+	private long totalmoney;
 	private long point;
-	private String bookMark;
-	private String cart;
+
 	
 	
+	public long getTotalmoney() {
+		return totalmoney;
+	}
+	public void setTotalmoney(long totalmoney) {
+		this.totalmoney = totalmoney;
+	}
 	public String getId() {
 		return id;
 	}
@@ -44,12 +49,6 @@ public class MemberDTO {
 	public void setPhonenum(String phonenum) {
 		this.phonenum = phonenum;
 	}
-	public long getBalance() {
-		return balance;
-	}
-	public void setBalance(long balance) {
-		this.balance = balance;
-	}
 	public String getGrade() {
 		return grade;
 	}
@@ -62,18 +61,7 @@ public class MemberDTO {
 	public void setPoint(long point) {
 		this.point = point;
 	}
-	public String getBookMark() {
-		return bookMark;
-	}
-	public void setBookMark(String bookMark) {
-		this.bookMark = bookMark;
-	}
-	public String getCart() {
-		return cart;
-	}
-	public void setCart(String cart) {
-		this.cart = cart;
-	}
+
 	
 	
 }

@@ -8,8 +8,12 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 </head>
+
 <body>
+<c:import url="../template/body.jsp"></c:import>
 	<div class="container">
+		<h2>&nbsp</h2>
+		<h1>&nbsp</h1>
 		<h1>약관동의</h1>
 		
 		<div class="form-check">

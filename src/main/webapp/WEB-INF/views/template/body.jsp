@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Carousel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +22,14 @@
       <form class="form-inline mt-2 mt-md-0" action="${pageContext.request.contextPath}/searchresult" method="get">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        		<c:if test="${empty member}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogin">로그인</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/member/memberJoinCheck">회원가입</a>
+       					</c:if>
+       			<c:if test="${not empty member}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/member/memberFile/memberPage">MyPage</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
+      </c:if>
       </form>
     </div>
   </nav>

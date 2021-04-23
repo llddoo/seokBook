@@ -1,10 +1,20 @@
 package com.sb.s1.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+
+
+
+
+
 
 
 
@@ -14,30 +24,61 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+//	public List<cartDTO> cartList(MemberPager pager)throws Exception{
+//		// ---- startRow, lastRow ----
+//		pager.makeRow();
+//
+//		// ---- 페이징 계산 -------------
+//		long totalCount = memberDAO.getTotalCount(pager);
+//		pager.makeNum(totalCount);
+//		
+//		
+//		return memberDAO.cartList(pager);
+//	}
 	
-	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
+	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
 		
-		return memberDAO.getSelect(memberDTO);
+		return memberDAO.memberPoint(memberDTO);
 	}
 	
+	public MemberDTO memberFindID(MemberDTO memberDTO)throws Exception{
+		
+		return memberDAO.memberFindID(memberDTO);
+	}
+
+
+	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
+
+		return memberDAO.getSelect(memberDTO);
+	}
+
 
 	public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 		memberDTO = memberDAO.memberLogin(memberDTO);
-		
+
 		return memberDTO;
 	}
+
+	public int memberUpdate(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberUpdate(memberDTO);
+	}
 	
-	public MemberDTO membereIdCheck(MemberDTO memberDTO)throws Exception{
-		return memberDAO.memberLogin(memberDTO);
+	public int memberDelete(MemberDTO memberDTO, HttpSession session)throws Exception{
+			
+		return memberDAO.memberDelete(memberDTO);
 	}
 
-	public int memberJoin(MemberDTO memberDTO)throws Exception{
-		
+
+	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
+		return memberDAO.memberIdCheck(memberDTO);
+	}
+
+	public int memberJoin(MemberDTO memberDTO, HttpSession session)throws Exception{
+
 		int result = memberDAO.memberJoin(memberDTO);
-		
-		
+
 		return result;
 	}
-	
+
 
 }
