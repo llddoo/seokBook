@@ -39,6 +39,9 @@ public class BoardService {
 	}
 	
 	public int updateBoard(BoardDTO boardDTO) throws Exception {
+		String content = boardDTO.getContent();
+		content=content.replaceAll("/resources/uploaded/temp", "/resources/uploaded/"+boardDTO.getBoardsp());
+		boardDTO.setContent(content);
 		return boardDAO.updateBoard(boardDTO);
 	}
 }

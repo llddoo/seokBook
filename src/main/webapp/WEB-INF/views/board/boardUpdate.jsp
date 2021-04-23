@@ -18,7 +18,7 @@
 <script type="text/javascript">
 window.history.forward();
 function noBack(){
-	 window.history.forward();
+	window.history.forward();
 }
 </script>
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
@@ -59,10 +59,11 @@ function noBack(){
 				<label for="content">Contents:</label>
 				<textarea class="form-control frmCheck" rows="5" id="content" name="content">${boardDTO.content}</textarea>
 			</div>
-
-			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
+			<input type="hidden" readonly="readonly" name="name" value="${boardDTO.boardsp}" id="forimageupload">
 		</form>
+		<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 	</div>
+	<input type="hidden" readonly="readonly" id="rootcontext" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
 </body>

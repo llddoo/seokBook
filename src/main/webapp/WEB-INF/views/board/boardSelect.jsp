@@ -18,13 +18,7 @@
 	}
 </style>
 </head>
-<script type="text/javascript">
-window.history.forward();
-function noBack(){
-	window.history.forward();
-}
-</script>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body>
 <c:import url="../template/body.jsp"></c:import>
 	<div class="container">
 	<div id="nametag">

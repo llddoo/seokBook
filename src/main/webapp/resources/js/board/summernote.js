@@ -1,5 +1,6 @@
 
 let delfilearray=new Array();
+
  $(document).ready(function(){
 	$('#content').summernote({
 			height: 500,
@@ -47,8 +48,11 @@ let delfilearray=new Array();
 		$(".formoveimg").each(function(){
 			const filename = $(this).attr("alt");
 			const origin = $(this).attr("src").replace($("#rootcontext").val()+"/", "/");
-			const fixloca = origin.replace("temp/"+filename, name);
-			moveFile(origin, fixloca, filename);
+			let fixloca;
+			if(origin.indexOf("temp/"+filename)>-1){
+				fixloca = origin.replace("temp/"+filename, name);
+				moveFile(origin, fixloca, filename);
+			}
 		});
 		$("#frm").submit();
 	}else{
@@ -72,7 +76,7 @@ function uploadFile(file) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			let node = '<img class="formoveimg" alt="'+fileName+'" src="'+'/s1/resources/uploaded/'+name+'/'+fileName+'">';
+			let node = '<img class="formoveimg" alt="'+fileName+'" src="'+$("#rootcontext").val()+'/resources/uploaded/'+name+'/'+fileName+'">';
 			$("#content").summernote('pasteHTML', node);
 		} 
 	});		

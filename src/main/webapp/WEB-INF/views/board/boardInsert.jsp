@@ -57,8 +57,8 @@ function noBack(){
 				<textarea class="form-control frmCheck" rows="10" id="content" name="content"></textarea>
 			</div>
 			<input type="hidden" readonly="readonly" name="name" value="${pager.boardsp}" id="forimageupload">
-			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
+		<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 	</div>
 	<input type="hidden" readonly="readonly" id="rootcontext" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
