@@ -15,10 +15,10 @@ public class HomeService {
 	private BookListDAO bookListDAO;
 	
 	public SearchDTO getSearchResultList(String mainsearch) throws Exception {
-		mainsearch = "%"+mainsearch+"%";
 		SearchDTO searchDTO = new SearchDTO();
-		searchDTO.setBoardDTOs(boardDAO.searchResultList(mainsearch));
-		searchDTO.setBookListDTOs(bookListDAO.getList());
+		searchDTO.setEventDTOs(boardDAO.searchEventList(mainsearch));
+		searchDTO.setOldbooksaleDTOs(boardDAO.searchOldbooksaleList(mainsearch));
+		searchDTO.setNoticeDTOs(boardDAO.searchNoticeList(mainsearch));
 		return searchDTO;
 	}
 }

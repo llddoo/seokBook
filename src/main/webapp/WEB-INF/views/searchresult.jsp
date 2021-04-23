@@ -10,7 +10,13 @@
 </head>
 <body>
 <c:import url="template/body.jsp"></c:import>
+<h2>책 검색 결과</h2>
+<table>
 
+</table>
+<h2>중고서적 검색 결과</h2>
+<h2>공지사항 검색 결과</h2>
+<h2>이벤트 검색 결과</h2>
 <c:import url="template/footer.jsp"></c:import>
 </body>
 </html>

@@ -30,7 +30,8 @@ public class HomeController {
 	@GetMapping("searchresult")
 	public void searchpage(String mainsearch, Model model) throws Exception{
 		SearchDTO searchDTO = homeService.getSearchResultList(mainsearch);
-		model.addAttribute("boardList", searchDTO.getBoardDTOs());
-		model.addAttribute("bookList", searchDTO.getBookListDTOs());
+		model.addAttribute("eventSearchList", searchDTO.getEventDTOs());
+		model.addAttribute("oldbookSearchList", searchDTO.getOldbooksaleDTOs());
+		model.addAttribute("noticeSearchList", searchDTO.getNoticeDTOs());
 	}
 }

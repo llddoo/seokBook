@@ -17,7 +17,7 @@
 				B.subname
 			</otherwise>
 		</choose>
-		like '%' || #{search} || '%') 
+		like '%' || #{search} || '%')
 		WHERE (RN BETWEEN #{startRow} AND #{endRow})
 	</select>
 	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
@@ -40,7 +40,16 @@
 	<update id="setHit" parameterType="BoardDTO">
 		UPDATE BOARD SET VISITCOUNT = #{visitcount}+1 WHERE SUBNUM = #{subnum}
 	</update>
-	<select id="searchResultList" parameterType="BoardDTO" resultType="BoardDTO">
-		select * from board where subname like #{subname} or id like #{id} of content like #{content}
+	<select id="searchEventList" parameterType="BoardDTO" resultType="BoardDTO">
+		select * from (select * from board where boardsp='event')
+		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
+	</select>
+	<select id="searchOldbooksaleList" parameterType="BoardDTO" resultType="BoardDTO">
+		select * from (select * from board where boardsp='oldbooksale' or boardsp = 'saleend')
+		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
+	</select>
+	<select id="searchNoticeList" parameterType="BoardDTO" resultType="BoardDTO">
+		select * from (select * from board where boardsp='notice')
+		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
 	</select>
 </mapper>

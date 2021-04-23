@@ -44,11 +44,26 @@ public class BoardDAO {
 		return sqlSession.update(NAMESPACE+"setHit", boardDTO);
 	}
 	
-	public List<BoardDTO> searchResultList(String mainsearch)throws Exception{
+	public List<BoardDTO> searchEventList(String mainsearch)throws Exception{
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO.setSubname(mainsearch);
 		boardDTO.setContent(mainsearch);
 		boardDTO.setId(mainsearch);
-		return sqlSession.selectList(NAMESPACE+"searchResultList", mainsearch);
+		return sqlSession.selectList(NAMESPACE+"searchEventList", boardDTO);
+	}
+	
+	public List<BoardDTO> searchOldbooksaleList(String mainsearch)throws Exception{
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setSubname(mainsearch);
+		boardDTO.setContent(mainsearch);
+		boardDTO.setId(mainsearch);
+		return sqlSession.selectList(NAMESPACE+"searchOldbooksaleList", boardDTO);
+	}
+	public List<BoardDTO> searchNoticeList(String mainsearch)throws Exception{
+		BoardDTO boardDTO = new BoardDTO();
+		boardDTO.setSubname(mainsearch);
+		boardDTO.setContent(mainsearch);
+		boardDTO.setId(mainsearch);
+		return sqlSession.selectList(NAMESPACE+"searchNoticeList", boardDTO);
 	}
 }
