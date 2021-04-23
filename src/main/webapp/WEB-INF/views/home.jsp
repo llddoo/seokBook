@@ -196,7 +196,7 @@
     <!-- /END THE FEATURETTES -->
 
   </div><!-- /.container -->
-    
+
 <c:import url="./template/footer.jsp"></c:import>
   
 </main>

@@ -134,12 +134,19 @@ public class Pager {
 	
 	private String boardsp;
 	private long subnum;
+	private long gNumber;
 	
+	public long getgnumber() {
+		return gNumber;
+	}
+	public void setgnumber(long gNumber) {
+		this.gNumber = gNumber;
+	}
+	public void setSubnum(long subnum) {
+		this.subnum = subnum;
+	}
 	public long getSubnum() {
 		return subnum;
-	}
-	public void setSubnum(int subnum) {
-		this.subnum = subnum;
 	}
 	public String getBoardsp() {
 		return boardsp;

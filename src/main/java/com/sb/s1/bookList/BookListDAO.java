@@ -6,24 +6,26 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sb.s1.util.Pager;
+
 @Repository
 public class BookListDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.sb.s1.bookListDAO.";
+	private final String NAMESPACE="com.sb.s1.bookList.BookListDAO.";
 	
-	
-	public BookListDTO getSelect(BookListDTO bookListDTO)throws Exception{
-		bookListDTO = sqlSession.selectOne(NAMESPACE+"getSelect", bookListDTO);
-		System.out.println(bookListDTO.getIcbn());
-		return bookListDTO;
-	}	
-
-	//bookList table의 모든 데이트 조회 후 리턴
-	public List<BookListDTO> getList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<BookListDTO> getList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
 	
+	public BookListDTO getSelect(BookListDTO bookListDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getSelect", bookListDTO);
+	}	
 	
+	public long getTotalCount(Pager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
+	}
+	
+		
 }

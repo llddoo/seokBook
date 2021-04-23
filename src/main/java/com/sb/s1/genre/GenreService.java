@@ -1,5 +1,7 @@
 package com.sb.s1.genre;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,4 +10,14 @@ public class GenreService {
 
 	@Autowired
 	private GenreDAO genreDAO;
+	
+	public List<GenreDTO> getList()throws Exception{
+		return genreDAO.getList();
+	}
+ 	
+	public GenreDTO getSelect(GenreDTO genreDTO)throws Exception{
+		return genreDAO.getSelect(genreDTO);
+	}
+	
+	
 }

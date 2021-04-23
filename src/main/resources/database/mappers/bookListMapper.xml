@@ -13,9 +13,13 @@
 	</select>
 	
 	<select id="getList" resultType="BookListDTO">
-		select * from booklist order by isbn desc
+		SELECT isbn,bookname,author,bookpub,bookpubdate,price,bookcontent,bookscore FROM 
+		(SELECT B.*, ROWNUM RN FROM (select * from booklist where gnumber = #{gNumber}) B) 
 	</select>
 	
+	<select id="getTotalCount" parameterType="Pager" resultType="Long">
+		select count(gnumber) from booklist where gnumber=#{gNumber}
+	</select>
 	
 
 
