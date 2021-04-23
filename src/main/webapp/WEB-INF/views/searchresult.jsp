@@ -42,89 +42,89 @@
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th>글 번호</th>
-        <th>글 제목</th>
+        <th>글제목</th>
+        <th></th>
         <th>작성자</th>
         <th>작성일</th>
         <th>조회수</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+    <c:forEach items="${oldbookSearchList}" var="oldbook">
+      <tr class="likeButton">
+        <td class="subname">${oldbook.subname}</td>
+        <td>
+        	<form action="./board/boardSelect" method="get">
+        		<input type="hidden" value="${oldbook.boardsp}" class="transferboardsp">
+        		<input type="hidden" value="${oldbook.subnum}" class="transfersubnum">
+        	</form>
+        </td>
+        <td class="writer">${oldbook.id}</td>
+        <td class="regdate">${oldbook.regdate}</td>
+        <td class="visitcount">${oldbook.visitcount}</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      </c:forEach>
     </tbody>
   </table>
-  <h2>공지사항 검색 결과</h2>
+  
+  <h3>공지사항 검색 결과</h3>
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>글제목</th>
+        <th></th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <c:forEach items="${noticeSearchList}" var="notice">
+      <tr class="likeButton">
+        <td class="subname">${notice.subname}</td>
+        <td>
+        	<form action="./board/boardSelect" method="get">
+        		<input type="hidden" value="${notice.boardsp}" class="transferboardsp">
+        		<input type="hidden" value="${notice.subnum}" class="transfersubnum">
+        	</form>
+        </td>
+        <td class="writer">${notice.id}</td>
+        <td class="regdate">${notice.regdate}</td>
+        <td class="visitcount">${notice.visitcount}</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      </c:forEach>
     </tbody>
   </table>
   	
-	<h2>이벤트 검색 결과</h2>
+	<h3>이벤트 검색 결과</h3>
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>글제목</th>
+        <th></th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회수</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <c:forEach items="${eventSearchList}" var="event">
+      <tr class="likeButton">
+        <td class="subname">${event.subname}</td>
+        <td>
+        	<form action="./board/boardSelect" method="get">
+        		<input type="hidden" value="${event.boardsp}" class="transferboardsp">
+        		<input type="hidden" value="${event.subnum}" class="transfersubnum">
+        	</form>
+        </td>
+        <td class="writer">${event.id}</td>
+        <td class="regdate">${event.regdate}</td>
+        <td class="visitcount">${event.visitcount}</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      </c:forEach>
     </tbody>
   </table>
 </div>
-
-
 
 <c:import url="template/footer.jsp"></c:import>
 </body>
