@@ -17,6 +17,7 @@
 		<thead class="thead-dark">
 			<tr>
 				<th>구매번호</th>
+				<th>주문번호</th>
 				<th>구매날짜</th>
 				<th>ICBN</th>
 				<th>유지기간</th>
@@ -63,7 +64,7 @@
 			<input type="hidden" name="curPage" value="1" id="curPage">
 			<div class="input-group-append">
 				<select class="form=control" name="kind" id="kind">
-					<option class="sel">ICBN</option>
+					<option class="sel">ISBN</option>
 					<option class="sel">ID</option>
 					<option class="sel">가격</option>
 					<option class="sel">구매날짜</option>

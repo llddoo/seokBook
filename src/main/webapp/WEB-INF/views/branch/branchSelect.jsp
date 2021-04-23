@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../template/body.jsp"></c:import>
 <div class="container">
 	<h1>관리자 전용 페이지</h1><br>
 	
@@ -24,7 +24,7 @@
 </form>
 
 </div>
-
+<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript">
 	const del = document.getElementById("del");
 	const frm = document.getElementById("frm");

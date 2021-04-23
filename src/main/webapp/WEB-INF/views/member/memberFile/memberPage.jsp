@@ -69,7 +69,6 @@ text-align:center;
 <div id = "div_con">
 		<h1>오른쪽가라고</h1>
 		<h1>회원등급 ${member.grade}</h1>
-		<h1>${member.totalmoney}</h1>
 		<h1>${member.point}</h1>
 <form action="../memberPoint" method="post">
     <input value="id" name="id">
