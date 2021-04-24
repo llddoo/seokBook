@@ -80,6 +80,7 @@ $("#comment").on("click", ".commentupdate",function(){
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const temp = content.find("input[value='"+updatenum+"']").attr("id");
 	if(updatenum==resnum&&temp=="forupdate"){
+		updatenum=-1;
 		getList();
 		return;
 	}else if(updatenum!=-1){
@@ -132,6 +133,7 @@ $("#comment").on("click", ".commentreply", function(){
 	const content = $(this).parents("tr").siblings("tr").find("td[colspan='3']");
 	const temp = content.find("input[value='"+updatenum+"']").attr("id");
 	if(updatenum==resnum&&temp=="forinsert"){
+		updatenum=-1;
 		getList();
 		return;
 	}else if(updatenum!=-1){
@@ -146,6 +148,7 @@ $("#comment").on("click", ".commentreply", function(){
 	content.append("<textarea id=\"rewrite\"></textarea>");
 	content.append("<input id=\"replystep\" type=\"hidden\" readonly=\"readonly\" value=\""+step+"\">");
 	content.append("<input id=\"replydepth\" type=\"hidden\" readonly=\"readonly\" value=\""+depth+"\">");
+	content.append("<br><button id=\"transreply\" class=\"btn btn-danger\">작성</button>");
 	$('#rewrite').summernote({
 			disableResizeEditor: true,
 			disableDragAndDrop:true,
@@ -153,7 +156,6 @@ $("#comment").on("click", ".commentreply", function(){
 	});
 	$('.note-statusbar').hide();
 	$('.note-toolbar').hide();
-	content.append("<br><button id=\"transreply\" class=\"btn btn-danger\">작성</button>");
 	updatenum=resnum;
 });
 
