@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.FileManager;
 import com.sb.s1.util.Pager;
 
@@ -25,7 +26,7 @@ public class BoardController {
 	@Autowired
 	private FileManager fileManager;
 	
-	private String[] boardlist = {"notice", "event", "qna", "oldbooksale", "saleend"};
+	private String[] boardlist = {"notice", "event", "qna", "oldbooksale", "saleend", "oldbooklist"};
 	
 	private boolean boardchecking(String boardsp) throws Exception{
 		boolean check = false;
@@ -38,7 +39,19 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardInsert")
-	public void boardInsert(Pager pager) { }
+	public ModelAndView boardInsert(Pager pager) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/board/boardInsert");
+		if(!boardchecking(pager.getBoardsp())) {
+			mav.setViewName("/errorPage");
+			return mav;
+		}
+		if(pager.getBoardsp().equals("oldbooklist")||pager.getBoardsp().equals("saleend")) {
+			pager.setBoardsp("oldbooksale");
+		}
+		mav.addObject("pager", pager);
+		return mav;
+	}
 	
 	@PostMapping("boardInsert")
 	public ModelAndView boardInsert(BoardDTO boardDTO) throws Exception{
@@ -52,36 +65,32 @@ public class BoardController {
 	
 	@GetMapping("boardList")
 	public ModelAndView boardList(Pager pager, ModelAndView mav, HttpSession session) throws Exception {
-		boolean check = boardchecking(pager.getBoardsp());
-		if(!check) {
-			mav.setViewName("/errorPage");
-			return mav;
-		}
-		BoardDTO boardDTO = new BoardDTO();
-		boardDTO.setId("admin");
-		session.setAttribute("member", boardDTO);
+		MemberDTO memberDTO= new MemberDTO();
+		memberDTO.setId("admin");
+		session.setAttribute("member", memberDTO);
 		List<BoardDTO> list = boardService.getList(pager);
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);
 		mav.addObject("listsize", list.size());
+		if(!boardchecking(pager.getBoardsp())) {
+			mav.setViewName("/errorPage");
+		}
 		return mav;
 	}
 	
 	@GetMapping("boardSelect")
 	public ModelAndView boardSelect(BoardDTO boardDTO, ModelAndView mav) throws Exception {
-		boolean check = boardchecking(boardDTO.getBoardsp());
-		if(!check) {
-			mav.setViewName("/errorPage");
-			return mav;
-		}
 		boardDTO = boardService.getSelect(boardDTO);
 		mav.addObject("select", boardDTO);
+		if(boardDTO==null||!boardchecking(boardDTO.getBoardsp())) {
+			mav.setViewName("/errorPage");
+		}
 		return mav;
 	}
 	
 	@GetMapping("boardUpdate")
-	public void boardUpdate(BoardDTO boardDTO, Model model) throws Exception {
-		model.addAttribute("boardDTO", boardService.getSelect(boardDTO));
+	public void boardUpdate(BoardDTO boardDTO, HttpSession session, ModelAndView model) throws Exception {
+		model.addObject("boardDTO", boardService.getSelect(boardDTO));
 	}
 	
 	@PostMapping("boardUpdate")
@@ -90,10 +99,10 @@ public class BoardController {
 		return "redirect:/board/boardList?boardsp="+boardDTO.getBoardsp();
 	}
 	
-	@GetMapping("boardDelete")
+	@PostMapping("boardDelete")
 	public ModelAndView boardDelete(BoardDTO boardDTO) throws Exception {
-		boardService.delBoard(boardDTO);
 		ModelAndView mav = new ModelAndView();
+		boardService.delBoard(boardDTO);
 		mav.addObject("boardsp", boardDTO.getBoardsp());
 		mav.setViewName("/board/boardCheck");
 		return mav;

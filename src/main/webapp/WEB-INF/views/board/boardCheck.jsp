@@ -6,23 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <script type="text/javascript">
 window.history.forward();
 function noBack(){
 	window.history.forward();
+	const justgo = document.getElementById("justgo");
+	justgo.submit();
 }
 </script>
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<c:import url="../template/body.jsp"></c:import>
 <h1>만료된 페이지 입니다.</h1>
 <form action="./boardList" method="get" id="justgo">
 	<input type="hidden" readonly="readonly" name="boardsp" value="${boardsp}">
 </form>
-<script type="text/javascript">
-const justgo = document.getElementById("justgo");
-window.onload=function(){
-    justgo.submit();
-}
-</script>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

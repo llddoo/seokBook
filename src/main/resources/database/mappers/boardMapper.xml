@@ -4,7 +4,8 @@
 <mapper namespace="com.sb.s1.board.BoardDAO">
 	<select id="getList" parameterType="Pager" resultType="BoardDTO">
 		SELECT subnum,id,regdate,content,subname,boardsp,visitcount FROM 
-		(SELECT B.*, ROWNUM RN FROM (select * from BOARD where BOARDSP = #{boardsp}) B 
+		(SELECT B.*, ROWNUM RN FROM (select * from BOARD where BOARDSP = #{boardsp} 
+		<if test="boardsp.equals('oldbooklist')">or boardsp = 'saleend' or boardsp = 'oldbooksale'</if>) B 
 		where 
 		<choose>
 			<when test="kind=='id'">

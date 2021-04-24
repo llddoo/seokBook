@@ -18,6 +18,10 @@
 <script type="text/javascript">
 window.history.forward();
 function noBack(){
+	const boardsp = $("#boardsp").val();
+	if(boardsp==='saleend'||boardsp==='oldbooklist'){
+		location.href="../errorPage";
+	}
 	window.history.forward();
 }
 </script>
@@ -26,7 +30,7 @@ function noBack(){
 	<div class="container">
 		<h2>${pager.boardsp}작성</h2>
 		<form id="frm" action="./boardInsert" method="post" enctype="multipart/form-data">
-			<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}">
+			<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}" id="boardsp">
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
 				<input type="text" readonly="readonly" value="${member.id}"

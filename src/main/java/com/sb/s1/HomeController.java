@@ -23,7 +23,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home() {
-		
 		return "home";
 	}
 	
@@ -33,4 +32,7 @@ public class HomeController {
 		model.addAttribute("oldbookSearchList", searchDTO.getOldbooksaleDTOs());
 		model.addAttribute("bookSearchList", searchDTO.getBookListDTOs());
 	}
+	
+	@GetMapping("errorPage")
+	public void errorPage() {	}
 }

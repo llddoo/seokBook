@@ -40,6 +40,9 @@
 		<c:when test="${pager.boardsp eq 'saleend'}">
 			<h2 id="boardsp">중고 서적 판매 완료 게시판</h2>
 		</c:when>
+		<c:when test="${pager.boardsp eq 'oldbooklist'}">
+			<h2 id="boardsp">중고 서적 전체 게시판</h2>
+		</c:when>
 		<c:otherwise>
 			<h2 id="boardsp">QNA</h2>
 		</c:otherwise>
@@ -57,7 +60,10 @@
 	    <tbody>
 	    	<c:forEach items="${list}" var="select">
 		      <tr>
-		        <td><a href="./boardSelect?subnum=${select.subnum}&boardsp=${select.boardsp}">${select.subname}</a></td>
+		        <td>¤&nbsp;
+		        	<a href="./boardSelect?subnum=${select.subnum}&boardsp=${select.boardsp}">
+		        	<c:if test="${boardsp eq 'saleend'}">[판매완료]</c:if>
+		        	${select.subname}</a></td>
 		        <td>${select.id}</td>
 		        <td>${select.regdate}</td>
 		        <td>${select.visitcount}</td>

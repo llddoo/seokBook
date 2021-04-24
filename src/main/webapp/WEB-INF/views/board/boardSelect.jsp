@@ -35,6 +35,9 @@
 			<c:when test="${select.boardsp eq 'saleend'}">
 				<h2 id="boardsp">중고 서적 판매 완료 게시판</h2>
 			</c:when>
+			<c:when test="${pager.boardsp eq 'oldbooklist'}">
+				<h2 id="boardsp">중고 서적 전체 게시판</h2>
+			</c:when>
 			<c:otherwise>
 				<h2 id="boardsp">QNA</h2>
 			</c:otherwise>
@@ -53,13 +56,13 @@
 	    	<td colspan="2"><h3>글제목 : ${select.subname}</h3></td>
 	    	<td id="mainbuttonright">
 	    	<c:if test="${select.id eq member.id}">
-		  <form id="forsend" method="get" action="./boardDelete">
+		  <form id="forsend" method="post" action="./boardDelete">
 		  	<input type="hidden" readonly="readonly" name="boardsp" id="boardsp" value="${select.boardsp}">
 		  	<input type="hidden" readonly="readonly" name="subnum" id="subnum" value="${select.subnum}">
 		  </form>
-		  <a class="btn btn-primary" href="./boardUpdate?boardsp=${select.boardsp}&subnum=${select.subnum}">글 수정</a>
+		  <a class="btn btn-primary" href="./boardUpdate?boardsp=${select.boardsp}&subnum=${select.subnum}&id=${select.id}">글 수정</a>
 		  <button id="deleteCheck" class="btn btn-primary">글 삭제</button>
-  	  </c:if>
+  	  		</c:if>
 	    	</td>
 	    </tr>
 	    	<tr>

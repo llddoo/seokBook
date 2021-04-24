@@ -18,6 +18,12 @@
 <script type="text/javascript">
 window.history.forward();
 function noBack(){
+	const memberid = $("#memberid").val();
+	const id=$("#id").val();
+	const boardsp = $("forimageupload").val();
+	if(memberid!=id||boardsp!='event'||boardsp!='notice'||boardsp!='saleend'||boardsp!='oldbooksale'||boardsp!='qna'){
+		location.href="../errorPage";
+	}
 	window.history.forward();
 }
 </script>
@@ -25,6 +31,7 @@ function noBack(){
 <div class="container">
 <c:import url="../template/body.jsp"></c:import>
 		<h2>${boardDTO.boardsp}작성</h2>
+		<input type="hidden" readonly="readonly" value="${member.id}" id="memberid">
 		<form id="frm" action="./boardUpdate" method="post" enctype="multipart/form-data">
 			<input type="hidden" readonly="readonly" name="boardsp" value="${boardDTO.boardsp}">
 			<input type="hidden" readonly="readonly" name="subnum" value="${boardDTO.subnum}">
@@ -32,7 +39,7 @@ function noBack(){
 			<input type="hidden" readonly="readonly" name="visitcount" value="${boardDTO.visitcount}">
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
-				<input type="text" readonly="readonly" value="${member.id}"
+				<input type="text" readonly="readonly" value="${boardDTO.id}"
 						class="form-control frmCheck" id="id" name="id">
 			</div>
 			<div class="form-group">
