@@ -17,19 +17,30 @@
       <tr>
         <th></th>
         <th>검색결과</th>
+        <th></th>
        	<th></th>
       </tr>
     </thead>
     <tbody>
     <c:forEach items="${bookSearchList}" var="bookdto">
       <tr class="likeBookButton">
-        <td><img alt="" src=""></td><!-- 이미지 이름을 넣어주고 src에는 경로를 넣어주면 될 것이다. -->
         <td>
-        	<form action="./booklist/bookListSelect" method="get" class="bookform">
-        		<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
-        	</form>
-        </td><!-- 상세 내역을 적을 태그 -->
-        <td></td><!-- 버튼 세개가 들어갈 td태그 : 수량이 들어갈 버튼, 구매버튼, 장바구니에 추가 버튼 -->
+        	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/upload/bookList/${bookdto.bookImg}">
+        </td>
+        <td>
+        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}">${bookdto.bookName}</a>
+        </td>
+        <td>${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
+        <td>
+	        <select>
+	        	<option selected="selected">1</option>
+	        	<c:forEach begin="2" end="10" var="i">
+	        		<option>${i}</option>
+	        	</c:forEach>
+	        </select>	
+        	<button class="getCart">장바구니</button>
+        	<button class="getPurchase">구매하기</button>
+        </td>
       </tr>
       </c:forEach>
     </tbody>
@@ -63,7 +74,19 @@
   </table>
 </div>
 <c:import url="template/footer.jsp"></c:import>
-<script type="text/javascript">
+<script type="text/javascript">	//구매나, 장바구니에 추가하기 위한 javascript구문, 둘다 ajax로 장바구니로 보내고 구매버튼은 그 이후에 purchase칸 가면됨
+	$(".getCart").click(function(){
+		moveBook();
+	});
+	
+	$("#getPurchase").click(function(){
+		moveBook();
+		location.href="./";
+	});
+	
+	function moveBook(){
+		
+	}
 	
 </script>
 </body>

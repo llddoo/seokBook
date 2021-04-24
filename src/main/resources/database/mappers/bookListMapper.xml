@@ -24,7 +24,8 @@
 
 
 	<select id="searchBookList" parameterType="BookListDTO" resultType="BookListDTO">
-		select * from booklist where author=#{author}
+		select * from booklist where author=#{author} or bookname=#{bookName} 
+		or isbn=#{isbn} or bookpub=#{bookPub} or gnumber=#{gNumber}
 	</select>
 
 </mapper>

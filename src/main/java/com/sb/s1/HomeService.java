@@ -22,20 +22,23 @@ public class HomeService {
 	
 	public SearchDTO getSearchResultList(String mainsearch) throws Exception {
 		BoardDTO boardDTO = new BoardDTO();
+		BookListDTO bookListDTO = new BookListDTO();
+		GenreDTO genreDTO = new GenreDTO();
+		SearchDTO searchDTO = new SearchDTO();
+		
 		boardDTO.setSubname(mainsearch);
 		boardDTO.setContent(mainsearch);
 		boardDTO.setId(mainsearch);
-		BookListDTO bookListDTO = new BookListDTO();
+		searchDTO.setOldbooksaleDTOs(boardDAO.searchOldbooksaleList(boardDTO));
+		
 		bookListDTO.setAuthor(mainsearch);
 		bookListDTO.setBookName(mainsearch);
 		bookListDTO.setIsbn(mainsearch);
 		bookListDTO.setBookPub(mainsearch);
-		GenreDTO genreDTO = new GenreDTO();
 		genreDTO.setGname(mainsearch);
 		bookListDTO.setgNumber(genreDAO.getGenrenum(genreDTO));
-		SearchDTO searchDTO = new SearchDTO();
-		searchDTO.setOldbooksaleDTOs(boardDAO.searchOldbooksaleList(boardDTO));
 		searchDTO.setBookListDTOs(bookListDAO.searchBookList(bookListDTO));
+		
 		return searchDTO;
 	}
 }
