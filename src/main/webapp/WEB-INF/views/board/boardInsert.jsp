@@ -33,8 +33,7 @@ function noBack(){
 			<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}" id="boardsp">
 			<div class="form-group">
 				<label for="writer">Writer:</label> 
-				<input type="text" readonly="readonly" value="${member.id}"
-						class="form-control frmCheck" id="id" name="id">
+				<input type="text" readonly="readonly" value="${member.id}" class="form-control frmCheck" id="id" name="id">
 			</div>
 			<div class="form-group">
 				<label for="subname">Title:</label> 
@@ -51,7 +50,7 @@ function noBack(){
 					    <div class="input-group-prepend">
 					      <span class="input-group-text">글 제목</span>
 					    </div>
-					    <input type="text" class="form-control" name="subname" placeholder="제목을 입력해 주세요.">
+					    <input type="text" class="form-control frmCheck" name="subname" placeholder="제목을 입력해 주세요.">
 					</div>
 				</c:if>
 			</div>

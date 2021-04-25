@@ -36,7 +36,7 @@ let delfilearray=new Array();
  $("#btn").click(function(){
 	let check = true;
 	$(".frmCheck").each(function(){
-		if($(this).val()==""){
+		if($(this).val().trim()==""){
 			check=false;
 		}
 	});

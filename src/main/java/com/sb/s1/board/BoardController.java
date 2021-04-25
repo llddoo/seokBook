@@ -89,8 +89,13 @@ public class BoardController {
 	}
 	
 	@GetMapping("boardUpdate")
-	public void boardUpdate(BoardDTO boardDTO, HttpSession session, ModelAndView model) throws Exception {
+	public ModelAndView boardUpdate(BoardDTO boardDTO, HttpSession session, ModelAndView model) throws Exception {
+		if(!boardchecking(boardDTO.getBoardsp())||boardDTO.getBoardsp().equals("oldbooklist")) {
+			model.setViewName("/errorPage");
+			return model;
+		}
 		model.addObject("boardDTO", boardService.getSelect(boardDTO));
+		return model;
 	}
 	
 	@PostMapping("boardUpdate")

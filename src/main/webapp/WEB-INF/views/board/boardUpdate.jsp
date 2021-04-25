@@ -18,12 +18,6 @@
 <script type="text/javascript">
 window.history.forward();
 function noBack(){
-	const memberid = $("#memberid").val();
-	const id=$("#id").val();
-	const boardsp = $("forimageupload").val();
-	if(memberid!=id||boardsp!='event'||boardsp!='notice'||boardsp!='saleend'||boardsp!='oldbooksale'||boardsp!='qna'){
-		location.href="../errorPage";
-	}
 	window.history.forward();
 }
 </script>
@@ -33,7 +27,9 @@ function noBack(){
 		<h2>${boardDTO.boardsp}작성</h2>
 		<input type="hidden" readonly="readonly" value="${member.id}" id="memberid">
 		<form id="frm" action="./boardUpdate" method="post" enctype="multipart/form-data">
-			<input type="hidden" readonly="readonly" name="boardsp" value="${boardDTO.boardsp}">
+			<c:if test="${pager.boardsp ne 'oldbooksale' && pager.boardsp ne 'saleend'}">
+				<input type="hidden" readonly="readonly" name="boardsp" value="${boardDTO.boardsp}">
+			</c:if>
 			<input type="hidden" readonly="readonly" name="subnum" value="${boardDTO.subnum}">
 			<input type="hidden" readonly="readonly" name="regdate" value="${boardDTO.regdate}">
 			<input type="hidden" readonly="readonly" name="visitcount" value="${boardDTO.visitcount}">
@@ -44,7 +40,7 @@ function noBack(){
 			</div>
 			<div class="form-group">
 				<label for="subname">Title:</label> 
-				<c:if test="${pager.boardsp eq 'qna'}">
+				<c:if test="${boardDTO.boardsp eq 'qna'}">
 					<select name="subname" class="frmCheck form-select form-select-sm" aria-label=".form-select-sm example">
 						<option value="반품, 교환, 환불">반품, 교환, 환불</option>
 						<option value="주문, 결제">주문, 결제</option>
@@ -52,26 +48,41 @@ function noBack(){
 						<option value="서비스, 기타">서비스, 기타</option>
 					</select>
 				</c:if>
-				<c:if test="${pager.boardsp ne 'qna'}">
+				<c:if test="${boardDTO.boardsp ne 'qna'}">
 					<div class="input-group mb-3">
 					    <div class="input-group-prepend">
 					      <span class="input-group-text">글 제목</span>
 					    </div>
-					    <input type="text" class="form-control" name="subname" value="${boardDTO.subname}" placeholder="제목을 입력해 주세요.">
+					    <input type="text" class="form-control frmCheck" name="subname" value="${boardDTO.subname}" placeholder="제목을 입력해 주세요.">
 					</div>
 				</c:if>
+				<c:if test="${boardDTO.boardsp eq 'oldbooksale' || boardDTO.boardsp eq 'saleend'}">
+				<select class="form-control" name="boardsp" id="oldbookselector">
+					<option value="oldbooksale">판매중</option>
+					<option value="saleend">판매완료</option>
+				</select>
+			</c:if>
 			</div>
 
 			<div class="form-group">
 				<label for="content">Contents:</label>
 				<textarea class="form-control frmCheck" rows="5" id="content" name="content">${boardDTO.content}</textarea>
 			</div>
-			<input type="hidden" readonly="readonly" name="name" value="${boardDTO.boardsp}" id="forimageupload">
 		</form>
+		<input type="hidden" readonly="readonly" name="name" value="${boardDTO.boardsp}" id="forimageupload">
 		<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 	</div>
 	<input type="hidden" readonly="readonly" id="rootcontext" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/summernote.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if($("#forimageupload").val()==='oldbooksale'){
+			$("#oldbookselector").find("option[value='oldbooksale']").attr("selected", "selected");
+		}else if($("#forimageupload").val()==='saleend'){
+			$("#oldbookselector").find("option[value='saleend']").attr("selected", "selected");
+		}
+	});
+</script>
 </body>
 </html>
