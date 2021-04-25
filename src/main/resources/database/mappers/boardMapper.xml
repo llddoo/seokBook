@@ -25,7 +25,8 @@
 		SELECT * FROM BOARD WHERE SUBNUM=#{subnum}
 	</select>
 	<select id="getTotalcount" parameterType="Pager" resultType="Long">
-		SELECT COUNT(SUBNUM) FROM BOARD WHERE BOARDSP = #{boardsp}
+		SELECT COUNT(SUBNUM) FROM BOARD WHERE BOARDSP = #{boardsp} 
+		<if test='boardsp.equals("oldbooklist")'>or boardsp = 'oldbooksale' or boardsp = 'saleend'</if>
 	</select>
 	<insert id="setBoard" parameterType="BoardDTO">
 		INSERT INTO BOARD VALUES(B_SN_SEQ.NEXTVAL, #{id}, SYSDATE, #{content}, 
