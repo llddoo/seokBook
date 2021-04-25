@@ -62,8 +62,9 @@
 		      <tr>
 		        <td>¤&nbsp;
 		        	<a href="./boardSelect?subnum=${select.subnum}&boardsp=${select.boardsp}">
-		        	<c:if test="${boardsp eq 'saleend'}">[판매완료]</c:if>
-		        	${select.subname}</a></td>
+		        		<c:if test="${boardsp eq 'saleend'}">[판매완료]</c:if>${select.subname}
+		        	</a>
+		        </td>
 		        <td>${select.id}</td>
 		        <td>${select.regdate}</td>
 		        <td>${select.visitcount}</td>
