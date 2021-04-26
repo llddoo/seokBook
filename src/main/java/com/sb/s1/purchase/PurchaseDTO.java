@@ -10,7 +10,21 @@ public class PurchaseDTO {
 	private Date remdate;
 	private String id;
 	private long price;
+	private long purcount;
+	private long ordernum;
 	
+	public long getPurcount() {
+		return purcount;
+	}
+	public void setPurcount(long purcount) {
+		this.purcount = purcount;
+	}
+	public long getOrdernum() {
+		return ordernum;
+	}
+	public void setOrdernum(long ordernum) {
+		this.ordernum = ordernum;
+	}
 	public long getPurnum() {
 		return purnum;
 	}

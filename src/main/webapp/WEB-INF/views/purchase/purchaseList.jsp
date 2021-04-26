@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>구매 목록</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <body>
-
+<c:import url="../template/body.jsp"></c:import>
 <div class="container">
 	<h2>구매 목록</h2>
 	
@@ -18,11 +18,12 @@
 			<tr>
 				<th>구매번호</th>
 				<th>주문번호</th>
-				<th>구매날짜</th>
-				<th>ICBN</th>
-				<th>유지기간</th>
+				<th>ISBN</th>
 				<th>ID</th>
 				<th>가격</th>
+				<th>구매수량</th>
+				<th>구매날짜</th>
+				<th>유지기간</th>
 			</tr>
 		</thead>
 		
@@ -30,11 +31,13 @@
 		<c:forEach items="${list}" var="dto">
 			<tr>
 				<td>${dto.purnum}</td>
-				<td>${dto.purdate}</td>
+				<td>${dto.ordernum}</td>
 				<td><a href="./purchaseSelect?purnum=${dto.purnum}">${dto.isbn}</a></td>
-				<td>${dto.remdate}</td>
 				<td>${dto.id}</td>
 				<td>${dto.price}</td>
+				<td>${dto.purcount}</td>
+				<td>${dto.purdate}</td>
+				<td>${dto.remdate}</td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -95,5 +98,6 @@
 			});
 		</script>
 	</div>
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

@@ -11,16 +11,16 @@
 				(select * from purchase where
 					<choose>
 						
-						<when test="kind == 'Icbn'">
-							icbn
+						<when test="kind == 'Id'">
+							id
 						</when>
 						
-						<when test="kind == 'Price'">
-							price
+						<when test="kind == 'Ordernum'">
+							ordernum
 						</when>
 						
 						<otherwise>
-							id
+							isbn
 						</otherwise>
 					
 					</choose>
@@ -31,16 +31,16 @@
 	<select id="getTotalCount" resultType="Long" parameterType="BranchPager">
 		select count(purnum) from purchase where
 		<choose>
-						<when test="kind == 'Icbn'">
-							icbn
+						<when test="kind == 'Id'">
+							id
 						</when>
 						
-						<when test="kind == 'Price'">
-							price
+						<when test="kind == 'Ordernum'">
+							ordernum
 						</when>
 						
 						<otherwise>
-							id
+							isbn
 						</otherwise>
 		</choose>
 		like '%' || #{search} || '%' and purnum > 0
