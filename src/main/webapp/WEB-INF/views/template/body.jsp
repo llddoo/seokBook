@@ -3,17 +3,6 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <html>
  <head>
- <style>
- 	#searchbar{
- 		width:55%;
- 	}
- 	#searchbar input[type=text]{
- 		width:60% !important;
- 	}
- 	#labelforsearch{
- 		color: white;
- 	}
- </style>
  </head>
  <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -33,11 +22,7 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <span id="labelforsearch">통합검색&nbsp;&nbsp;</span>
-      <form class="form-inline mt-2 mt-md-0" id="searchbar" action="${pageContext.request.contextPath}/searchresult" method="get">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      
       &nbsp;
        <c:if test="${empty member}">
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogin">로그인</a>

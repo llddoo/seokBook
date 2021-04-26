@@ -7,21 +7,74 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="template/header.jsp"></c:import>
+<style type="text/css">
+	.searchcontainer{
+    	padding: 1.5% 0 0 30%;
+    }
+      
+    #searchbar{
+      	width : 70% !important;
+    }
+      
+    #searchbar input{
+      	width : 70%;
+    }
+    
+    .nosearchelement{
+    	font-size: 2.5rem;
+    	padding-left: 25%;
+    }
+    
+    .bookcol1{
+    	width:15%;
+    }
+    
+    .bookcol2{
+    	width:55%;
+    }
+    
+    .bookcol2 span{
+    	padding-left: 60%;
+    }
+    
+    .bookcol3{
+    	width: 12%;
+    	text-align: center;
+    }
+    
+    .bookcol4{
+    	width: 64%;
+    }
+    
+    .thead-light{
+    	text-align: center;
+    }
+</style>
 </head>
 <body>
 <c:import url="template/body.jsp"></c:import>
+<div class="input-group mb-3 searchcontainer">
+	<form class="form-inline mt-2 mt-md-0" id="searchbar" action="${pageContext.request.contextPath}/searchresult" method="get">
+		<span>통합검색&nbsp;&nbsp;</span>
+    	<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
+    	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
 <div class="container">
   <h2>책 검색 결과</h2>
   <table class="table">
     <thead class="thead-dark">
       <tr>
-        <th></th>
-        <th>검색결과</th>
-        <th></th>
-       	<th></th>
+        <th class="bookcol1"></th>
+        <th class="bookcol2"><span>검색결과</span></th>
+        <th class="bookcol1"></th>
+       	<th class="bookcol1"></th>
       </tr>
     </thead>
     <tbody>
+    <c:if test="${empty bookSearchList}">
+    	<td colspan="4"><span class="nosearchelement">검색결과가 존재하지 않습니다.</span></td>
+    </c:if>
     <c:forEach items="${bookSearchList}" var="bookdto">
       <tr class="likeBookButton">
         <td>
@@ -47,18 +100,22 @@
       </c:forEach>
     </tbody>
   </table>
-  
+  <br>
+  <br>
   <h2>중고서적 검색 결과</h2>
   <table class="table">
     <thead class="thead-light">
       <tr>
-        <th>글제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회수</th>
+        <th class="bookcol4">글제목</th>
+        <th class="bookcol3">작성자</th>
+        <th class="bookcol3">작성일</th>
+        <th class="bookcol3">조회수</th>
       </tr>
     </thead>
     <tbody>
+    <c:if test="${empty oldbookSearchList}">
+    	<td colspan="4"><span class="nosearchelement">검색결과가 존재하지 않습니다.</span></td>
+    </c:if>
     <c:forEach items="${oldbookSearchList}" var="oldbook">
       <tr class="likeoldBookButton">
         <td>¤
@@ -68,9 +125,9 @@
         		${oldbook.subname}
         	</a>
         </td>
-        <td>${oldbook.id}</td>
-        <td>${oldbook.regdate}</td>
-        <td>${oldbook.visitcount}</td>
+        <td class="bookcol3">${oldbook.id}</td>
+        <td class="bookcol3">${oldbook.regdate}</td>
+        <td class="bookcol3">${oldbook.visitcount}</td>
       </tr>
       </c:forEach>
     </tbody>
@@ -78,15 +135,6 @@
 </div>
 <c:import url="template/footer.jsp"></c:import>
 <script type="text/javascript">
-
-	$('.likeBookButton').mouseover(function(){
-		$(this).css({"background-color":"rgba(191,218,255,0.5)"});
-	});
-	
-	$('.likeBookButton').mouseout(function(){
-		$(this).css("background-color", "transparent");
-	});
-	
 	$(".getCart").click(function(){
 		moveBook();
 	});

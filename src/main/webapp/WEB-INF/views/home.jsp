@@ -49,6 +49,18 @@
           font-size: 3.5rem;
         }
       }
+      
+      .searchcontainer{
+      	padding: 1.5% 0 0 30%;
+      }
+      
+      #searchbar{
+      	width : 70% !important;
+      }
+      
+      #searchbar input{
+      	width : 70%;
+      }
     </style>
 
     
@@ -65,6 +77,13 @@
 
 <main role="main">
 <c:import url="./template/body.jsp"></c:import>
+	<div class="input-group mb-3 searchcontainer">
+	  <form class="form-inline mt-2 mt-md-0" id="searchbar" action="${pageContext.request.contextPath}/searchresult" method="get">
+		<span>통합검색&nbsp;&nbsp;</span>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+	</div>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
