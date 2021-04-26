@@ -7,53 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="template/header.jsp"></c:import>
-<style type="text/css">
-	.searchcontainer{
-    	padding: 1.5% 0 0 30%;
-    }
-      
-    #searchbar{
-      	width : 70% !important;
-    }
-      
-    #searchbar input{
-      	width : 70%;
-    }
-    
-    .nosearchelement{
-    	font-size: 2.5rem;
-    	padding-left: 25%;
-    }
-    
-    .bookcol1{
-    	width:15%;
-    }
-    
-    .bookcol2{
-    	width:55%;
-    }
-    
-    .bookcol2 span{
-    	padding-left: 60%;
-    }
-    
-    .bookcol3{
-    	width: 12%;
-    	text-align: center;
-    }
-    
-    .bookcol4{
-    	width: 64%;
-    }
-    
-    .thead-light{
-    	text-align: center;
-    }
-    
-    .btnonright{
-    	margin-left: 40%;
-    }
-</style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/search/searchresult.css">
 </head>
 <body>
 <c:import url="template/body.jsp"></c:import>
@@ -81,24 +35,27 @@
     </c:if>
     <c:forEach items="${bookSearchList}" var="bookdto">
       <tr class="likeBookButton">
-        <td>
-        	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/upload/bookList/${bookdto.bookImg}">
+        <td class="imgalign">
+        	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookImg}">
         </td>
-        <td>
-        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}">${bookdto.bookName}</a><br>
-        	<p>작가 : ${bookdto.author}</p><p>출판사 : ${bookdto.bookPub}</p><p>출판일 : ${bookdto.bookPubDate}</p><br>
-        	<p>책설명 : ${bookdto.bookContent}</p>
+        <td class="fornextline"><p>
+        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">${bookdto.bookName}</a><br>
+        	<b>작가</b> : ${bookdto.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookPub}&nbsp;&nbsp;
+        	<b>출판일</b> : ${bookdto.bookPubDate}<br>
+        	<b>책설명</b> : ${bookdto.bookContent}</p>
         </td>
-        <td>${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
+        <td class="fornextline">${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
         <td>
-	        <select>
-	        	<option selected="selected">1</option>
-	        	<c:forEach begin="2" end="10" var="i">
-	        		<option>${i}</option>
-	        	</c:forEach>
-	        </select>	
-        	<button class="getCart">장바구니</button>
-        	<button class="getPurchase">구매하기</button>
+        	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
+        	<input type="hidden" readonly="readonly" name="id" value="${member.id}">
+		    <select class="custom-select-sm" name="bookcount">
+		    	<option selected="selected" value="1">1</option>
+		       	<c:forEach begin="2" end="10" var="i">
+		       		<option value="${i}">${i}</option>
+		       	</c:forEach>
+		    </select><br>
+        	<button class="getCart btn-sm btn-info">장바구니</button><br>
+        	<button class="getPurchase btn-sm btn-primary">구매하기</button>
         </td>
       </tr>
       </c:forEach>
@@ -152,16 +109,42 @@
 <c:import url="template/footer.jsp"></c:import>
 <script type="text/javascript">
 	$(".getCart").click(function(){
-		moveBook();
+		const id = $(this).siblings("input[name='id']").val();
+		const isbn = $(this).siblings("input[name='isbn']").val();
+		const bookcount = $(this).siblings("select").val();
+		moveBook(id, isbn, bookcount);
 	});
 	
-	$("#getPurchase").click(function(){
-		moveBook();
-		location.href="./";
+	$(".getPurchase").click(function(){
+		const id = $(this).siblings("input[name='id']").val();
+		const isbn = $(this).siblings("input[name='isbn']").val();
+		const bookcount = $(this).siblings("select").val();
+		let check = moveBook(id, isbn, bookcount);
+		if(check){
+			location.href="./";
+		}
 	});
 	
-	function moveBook(){
-		
+	function moveBook(id, isbn, bookcount){
+		if(id==''){
+			alert('로그인을 하셔야 이용할 수 있습니다.');
+			return false;
+		}
+		$.ajax({
+			type:"post",
+			url:"./member/membercart/membercartInsert",
+			data:{
+				id : id,
+				isbn : isbn,
+				bookcount : bookcount
+			},
+			success:function(result){
+				if(Number(result.trim())==0){
+					alert('업로드에 실패하셨습니다.');
+				}
+			}
+		});
+		return true;
 	}
 	
 </script>

@@ -4,10 +4,16 @@ public class MembercartDTO {
 
 	private long cartNum;
 	private String id;
-	private String ISBN;
+	private String isbn;
 	private long bookcount;
 	
 	
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}	
 	public long getCartNum() {
 		return cartNum;
 	}
@@ -19,12 +25,6 @@ public class MembercartDTO {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getISBN() {
-		return ISBN;
-	}
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
 	}
 	public long getBookcount() {
 		return bookcount;

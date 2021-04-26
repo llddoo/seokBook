@@ -24,11 +24,12 @@ public class MembercartService {
 		return membercartDAO.addCart(membercartDTO);
 	}
 	
-	public long delItem(MembercartDTO membercartDTO)throws Exception{
-		return membercartDAO.delItem(membercartDTO);
+	public long delete(MembercartDTO membercartDTO)throws Exception{
+		if(membercartDTO.getId()==null) {
+			return membercartDAO.delItem(membercartDTO);
+		}else {
+			return membercartDAO.delCartAfterCash(membercartDTO);
+		}
 	}
 	
-	public long delCartAfterCash(MembercartDTO membercartDTO)throws Exception{
-		return membercartDAO.delCartAfterCash(membercartDTO);
-	}
 }

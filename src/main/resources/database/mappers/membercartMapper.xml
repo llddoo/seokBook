@@ -9,7 +9,7 @@
 		where r between #{startRow} and #{endRow} order by cartnum asc
 	</select>
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
-		select count(cartnum) where id=#{search}
+		select count(cartnum) from membercart where id=#{search}
 	</select>
 	<insert id="addCart" parameterType="MembercartDTO">
 		Insert into membercart values(MC_CN_SEQ.nextval, #{bookcount}, #{id}, #{isbn})

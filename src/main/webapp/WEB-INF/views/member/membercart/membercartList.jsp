@@ -6,10 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="${pageContext.request.contextPath}/template/header.jsp"></c:import>
+<c:import url="../../template/header.jsp"></c:import>
 
 <style type="text/css">
 	.cartcol1{
+		vertical-align: center;
 		text-align: center;
 		width:15%;
 	}
@@ -21,8 +22,8 @@
 
 </head>
 <body>
-<c:import url="${pageContext.request.contextPath}/template/bootStrap.jsp"></c:import>
-	<div id="container">
+<c:import url="../../template/body.jsp"></c:import>
+	<div class="container">
 		<h2>장바구니</h2>
 		<table class="table">
 			<thead class="thead-dark">
@@ -34,10 +35,10 @@
 				</tr>
 			</thead>
 			
-			<c:forEach items="${list}" var="dto" >
+			<c:forEach items="${cartList}" var="bookdto" >
 				<tbody>
 					<tr>
-						<td>
+						<td class="cartcol1">
 							<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/upload/bookList/${bookdto.bookImg}">
 						</td>
 						<td>
@@ -52,6 +53,6 @@
 			</c:forEach>
 		</table>
 	</div>
-	<c:import url="${pageContext.request.contextPath}/template/footer.jsp"></c:import>
+	<c:import url="../../template/footer.jsp"></c:import>
 </body>
 </html>
