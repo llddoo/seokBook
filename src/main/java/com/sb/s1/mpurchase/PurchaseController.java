@@ -1,4 +1,4 @@
-package com.sb.s1.purchase;
+package com.sb.s1.mpurchase;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sb.s1.branch.BranchPager;
 
 @Controller
-@RequestMapping("/purchase/**")
+@RequestMapping("/mpurchase/**")
 public class PurchaseController {
 
 	@Autowired
@@ -24,7 +24,7 @@ public class PurchaseController {
 		ModelAndView mv = new ModelAndView();
 
 		purchaseDTO = purchaseService.getSelect(purchaseDTO);
-		mv.addObject("purchase", "purchase");
+		mv.addObject("mpurchase", "mpurchase");
 		mv.addObject("dto", purchaseDTO);
 
 		return mv;
@@ -35,17 +35,17 @@ public class PurchaseController {
 		ModelAndView mv = new ModelAndView();
 		List<PurchaseDTO> ar = purchaseService.getList(branchPager);
 		mv.addObject("list", ar);
-		mv.addObject("purchase", "purchase");
+		mv.addObject("mpurchase", "mpurchase");
 		mv.addObject("branchPager", branchPager);
-		mv.setViewName("purchase/purchaseList");
+		mv.setViewName("mpurchase/purchaseList");
 
 		return mv;
 	}
 	@GetMapping("purchaseInsert")
 	public ModelAndView setInsert() throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("purchase", "purchase");
-		mv.setViewName("purchase/purchaseInsert");
+		mv.addObject("mpurchase", "mpurchase");
+		mv.setViewName("mpurchase/purchaseInsert");
 
 		return mv;
 	}
@@ -71,7 +71,7 @@ public class PurchaseController {
 
 		mv.addObject("msg", message);
 		mv.addObject("path", path);
-		mv.setViewName("purchase/purchaseResult");
+		mv.setViewName("mpurchase/purchaseResult");
 
 		return mv;
 	}
@@ -81,8 +81,8 @@ public class PurchaseController {
 
 		purchaseDTO = purchaseService.getSelect(purchaseDTO);
 		mv.addObject("dto", purchaseDTO);
-		mv.addObject("purchase", "purchase");
-		mv.setViewName("purchase/purchaseUpdate");
+		mv.addObject("mpurchase", "mpurchase");
+		mv.setViewName("mpurchase/purchaseUpdate");
 		return mv;
 	}
 
@@ -100,7 +100,7 @@ public class PurchaseController {
 		}
 		mv.addObject("msg", message);
 		mv.addObject("path", path);
-		mv.setViewName("purchase/purchaseResult");
+		mv.setViewName("mpurchase/purchaseResult");
 
 		return mv;
 	}	

@@ -1,4 +1,4 @@
-package com.sb.s1.purchase;
+package com.sb.s1.mpurchase;
 
 import java.sql.Date;
 

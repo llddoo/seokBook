@@ -13,6 +13,17 @@
 <div class="container">
 	<h2>구매 목록</h2>
 	
+	<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+	
+	
+	
+    <div id="Line_Controls_Chart">
+      <!-- 라인 차트 생성할 영역 -->
+  		<div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
+      <!-- 컨트롤바를 생성할 영역 -->
+  		<div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
+		</div>
+	
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
@@ -81,6 +92,9 @@
 		</div>
 		
 		<a href="./purchaseInsert" class="btn btn-primary" role="button">구매내역추가</a>
+		<script type="text/javascript" src="../resources/js/purchase/test1.js"></script>
+		<script src="https://code.jquery.com/jquery.min.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script type="text/javascript">
 			let kind = '${branchPager.kind}';
 			$(".sel").each(function(){
@@ -93,9 +107,31 @@
 			$(".p").click(function(){
 				let curPage = $(this).attr("isbn");
 				$("#curPage").val(curPage);
-				let search = "${pager.search}";
+				let search = "${branchPager.search}";
 				$("#frm").submit();
 			});
+		</script>
+		<script type="text/javascript">
+		google.charts.load("current", {packages:["corechart"]});
+	      google.charts.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Task', 'Hours per Day'],
+	          ['멜로',     11],
+	          ['코미디',      2],
+	          ['과학',  2],
+	          ['유아', 2],
+	          ['호러',    7]
+	        ]);
+
+	        var options = {
+	          title: '구매 현황',
+	          is3D: true,
+	        };
+
+	        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+	        chart.draw(data, options);
+	      }
 		</script>
 	</div>
 <c:import url="../template/footer.jsp"></c:import>
