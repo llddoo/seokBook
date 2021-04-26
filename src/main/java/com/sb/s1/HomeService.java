@@ -1,5 +1,7 @@
 package com.sb.s1;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,12 @@ public class HomeService {
 		genreDTO.setGname(mainsearch);
 		bookListDTO.setgNumber(genreDAO.getGenrenum(genreDTO));
 		searchDTO.setBookListDTOs(bookListDAO.searchBookList(bookListDTO));
+		List<BookListDTO> booklist = searchDTO.getBookListDTOs();
+		for(BookListDTO boListDTO:booklist) {
+			if(boListDTO.getBookEx().length()>30) {
+				boListDTO.setBookEx(boListDTO.getBookEx().substring(0, 30));
+			}	
+		}
 		
 		return searchDTO;
 	}

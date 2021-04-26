@@ -35,7 +35,7 @@
       </ul>
       <span id="labelforsearch">통합검색&nbsp;&nbsp;</span>
       <form class="form-inline mt-2 mt-md-0" id="searchbar" action="${pageContext.request.contextPath}/searchresult" method="get">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
       &nbsp;

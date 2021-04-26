@@ -68,7 +68,7 @@ public class BoardController {
 		MemberDTO memberDTO= new MemberDTO();
 		memberDTO.setId("admin");
 		session.setAttribute("member", memberDTO);
-		List<BoardDTO> list = boardService.getList(pager);
+		List<BoardDTO> list = boardService.getList(pager);		
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);
 		mav.addObject("listsize", list.size());

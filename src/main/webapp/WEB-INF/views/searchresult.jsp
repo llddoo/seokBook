@@ -28,7 +28,9 @@
         	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/upload/bookList/${bookdto.bookImg}">
         </td>
         <td>
-        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}">${bookdto.bookName}</a>
+        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}">${bookdto.bookName}</a><br>
+        	<p>작가 : ${bookdto.author}</p><p>출판사 : ${bookdto.bookPub}</p><p>출판일 : ${bookdto.bookPubDate}</p><br>
+        	<p>책설명 : ${bookdto.bookEx}</p>
         </td>
         <td>${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
         <td>
@@ -45,6 +47,7 @@
       </c:forEach>
     </tbody>
   </table>
+  
   <h2>중고서적 검색 결과</h2>
   <table class="table">
     <thead class="thead-light">
@@ -57,7 +60,7 @@
     </thead>
     <tbody>
     <c:forEach items="${oldbookSearchList}" var="oldbook">
-      <tr>
+      <tr class="likeoldBookButton">
         <td>¤
         	<a href="./board/boardSelect?boardsp=${oldbook.boardsp}&subnum=${oldbook.subnum}">
         		&nbsp;
@@ -74,7 +77,16 @@
   </table>
 </div>
 <c:import url="template/footer.jsp"></c:import>
-<script type="text/javascript">	//구매나, 장바구니에 추가하기 위한 javascript구문, 둘다 ajax로 장바구니로 보내고 구매버튼은 그 이후에 purchase칸 가면됨
+<script type="text/javascript">
+
+	$('.likeBookButton').mouseover(function(){
+		$(this).css({"background-color":"rgba(191,218,255,0.5)"});
+	});
+	
+	$('.likeBookButton').mouseout(function(){
+		$(this).css("background-color", "transparent");
+	});
+	
 	$(".getCart").click(function(){
 		moveBook();
 	});

@@ -1,5 +1,7 @@
 package com.sb.s1;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,14 @@ public class HomeController {
 	private HomeService homeService;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpSession httpSession) {
+		httpSession.setAttribute("mainsearch", "");
 		return "home";
 	}
 	
 	@GetMapping("searchresult")
-	public void searchpage(String mainsearch, Model model) throws Exception{
+	public void searchpage(String mainsearch, Model model, HttpSession httpSession) throws Exception{
+		httpSession.setAttribute("mainsearch", mainsearch);
 		SearchDTO searchDTO = homeService.getSearchResultList(mainsearch);
 		model.addAttribute("oldbookSearchList", searchDTO.getOldbooksaleDTOs());
 		model.addAttribute("bookSearchList", searchDTO.getBookListDTOs());
