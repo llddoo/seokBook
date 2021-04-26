@@ -24,9 +24,9 @@
 
 
 	<select id="searchBookList" parameterType="BookListDTO" resultType="BookListDTO">
-		select isbn, bookname, price, bookEx, bookPub, bookimg, bookscore, author, bookpubdate 
-		from (select rownum r, bl.* booklist bl where author=#{author} or bookname=#{bookName} 
-		or isbn=#{isbn} or bookpub=#{bookPub} or gnumber=#{gNumber}) where r between 1 and 10;
+		select br.isbn, br.bookname, br.price, br.bookcontent, br.bookPub, br.bookimg, br.bookscore, br.author, br.bookpubdate 
+		from (select rownum r, bl.* from booklist bl where author=#{author} or bookname=#{bookName} 
+		or isbn=#{isbn} or bookpub=#{bookPub} or gnumber=#{gNumber})br where r between 1 and 10
 	</select>
 
 </mapper>

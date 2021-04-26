@@ -11,16 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-
-
-
-
-
-
-
 
 
 @Controller
@@ -32,25 +23,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-//	@RequestMapping("cart")	
-//	public void main()throws Exception{
-//		
-//	}
-//	
-//	@RequestMapping("cart")
-//	public ModelAndView cartList(MemberPager pager)throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		System.out.println(pager.getCurPage());
-//		
-//		List<cartDTO> ar = memberService.cartList(pager);
-//		
-//		//List<memberDTO> ar = memberService.cartList(curPage);
-//		mv.addObject("list", ar);
-//		mv.setViewName("member/cartList");
-//		mv.addObject("memberPager", pager);
-//		return mv;
-//		
-//	}
 	
 	@RequestMapping("memberFindID")
 	public void memberFindID()throws Exception{

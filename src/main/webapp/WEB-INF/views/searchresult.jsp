@@ -49,6 +49,10 @@
     .thead-light{
     	text-align: center;
     }
+    
+    .btnonright{
+    	margin-left: 40%;
+    }
 </style>
 </head>
 <body>
@@ -83,7 +87,7 @@
         <td>
         	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}">${bookdto.bookName}</a><br>
         	<p>작가 : ${bookdto.author}</p><p>출판사 : ${bookdto.bookPub}</p><p>출판일 : ${bookdto.bookPubDate}</p><br>
-        	<p>책설명 : ${bookdto.bookEx}</p>
+        	<p>책설명 : ${bookdto.bookContent}</p>
         </td>
         <td>${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
         <td>
@@ -100,6 +104,11 @@
       </c:forEach>
     </tbody>
   </table>
+  <c:if test="${!empty bookSearchList}">
+  	<a href="./board/boardList?boardsp=oldbooklist&kind=all&search=${mainsearch}" class="btn btnonright">
+  		더 검색해 보기
+  	</a>
+  </c:if>
   <br>
   <br>
   <h2>중고서적 검색 결과</h2>
@@ -132,7 +141,11 @@
       </c:forEach>
     </tbody>
   </table>
-  <a href="./board/boardList?boardsp='oldbooklist'">더 검색해 보기</a>
+  <c:if test="${!empty oldbookSearchList}">
+  	<a href="./board/boardList?boardsp=oldbooklist&kind=all&search=${mainsearch}" class="btn btnonright">
+  		중고서적 더 검색해 보기
+  	</a>
+  </c:if>
   <br>
   <br>
 </div>

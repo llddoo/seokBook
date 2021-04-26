@@ -35,6 +35,7 @@ public class HomeController {
 		SearchDTO searchDTO = homeService.getSearchResultList(mainsearch);
 		model.addAttribute("oldbookSearchList", searchDTO.getOldbooksaleDTOs());
 		model.addAttribute("bookSearchList", searchDTO.getBookListDTOs());
+		model.addAttribute("mainsearch", mainsearch);
 	}
 	
 	@GetMapping("errorPage")

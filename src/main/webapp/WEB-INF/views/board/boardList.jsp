@@ -23,6 +23,14 @@
 	h2{
 		font-size: 2.5rem !important;
 	}
+	.boardcol1{
+		width:64%;
+		text-align: center;
+	}
+	.boardcol2{
+		text-align: center;
+		width:12%;
+	}
 </style>
 </head>
 <body>
@@ -53,10 +61,10 @@
 	  <table class="table">
 	    <thead class="thead-dark">
 	      <tr>
-	        <th>글제목</th>
-	        <th>작성자</th>
-	        <th>쓴날짜</th>
-	        <th>조회수</th>
+	        <th class="boardcol1">글제목</th>
+	        <th class="boardcol2">작성자</th>
+	        <th class="boardcol2">쓴날짜</th>
+	        <th class="boardcol2">조회수</th>
 	      </tr>
 	    </thead>
 	    <tbody>
@@ -67,9 +75,9 @@
 		        		<c:if test="${boardsp eq 'saleend'}">[판매완료]</c:if>${select.subname}
 		        	</a>
 		        </td>
-		        <td>${select.id}</td>
-		        <td>${select.regdate}</td>
-		        <td>${select.visitcount}</td>
+		        <td class="boardcol2">${select.id}</td>
+		        <td class="boardcol2">${select.regdate}</td>
+		        <td class="boardcol2">${select.visitcount}</td>
 		      </tr>
 	      </c:forEach>
 	    </tbody>
@@ -107,6 +115,7 @@
 		<input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
 	  </form>
   </div>
+  <br><br>
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/board/boardPager.js"></script>
 </body>

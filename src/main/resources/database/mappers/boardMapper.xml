@@ -9,7 +9,7 @@
 		where 
 		<choose>
 			<when test="kind=='all'">
-				B.id || B.content || B.subname like ('%' || #{search} || '%') 
+				B.id like '%'||#{search}||'%' or B.content like '%'||#{search}||'%' or B.subname like '%'||#{search}||'%') 
 			</when>
 			<when test="kind=='id'">
 				B.id like '%' || #{search} || '%')
@@ -47,8 +47,9 @@
 	</update>
 
 	<select id="searchOldbooksaleList" parameterType="BoardDTO" resultType="BoardDTO">
-		select * from (select * from board where boardsp='oldbooksale' or boardsp = 'saleend')
+		select boa.boardsp, boa.subnum, boa.subname, boa.regdate, boa.id, boa.visitcount  
+		from (select rownum r, bd.* from (select * from board where boardsp='oldbooksale' or boardsp = 'saleend') bd
 		where subname like '%'||#{subname}||'%' or id like '%'||#{id}||'%' or content like '%'||#{content}||'%'
-		order by subnum asc
+		order by subnum asc) boa where r between 1 and 10
 	</select>
 </mapper>

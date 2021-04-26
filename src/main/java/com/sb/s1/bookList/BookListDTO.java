@@ -8,7 +8,6 @@ public class BookListDTO {
 	private long gNumber;
 	private long eBookPrice;
 	private String bookContent;
-	private String bookEx;
 	private String bookIdx;
 	private String bookPub;
 	private String bookImg;
@@ -78,12 +77,6 @@ public class BookListDTO {
 	}
 	public void setBookContent(String bookContent) {
 		this.bookContent = bookContent;
-	}
-	public String getBookEx() {
-		return bookEx;
-	}
-	public void setBookEx(String bookEx) {
-		this.bookEx = bookEx;
 	}
 	public String getBookIdx() {
 		return bookIdx;

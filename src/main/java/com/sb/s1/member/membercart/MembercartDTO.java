@@ -1,10 +1,12 @@
-package com.sb.s1.member;
+package com.sb.s1.member.membercart;
 
-public class cartDTO {
+public class MembercartDTO {
 
 	private long cartNum;
 	private String id;
 	private String ISBN;
+	private long bookcount;
+	
 	
 	public long getCartNum() {
 		return cartNum;
@@ -24,6 +26,10 @@ public class cartDTO {
 	public void setISBN(String iSBN) {
 		ISBN = iSBN;
 	}
-	
-	
+	public long getBookcount() {
+		return bookcount;
+	}
+	public void setBookcount(long bookcount) {
+		this.bookcount = bookcount;
+	}
 }
