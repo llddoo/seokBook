@@ -135,7 +135,25 @@ public class Pager {
 	private String boardsp;
 	private long subnum;
 	private long gNumber;
+	private String id;
 	
+	
+	public long getgNumber() {
+		return gNumber;
+	}
+
+	public void setgNumber(long gNumber) {
+		this.gNumber = gNumber;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public long getgnumber() {
 		return gNumber;
 	}

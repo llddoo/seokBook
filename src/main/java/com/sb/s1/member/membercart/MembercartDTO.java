@@ -1,13 +1,16 @@
 package com.sb.s1.member.membercart;
 
+import com.sb.s1.bookList.BookListDTO;
+
 public class MembercartDTO {
 
 	private long cartNum;
+	private long bookcount;
 	private String id;
 	private String isbn;
-	private long bookcount;
 	
 	
+
 	public String getIsbn() {
 		return isbn;
 	}

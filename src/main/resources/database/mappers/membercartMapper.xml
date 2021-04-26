@@ -5,7 +5,7 @@
 <mapper namespace="com.sb.s1.member.membercart.MembercartDAO">
 	<select id="getCartList" parameterType="Pager" resultType="MembercartDTO">
 		select mc.cartnum, mc.id, mc.isbn, mc.bookcount 
-		from (select rownum r, c.* from membercart c where id = #{search}) mc 
+		from (select rownum r, c.* from membercart c where id = #{id}) mc 
 		where r between #{startRow} and #{endRow} order by cartnum asc
 	</select>
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">

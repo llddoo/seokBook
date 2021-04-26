@@ -14,10 +14,16 @@ public class BookListDTO {
 	private long bookScore;
 	private String author;
 	private String bookPubDate;
+	private long scorecount;
 	
 	
 	
-		
+	public long getScorecount() {
+		return scorecount;
+	}
+	public void setScorecount(long scorecount) {
+		this.scorecount = scorecount;
+	}
 	public String getAuthor() {
 		return author;
 	}

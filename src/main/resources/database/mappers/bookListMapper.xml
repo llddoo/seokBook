@@ -32,4 +32,10 @@
 		where r between 1 and 10
 	</select>
 
+	<select id="getCartList" resultType="BookListDTO">
+		select * from booklist where 
+		<foreach collection="list" item="item" open="(" separator="or" close=")">
+			isbn = #{item.isbn}
+		</foreach>
+	</select>
 </mapper>
