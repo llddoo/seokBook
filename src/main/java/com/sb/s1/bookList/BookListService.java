@@ -26,7 +26,4 @@ public class BookListService {
 		return bookListDAO.getSelect(bookListDTO);
 	}
 	
-	public List<BookListDTO> getCartList(List<MembercartDTO> membercartDTOs) throws Exception{
-		return bookListDAO.getCartList(membercartDTOs);
-	}
 }

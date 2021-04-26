@@ -33,7 +33,4 @@ public class BookListDAO {
 	public List<BookListDTO> searchBookList(BookListDTO bookListDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"searchBookList", bookListDTO);
 	}
-	public List<BookListDTO> getCartList(List<MembercartDTO> list) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getCartList", list);
-	}
 }

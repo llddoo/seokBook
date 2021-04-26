@@ -3,10 +3,31 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sb.s1.member.membercart.MembercartDAO">
-	<select id="getCartList" parameterType="Pager" resultType="MembercartDTO">
-		select mc.cartnum, mc.id, mc.isbn, mc.bookcount 
-		from (select rownum r, c.* from membercart c where id = #{id}) mc 
-		where r between #{startRow} and #{endRow} order by cartnum asc
+	<resultMap type="MembercartDTO" id="getCartList">
+		<id property="cartNum" column="cartnum"/>
+		<result property="bookcount" column="bookcount"/>
+		<result property="id" column="id"/>
+		<result property="isbn" column="isbn"/>
+		<association property="bookListDTO" javaType="BookListDTO">
+			<id property="isbn" column="booklist_isbn"/>
+			<result property="bookName" column="bookname"/>
+			<result property="price" column="price"/>
+			<result property="gNumber" column="gnumber"/>
+			<result property="eBookPrice" column="ebookprice"/>
+			<result property="bookContent" column="bookcontent"/>
+			<result property="bookIdx" column="bookidx"/>
+			<result property="bookPub" column="bookpub"/>
+			<result property="bookImg" column="bookimg"/>
+			<result property="bookScore" column="bookscore"/>
+			<result property="author" column="author"/>
+			<result property="bookPubDate" column="bookpubdate"/>
+		</association>
+	</resultMap>
+	<select id="getCartList" parameterType="Pager" resultMap="getCartList">
+		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
+		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
+		from (select rownum r, m.*, b.* from membercart m, booklist b where m.isbn = b.isbn and m.id = #{id} ) mb
+		where mb.r between #{startRow} and #{endRow}
 	</select>
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
 		select count(cartnum) from membercart where id=#{search}

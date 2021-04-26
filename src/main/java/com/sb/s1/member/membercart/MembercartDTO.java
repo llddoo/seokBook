@@ -8,9 +8,15 @@ public class MembercartDTO {
 	private long bookcount;
 	private String id;
 	private String isbn;
+	private BookListDTO bookListDTO;
 	
 	
-
+	public BookListDTO getBookListDTO() {
+		return bookListDTO;
+	}
+	public void setBookListDTO(BookListDTO bookListDTO) {
+		this.bookListDTO = bookListDTO;
+	}
 	public String getIsbn() {
 		return isbn;
 	}
