@@ -132,6 +132,9 @@
       </c:forEach>
     </tbody>
   </table>
+  <a href="./board/boardList?boardsp='oldbooklist'">더 검색해 보기</a>
+  <br>
+  <br>
 </div>
 <c:import url="template/footer.jsp"></c:import>
 <script type="text/javascript">

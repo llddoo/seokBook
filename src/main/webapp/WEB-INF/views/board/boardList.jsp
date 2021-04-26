@@ -90,6 +90,9 @@
 		 	<button class="btn btn-success float-right" id="searchingButton">Search</button>
 			<input type="text" class="form-control float-right" placeholder="Search" id="searchbar" name="search">
 			<select class="custom-select float-right" id="searchselectbar" name="kind">
+				<c:if test="${pager.boardsp eq 'oldbooklist'}">
+					<option value="all">제목+내용+작성자</option>
+				</c:if>
 				<option value="subname" selected>제목</option>
 				<option value="content">내용</option>
 				<option value="id">작성자</option>

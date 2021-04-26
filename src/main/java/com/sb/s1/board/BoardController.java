@@ -72,7 +72,8 @@ public class BoardController {
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);
 		mav.addObject("listsize", list.size());
-		if(!boardchecking(pager.getBoardsp())) {
+		if(!boardchecking(pager.getBoardsp()) || pager.getBoardsp().equals("oldbooksale")
+											  || pager.getBoardsp().equals("saleend")) 		{
 			mav.setViewName("/errorPage");
 		}
 		return mav;

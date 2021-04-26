@@ -8,17 +8,20 @@
 		<if test='boardsp.equals("oldbooklist")'>or boardsp = 'saleend' or boardsp = 'oldbooksale'</if>) B 
 		where 
 		<choose>
+			<when test="kind=='all'">
+				B.id || B.content || B.subname like ('%' || #{search} || '%') 
+			</when>
 			<when test="kind=='id'">
-				B.id
+				B.id like '%' || #{search} || '%')
 			</when>
 			<when test="kind=='content'">
-				B.content
+				B.content like '%' || #{search} || '%')
 			</when>
 			<otherwise>
-				B.subname
+				B.subname like '%' || #{search} || '%')
 			</otherwise>
 		</choose>
-		like '%' || #{search} || '%')
+		
 		WHERE (RN BETWEEN #{startRow} AND #{endRow}) order by subnum asc
 	</select>
 	<select id="getSelect" parameterType="BoardDTO" resultType="BoardDTO">
