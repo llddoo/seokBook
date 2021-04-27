@@ -7,13 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
-<c:import url="../template/body.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
+
 </head>
 
 <body>
-	<h3>&nbsp</h3>
-	<h1>&nbsp</h1>
+<c:import url="../template/body.jsp"></c:import>
+	<h3>&nbsp;</h3>
+	<h1>&nbsp;</h1>
 	<h1>Login Page</h1>
 	<form action="./memberLogin" method="post">
 		<div class="form-group">
@@ -33,6 +34,6 @@
 	</form>
 	<a class="btn btn-link" href="./memberFindID">아이디찾기</a>
 	<a class="btn btn-link" href="./memberFindPW">비밀번호찾기</a>
-	
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

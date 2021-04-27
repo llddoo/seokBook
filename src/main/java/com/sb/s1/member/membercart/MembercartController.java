@@ -1,12 +1,16 @@
 package com.sb.s1.member.membercart;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.Pager;
 
 @Controller
@@ -17,8 +21,14 @@ public class MembercartController {
 	private MembercartService membercartService;
 	
 	@GetMapping("membercartList")
-	public void membercartList(Pager pager, Model model) throws Exception{
-		model.addAttribute("booklist", membercartService.getCartList(pager));
+	public ModelAndView membercartList(Pager pager, HttpSession httpSession, ModelAndView model) throws Exception{
+		MemberDTO memberDTO = (MemberDTO) httpSession.getAttribute("member");
+		if(memberDTO==null||!memberDTO.getId().equals(pager.getId())) {
+			model.setViewName("./errorPage");
+			return model;
+		}
+		model.addObject("booklist", membercartService.getCartList(pager));
+		return model;
 	}
 	
 	@PostMapping("membercartInsert")
