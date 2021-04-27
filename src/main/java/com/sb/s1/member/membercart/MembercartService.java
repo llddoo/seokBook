@@ -35,8 +35,5 @@ public class MembercartService {
 			return membercartDAO.delCartAfterCash(membercartDTO);
 		}
 	}
-	
-	public List<MembercartDTO> membercartListforPur(MembercartDTO membercartDTO)throws Exception{
-		return membercartDAO.membercartListforPur(membercartDTO);
-	}
+
 }

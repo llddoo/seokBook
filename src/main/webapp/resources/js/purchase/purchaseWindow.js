@@ -12,30 +12,5 @@ $(document).ready(function(){
 			$("#userInfo").append(result);
 		}
 	});
-	const isbn = $("#forCartList").val();
-	if(isbn==='null'){
-		$.ajax({
-			type:"get",
-			url:"../member/membercart/membercartListforPur",
-			data:{
-				id:id
-			},
-			success:function(result){
-				result=result.trim();
-				$("#userInfo").append(result);
-			}
-		});
-	}else{
-		$.ajax({
-			type:"get",
-			url:"../address/addressSelect",
-			data:{
-				id:id
-			},
-			success:function(result){
-				result=result.trim();
-				$("#userInfo").append(result);
-			}
-		});
-	}
+	
 });

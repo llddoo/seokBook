@@ -45,8 +45,4 @@
 	<delete id="delCartAfterCash" parameterType="MembercartDTO">
 		Delete from membercart where id=#{id}
 	</delete>
-	<select id="membercartListforPur" parameterType="MembercartDTO" resultMap="getCartList">
-		select mb.* from (select m.cartnum, m.bookcount, m.id, b.* from membercart m join booklist b where m.isbn = b.isbn) mb
-		where id = #{id}
-	</select>
 </mapper>

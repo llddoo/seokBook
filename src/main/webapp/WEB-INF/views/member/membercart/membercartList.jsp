@@ -91,6 +91,7 @@
 				</tbody>
 			</c:forEach>
 		</table>
+		<input type="hidden" readonly="readonly" id="listsize" value="${listsize}">
 		<c:if test="${listsize eq 0}">
 			<br>
 			<h2 id="emptycart">장바구니가 비어있습니다.</h2>

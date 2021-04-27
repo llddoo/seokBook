@@ -43,7 +43,11 @@
 });	
 
 $("#allpurchase").click(function(){
-	
+	if($("#listsize").val()==0){
+		alert('장바구니에 아무것도 없습니다. 구매할 물건을 추가해 주세요.');
+	}else{
+		
+	}
 });
 
 $("#allcartdelete").click(function(){

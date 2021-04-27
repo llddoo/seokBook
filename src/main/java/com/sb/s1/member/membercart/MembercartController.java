@@ -52,7 +52,11 @@ public class MembercartController {
 	}
 	
 	@GetMapping("membercartListforPur")
-	public void membercartListforPur(MembercartDTO membercartDTO, Model model)throws Exception{
-		model.addAttribute("cartList", membercartService.membercartListforPur(membercartDTO));
+	public void membercartListforPur(List<MembercartDTO> list, Model model)throws Exception{
+		model.addAttribute("listsize", list.size());
+		if(list.size()==0) {
+			return;
+		}
+		model.addAttribute("cartList", list);
 	}
 }
