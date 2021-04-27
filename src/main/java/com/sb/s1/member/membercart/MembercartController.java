@@ -50,13 +50,4 @@ public class MembercartController {
 	public void membercartDelete(MembercartDTO membercartDTO, Model model) throws Exception {
 		model.addAttribute("result", membercartService.delete(membercartDTO));
 	}
-	
-	@GetMapping("membercartListforPur")
-	public void membercartListforPur(List<MembercartDTO> list, Model model)throws Exception{
-		model.addAttribute("listsize", list.size());
-		if(list.size()==0) {
-			return;
-		}
-		model.addAttribute("cartList", list);
-	}
 }

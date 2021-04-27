@@ -2,17 +2,20 @@ package com.sb.s1.purchase;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sb.s1.branch.BranchPager;
 import com.sb.s1.member.MemberDTO;
+import com.sb.s1.member.membercart.MembercartDTO;
 
 @Controller
 @RequestMapping("/purchase/**")
@@ -107,8 +110,8 @@ public class PurchaseController {
 		return mv;
 	}	
 	
-	@GetMapping("purchaseWindow")
-	public void purchaseWindow(MemberDTO memberDTO, Model model)throws Exception{
-		model.addAttribute("user", memberDTO);
+	@PostMapping("purchaseWindow")
+	public void purchaseWindow(@RequestBody List<MembercartDTO> list, HttpSession httpSession, Model model)throws Exception{
+		model.addAttribute("user", (MemberDTO)httpSession.getAttribute("member"));
 	}
 }

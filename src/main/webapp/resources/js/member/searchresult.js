@@ -12,9 +12,13 @@ $(".getPurchase").click(function(){
 	const id = $(this).siblings("input[name='id']").val();
 	const isbn = $(this).siblings("input[name='isbn']").val();
 	const bookcount = $(this).siblings("select").val();
-	let check = moveBook(id, isbn, bookcount);
+	let list = [{"id":id, "isbn":isbn, "bookcount":bookcount}];
+	let check = confirm('이 책을 바로 구입하시겠습니까?');
 	if(check){
-		location.href="./";
+		$(this).parent().append("<form id='purchasethisitem'></form>");
+		let purchasethisitem = $("form[id='#purchasethisitem']");
+		purchasethisitem.append("<input name='id' value="+id+"><input name='isbn' value="+isbn+">");
+		purchasethisitem.append("<input name='bookcount' value="+bookcount+">");
 	}
 });
 	

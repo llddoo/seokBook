@@ -107,6 +107,6 @@
   <br>
 </div>
 <c:import url="template/footer.jsp"></c:import>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/membercart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/searchresult.js"></script>
 </body>
 </html>
