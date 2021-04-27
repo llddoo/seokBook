@@ -27,6 +27,9 @@ public class BookListController {
 	@GetMapping("listBook")
 	public void bookList(Pager pager, Model model)throws Exception{
 		List<BookListDTO> list=bookListService.getList(pager);
+		for(BookListDTO bookListDTO:list) {
+			bookListDTO.setBookContent(bookListDTO.getBookContent().substring(0,50));
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());

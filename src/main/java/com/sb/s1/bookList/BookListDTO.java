@@ -8,17 +8,22 @@ public class BookListDTO {
 	private long gNumber;
 	private long eBookPrice;
 	private String bookContent;
-	private String bookEx;
 	private String bookIdx;
 	private String bookPub;
-	private String bookImg;
 	private long bookScore;
 	private String author;
 	private String bookPubDate;
-	
+	private String bookImg;
+	private long scoreCount;
 	
 	
 		
+	public long getScoreCount() {
+		return scoreCount;
+	}
+	public void setScoreCount(long scoreCount) {
+		this.scoreCount = scoreCount;
+	}
 	public String getAuthor() {
 		return author;
 	}
@@ -78,12 +83,6 @@ public class BookListDTO {
 	}
 	public void setBookContent(String bookContent) {
 		this.bookContent = bookContent;
-	}
-	public String getBookEx() {
-		return bookEx;
-	}
-	public void setBookEx(String bookEx) {
-		this.bookEx = bookEx;
 	}
 	public String getBookIdx() {
 		return bookIdx;
