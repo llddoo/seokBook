@@ -20,16 +20,19 @@ public class MembercartService {
 		return membercartDAO.getCartList(pager);
 	}
 	
+	public MembercartDTO checkBook(MembercartDTO membercartDTO)throws Exception{
+		return membercartDAO.checkBook(membercartDTO);
+	}
+	
 	public long addCart(MembercartDTO membercartDTO)throws Exception{
 		return membercartDAO.addCart(membercartDTO);
 	}
 	
 	public long delete(MembercartDTO membercartDTO)throws Exception{
-		if(membercartDTO.getId()==null) {
+		if(membercartDTO.getIsbn()!=null) {
 			return membercartDAO.delItem(membercartDTO);
 		}else {
 			return membercartDAO.delCartAfterCash(membercartDTO);
 		}
 	}
-	
 }

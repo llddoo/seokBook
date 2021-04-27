@@ -19,11 +19,14 @@ public class MembercartController {
 	@GetMapping("membercartList")
 	public void membercartList(Pager pager, Model model) throws Exception{
 		model.addAttribute("booklist", membercartService.getCartList(pager));
-		model.addAttribute("pager", pager);
 	}
 	
 	@PostMapping("membercartInsert")
 	public void membercartInsert(MembercartDTO membercartDTO, Model model)throws Exception{
+		if(membercartService.checkBook(membercartDTO)!=null) {
+			model.addAttribute("result", 0);
+			return;
+		}
 		model.addAttribute("result", membercartService.addCart(membercartDTO));
 	}
 	

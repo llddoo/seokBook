@@ -24,6 +24,9 @@
 	.fornextline{
     	line-height: 2rem;
     }
+    .booknametitle{
+    	font-size: 1.3rem;
+    }
 </style>
 
 </head>
@@ -45,20 +48,20 @@
 				<tbody>
 					<tr>
 						<td class="textforline">
-							<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookImg}">
+							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
 						</td>
 						 <td class="fornextline"><p>
-				        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
-				        		${bookdto.bookName}
+				        	<a href="./bookList/bookListSelect?isbn=${bookdto.bookListDTO.isbn}" class="bookselect">
+				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
 				        	</a><br>
-				        	<b>작가</b> : ${bookdto.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookPub}&nbsp;&nbsp;
-				        	<b>출판일</b> : ${bookdto.bookPubDate}<br>
-				        	<b>책설명</b> : ${bookdto.bookContent}</p>
+				        	<b>작가</b> : ${bookdto.bookListDTO.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookListDTO.bookPub}&nbsp;&nbsp;
+				        	<b>출판일</b> : ${bookdto.bookListDTO.bookPubDate}<br>
+				        	<b>책설명</b> : ${bookdto.bookListDTO.bookContent}</p>
 				        </td>
-				        <td class="fornextline">${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
+				        <td class="fornextline">${bookdto.bookListDTO.price}원<br>평점 : ${bookdto.bookListDTO.bookScore}</td>
 				        <td>
 					        <form>
-					        	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
+					        	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.bookListDTO.isbn}">
 					        	<input type="hidden" readonly="readonly" name="id" value="${member.id}">
 							    <select class="custom-select-sm" name="bookcount">
 							    	<option selected="selected" value="1">1</option>
@@ -68,7 +71,7 @@
 							    </select><br>
 					        	<button class="getCart btn-sm btn-info">바로구매</button>
 					        </form>
-					        <input type="hidden" readonly="readonly" value="${bookdto.isbn}" id="fordelete">
+					        <input type="hidden" readonly="readonly" value="${bookdto.bookListDTO.isbn}" id="fordelete">
 				        	<button class="getDelete btn-sm btn-primary">삭제</button>
 				        </td>
 					</tr>
@@ -79,11 +82,29 @@
 	<c:import url="../../template/footer.jsp"></c:import>
 <script type="text/javascript">
 	$(".getDelete").click(function(){
-		const cartNum = $(this).siblings("#fordelete").value();
-		$.ajax({
-			type:"post"
-		});
-	});		
+		const id = $(this).siblings("form").find("input[name='id']").val();
+		const isbn = $(this).siblings("form").find("input[name='isbn']").val();
+		
+		let check = confirm('장바구니에서 제거하시겠습니까?');
+		if(check){
+			$.ajax({
+				type:"post",
+				url:"./membercartDelete",
+				data:{
+					id:id,
+					isbn:isbn
+				},
+				success:function(result){
+					if(Number(result.trim())>0){
+						alert('제거되었습니다.');
+					}else{
+						alert('이미 제거되었거나, 제거할 수 없습니다.');
+					}
+				}
+			});
+			location.href="./membercartList?id="+id;
+		}
+	});	
 </script>
 </body>
 </html>

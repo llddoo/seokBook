@@ -9,7 +9,7 @@
 		<result property="id" column="id"/>
 		<result property="isbn" column="isbn"/>
 		<association property="bookListDTO" javaType="BookListDTO">
-			<id property="isbn" column="booklist_isbn"/>
+			<id property="isbn" column="isbn"/>
 			<result property="bookName" column="bookname"/>
 			<result property="price" column="price"/>
 			<result property="gNumber" column="gnumber"/>
@@ -21,13 +21,17 @@
 			<result property="bookScore" column="bookscore"/>
 			<result property="author" column="author"/>
 			<result property="bookPubDate" column="bookpubdate"/>
+			<result property="scorecount" column="scorecount"/>
 		</association>
 	</resultMap>
 	<select id="getCartList" parameterType="Pager" resultMap="getCartList">
 		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
 		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
-		from (select rownum r, m.*, b.* from membercart m, booklist b where m.isbn = b.isbn and m.id = #{id} ) mb
+		from (select rownum r, m.cartnum, m.bookcount, m.id, b.* from membercart m, booklist b where m.isbn = b.isbn and m.id = #{id} ) mb
 		where mb.r between #{startRow} and #{endRow}
+	</select>
+	<select id="checkBook" parameterType="MembercartDTO" resultType="MembercartDTO">
+		select * from membercart where id=#{id} and isbn=#{isbn}
 	</select>
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
 		select count(cartnum) from membercart where id=#{search}
@@ -36,7 +40,7 @@
 		Insert into membercart values(MC_CN_SEQ.nextval, #{bookcount}, #{id}, #{isbn})
 	</insert>
 	<delete id="delItem" parameterType="MembercartDTO">
-		Delete from membercart where cartnum=#{cartnum}
+		Delete from membercart where id = #{id} and isbn = #{isbn}
 	</delete>
 	<delete id="delCartAfterCash" parameterType="MembercartDTO">
 		Delete from membercart where id=#{id}

@@ -18,6 +18,9 @@ public class MembercartDAO {
 	public List<MembercartDTO> getCartList(Pager pager)throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getCartList", pager);
 	}
+	public MembercartDTO checkBook(MembercartDTO membercartDTO)throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"checkBook", membercartDTO);
+	}
 	public long getTotalCount(Pager pager)throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
@@ -25,7 +28,7 @@ public class MembercartDAO {
 		return sqlSession.insert(NAMESPACE+"addCart", membercartDTO);
 	}
 	public long delItem(MembercartDTO membercartDTO)throws Exception {
-		return sqlSession.delete(NAMESPACE+"getCartList", membercartDTO);
+		return sqlSession.delete(NAMESPACE+"delItem", membercartDTO);
 	}
 	public long delCartAfterCash(MembercartDTO membercartDTO)throws Exception {
 		return sqlSession.delete(NAMESPACE+"delCartAfterCash", membercartDTO);
