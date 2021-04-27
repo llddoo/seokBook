@@ -68,4 +68,7 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberDTO);
 	}
 
+	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"selectUserInfo", memberDTO);
+	}
 }

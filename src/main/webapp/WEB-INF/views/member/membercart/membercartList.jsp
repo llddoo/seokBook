@@ -112,7 +112,12 @@
 				</li>
 			</ul>
 		</c:if>
-	</div><br><br><br>
+		<br>
+		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
+		<button id="allpurchase" class="btn btn-primary">전체 구매</button><br>
+		<button id="allcartdelete" class="btn btn-danger">전체 삭제</button>
+	</div>
+	<br>
 	<c:import url="../../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/membercartList.js"></script>
 </body>

@@ -7,8 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
-<c:import url="../template/body.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 <style type="text/css">
 	.r1 {
 		color: red;
@@ -21,10 +20,10 @@
 </head>
 
 <body>
-
+<c:import url="../template/body.jsp"></c:import>
 	<div class="container mt-2">
 
-		<h1>&nbsp</h1>
+		<h1>&nbsp;</h1>
 		<h2 class="mt-4">Member Join Page</h2>
 
 		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
@@ -70,6 +69,7 @@
 			
 		</form>
 	</div>
+	<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
 </body>
 </html>

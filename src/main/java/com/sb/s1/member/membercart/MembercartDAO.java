@@ -33,4 +33,7 @@ public class MembercartDAO {
 	public long delCartAfterCash(MembercartDTO membercartDTO)throws Exception {
 		return sqlSession.delete(NAMESPACE+"delCartAfterCash", membercartDTO);
 	}
+	public List<MembercartDTO> membercartListforPur(MembercartDTO membercartDTO)throws Exception {
+		return sqlSession.selectList(NAMESPACE+"membercartListforPur", membercartDTO);
+	}
 }

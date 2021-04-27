@@ -38,14 +38,14 @@
         <td class="imgalign">
         	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookImg}">
         </td>
-        <td class="fornextline"><p>
+        <td><p>
         	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">${bookdto.bookName}</a><br>
         	<b>작가</b> : ${bookdto.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookPub}&nbsp;&nbsp;
         	<b>출판일</b> : ${bookdto.bookPubDate}<br>
         	<b>책설명</b> : ${bookdto.bookContent}</p>
         </td>
         <td class="fornextline">${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
-        <td>
+        <td class="fornextline">
         	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
         	<input type="hidden" readonly="readonly" name="id" value="${member.id}">
 		    <select class="custom-select-sm" name="bookcount">
@@ -62,7 +62,7 @@
     </tbody>
   </table>
   <c:if test="${!empty bookSearchList}">
-  	<a href="./board/boardList?boardsp=oldbooklist&kind=all&search=${mainsearch}" class="btn btnonright">
+  	<a href="./bookList/bookList?boardsp=oldbooklist&kind=all&search=${mainsearch}" class="btn btnonright">
   		더 검색해 보기
   	</a>
   </c:if>

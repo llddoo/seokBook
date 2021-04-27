@@ -1,6 +1,7 @@
 /**
  * 
  */
+
  $(document).ready(function(){
 	const pagerpre = $("#pagerpre").val();
 	const pagernext = $("#pagernext").val();
@@ -14,7 +15,7 @@
 		$("#nextbutton").find("a").attr("href", "#");
 	}
 });
-
+ const id = $("#forallcheck").val();
 
  $(".getDelete").click(function(){
 	const id = $(this).siblings("form").find("input[name='id']").val();
@@ -40,3 +41,23 @@
 		location.href="./membercartList?id="+id;
 	}
 });	
+
+$("#allpurchase").click(function(){
+	
+});
+
+$("#allcartdelete").click(function(){
+	$.ajax({
+		url:"./membercartDelete",
+		type:"post",
+		data:{
+			id:id
+		},
+		success:function(result){
+			if(Number(result.trim())==0){
+				alert("장바구니를 비우는 도중 문제가 발생했습니다.");
+			}
+		}
+	});
+	location.href="./membercartList?id="+id;
+});

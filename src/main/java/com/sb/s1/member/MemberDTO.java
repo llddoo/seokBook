@@ -10,9 +10,20 @@ public class MemberDTO {
 	private String grade;
 	private long totalmoney;
 	private long point;
-
+	private String isbn;
+	
+	public MemberDTO(){
+		this.isbn="null";
+	}
 	
 	
+	
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 	public long getTotalmoney() {
 		return totalmoney;
 	}

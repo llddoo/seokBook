@@ -15,6 +15,7 @@
 		<typeAlias type="com.sb.s1.storeBook.StoreBookDTO" alias="StoreBookDTO"/>
 		<typeAlias type="com.sb.s1.purchase.PurchaseDTO" alias="PurchaseDTO"/>
 		<typeAlias type="com.sb.s1.member.membercart.MembercartDTO" alias="MembercartDTO"/>
+		<typeAlias type="com.sb.s1.address.AddressDTO" alias="AddressDTO"/>
 		<typeAlias type="com.sb.s1.util.Pager" alias="Pager"/>
 		
 		<typeAlias type="java.lang.Long" alias="Long"/>

@@ -45,16 +45,20 @@
     	margin-left: 40%;
     }
     
-    .imgalign{
-    	vertical-align: middle;
-    }
-    .likeBookButton{
-    	vertical-align: middle;
-    	text-align: center;
-    }
     .bookselect{
     	font-size: 1.4rem;
     }
+    
     .fornextline{
-    	line-height: 2rem;
+    	text-align: center;
+    	vertical-align: middle !important;
+    	line-height: 2rem !important;
+    }
+    
+    .getCart{
+    	margin-top: 1rem;
+    }
+    
+    .getPurchase{
+    	margin-top: 0.5rem;
     }

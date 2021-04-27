@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<c:import url="../template/header.jsp"></c:import>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+</head>
+<body>
+<c:import url="../template/body.jsp"></c:import>
+<p>주문자 정보 띄우기</p>
+<p>배송 위치 불러와서 어디로 배달 시킬건지 먼저 리스트를 보여 주어야 한다.</p>
+<p>선택 형식이라면 어느 리스트를 사용할 것인지 선택하도록 해당 페이지로 넘어가는 버튼을 만든다.</p>
+<p>주문한 내역들을 보여주는 테이블이 필요하다.(상품정보, 판매가(개수))</p>
+<p>할인 내역과 적립 내역을 보여준다.</p>
+<p>어떤 방식으로 결제를 할 것인지 선택하고 결제창으로 이동시킨다.</p>
+<div class="container">
+	<input type="hidden" readonly="readonly" id="getUserInfo" value="${user.id}">
+	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
+	
+	<div id="userInfo"></div>
+	
+  	<div id="useraddresslist">
+  		
+  	</div>
+  	<div id="useritems">
+  		<table class="table">
+		    <thead>
+		      <tr>
+		        <th>Firstname</th>
+		        <th>Lastname</th>
+		        <th>Email</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	
+		    </tbody>
+		 </table>
+  	</div>
+</div>
+<c:import url="../template/footer.jsp"></c:import>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js"></script>
+</body>
+</html>

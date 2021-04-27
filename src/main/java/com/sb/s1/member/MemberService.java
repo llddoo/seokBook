@@ -80,5 +80,7 @@ public class MemberService {
 		return result;
 	}
 
-
+	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
+		return memberDAO.selectUserInfo(memberDTO);
+	}
 }
