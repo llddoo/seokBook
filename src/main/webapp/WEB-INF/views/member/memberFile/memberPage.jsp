@@ -7,8 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../../template/bootStrap.jsp"></c:import>
-<c:import url="../../template/body.jsp"></c:import>
+<c:import url="../../template/header.jsp"></c:import>
 <style type="text/css">
 
 #div_root{
@@ -42,7 +41,7 @@ text-align:center;
 </head>
 
 <body>
-
+<c:import url="../../template/body.jsp"></c:import>
 <div id="div_root">
 	<div id="div_top" >
 
@@ -54,9 +53,9 @@ text-align:center;
 
 			<ul class ="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="./cart">장바구니</a></li>
+					href="../membercart/membercartList?id=${member.id}">장바구니</a></li>
 				<li class="nav-item"><a class="btn btn-link"
-					href="javascript:void(0)">문의내역</a></li>
+					href="../../board/boardList?boardsp=qna">문의내역</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="./memberUpdate">회원정보 수정</a></li>
 				<li class="nav-item"><a class="btn btn-link"
@@ -84,6 +83,6 @@ text-align:center;
 </div>
 
 <script type="text/javascript" src="../resources/js/member/memberPoint.js"></script>	
-
+<c:import url="../../template/footer.jsp"></c:import>
 </body>
 </html>

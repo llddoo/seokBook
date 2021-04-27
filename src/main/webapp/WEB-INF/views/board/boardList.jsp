@@ -90,21 +90,25 @@
 		  </c:forEach>
 		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
 		</ul>
-		</c:if>
+		</c:if><br><br>
 	<div>
-	 	<a class="btn btn-primary" href="./boardInsert?boardsp=${pager.boardsp}">글쓰기</a>
+		<c:if test="${(pager.boardsp ne 'event' && pager.boardsp ne 'notice')|| member.id eq 'admin'}">
+	 		<a class="btn btn-primary" href="./boaq	rdInsert?boardsp=${pager.boardsp}">글쓰기</a>
+	 	</c:if>
 	 	<form class="float-right" method="get" action="./boardList" id="searchingform">
 	 		<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}">
-		 	<button class="btn btn-success float-right" id="searchingButton">Search</button>
-			<input type="text" class="form-control float-right" placeholder="Search" id="searchbar" name="search">
-			<select class="custom-select float-right" id="searchselectbar" name="kind">
-				<c:if test="${pager.boardsp eq 'oldbooklist'}">
-					<option value="all">제목+내용+작성자</option>
-				</c:if>
-				<option value="subname" selected>제목</option>
-				<option value="content">내용</option>
-				<option value="id">작성자</option>
-			</select>
+	 		<c:if test="${boardsp ne 'qna'}">
+			 	<button class="btn btn-success float-right" id="searchingButton">Search</button>
+				<input type="text" class="form-control float-right" placeholder="Search" id="searchbar" name="search">
+				<select class="custom-select float-right" id="searchselectbar" name="kind">
+					<c:if test="${pager.boardsp eq 'oldbooklist'}">
+						<option value="all">제목+내용+작성자</option>
+					</c:if>
+					<option value="subname" selected>제목</option>
+					<option value="content">내용</option>
+					<option value="id">작성자</option>
+				</select>
+			</c:if>
 		</form>
 	</div>
 	  <form action="./boardList" id="getListSearching">
@@ -113,6 +117,10 @@
 		<input type="hidden" readonly="readonly" id="curBlock" name="curBlock" value="${pager.curBlock}">
 		<input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">
 		<input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
+		<c:if test="${boardsp eq 'qna'}">
+			<input type="hidden" readonly="readonly" name="kind" value="id">
+			<input type="hidden" readonly="readonly" name="search" value="${member.id}">
+		</c:if>
 	  </form>
   </div>
   <br><br>
