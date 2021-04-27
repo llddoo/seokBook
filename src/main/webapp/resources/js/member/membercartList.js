@@ -1,6 +1,21 @@
 /**
  * 
  */
+ $(document).ready(function(){
+	const pagerpre = $("#pagerpre").val();
+	const pagernext = $("#pagernext").val();
+	
+	if(pagerpre=='false'){
+		$("#prebutton").attr("class","page-item disabled");
+		$("#prebutton").find("a").attr("href", "#");
+	}
+	if(pagernext=='false'){
+		$("#nextbutton").attr("class","page-item disabled");
+		$("#nextbutton").find("a").attr("href", "#");
+	}
+});
+
+
  $(".getDelete").click(function(){
 	const id = $(this).siblings("form").find("input[name='id']").val();
 	const isbn = $(this).siblings("form").find("input[name='isbn']").val();

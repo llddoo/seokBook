@@ -27,6 +27,19 @@
     .booknametitle{
     	font-size: 1.3rem;
     }
+    .getCart{
+    	margin-top: 0.5rem;
+    }
+    .getDelete{
+    	margin-top: 0.5rem;
+    }
+    .foralign{
+    	text-align: center;
+    	vertical-align: middle !important;
+    }
+    #emptycart{
+    	text-align: center;
+    }
 </style>
 
 </head>
@@ -58,11 +71,11 @@
 				        	<b>출판일</b> : ${bookdto.bookListDTO.bookPubDate}<br>
 				        	<b>책설명</b> : ${bookdto.bookListDTO.bookContent}</p>
 				        </td>
-				        <td class="fornextline">${bookdto.bookListDTO.price}원<br>평점 : ${bookdto.bookListDTO.bookScore}</td>
-				        <td>
+				        <td class="foralign">${bookdto.bookListDTO.price}원<br>평점 : ${bookdto.bookListDTO.bookScore}</td>
+				        <td class="foralign">
 					        <form>
 					        	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.bookListDTO.isbn}">
-					        	<input type="hidden" readonly="readonly" name="id" value="${member.id}">
+					        	<input type="hidden" readonly="readonly" name="id" value="${pager.id}">
 							    <select class="custom-select-sm" name="bookcount">
 							    	<option selected="selected" value="1">1</option>
 							       	<c:forEach begin="2" end="10" var="i">
@@ -72,13 +85,34 @@
 					        	<button class="getCart btn-sm btn-info">바로구매</button>
 					        </form>
 					        <input type="hidden" readonly="readonly" value="${bookdto.bookListDTO.isbn}" id="fordelete">
-				        	<button class="getDelete btn-sm btn-primary">삭제</button>
+				        	<button class="getDelete btn-sm btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</button>
 				        </td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-	</div>
+		<c:if test="${listsize eq 0}">
+			<br>
+			<h2 id="emptycart">장바구니가 비어있습니다.</h2>
+		</c:if>
+		<c:if test="${listsize ne 0}">
+			<input type="hidden" readonly="readonly" id="pagerpre" value="${pager.pre}">
+			<input type="hidden" readonly="readonly" id="pagernext" value="${pager.next}">
+			<ul class="pagination justify-content-center" id="pagerList">
+				<li class="page-item" id="prebutton">
+					<a href="./membercartList?id=${pager.id}&curPage=${pager.curPage}&curBlock=${pager.curBlock-1}" class="page-link">Previous</a>
+				</li>
+				<c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
+				  	<li class="page-item">
+				  		<a href="./membercartList?id=${pager.id}&curPage=${i}&curBlock=${pager.curBlock}" class="page-link">${i}</a>
+				  	</li>	
+				</c:forEach>
+				<li class="page-item" id="nextbutton">
+					<a href="./membercartList?id=${pager.id}&curPage=${pager.curPage}&curBlock=${pager.curBlock+1}" class="page-link">Next</a>
+				</li>
+			</ul>
+		</c:if>
+	</div><br><br><br>
 	<c:import url="../../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/membercartList.js"></script>
 </body>

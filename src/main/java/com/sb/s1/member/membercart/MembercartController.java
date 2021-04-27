@@ -1,5 +1,7 @@
 package com.sb.s1.member.membercart;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.bookList.BookListDTO;
 import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.Pager;
 
@@ -27,7 +30,10 @@ public class MembercartController {
 			model.setViewName("./errorPage");
 			return model;
 		}
-		model.addObject("booklist", membercartService.getCartList(pager));
+		List<MembercartDTO> list = membercartService.getCartList(pager);
+		model.addObject("booklist", list);
+		model.addObject("listsize", list.size());
+		model.addObject("pager", pager);
 		return model;
 	}
 	

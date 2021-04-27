@@ -34,7 +34,7 @@
 		select * from membercart where id=#{id} and isbn=#{isbn}
 	</select>
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">
-		select count(cartnum) from membercart where id=#{search}
+		select count(cartnum) from membercart where id=#{id}
 	</select>
 	<insert id="addCart" parameterType="MembercartDTO">
 		Insert into membercart values(MC_CN_SEQ.nextval, #{bookcount}, #{id}, #{isbn})
