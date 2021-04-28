@@ -1,5 +1,6 @@
 package com.sb.s1.member.membercart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -56,5 +57,14 @@ public class MembercartController {
 		MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
 		membercartDTO.setId(memberDTO.getId());
 		model.addAttribute("result", membercartService.updateCart(membercartDTO));
+	}
+	
+	@PostMapping("membercartDeleteList")
+	public void membercartDeleteList(long[] cartNumlist, Model model) throws Exception {
+		ArrayList<Long> arr = new ArrayList<Long>();
+		for(long i : cartNumlist) {
+			arr.add(i);
+		}
+		model.addAttribute("result", membercartService.deleteList(arr));
 	}
 }

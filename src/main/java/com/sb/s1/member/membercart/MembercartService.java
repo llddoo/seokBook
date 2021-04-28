@@ -1,5 +1,6 @@
 package com.sb.s1.member.membercart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class MembercartService {
 	
 	public long delete(MembercartDTO membercartDTO)throws Exception{
 		return membercartDAO.delItem(membercartDTO);
+	}
+	
+	public long deleteList(ArrayList<Long> list)throws Exception{
+		return membercartDAO.deleteList(list);
 	}
 	
 	public long updateCart(MembercartDTO membercartDTO)throws Exception{

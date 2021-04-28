@@ -42,6 +42,12 @@
 	<delete id="delItem" parameterType="MembercartDTO">
 		Delete from membercart where id = #{id} and isbn = #{isbn}
 	</delete>
+	<delete id="deleteList" parameterType="java.util.List">
+		Delete from membercart where 
+		<foreach collection="list" item="item" separator="or">
+			cartnum=#{item}
+		</foreach>
+	</delete>
 	<update id="updateCart" parameterType="MembercartDTO">
 		update membercart set bookcount = #{bookcount} where id=#{id} and isbn=#{isbn}
 	</update>

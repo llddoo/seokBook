@@ -1,5 +1,6 @@
 package com.sb.s1.member.membercart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,5 +33,8 @@ public class MembercartDAO {
 	}
 	public long updateCart(MembercartDTO membercartDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"updateCart", membercartDTO);
+	}
+	public long deleteList(ArrayList<Long> list)throws Exception{
+		return sqlSession.delete(NAMESPACE+"deleteList", list);
 	}
 }

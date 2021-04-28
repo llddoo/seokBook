@@ -52,7 +52,10 @@
 						<td class="textforline">
 							<div class="form-check">
 							  <label class="form-check-label">
-							    <input type="checkbox" class="form-check-input forpurchaselist" name="isbnlist" value="${bookdto.isbn}">
+							    <input type="checkbox" class="form-check-input forpurchaselist">
+							    <input type="hidden" readonly="readonly" name="cartNumlist" value="${bookdto.cartNum}">
+							    <input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
+							    <input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 							  </label>
 							</div>
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
@@ -111,6 +114,11 @@
 		</c:if>
 		<br>
 		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p>
+		<div class="form-check">
+			<label class="form-check-label">
+				<input type="checkbox" class="form-check-input" id="allpurchaselist">
+			</label>
+		</div>
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
 		<button id="allpurchase" class="btn btn-primary">주문하기</button>
 		<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
