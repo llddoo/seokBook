@@ -28,13 +28,17 @@
 		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
 		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
 		from (select rownum r, m.cartnum, m.bookcount, m.id, b.* from membercart m, booklist b where m.isbn = b.isbn and m.id = #{id} ) mb
-		where mb.r between #{startRow} and #{endRow}
+	</select>
+	<select id="getCartListforpurchase" parameterType="java.util.List" resultMap="getCartList">
+		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
+		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
+		from (select m.cartnum, m.bookcount, m.id, b.* from membercart m, booklist b where m.isbn = b.isbn) mb where
+		<foreach collection="list" item="item" separator="or">
+			mb.isbn=#{item.isbn} and mb.bookcount=#{item.bookcount} and mb.id=#{item.id}
+		</foreach>
 	</select>
 	<select id="checkBook" parameterType="MembercartDTO" resultType="MembercartDTO">
 		select * from membercart where id=#{id} and isbn=#{isbn}
-	</select>
-	<select id="getTotalCount" parameterType="Pager" resultType="Long">
-		select count(cartnum) from membercart where id=#{id}
 	</select>
 	<insert id="addCart" parameterType="MembercartDTO">
 		Insert into membercart values(MC_CN_SEQ.nextval, #{bookcount}, #{id}, #{isbn})

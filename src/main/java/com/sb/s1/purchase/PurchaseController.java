@@ -10,13 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sb.s1.branch.BranchPager;
 import com.sb.s1.member.MemberDTO;
 import com.sb.s1.member.membercart.MembercartDTO;
+import com.sb.s1.member.membercart.MembercartService;
 
 @Controller
 @RequestMapping("/purchase/**")
@@ -24,6 +24,9 @@ public class PurchaseController {
 
 	@Autowired
 	private PurchaseService purchaseService;
+	@Autowired
+	private MembercartService membercartService;
+	
 
 	@GetMapping("purchaseSelect")
 	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
@@ -112,7 +115,18 @@ public class PurchaseController {
 	}	
 	
 	@PostMapping("purchaseWindow")
-	public void purchaseWindow(ArrayList<String> isbnlist, ArrayList<Long> countlist ,HttpSession httpSession, Model model)throws Exception{
-		model.addAttribute("user", (MemberDTO)httpSession.getAttribute("member"));
+	public void purchaseWindow(String[] isbnlist, long[] countlist ,HttpSession httpSession, Model model)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+		model.addAttribute("user", memberDTO);
+		ArrayList<MembercartDTO> list = new ArrayList<MembercartDTO>();
+		final int arraysize= isbnlist.length;
+		for(int i = 0 ; i < arraysize; i++) {
+			MembercartDTO membercartDTO = new MembercartDTO();
+			membercartDTO.setIsbn(isbnlist[i]);
+			membercartDTO.setBookcount(countlist[i]);
+			membercartDTO.setId(memberDTO.getId());
+			list.add(membercartDTO);
+		}
+		model.addAttribute("booklist", membercartService.getCartListforpurchase(list));
 	}
 }

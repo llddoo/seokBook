@@ -95,23 +95,6 @@
 			<br>
 			<h2 id="emptycart">장바구니가 비어있습니다.</h2>
 		</c:if>
-		<c:if test="${listsize ne 0}">
-			<input type="hidden" readonly="readonly" id="pagerpre" value="${pager.pre}">
-			<input type="hidden" readonly="readonly" id="pagernext" value="${pager.next}">
-			<ul class="pagination justify-content-center" id="pagerList">
-				<li class="page-item" id="prebutton">
-					<a href="./membercartList?id=${pager.id}&curPage=${pager.curPage}&curBlock=${pager.curBlock-1}" class="page-link">Previous</a>
-				</li>
-				<c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
-				  	<li class="page-item">
-				  		<a href="./membercartList?id=${pager.id}&curPage=${i}&curBlock=${pager.curBlock}" class="page-link">${i}</a>
-				  	</li>	
-				</c:forEach>
-				<li class="page-item" id="nextbutton">
-					<a href="./membercartList?id=${pager.id}&curPage=${pager.curPage}&curBlock=${pager.curBlock+1}" class="page-link">Next</a>
-				</li>
-			</ul>
-		</c:if>
 		<br>
 		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p>
 		<div class="form-check">

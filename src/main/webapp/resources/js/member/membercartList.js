@@ -1,18 +1,5 @@
 
  $(document).ready(function(){
-	//페이징 처리
-	const pagerpre = $("#pagerpre").val();
-	const pagernext = $("#pagernext").val();
-	
-	if(pagerpre=='false'){
-		$("#prebutton").attr("class","page-item disabled");
-		$("#prebutton").find("a").attr("href", "#");
-	}
-	if(pagernext=='false'){
-		$("#nextbutton").attr("class","page-item disabled");
-		$("#nextbutton").find("a").attr("href", "#");
-	}
-	
 	//장바구니에 넣어둔 책 개수 표현
 	$(".selectedbookcount").each(function(){
 		const bookcount = $(this).siblings("input.forchecklist").val();

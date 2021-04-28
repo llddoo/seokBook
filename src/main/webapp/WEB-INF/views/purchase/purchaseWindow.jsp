@@ -31,20 +31,27 @@
   		<table class="table">
 		    <thead>
 		      <tr>
-		        <th>Firstname</th>
-		        <th>Lastname</th>
-		        <th>Email</th>
+		        <th>상품정보</th>
+		        <th>판매가</th>
 		      </tr>
 		    </thead>
+		    <c:forEach items="${booklist}" var="book">
 		    <tbody>
 		    	<tr>
-		    		<td></td>
-		    		<td></td>
-		    		<td></td>
+		    		<td>
+		    			<img alt="${book.bookListDTO.bookImg}" 
+		    				src="${pageContext.request.contextPath}/resources/uploaded/bookList/${book.bookListDTO.bookImg}">
+		    			${book.bookListDTO.bookName}
+		    		</td>
+		    		<td>총 ${book.bookListDTO.price * book.bookcount}원 | 수량 ${book.bookcount}개
+		    			<br>권당 ${book.bookListDTO.price}원
+		    		</td>
 		    	</tr>
 		    </tbody>
+		    </c:forEach>
 		 </table>
   	</div>
+  	<p>포인트를 사용할 칸과 결제를 위한 칸이 나와야 한다.</p>
 </div>
 <c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js"></script>

@@ -15,9 +15,6 @@ public class MembercartService {
 	private MembercartDAO membercartDAO;
 	
 	public List<MembercartDTO> getCartList(Pager pager)throws Exception{
-		pager.setCurPage(pager.getCurPage() == 0 ? 1 : pager.getCurPage());
-		pager.setCurBlock(pager.getCurBlock() == 0 ? 1 : pager.getCurBlock());
-		pager.makecal(membercartDAO.getTotalCount(pager));
 		return membercartDAO.getCartList(pager);
 	}
 	
@@ -39,5 +36,9 @@ public class MembercartService {
 	
 	public long updateCart(MembercartDTO membercartDTO)throws Exception{
 		return membercartDAO.updateCart(membercartDTO);
+	}
+	
+	public List<MembercartDTO> getCartListforpurchase(ArrayList<MembercartDTO> list)throws Exception{
+		return membercartDAO.getCartListforpurchase(list);
 	}
 }
