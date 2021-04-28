@@ -8,8 +8,15 @@ public class AddressDTO {
 	private String name;
 	private String phonenum;
 	private String recentuse;
+	private String postcode;
 	
 	
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
 	public long getAdrnum() {
 		return adrnum;
 	}

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:if test="${address ne 'null'}">${address.address}<br>${address.phonenum}<br>${address.name}</c:if>
-<c:if test="${address eq 'null'}">null</c:if>
+${address.postcode} <a href="../address/addressList" id="manual-ajax">배송지 변경</a><br>${address.address}<br>${address.name} | ${address.phonenum}

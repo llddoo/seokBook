@@ -3,11 +3,6 @@
 $(document).ready(function(){
 	var IMP = window.IMP;
 	IMP.init("iamport");
-	const inputs = "<input type='text' id='sample6_postcode' placeholder='우편번호'>"
-					+"<input type='button' onclick='sample6_execDaumPostcode()' value='우편번호 찾기'><br>"
-					+"<input type='text' id='sample6_address' placeholder='주소'><br>"
-					+"<input type='text' id='sample6_detailAddress' placeholder='상세주소'>"
-					+"<input type='text' id='sample6_extraAddress' placeholder='참고항목'>"
 	
 	const id = $("#getUserInfo").val();
 	$.ajax({
@@ -21,18 +16,55 @@ $(document).ready(function(){
 			$("#userInfo").append(result);
 		}
 	});
-	$.ajax({
-		type:"get",
-		url:"../address/addressSelect",
+});
+
+$('#manual-ajax').click(function(event) {
+	event.preventDefault();
+	this.blur();
+	const id = $("#getUserInfo").val();
+	const location = this.href;
+	$.post(location, {id:id},function(html){
+		$(html).appendTo('body').modal();
+	});
+	if(location==="../address/addressInsertform"){
+		
+	}else{
+		
+	}
+});
+
+$("#addressInsert").click(function(){
+	$(".frm-chk").each(function(){
+		const thisform = $(this);
+		if(thisfor.attr(id)!='sample6_detailAddress'){
+			if(thisform.val()===''){
+				alert('비어있는 항목이 존재합니다.');
+				return;
+			}
+		}
+	});
+	const id = $("#getUserInfo").val();
+	const postcode = $("#sample6_postcode").val();
+	const address = $("#sample6_address").val()+' '+$("#sample6_detailAddress").val()+' '+$("#sample6_extraAddress").val();
+	const name = $("#sample6_name").val();
+	const phonecall = $("#sample6_phonecall").val();
+	$.post({
+		url:"../address/addressInsert",
 		data:{
-			id:id
+			id:id,
+			postcode:postcode,
+			address:address,
+			name:name,
+			phonenum:phonecall
 		},
 		success:function(result){
-			result=result.trim();
-			if(result==='null'){
-				$("#useraddresslist").append(inputs);
+			result=Number(result.trim());
+			if(result>0){
+				$.modal.close();
+				$("#useraddresslist").empty();
+				
 			}else{
-				$("#useraddresslist").append(result);
+				alert('전송에 실패하였습니다. 다시 시도해 주세요.');
 			}
 		}
 	});
@@ -52,7 +84,7 @@ $("#payment").click(function(){
 	    buyer_postcode: "01181"
   	},
   	function(rsp) {
-		if ( rsp.success ) {
+		if ( rsp.success || resp.error_msg==='' ) {
 			var msg = '결제가 완료되었습니다.';
 			msg += '고유ID : ' + rsp.imp_uid;
 			msg += '상점 거래ID : ' + rsp.merchant_uid;

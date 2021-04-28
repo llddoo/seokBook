@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.address.AddressDTO;
+import com.sb.s1.address.AddressService;
 import com.sb.s1.branch.BranchPager;
 import com.sb.s1.member.MemberDTO;
+import com.sb.s1.member.MemberService;
 import com.sb.s1.member.membercart.MembercartDTO;
 import com.sb.s1.member.membercart.MembercartService;
 
@@ -26,7 +29,10 @@ public class PurchaseController {
 	private PurchaseService purchaseService;
 	@Autowired
 	private MembercartService membercartService;
-	
+	@Autowired
+	private AddressService addressService;
+	@Autowired
+	private MemberService memberService;
 
 	@GetMapping("purchaseSelect")
 	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
@@ -117,7 +123,9 @@ public class PurchaseController {
 	@PostMapping("purchaseWindow")
 	public void purchaseWindow(String[] isbnlist, long[] countlist ,HttpSession httpSession, Model model)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+		memberDTO = memberService.getSelect(memberDTO);
 		model.addAttribute("user", memberDTO);
+		
 		ArrayList<MembercartDTO> list = new ArrayList<MembercartDTO>();
 		final int arraysize= isbnlist.length;
 		for(int i = 0 ; i < arraysize; i++) {
@@ -128,5 +136,9 @@ public class PurchaseController {
 			list.add(membercartDTO);
 		}
 		model.addAttribute("booklist", membercartService.getCartListforpurchase(list));
+		
+		AddressDTO addressDTO = new AddressDTO();
+		addressDTO.setId(memberDTO.getId());
+		model.addAttribute("address", addressService.getSelect(addressDTO));
 	}
 }

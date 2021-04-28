@@ -24,16 +24,14 @@
 <div class="container">
 	<input type="hidden" readonly="readonly" id="getUserInfo" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
-	<div id="modal-image" class="modal">
-[insert page='modal-popup-image' display='content']
-</div>
-
-<a href="#modal-image" rel="modal:open">팝업창 띄우기</a>
+	<div id="useraddresslist">
+  		<c:if test="${empty address}">등록된 주소지가 없습니다. <a href="../address/addressInsertform" id="manual-ajax">배송지 추가</a></c:if>
+  		<c:if test="${!empty address}">이름 우편번호 실주소 전화번호 <a href="../address/addressList" id="manual-ajax">배송지 변경</a></c:if>
+  	</div>
+	
 	<div id="userInfo"></div>
 	
-  	<div id="useraddresslist">
-  		
-  	</div>
+  	
   	<div id="useritems">
   		<table class="table">
 		    <thead>
