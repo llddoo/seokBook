@@ -5,17 +5,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구매 목록</title>
+<title>관리자 구매내역 확인</title>
 <c:import url="../template/header.jsp"></c:import>
+<link rel="stylesheet" href="../resources/css/mpurchase/test1.css">
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
 <div class="container">
-	<h2>구매 목록</h2>
-	
+	<h2 style="padding: 0px 10px 1px; 
+	margin: 10px 0px 5px; 
+	border-left-width: 5px; 
+	border-left-style: solid; 
+	border-left-color: rgb(216, 60, 60); 
+	font-size: 14pt; color: rgb(51, 51, 51); 
+	font-family: '맑은 고딕', 'Noto Sans Korean'; 
+	border-bottom-color: rgb(211, 211, 211); 
+	border-bottom-width: 1px; 
+	border-bottom-style: solid; 
+	letter-spacing: -0.07em; 
+	line-height: 35px; 
+	background-color: rgb(250, 250, 250);">구매 내역</h2>
+
+	<!-- 도넛 차트 -->	
 	<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
-	
-	
+
 	
     <div id="Line_Controls_Chart">
       <!-- 라인 차트 생성할 영역 -->
@@ -84,16 +97,16 @@
 					<option class="sel">구매날짜</option>
 				</select>
 			</div>
-		
+			<input type="text" class="form-control" name="search" id="search" value="${branchPager.search}" placeholder="입력하시오">
 			<div class="input-group-append">
-				<button class="btn btn-success" type="submit">구매내역검색</button>
+				<button class="btn btn-outline-success" type="submit">Search</button>
 			</div>
 		</form>
 		</div>
 		
-		<a href="./purchaseInsert" class="btn btn-primary" role="button">구매내역추가</a>
+		<a href="./purchaseInsert" class="btn btn-outline-primary" role="button">Add</a>
+		
 		<script type="text/javascript" src="../resources/js/purchase/test1.js"></script>
-		<script src="https://code.jquery.com/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		<script type="text/javascript">
 			let kind = '${branchPager.kind}';
@@ -112,16 +125,16 @@
 			});
 		</script>
 		<script type="text/javascript">
-		google.charts.load("current", {packages:["corechart"]});
+		  google.charts.load("current", {packages:["corechart"]});
 	      google.charts.setOnLoadCallback(drawChart);
 	      function drawChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['Task', 'Hours per Day'],
-	          ['멜로',     11],
-	          ['코미디',      2],
-	          ['과학',  2],
-	          ['유아', 2],
-	          ['호러',    7]
+	          ['멜로', 55],
+	          ['코미디', 68],
+	          ['과학', 142],
+	          ['유아', 442],
+	          ['호러', 447]
 	        ]);
 
 	        var options = {
