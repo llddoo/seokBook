@@ -9,6 +9,9 @@
 <c:import url="../template/header.jsp"></c:import>
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- jquery modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
@@ -21,7 +24,11 @@
 <div class="container">
 	<input type="hidden" readonly="readonly" id="getUserInfo" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
-	
+	<div id="modal-image" class="modal">
+[insert page='modal-popup-image' display='content']
+</div>
+
+<a href="#modal-image" rel="modal:open">팝업창 띄우기</a>
 	<div id="userInfo"></div>
 	
   	<div id="useraddresslist">
@@ -52,8 +59,10 @@
 		 </table>
   	</div>
   	<p>포인트를 사용할 칸과 결제를 위한 칸이 나와야 한다.</p>
+  	<button id="payment">결제하기</button>
 </div>
 <c:import url="../template/footer.jsp"></c:import>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js"></script>
 </body>
 </html>

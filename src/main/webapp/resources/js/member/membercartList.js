@@ -94,8 +94,8 @@ $("#allpurchase").click(function(){
 		$("#allpurchase").parent().append("<form id='allpurchasetransform' method='post' action='../../purchase/purchaseWindow'></form>");
 		const isbnlength = isbnlist.length;
 		for(let i = 0 ; i < isbnlength; i++){
-			$("#allpurchasetransform").append("<input name='isbnlist' value="+isbnlist[i]+">");
-			$("#allpurchasetransform").append("<input name='countlist' value="+countlist[i]+">");
+			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='isbnlist' value="+isbnlist[i]+">");
+			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='countlist' value="+countlist[i]+">");
 		}
 		$("#allpurchasetransform").submit();
 	}else{
