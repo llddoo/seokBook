@@ -30,7 +30,7 @@ public class MembercartDAO {
 	public long delItem(MembercartDTO membercartDTO)throws Exception {
 		return sqlSession.delete(NAMESPACE+"delItem", membercartDTO);
 	}
-	public long delCartAfterCash(MembercartDTO membercartDTO)throws Exception {
-		return sqlSession.delete(NAMESPACE+"delCartAfterCash", membercartDTO);
+	public long updateCart(MembercartDTO membercartDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"updateCart", membercartDTO);
 	}
 }

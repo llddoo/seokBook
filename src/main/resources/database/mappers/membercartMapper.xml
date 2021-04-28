@@ -42,7 +42,7 @@
 	<delete id="delItem" parameterType="MembercartDTO">
 		Delete from membercart where id = #{id} and isbn = #{isbn}
 	</delete>
-	<delete id="delCartAfterCash" parameterType="MembercartDTO">
-		Delete from membercart where id=#{id}
-	</delete>
+	<update id="updateCart" parameterType="MembercartDTO">
+		update membercart set bookcount = #{bookcount} where id=#{id} and isbn=#{isbn}
+	</update>
 </mapper>

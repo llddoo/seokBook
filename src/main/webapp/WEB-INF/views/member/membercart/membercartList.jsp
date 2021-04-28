@@ -9,18 +9,6 @@
 <c:import url="../../template/header.jsp"></c:import>
 
 <style type="text/css">
-	.cartcol1{
-		vertical-align: center;
-		text-align: center;
-		width:15%;
-	}
-	.cartcol2{
-		text-align: center;
-		width:55%;
-	}
-	.cartcol2 span{
-		margin-left: 30%;
-	}
 	.fornextline{
     	line-height: 2rem;
     }
@@ -50,10 +38,11 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-					<th class="cartcol1"></th>
-					<th class="cartcol2"><span>장바구니 목록</span></th>
-					<th class="cartcol1"></th>
-					<th class="cartcol1"></th>
+					<th>상품정보</th>
+					<th>판매가</th>
+					<th>수량</th>
+					<th>합계</th>
+					<th>선택</th>
 				</tr>
 			</thead>
 			
@@ -61,37 +50,44 @@
 				<tbody>
 					<tr>
 						<td class="textforline">
+							<div class="form-check">
+							  <label class="form-check-label">
+							    <input type="checkbox" class="form-check-input forpurchaselist" name="isbnlist" value="${bookdto.isbn}">
+							  </label>
+							</div>
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
+							<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
+				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
+				        	</a>
 						</td>
 						 <td class="fornextline"><p>
-				        	<a href="./bookList/bookListSelect?isbn=${bookdto.bookListDTO.isbn}" class="bookselect">
-				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
-				        	</a><br>
-				        	<b>작가</b> : ${bookdto.bookListDTO.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookListDTO.bookPub}&nbsp;&nbsp;
-				        	<b>출판일</b> : ${bookdto.bookListDTO.bookPubDate}<br>
-				        	<b>책설명</b> : ${bookdto.bookListDTO.bookContent}</p>
+				        	${bookdto.bookListDTO.price}원<br>
+				        	${bookdto.bookListDTO.price/20}Point
 				        </td>
-				        <td class="foralign">${bookdto.bookListDTO.price}원<br>평점 : ${bookdto.bookListDTO.bookScore}</td>
+				        <td>
+				        	<input type="hidden" readonly="readonly" value="${bookdto.isbn}" name="isbn">
+					    	<input type="hidden" readonly="readonly" value="${bookdto.bookcount}" class="forchecklist">
+							<select class="custom-select-sm selectedbookcount" name="countlist">
+								<c:forEach begin="1" end="10" var="i">
+								   	<option value="${i}">${i}</option>
+								</c:forEach>
+							</select>
+							<button class="btn changebookcount">변경</button>
+					    </td>
+				        <td class="foralign">${bookdto.bookListDTO.price * bookdto.bookcount}원</td>
 				        <td class="foralign">
-					        <form>
-					        	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.bookListDTO.isbn}">
-					        	<input type="hidden" readonly="readonly" name="id" value="${pager.id}">
-							    <select class="custom-select-sm" name="bookcount">
-							    	<option selected="selected" value="1">1</option>
-							       	<c:forEach begin="2" end="10" var="i">
-							       		<option value="${i}">${i}</option>
-							       	</c:forEach>
-							    </select><br>
-					        	<button class="getCart btn-sm btn-info">바로구매</button>
-					        </form>
-					        <input type="hidden" readonly="readonly" value="${bookdto.bookListDTO.isbn}" id="fordelete">
+				        	<form action="../../purchase/purchaseWindow" method="post">
+				        		<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
+				        		<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
+				        	</form>
+					        <button class="getPurchase btn-sm btn-info">바로구매</button>
+					        <input type="hidden" readonly="readonly" value="${bookdto.isbn}" class="fordelete">
 				        	<button class="getDelete btn-sm btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</button>
 				        </td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
-		<input type="hidden" readonly="readonly" id="listsize" value="${listsize}">
 		<c:if test="${listsize eq 0}">
 			<br>
 			<h2 id="emptycart">장바구니가 비어있습니다.</h2>
@@ -114,9 +110,10 @@
 			</ul>
 		</c:if>
 		<br>
+		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p>
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
-		<button id="allpurchase" class="btn btn-primary">전체 구매</button><br>
-		<button id="allcartdelete" class="btn btn-danger">전체 삭제</button>
+		<button id="allpurchase" class="btn btn-primary">주문하기</button>
+		<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
 	</div>
 	<br>
 	<c:import url="../../template/footer.jsp"></c:import>

@@ -1,7 +1,6 @@
 /**
  * 
  */
-
  $(document).ready(function(){
 	const pagerpre = $("#pagerpre").val();
 	const pagernext = $("#pagernext").val();
@@ -14,12 +13,17 @@
 		$("#nextbutton").attr("class","page-item disabled");
 		$("#nextbutton").find("a").attr("href", "#");
 	}
+	
+	$(".selectedbookcount").each(function(){
+		const bookcount = $(this).siblings("input.forchecklist").val();
+		$(this).val(bookcount);
+	});
 });
+
  const id = $("#forallcheck").val();
 
  $(".getDelete").click(function(){
-	const id = $(this).siblings("form").find("input[name='id']").val();
-	const isbn = $(this).siblings("form").find("input[name='isbn']").val();
+	const isbn = $(this).siblings("form").find("input[name='isbnlist']").val();
 	
 	let check = confirm('장바구니에서 제거하시겠습니까?');
 	if(check){
@@ -42,12 +46,30 @@
 	}
 });	
 
-$("#allpurchase").click(function(){
-	if($("#listsize").val()==0){
-		alert('장바구니에 아무것도 없습니다. 구매할 물건을 추가해 주세요.');
-	}else{
-		
+$(".getPurchase").click(function(){
+	const thisform = $(this).siblings("form");
+	let check = confirm('이 책을 바로 구입하시겠습니까?');
+	if(check){
+		thisform.submit();
 	}
+});
+
+$(".changebookcount").click(function(){
+	const bookcount = $(this).siblings("select[name='countlist']").val();
+	const isbn = $(this).siblings("input[name='isbn']").val();
+	$.ajax({
+		type:"post",
+		url:"./membercartUpdate",
+		data:{
+			bookcount:bookcount,
+			isbn:isbn
+		}
+	});
+	location.href="./membercartList?id="+id;
+});
+
+$("#allpurchase").click(function(){
+	
 });
 
 $("#allcartdelete").click(function(){
@@ -59,7 +81,7 @@ $("#allcartdelete").click(function(){
 		},
 		success:function(result){
 			if(Number(result.trim())==0){
-				alert("장바구니를 비우는 도중 문제가 발생했습니다.");
+				alert("장바구니가 이미 비어있습니다.");
 			}
 		}
 	});

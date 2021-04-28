@@ -50,4 +50,11 @@ public class MembercartController {
 	public void membercartDelete(MembercartDTO membercartDTO, Model model) throws Exception {
 		model.addAttribute("result", membercartService.delete(membercartDTO));
 	}
+	
+	@PostMapping("membercartUpdate")
+	public void membercartUpdate(MembercartDTO membercartDTO, HttpSession httpSession, Model model)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
+		membercartDTO.setId(memberDTO.getId());
+		model.addAttribute("result", membercartService.updateCart(membercartDTO));
+	}
 }

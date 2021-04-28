@@ -1,28 +1,7 @@
-/**
- * 
- */
  $(".getCart").click(function(){
 	const id = $(this).siblings("input[name='id']").val();
 	const isbn = $(this).siblings("input[name='isbn']").val();
 	const bookcount = $(this).siblings("select").val();
-	moveBook(id, isbn, bookcount);
-});
-	
-$(".getPurchase").click(function(){
-	const id = $(this).siblings("input[name='id']").val();
-	const isbn = $(this).siblings("input[name='isbn']").val();
-	const bookcount = $(this).siblings("select").val();
-	let list = [{"id":id, "isbn":isbn, "bookcount":bookcount}];
-	let check = confirm('이 책을 바로 구입하시겠습니까?');
-	if(check){
-		$(this).parent().append("<form id='purchasethisitem'></form>");
-		let purchasethisitem = $("form[id='#purchasethisitem']");
-		purchasethisitem.append("<input name='id' value="+id+"><input name='isbn' value="+isbn+">");
-		purchasethisitem.append("<input name='bookcount' value="+bookcount+">");
-	}
-});
-	
-function moveBook(id, isbn, bookcount){
 	if(id==''){
 		alert('로그인을 하셔야 이용할 수 있습니다.');
 		return false;
@@ -44,4 +23,16 @@ function moveBook(id, isbn, bookcount){
 		}
 	});
 	return true;
-}
+});
+	
+$(".getPurchase").click(function(){
+	const isbn = $(this).siblings("input[name='isbn']").val();
+	const bookcount = $(this).siblings("select").val();
+	const thisis = $(this);
+	let check = confirm('이 책을 바로 구입하시겠습니까?');
+	if(check){
+		thisis.parent().append("<form id='purchaseOption' method='post' action='./purchase/purchaseWindow'></form>");
+		$("#purchaseOption").append("<input name='isbnlist' value="+isbn+"><input name='countlist' value="+bookcount+">");
+		$("#purchaseOption").submit();
+	}
+});

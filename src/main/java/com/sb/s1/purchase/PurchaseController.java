@@ -1,5 +1,6 @@
 package com.sb.s1.purchase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -111,7 +112,7 @@ public class PurchaseController {
 	}	
 	
 	@PostMapping("purchaseWindow")
-	public void purchaseWindow(@RequestBody List<MembercartDTO> list, HttpSession httpSession, Model model)throws Exception{
+	public void purchaseWindow(ArrayList<String> isbnlist, ArrayList<Long> countlist ,HttpSession httpSession, Model model)throws Exception{
 		model.addAttribute("user", (MemberDTO)httpSession.getAttribute("member"));
 	}
 }

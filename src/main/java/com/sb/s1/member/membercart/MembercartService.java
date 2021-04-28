@@ -29,11 +29,10 @@ public class MembercartService {
 	}
 	
 	public long delete(MembercartDTO membercartDTO)throws Exception{
-		if(membercartDTO.getIsbn()!=null) {
-			return membercartDAO.delItem(membercartDTO);
-		}else {
-			return membercartDAO.delCartAfterCash(membercartDTO);
-		}
+		return membercartDAO.delItem(membercartDTO);
 	}
-
+	
+	public long updateCart(MembercartDTO membercartDTO)throws Exception{
+		return membercartDAO.updateCart(membercartDTO);
+	}
 }
