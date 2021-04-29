@@ -51,52 +51,15 @@
 
 
 	<select id="memberIdCheck" parameterType="MemberDTO"
-		resultType="MemberDTO">
-		select id from member where id=#{id}
-	</select>
-	
-	 <select id="cartList" resultType="BookListDTO" >
-		<![CDATA[
-		select * from
-         (select rownum R, B.* from
-            (select * from booklist where
-               <choose>
-              
-                     <when test="kind == 'Gnumber'">
-                        Gnumber
-                     </when>
-                     
-                     <otherwise>
-                    	bookname
-                     </otherwise>
-                    
-               </choose>   
-            like '%' || #{search} || '%' and gnumber > 0 order by gnumber desc)
-             B)
-            where R between #{startRow} and #{lastRow}
-            		]]>
-	</select>
+      resultType="MemberDTO">
+      select id from member where id = #{id}
+   </select>
 
 	
+	 
 
-	<select id="getTotalCount" resultType="Long" >	
-		 	<![CDATA[
-		 select count(gnumber) from booklist
-         where
-               <choose>
-               
-                      <when test="kind == 'Gnumber'">
-                        Gnumber
-                     </when>
-                     
-                     <otherwise>
-                    	bookname
-                     </otherwise>
-                    
-               </choose>   
-            like '%' || #{search} || '%' and gnumber > 0 
-		]]>
-	</select>
+
+	
 
 	
 

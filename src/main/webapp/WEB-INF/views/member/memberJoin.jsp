@@ -44,7 +44,7 @@
 	<div class="container mt-2" style="text-align: center">
 		
 		<h1>&nbsp;</h1>
-		<h2 class="mt-4">Member Join Page</h2>
+		<h2 class="mt-4">Member Join Page1111</h2>
 			<div id="div_main" class="container mt-2">
 		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<div class="form-group">

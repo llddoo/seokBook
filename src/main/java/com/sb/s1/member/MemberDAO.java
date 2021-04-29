@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 
 
 import com.sb.s1.bookList.BookListDTO;
-import com.sb.s1.branch.BranchDTO;
-import com.sb.s1.branch.BranchPager;
-
 
 
 
@@ -33,16 +30,9 @@ public class MemberDAO {
 
 
 	
-	public long getTotalCount(MemberPager memberPager) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE+"getTotalCount", memberPager);
-	}
 	
 	
-	public List<BookListDTO> cartList(MemberPager memberPager) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"cartList", memberPager);
-	}
+	
 	
 //	public int memberPoint(MemberDTO memberDTO)throws Exception{
 //		
@@ -71,8 +61,9 @@ public class MemberDAO {
 
 	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
 
-		return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
-	}
+	      return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
+	   }
+
 	//맴버 업데이트
 	public int memberUpdate(MemberDTO memberDTO)throws Exception{
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.bookList.BookListDTO;
+
 
 
 
@@ -213,20 +213,16 @@ public class MemberController {
 	}
 
 	//////////////////////////
-	@GetMapping("memberIdCheck")
-	public String memberIdCheck (MemberDTO memberDTO,Model model)throws Exception{
-		memberDTO = memberService.memberIdCheck(memberDTO);
-		String result = "0";//0 사용 불가 1:사용가능
-		if(memberDTO==null) {
-			result="1";
-		}
-		
-		model.addAttribute("result", result);
-		
-		return "member/test";
-	}
-	
-	
+	  @GetMapping("memberIdCheck")
+	   public void memberIdCheck (MemberDTO memberDTO,Model model)throws Exception{
+	      memberDTO = memberService.memberIdCheck(memberDTO);
+	      String result = "";//0 사용 불가 1:사용가능
+	      if(memberDTO==null) {
+	         result="null";
+	      }      
+	      model.addAttribute("result", result);
+	   }
+
 	
 	
 }
