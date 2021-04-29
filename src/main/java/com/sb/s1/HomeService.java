@@ -42,8 +42,8 @@ public class HomeService {
 		searchDTO.setBookListDTOs(bookListDAO.searchBookList(bookListDTO));
 		List<BookListDTO> booklist = searchDTO.getBookListDTOs();
 		for(BookListDTO boListDTO:booklist) {
-			if(boListDTO.getBookContent()!=null&&boListDTO.getBookContent().length()>30) {
-				boListDTO.setBookContent(boListDTO.getBookContent().substring(0, 30));
+			if(boListDTO.getBookContent()!=null&&boListDTO.getBookContent().length()>50) {
+				boListDTO.setBookContent(boListDTO.getBookContent().substring(0, 50));
 			}	
 		}
 		return searchDTO;

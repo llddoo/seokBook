@@ -234,6 +234,10 @@ function applyPoint(){
 		alert('가지고 있는 포인트보다 높게 적으셨습니다.');
 		$("#typingpoint").val($("#typingpoint").attr("max"));
 		return;
+	}else if(pointToUse>allitemprice){
+		alert('결제 금액보다 더 많이 입력할 수 없습니다.');
+		$("#typingpoint").val(allitemprice);
+		return;	
 	}
 	$.post({
 		url:"./purchaseSidebar",
@@ -261,6 +265,19 @@ $("#floatforpurchasing").on("click", "#demobutton", function(){
 $("#floatforpurchasing").on("click", "#payment", function(){
 	if(!$("#checkboxChecking").val()){
 		alert('약관에 동의하셔야 합니다.');
+		return;
+	}
+	
+	let checkingcount = 0;
+	let checkingboolean = true;
+	$(".trans-chk").each(function(){
+		checkingcount++;
+		if($(this).val()==''){
+			checkingboolean=false;
+		}
+	});
+	if(checkingcount<5 || !checkingboolean){
+		alert('기입되지 않은 부분이 존재합니다. 모두 기입해 주세요.');
 		return;
 	}
 	
