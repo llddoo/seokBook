@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.address.AddressDTO;
-import com.sb.s1.address.AddressService;
 import com.sb.s1.branch.BranchPager;
 import com.sb.s1.member.MemberDTO;
 import com.sb.s1.member.MemberService;
@@ -29,8 +27,6 @@ public class PurchaseController {
 	private PurchaseService purchaseService;
 	@Autowired
 	private MembercartService membercartService;
-	@Autowired
-	private AddressService addressService;
 	@Autowired
 	private MemberService memberService;
 
@@ -135,10 +131,19 @@ public class PurchaseController {
 			membercartDTO.setId(memberDTO.getId());
 			list.add(membercartDTO);
 		}
-		model.addAttribute("booklist", membercartService.getCartListforpurchase(list));
+		List<MembercartDTO> membercartList = membercartService.getCartListforpurchase(list);
+		model.addAttribute("booklist", membercartList);
 		
-		AddressDTO addressDTO = new AddressDTO();
-		addressDTO.setId(memberDTO.getId());
-		model.addAttribute("address", addressService.getSelect(addressDTO));
+		String purchasename = membercartList.get(0).getBookListDTO().getBookName();
+		if(arraysize > 1) {
+			purchasename+=" 외 "+(arraysize-1)+"권";
+		}
+		model.addAttribute("purchasename", purchasename);
+		
+		long allprice = 0;
+		for(MembercartDTO membercartDTO : membercartList) {
+			allprice += membercartDTO.getBookListDTO().getPrice();
+		}
+		model.addAttribute("pricesum", allprice*9/10);
 	}
 }

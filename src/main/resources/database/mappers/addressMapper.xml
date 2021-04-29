@@ -5,5 +5,23 @@
 	<select id="getSelect" parameterType="AddressDTO" resultType="AddressDTO">
 		select * from address where id = #{id} and recentuse='Y'
 	</select>
-
+	<select id="getAddressList" parameterType="AddressDTO" resultType="AddressDTO">
+		select * from address where id = #{id}
+	</select>
+	<insert id="addressInsert" parameterType="AddressDTO">
+		insert into address values(ADR_ADN_SEQ.nextval, #{address}, #{id}, #{name}, #{phonenum}, 'Y', #{postcode})
+	</insert>
+	<update id="changeRecent" parameterType="AddressDTO">
+		update address set recentuse='N' where id=#{id}
+	</update>
+	<update id="thisisRecent" parameterType="AddressDTO">
+		update address set recentuse='Y' where adrnum=#{adrnum}
+	</update>
+	<delete id="deleteAddress" parameterType="AddressDTO">
+		delete from address where adrnum=#{adrnum}
+	</delete>
+	<update id="updateForRemove" parameterType="AddressDTO">
+		update address set recentuse='Y' where adrnum = 
+		(select min(adrnum) from address where adrnum != #{adrnum})
+	</update>
 </mapper>

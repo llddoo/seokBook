@@ -12,6 +12,13 @@
 <!-- jquery modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<style type="text/css">
+	.modal{
+		height:80%
+	}
+</style>
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
@@ -24,14 +31,12 @@
 <div class="container">
 	<input type="hidden" readonly="readonly" id="getUserInfo" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
-	<div id="useraddresslist">
-  		<c:if test="${empty address}">등록된 주소지가 없습니다. <a href="../address/addressInsertform" id="manual-ajax">배송지 추가</a></c:if>
-  		<c:if test="${!empty address}">이름 우편번호 실주소 전화번호 <a href="../address/addressList" id="manual-ajax">배송지 변경</a></c:if>
-  	</div>
-	
+	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
+	<input type="hidden" readonly="readonly" id="allpricesum" value="${pricesum}">
 	<div id="userInfo"></div>
 	
-  	
+	<div id="useraddresslist"></div>
+	
   	<div id="useritems">
   		<table class="table">
 		    <thead>

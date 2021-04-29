@@ -3,4 +3,7 @@
 <div class="row">
 	<div class="col-4">주문자</div>
 	<div class="col-8"><span>${user.name}</span><span>${user.phonenum}</span><span>${user.email}</span></div>
+	<input type="hidden" readonly="readonly" id="getUserName" value="${user.name}">
+	<input type="hidden" readonly="readonly" id="getUserPhonenum" value="${user.phonenum}">
+	<input type="hidden" readonly="readonly" id="getUserEmail" value="${user.email}">
 </div>
