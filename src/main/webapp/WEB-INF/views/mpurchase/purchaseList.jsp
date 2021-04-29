@@ -97,7 +97,7 @@
 					<option class="sel">구매날짜</option>
 				</select>
 			</div>
-			<input type="text" class="form-control" name="search" id="search" value="${branchPager.search}" placeholder="입력하시오">
+			<input type="text" class="form-control" name="search" id="search" value="${branchPager.search}" placeholder="Search">
 			<div class="input-group-append">
 				<button class="btn btn-outline-success" type="submit">Search</button>
 			</div>
@@ -130,9 +130,11 @@
 	      function drawChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['Task', 'Hours per Day'],
-	          ['멜로', 55],
-	          ['코미디', 68],
-	          ['과학', 142],
+	          ['호러', 600],
+	          ['멜로', 500],
+	          ['판타지', 600],
+	          ['코미디', 500],
+	          ['과학', 412],
 	          ['유아', 442],
 	          ['호러', 447]
 	        ]);

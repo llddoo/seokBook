@@ -5,6 +5,19 @@
 
 <mapper namespace="com.sb.s1.mpurchase.PurchaseDAO">
 
+
+	<update id="setUpdate" parameterType="PurchaseDTO">
+		update purchase set isbn=#{isbn}, id=#{id}, price=#{price}, purcount=#{purcount}, ordernum=#{ordernum} where purnum=#{purnum}
+	</update>
+
+	<delete id="setDelete" parameterType="PurchaseDTO">
+		delete purchase where purnum=#{purnum}
+	</delete>
+	
+	<insert id="setInsert" parameterType="PurchaseDTO">
+		insert into purchase values(p_pn_seq.nextval, sysdate, #{isbn}, #{yyyy-mm-dd}, #{id}, #{price}, #{purcount}, #{ordernum})
+	</insert>
+
 	<select id="getList" resultType="PurchaseDTO" parameterType="BranchPager">
 		select * from
 			(select rownum R, P.* from
@@ -49,8 +62,6 @@
 	<select id="getSelect" parameterType="PurchaseDTO" resultType="PurchaseDTO">
 		select * from purchase where purnum=#{purnum}
 	</select>
-	
-	
 	
 
 </mapper>
