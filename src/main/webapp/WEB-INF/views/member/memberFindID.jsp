@@ -9,18 +9,56 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <c:import url="../template/body.jsp"></c:import>
+
+<style type="text/css">
+
+#div_footer{
+	width:100%;
+	position: absolute;
+    bottom: 0px;
+	
+}
+
+#div_main {
+	width: 100%;
+	text-align: center;
+	
+}
+
+#div_main2 {
+	position:absolute;
+	 left:50%;
+	width: 30%; height:100;
+	margin-left: -15%;
+	text-align: left;
+}
+
+</style>
+
 </head>
 
 <body>
+<div id=div_main>
 	<h3>&nbsp;</h3>
+	<h1>&nbsp;</h1>
 	<h1>&nbsp;</h1>
 	<h1>아이디 찾기</h1>
 
-<label for="text">email을 입력하시오</label>
-<input type="text" class="form-control" id="email" name ="email">
+	<h1>&nbsp;</h1>
+<div id=div_main2>
+
+<input type="text" class="form-control" id="email" name ="email"  placeholder="이메일을 입력하시오." style="height:50px;">
+<p></p>
+
 <button class="btn btn-primary" id="idBtn">아이디 찾기</button>
+<a  href="javascript:history.back();"  class="btn btn-danger">취소</a>
 	<script type="text/javascript" src="../resources/js/member/memberFind.js">
 	</script>
+	</div>
+	</div>
 </body>
+<div id=div_footer>
+<c:import url="../template/footer.jsp"></c:import>
+</div>
 </html>
 

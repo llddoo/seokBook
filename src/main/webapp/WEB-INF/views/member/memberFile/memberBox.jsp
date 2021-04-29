@@ -81,16 +81,14 @@ text-align:center;
 #div_view{
 	border: 2px solid gray;
 	width:600px;
-	height:100px;
-	font-color:yellow;
+	height:250px;
+
 	margin-top:5%;
  	margin-left:15%;
 
 }
 #div_view2{
-	margin-top:5%;
 	width:200px;
-	margin-left:15%;
 	float:left;
 		text-align:left;
 
@@ -105,7 +103,7 @@ text-align:center;
 <div id="div_root">
 	<div id="div_top" >
 
-	<h1>Point</h1>
+	<h1>상품 정보</h1>
 </div>
 	<div id="div_menu">
 		<h3>카테고리</h3>
@@ -113,7 +111,11 @@ text-align:center;
 
 			<ul class ="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="?????">포인트 적립내역</a></li>
+					href="./memberlist">구매내역</a></li>
+				<li class="nav-item"><a class="btn btn-link"
+					href="./cart">장바구니</a></li>
+				<li class="nav-item"><a class="btn btn-link"
+					href="https://tracker.delivery/#/:carrier_id/:track_id" target="_blank">배송조회</a></li>
 			</ul>
 </div>
 
@@ -150,15 +152,7 @@ text-align:center;
 		</a>
 		</div>
 </div>
-
-<div id="div_view">
-		<div id="div_view2">
-		<h2>보유 포인트:</h2>
-        </div>
-		<div id="div_view2">
-		<h2>${member.point}</h2>
-        </div>
-		</div>
+////
 
 </div>
 

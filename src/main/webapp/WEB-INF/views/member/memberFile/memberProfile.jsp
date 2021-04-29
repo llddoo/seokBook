@@ -81,18 +81,17 @@ text-align:center;
 #div_view{
 	border: 2px solid gray;
 	width:600px;
-	height:100px;
-	font-color:yellow;
+	height:300px;
+
 	margin-top:5%;
  	margin-left:15%;
 
 }
 #div_view2{
-	margin-top:5%;
 	width:200px;
-	margin-left:15%;
 	float:left;
 		text-align:left;
+	margin-left:5%;
 
 }
 
@@ -105,7 +104,7 @@ text-align:center;
 <div id="div_root">
 	<div id="div_top" >
 
-	<h1>Point</h1>
+	<h1>프로필</h1>
 </div>
 	<div id="div_menu">
 		<h3>카테고리</h3>
@@ -113,7 +112,11 @@ text-align:center;
 
 			<ul class ="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="?????">포인트 적립내역</a></li>
+					href="./memberUpdate">회원정보 수정</a></li>
+				<li class="nav-item"><a class="btn btn-link"
+					href="./memberDelete"
+					onclick="if(!confirm('회원 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a></li>
+
 			</ul>
 </div>
 
@@ -153,12 +156,26 @@ text-align:center;
 
 <div id="div_view">
 		<div id="div_view2">
-		<h2>보유 포인트:</h2>
+		<h1>회원 정보</h1>
+		<p></p>
+		<h3>아이디 </h3>
+		<h3>이름</h3>
+		<h3>회원등급 </h3>
+		<h3>이메일  </h3>
+		<h3>휴대전화 </h3>
         </div>
 		<div id="div_view2">
-		<h2>${member.point}</h2>
+		<h1>&nbsp;</h1>
+		<p></p>
+        <h3>${member.id}</h3>
+        <h3>${member.name}</h3>
+        <h3>${member.grade}</h3>
+        <h3>${member.email}</h3>
+        <h3>${member.phonenum}</h3>
         </div>
 		</div>
+
+</div>
 
 </div>
 

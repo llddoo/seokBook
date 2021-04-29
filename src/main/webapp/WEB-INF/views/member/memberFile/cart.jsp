@@ -11,7 +11,7 @@
 
 <style type="text/css">
 #div_root{
-margin:auto;
+
 width:800px;
 margin-top:80px;
 }
@@ -19,38 +19,36 @@ margin-top:80px;
 
 </head>
 <body>
+<h1>1111111111</h1>
 <div id="div_root">
 	<h2>장바구니</h2>
 	<table class="table">
 			<thead class="thead-dark">
 				<tr>
 					<th>ICBN</th>
-					<th>책이름</th>
+					<th>책이름11</th>
 					<th>책내용</th>
 					<th>가격</th>
-					<th>ebook</th>
+					<th>구매확정</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="dto" >
-				<tr>
-					<td>${ICBN}</td>
-					<td><a href="./$bookListSelect?num=${ICBN}">
-					
-					<c:catch>
-					<c:forEach begin="1" end="${ICBN.depth}">--</c:forEach>
-					</c:catch>
-					${bookName}
-					</a></td>
-					<td>${bookContent}</td>
-					<td>${price}</td>
-					<td>${ebook}</td>
-				</tr>
-			</c:forEach>
+	    
 			</tbody>
 		
 		</table>
+		<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" ./cartlist?curPage=${i}&kind=${memberpager.kind}&search=${memberpager.search}">${i}</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+		
+		
+
+		
 	
 </div>
 </body>

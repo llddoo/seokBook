@@ -1,6 +1,5 @@
 package com.sb.s1.member;
 
-
 public class MemberPager {
 	//1.DB에 일정한 갯수 만큼 조회
 	//2.JSP페이지에 일정한 갯수 만큼 번호를 curPage 번호 출력

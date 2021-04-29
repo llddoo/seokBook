@@ -9,30 +9,52 @@
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
 <c:import url="../template/body.jsp"></c:import>
+
+<style type="text/css">
+#div_footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+}
+
+#div_main {
+	width: 100%;
+	text-align: center;
+	
+}
+</style>
+
 </head>
 
 <body>
-	<h3>&nbsp</h3>
-	<h1>&nbsp</h1>
-	<h1>Login Page</h1>
-	<form action="./memberLogin" method="post">
-		<div class="form-group">
-			<label for="id">ID 입력:</label>
-			<input type="text" class="form-control" placeholder="아이디를 입력하시오." id="id" name="id">
-		</div>
-		<div class="form-group">
-			<label for="pw">Password:</label> <input type="password"
-				class="form-control" placeholder="비밀번호를 입력하시오." id="pw" name="pw">
-		</div>
-		<div class="form-group form-check">
-			<label class="form-check-label"> <input
-				class="form-check-input" type="checkbox"> Remember me
-			</label>
-		</div>
-		<button type="submit" class="btn btn-primary">Login</button>
-	</form>
-	<a class="btn btn-link" href="./memberFindID">아이디찾기</a>
-	<a class="btn btn-link" href="./memberFindPW">비밀번호찾기</a>
-	
+	<div id="div_main">
+		<h3>&nbsp;</h3>
+		<h1>&nbsp;</h1>
+		<h1>&nbsp;</h1>
+
+		<h1>Login Page</h1>
+		<h3>&nbsp;</h3>
+		<h1>&nbsp;</h1>
+		<form action="./memberLogin" method="post">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="아이디를 입력하시오."
+					id="id" name="id" style="width: 300px; height:50px; margin: 0 auto; ">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control"
+					placeholder="비밀번호를 입력하시오." id="pw" name="pw"
+					style="width: 300px; height:50px; margin: 0 auto">
+			</div>
+			<div class="form-group form-check">
+				
+			</div>
+			<button type="submit" class="btn btn-primary" style="width: 300px; height:50px" >Login</button>
+		</form>
+		<a class="btn btn-link" href="./memberFindID">아이디찾기</a> <a
+			class="btn btn-link" href="./memberFindPW">비밀번호찾기</a>
+	</div>
 </body>
+<div id=div_footer>
+	<c:import url="../template/footer.jsp"></c:import>
+</div>
 </html>

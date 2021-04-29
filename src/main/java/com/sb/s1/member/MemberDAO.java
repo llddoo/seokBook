@@ -3,9 +3,16 @@ package com.sb.s1.member;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+
+import com.sb.s1.bookList.BookListDTO;
+import com.sb.s1.branch.BranchDTO;
+import com.sb.s1.branch.BranchPager;
 
 
 
@@ -23,21 +30,24 @@ public class MemberDAO {
 
 	private final String NAMESPACE="com.sb.s1.member.MemberDAO.";
 
+
+
 	
-//	public long getTotalCount(MemberPager pager) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
-//	}
-//	
-//	public List<cartDTO> cartList(MemberPager pager) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSession.selectList(NAMESPACE+"cartList", pager);
-//	}
+	public long getTotalCount(MemberPager memberPager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", memberPager);
+	}
 	
-	public int memberPoint(MemberDTO memberDTO)throws Exception{
-		
-		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
-		}
+	
+	public List<BookListDTO> cartList(MemberPager memberPager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE+"cartList", memberPager);
+	}
+	
+//	public int memberPoint(MemberDTO memberDTO)throws Exception{
+//		
+//		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
+//		}
 	
 	public MemberDTO memberFindID(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberFindID",memberDTO);

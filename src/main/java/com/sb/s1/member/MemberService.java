@@ -11,6 +11,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import com.sb.s1.bookList.BookListDTO;
+import com.sb.s1.branch.BranchDTO;
+import com.sb.s1.branch.BranchPager;
+
+
 
 
 
@@ -24,22 +29,36 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-//	public List<cartDTO> cartList(MemberPager pager)throws Exception{
-//		// ---- startRow, lastRow ----
-//		pager.makeRow();
-//
-//		// ---- 페이징 계산 -------------
-//		long totalCount = memberDAO.getTotalCount(pager);
-//		pager.makeNum(totalCount);
+////////////	
+
+//public List<BranchDTO> getList(MemberPager memberPager) throws Exception {
 //		
+//		memberPager.makeRow();
 //		
-//		return memberDAO.cartList(pager);
+//		long totalCount=memberDAO.getTotalCount(memberPager);
+//		memberPager.makeNum(totalCount);		
+//		
+//		return memberDAO.getList(memberPager);
 //	}
+//	
 	
-	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
+//////////////
+	public List<BookListDTO> cartList(MemberPager memberPager)throws Exception{
+		// ---- startRow, lastRow ----
+		memberPager.makeRow();
+
+		// ---- 페이징 계산 -------------
+		long totalCount = memberDAO.getTotalCount(memberPager);
+		memberPager.makeNum(totalCount);
 		
-		return memberDAO.memberPoint(memberDTO);
+		
+		return memberDAO.cartList(memberPager);
 	}
+	
+//	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
+//		
+//		return memberDAO.memberPoint(memberDTO);
+//	}
 	
 	public MemberDTO memberFindID(MemberDTO memberDTO)throws Exception{
 		
