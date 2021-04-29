@@ -3,6 +3,7 @@ package com.sb.s1.purchase;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,5 +146,22 @@ public class PurchaseController {
 			allprice += membercartDTO.getBookListDTO().getPrice();
 		}
 		model.addAttribute("pricesum", allprice*9/10);
+		model.addAttribute("willgetpoint", allprice/20);
+	}
+	
+	@PostMapping("purchaseSequence")
+	public void purchaseSequence()throws Exception{
+		
+	}
+	
+	@PostMapping("purchaseSidebar")
+	public void purchaseSidebar(HttpServletRequest httpServletRequest, Model model)throws Exception{
+		model.addAttribute("point", Long.parseLong(httpServletRequest.getParameter("point")));
+		model.addAttribute("itemsprice", Long.parseLong(httpServletRequest.getParameter("itemsprice")));
+	}
+	
+	@PostMapping("purchaseComplete")
+	public void purchaseComplete(MemberDTO memberDTO, Model model)throws Exception{
+		model.addAttribute("user", memberService.getSelect(memberDTO));
 	}
 }

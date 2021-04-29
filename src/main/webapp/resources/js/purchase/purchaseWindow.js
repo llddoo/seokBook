@@ -1,4 +1,5 @@
 const id = $("#getUserInfo").val();
+const allitemprice = $("#allpricesum").val();
 
 $(document).ready(function(){
 	//결제관련 api를 사용하기 위한 조건
@@ -28,6 +29,19 @@ $(document).ready(function(){
 		success:function(result){
 			result=result.trim();
 			$("#useraddresslist").append(result);
+		}
+	});
+	
+	//결제관련 side 창 불러오기
+	$.post({
+		url:"./purchaseSidebar",
+		data:{
+			itemsprice:allitemprice,
+			point:0
+		},
+		success:function(result){
+			result=result.trim();
+			$("#floatforpurchasing").append(result);
 		}
 	});
 });
@@ -108,18 +122,24 @@ $("body").on("click", '.selectRemoveAddress', function() {
 
 //모달창에서 주소 추가하는 알고리즘
 $("body").on("click", "#addressInsert", function(){
+	let frmchk = true;
 	$(".frm-chk").each(function(){
 		const thisform = $(this);
 		if(thisform.attr('id')!='sample6_detailAddress'){
 			if(thisform.val().trim()===''){
 				alert('비어있는 항목이 존재합니다.');
+				frmchk=false;
 				return;
 			}
 		}
 	});
-	
+	if(!frmchk){
+		return;
+	}
 	const postcode = $("#sample6_postcode").val().trim();
-	const address = $("#sample6_address").val().trim()+' '+$("#sample6_detailAddress").val().trim()+' '+$("#sample6_extraAddress").val().trim();
+	const address = $("#sample6_address").val().trim()+' '
+					+$("#sample6_detailAddress").val().trim()+' '
+					+$("#sample6_extraAddress").val().trim();
 	const name = $("#sample6_name").val().trim();
 	const phonenum = $("#sample6_phonenum").val().trim();
 	$.post({
@@ -157,50 +177,6 @@ $("body").on("click", "#addressInsert", function(){
 				alert('전송에 실패하였습니다. 다시 시도해 주세요.');
 			}
 		}
-	});
-});
-
-//결제관련
-$("#payment").click(function(){
-	const buyer_name = $("#getUserName").val();
-	const buyer_email = $("#getUserEmail").val();
-	const buyer_tel = $("#getUserPhonenum").val();
-	const buyer_postcode = $("#getterpostcode").val();
-	const buyer_addr = $("#getteraddress").val();
-	const name = $("#purchasename").val();
-	const amount = Number($("#allpricesum").val());
-	const date = new Date();
-	const merchant_uid = "BS-"+date.getTime()+"-"+id+"-"+date.getFullYear()+date.getMonth()
-							+date.getDay()+date.getHours()+date.getMinutes()+date.getSeconds();
-	IMP.request_pay({
-	    pg: "html5_inicis",
-	    pay_method: "card",
-	    merchant_uid: merchant_uid,
-	    name: name,
-	    amount: amount,
-	    buyer_email: buyer_email,
-	    buyer_name: buyer_name,
-	    buyer_tel: buyer_tel,
-	    buyer_addr: buyer_addr,
-	    buyer_postcode: buyer_postcode
-  	},
-  	function(rsp) {
-		if ( rsp.success ) {
-			var msg = '결제가 완료되었습니다.';
-			msg += '고유ID : ' + rsp.imp_uid;
-			msg += '상점 거래ID : ' + rsp.merchant_uid;
-			msg += '결제 금액 : ' + rsp.paid_amount;
-			msg += '카드 승인번호 : ' + rsp.apply_num;
-		} else if( rsp.error_msg==='사용자가 결제를 취소하셨습니다' ){
-			var msg = '테스트 결제가 완료되었습니다.';
-		}else{
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-			alert(msg);
-			return;
-		}
-		alert(msg);
-		
 	});
 });
 	
@@ -251,3 +227,84 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+function applyPoint(){
+	const pointToUse = $("#typingpoint").val();
+	if(pointToUse>$("#typingpoint").attr("max")){
+		alert('가지고 있는 포인트보다 높게 적으셨습니다.');
+		$("#typingpoint").val($("#typingpoint").attr("max"));
+		return;
+	}
+	$.post({
+		url:"./purchaseSidebar",
+		data:{
+			point:pointToUse,
+			itemsprice:allitemprice
+		},
+		success:function(result){
+			result=result.trim();
+			$("#floatforpurchasing").empty();
+			$("#floatforpurchasing").append(result);
+		}
+	});
+}
+
+$("#floatforpurchasing").on("click", "#demobutton", function(){
+	if($(this).find("i").attr("class")=='fas fa-chevron-down'){
+		$(this).find("i").attr("class","fas fa-chevron-up");
+	}else{
+		$(this).find("i").attr("class","fas fa-chevron-down");
+	}
+});
+
+//결제버튼
+$("#floatforpurchasing").on("click", "#payment", function(){
+	if(!$("#checkboxChecking").val()){
+		alert('약관에 동의하셔야 합니다.');
+		return;
+	}
+	
+	const buyer_name = $("#getUserName").val();
+	const buyer_email = $("#getUserEmail").val();
+	const buyer_tel = $("#getUserPhonenum").val();
+	const buyer_postcode = $("#getterpostcode").val();
+	const buyer_addr = $("#getteraddress").val();
+	const name = $("#purchasename").val();
+	const amount = $("#allpricesum").val();
+	const date = new Date();
+	const merchant_uid = "BS-"+date.getTime()+"-"+id+"-"+date.getFullYear()+date.getMonth()
+							+date.getDay()+date.getHours()+date.getMinutes()+date.getSeconds();
+	IMP.request_pay({
+	    pg: "html5_inicis",
+	    pay_method: "card",
+	    merchant_uid: merchant_uid,
+	    name: name,
+	    amount: amount,
+	    buyer_email: buyer_email,
+	    buyer_name: buyer_name,
+	    buyer_tel: buyer_tel,
+	    buyer_addr: buyer_addr,
+	    buyer_postcode: buyer_postcode
+  	},
+  	function(rsp) {
+		if ( rsp.success ) {
+			var msg = '결제가 완료되었습니다.\n';
+			msg += '고유ID : ' + rsp.imp_uid+'\n';
+			msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
+			msg += '결제 금액 : ' + rsp.paid_amount+'\n';
+			msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
+			alert(msg);
+			
+			$.post({//각자의 책에 대한 값만 지정해 주면 된다.//적혀있는 책들을 보고 장바구니에 있는 것들은 장바구니에서 제거해주고, 장바구니에 없다면 그냥 둔다.
+				
+			});
+			$("body").append("<form id='purchaseComplete' action='./purchaseComplete' method='post'></form>");
+			$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="id" value="'+id+'">');
+			$("#purchaseComplete").submit();
+		}else{
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+			alert(msg);
+		}
+	});
+});
