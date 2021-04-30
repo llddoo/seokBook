@@ -93,7 +93,7 @@
 		</c:if><br><br>
 	<div>
 		<c:if test="${(pager.boardsp ne 'event' && pager.boardsp ne 'notice')|| member.id eq 'admin'}">
-	 		<a class="btn btn-primary" href="./boaq	rdInsert?boardsp=${pager.boardsp}">글쓰기</a>
+	 		<a class="btn btn-primary" href="./boardInsert?boardsp=${pager.boardsp}">글쓰기</a>
 	 	</c:if>
 	 	<form class="float-right" method="get" action="./boardList" id="searchingform">
 	 		<input type="hidden" readonly="readonly" name="boardsp" value="${pager.boardsp}">

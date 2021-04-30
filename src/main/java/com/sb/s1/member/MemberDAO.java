@@ -71,4 +71,8 @@ public class MemberDAO {
 	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectUserInfo", memberDTO);
 	}
+	
+	public long pointAfterPur(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"pointAfterPur", memberDTO);
+	}
 }

@@ -19,6 +19,8 @@ import com.sb.s1.member.MemberDTO;
 import com.sb.s1.member.MemberService;
 import com.sb.s1.member.membercart.MembercartDTO;
 import com.sb.s1.member.membercart.MembercartService;
+import com.sb.s1.orderList.OrderListDTO;
+import com.sb.s1.orderList.OrderListService;
 
 @Controller
 @RequestMapping("/purchase/**")
@@ -30,6 +32,8 @@ public class PurchaseController {
 	private MembercartService membercartService;
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private OrderListService orderListService;
 
 	@GetMapping("purchaseSelect")
 	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
@@ -150,14 +154,67 @@ public class PurchaseController {
 	}
 	
 	@PostMapping("purchaseSequence")
-	public void purchaseSequence()throws Exception{
+	public void purchaseSequence(HttpServletRequest httpServletRequest, Model model)throws Exception{
+		String[] isbnlist = httpServletRequest.getParameterValues("isbnlist");
+		String[] countlists = httpServletRequest.getParameterValues("countlist");
+		int listsize = countlists.length;
+		long[] countlist = new long[listsize];
+		for(int i = 0 ; i < listsize ; i++) {
+			countlist[i]=Long.parseLong(countlists[i]);
+		}
+		String[] pricelists = httpServletRequest.getParameterValues("pricelist");
+		long[] pricelist = new long[listsize];
+		for(int i = 0 ; i < listsize ; i++) {
+			pricelist[i]=Long.parseLong(pricelists[i]);
+		}
+		String id = httpServletRequest.getParameter("id");
+		String ordernumber = httpServletRequest.getParameter("ordernumber");
+		long spendpoint = Long.parseLong(httpServletRequest.getParameter("spendpoint"));
+		long getpoint = Long.parseLong(httpServletRequest.getParameter("getpoint"));
+		long amount = Long.parseLong(httpServletRequest.getParameter("amount"));
+		long result = 0;
 		
+		ArrayList<MembercartDTO> membercartDTOs = new ArrayList<MembercartDTO>();
+		for(int i = 0 ; i < listsize; i++) {
+			MembercartDTO membercartDTO = new MembercartDTO();
+			membercartDTO.setId(id);
+			membercartDTO.setIsbn(isbnlist[i]);
+			membercartDTOs.add(membercartDTO);
+		}
+		result += (membercartService.deleteListAfterPur(membercartDTOs) == 0) ? Integer.MIN_VALUE : 1;
+		
+		OrderListDTO orderListDTO = new OrderListDTO();
+		orderListDTO.setOrdernumber(ordernumber);
+		orderListDTO.setPointusage(spendpoint);
+		orderListDTO.setLumpsum(amount);
+		result += (orderListService.insertOrderList(orderListDTO) == 0) ? Integer.MIN_VALUE : 1;
+		
+		ArrayList<PurchaseDTO> purchaseDTOs = new ArrayList<PurchaseDTO>();
+		for(int i = 0 ; i < listsize; i++) {
+			PurchaseDTO purchaseDTO = new PurchaseDTO();
+			purchaseDTO.setId(id);
+			purchaseDTO.setIsbn(isbnlist[i]);
+			purchaseDTO.setPurcount(countlist[i]);
+			purchaseDTO.setRemdate(-1);
+			purchaseDTO.setPrice(countlist[i]*pricelist[i]*9/10);
+			purchaseDTO.setOrdernumber(ordernumber);
+			purchaseDTOs.add(purchaseDTO);
+		}
+		result += (purchaseService.setPurchase(purchaseDTOs) == 0) ? Integer.MIN_VALUE : 1;
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId(id);
+		memberDTO.setPoint(getpoint-spendpoint);
+		result += (memberService.pointAfterPur(memberDTO) == 0) ? Integer.MIN_VALUE : 1;
+		
+		model.addAttribute("result", result);
 	}
 	
 	@PostMapping("purchaseSidebar")
 	public void purchaseSidebar(HttpServletRequest httpServletRequest, Model model)throws Exception{
 		model.addAttribute("point", Long.parseLong(httpServletRequest.getParameter("point")));
 		model.addAttribute("itemsprice", Long.parseLong(httpServletRequest.getParameter("itemsprice")));
+		model.addAttribute("willgetpoint", Long.parseLong(httpServletRequest.getParameter("willgetpoint")));
 	}
 	
 	@PostMapping("purchaseComplete")

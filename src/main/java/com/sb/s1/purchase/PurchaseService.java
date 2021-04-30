@@ -44,4 +44,8 @@ public class PurchaseService {
 		
 		return purchaseDAO.getList(branchPager);
 	}
+	
+	public long setPurchase(List<PurchaseDTO> list) throws Exception{
+		return purchaseDAO.setPurchase(list);
+	}
 }

@@ -49,5 +49,8 @@
 <select id="selectUserInfo" parameterType="MemberDTO" resultType="MemberDTO">
 	select id, name, phonenum, email from member where id=#{id}
 </select>
+	<update id="pointAfterPur" parameterType="MemberDTO">
+		update member set point = point+#{point} where id = #{id}
+	</update>
 </mapper>
 

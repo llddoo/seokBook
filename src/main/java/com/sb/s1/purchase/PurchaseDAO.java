@@ -47,4 +47,7 @@ public class PurchaseDAO {
 	public long getNum()throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getNum");
 	}
+	public long setPurchase(List<PurchaseDTO> list)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setPurchase", list);
+	}
 }

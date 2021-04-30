@@ -50,7 +50,13 @@
 		select * from purchase where purnum=#{purnum}
 	</select>
 	
-	
+	<insert id="setPurchase" parameterType="java.util.List">
+		<foreach collection="list" item="item" separator=";">
+			insert into purchase 
+			values(P_PN_SEQ.nextval, sysdate, #{item.isbn}, #{item.remdate}, #{item.id}, #{item.price}, 
+					#{item.ordernumber}, #{item.purcount})
+		</foreach>
+	</insert>
 	
 
 </mapper>

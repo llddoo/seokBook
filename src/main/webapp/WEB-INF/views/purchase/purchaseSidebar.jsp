@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <div>
 	<div id="pointandprice">상품금액 : ${itemsprice}<br>사용포인트 : ${point}</div>
-	<div>결제금액 : ${itemsprice-point}</div>
+	<input type="hidden" readonly="readonly" id="usingpoint" value="${point}">
+	<div>결제금액 : ${itemsprice-point}<br>획득예정 포인트: ${willgetpoint}</div>
 	<div><input type="checkbox" id="checkboxChecking"> 결제 내역에 동의합니다.<br>
 		<button id="demobutton" data-toggle="collapse" data-target="#demo">
 			<i class="fas fa-chevron-down"></i>

@@ -1,5 +1,6 @@
 const id = $("#getUserInfo").val();
 const allitemprice = $("#allpricesum").val();
+const willgetpoint = $("#willgetpoint").val();
 
 $(document).ready(function(){
 	
@@ -38,7 +39,8 @@ $(document).ready(function(){
 		url:"./purchaseSidebar",
 		data:{
 			itemsprice:allitemprice,
-			point:0
+			point:0,
+			willgetpoint:willgetpoint
 		},
 		success:function(result){
 			result=result.trim();
@@ -94,7 +96,6 @@ $("body").on("click", '.selectRemoveAddress', function() {
 				}
 			}
 		});
-		$.modal.close();
 		$.ajax({
 			type:"post",
 			url:"../address/addressSelect",
@@ -107,6 +108,7 @@ $("body").on("click", '.selectRemoveAddress', function() {
 				$("#useraddresslist").append(result);
 			}
 		});
+		$.modal.close();
 	}
 });
 
@@ -233,7 +235,8 @@ function applyPoint(){
 		url:"./purchaseSidebar",
 		data:{
 			point:pointToUse,
-			itemsprice:allitemprice
+			itemsprice:allitemprice,
+			willgetpoint:willgetpoint
 		},
 		success:function(result){
 			result=result.trim();
@@ -281,6 +284,25 @@ $("#floatforpurchasing").on("click", "#payment", function(){
 	const date = new Date();
 	const merchant_uid = "BS-"+date.getTime()+"-"+id+"-"+date.getFullYear()+date.getMonth()
 							+date.getDay()+date.getHours()+date.getMinutes()+date.getSeconds();
+							
+	const spendpoint = $("#usingpoint").val();
+	let countlist = new Array();
+	let isbnlist = new Array();
+	let pricelist = new Array();
+			
+	$(".isbnlist").each(function(){
+		const isbn = $(this).val();
+		isbnlist.push(isbn);
+	});
+	$(".countlist").each(function(){
+		const count = $(this).val();
+		countlist.push(count);
+	});
+	$(".pricelist").each(function(){
+		const price = $(this).val();
+		pricelist.push(price);
+	});
+	
 	IMP.request_pay({
 	    pg: "html5_inicis",
 	    pay_method: "card",
@@ -300,14 +322,32 @@ $("#floatforpurchasing").on("click", "#payment", function(){
 			msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
 			msg += '결제 금액 : ' + rsp.paid_amount+'\n';
 			msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
-			alert(msg);
 			
-			$.post({//각자의 책에 대한 값만 지정해 주면 된다.//적혀있는 책들을 보고 장바구니에 있는 것들은 장바구니에서 제거해주고, 장바구니에 없다면 그냥 둔다.
-				
+			$.post({
+				url:"./purchaseSequence",
+				traditional:true,
+				data:{
+					isbnlist:isbnlist,
+					countlist:countlist,
+					pricelist:pricelist,
+					id:id,
+					spendpoint:spendpoint,
+					getpoint:willgetpoint,
+					ordernumber:merchant_uid,
+					amount:amount
+				},
+				success:function(result){
+					result = result.trim();
+					if(result>0){
+						alert(msg);
+						$("body").append("<form id='purchaseComplete' action='./purchaseComplete' method='post'></form>");
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="id" value="'+id+'">');
+						$("#purchaseComplete").submit();
+					}else{
+						alert('에러가 발생했습니다.');
+					}
+				}
 			});
-			$("body").append("<form id='purchaseComplete' action='./purchaseComplete' method='post'></form>");
-			$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="id" value="'+id+'">');
-			$("#purchaseComplete").submit();
 		}else{
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;

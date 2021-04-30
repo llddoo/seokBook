@@ -42,9 +42,9 @@
 <c:import url="../template/body.jsp"></c:import>
 <div class="containmain">
 	<input type="hidden" readonly="readonly" id="getUserInfo" class="trans-chk" value="${user.id}">
-	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
 	<input type="hidden" readonly="readonly" id="allpricesum" value="${pricesum}">
+	<input type="hidden" readonly="readonly" id="willgetpoint" value="${willgetpoint}">
 	<div id="userInfo"></div>
 	<label for="typingpoint">포인트 사용하기</label><br>
 	<input type="number" min="0" max="${user.point}" value="0" step="100" id="typingpoint">
@@ -67,8 +67,9 @@
 		    		<td>
 		    			<img alt="${book.bookListDTO.bookImg}" 
 		    				src="${pageContext.request.contextPath}/resources/uploaded/bookList/${book.bookListDTO.bookImg}">
-		    				<input type="hidden" readonly="readonly" class="isbnlist" value="${book.isbn}">
+		    				<input type="hidden" readonly="readonly" class="isbnlist" value="${book.bookListDTO.isbn}">
 		    				<input type="hidden" readonly="readonly" class="countlist" value="${book.bookcount}">
+		    				<input type="hidden" readonly="readonly" class="pricelist" value="${book.bookListDTO.price}">
 		    			${book.bookListDTO.bookName}
 		    		</td>
 		    		<td>총 ${book.bookListDTO.price * book.bookcount*9/10}원 | 수량 ${book.bookcount}개

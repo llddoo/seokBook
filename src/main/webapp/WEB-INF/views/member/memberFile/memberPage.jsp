@@ -82,7 +82,6 @@ text-align:center;
 </div>
 </div>
 
-<script type="text/javascript" src="../resources/js/member/memberPoint.js"></script>	
 <c:import url="../../template/footer.jsp"></c:import>
 </body>
 </html>

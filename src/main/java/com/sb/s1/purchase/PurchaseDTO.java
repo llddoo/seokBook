@@ -7,10 +7,25 @@ public class PurchaseDTO {
 	private long purnum;
 	private Date purdate;
 	private String isbn;
-	private Date remdate;
+	private long remdate;
 	private String id;
 	private long price;
+	private long purcount;
+	private String ordernumber;
 	
+	
+	public String getOrdernumber() {
+		return ordernumber;
+	}
+	public void setOrdernumber(String ordernumber) {
+		this.ordernumber = ordernumber;
+	}
+	public long getPurcount() {
+		return purcount;
+	}
+	public void setPurcount(long purcount) {
+		this.purcount = purcount;
+	}
 	public long getPurnum() {
 		return purnum;
 	}
@@ -29,10 +44,10 @@ public class PurchaseDTO {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	public Date getRemdate() {
+	public long getRemdate() {
 		return remdate;
 	}
-	public void setRemdate(Date remdate) {
+	public void setRemdate(long remdate) {
 		this.remdate = remdate;
 	}
 	public String getId() {

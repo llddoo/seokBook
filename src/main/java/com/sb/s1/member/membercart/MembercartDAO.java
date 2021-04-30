@@ -37,4 +37,7 @@ public class MembercartDAO {
 	public List<MembercartDTO> getCartListforpurchase(ArrayList<MembercartDTO> list)throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getCartListforpurchase", list);
 	}
+	public long deleteListAfterPur(List<MembercartDTO> list)throws Exception{
+		return sqlSession.delete(NAMESPACE+"deleteListAfterPur", list);
+	}
 }

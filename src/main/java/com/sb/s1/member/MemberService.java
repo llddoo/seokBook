@@ -83,4 +83,8 @@ public class MemberService {
 	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
 		return memberDAO.selectUserInfo(memberDTO);
 	}
+	
+	public long pointAfterPur(MemberDTO memberDTO)throws Exception{
+		return memberDAO.pointAfterPur(memberDTO);
+	}
 }

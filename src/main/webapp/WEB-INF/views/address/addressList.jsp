@@ -16,7 +16,7 @@
 	<!-- Tab panes -->
 	<div class="tab-content">
 	  <div class="tab-pane container active" id="menu1">
-	  	<table class="table table-hover">
+	  	<table class="table table-hover" style="overflow: scroll;">
 	  		<c:if test="${listsize gt 0}">
 	    		<c:forEach items="${addressList}" var="item">
 			    	<tbody>
