@@ -1,6 +1,7 @@
 const id = $("#getUserInfo").val();
 const allitemprice = $("#allpricesum").val();
 const willgetpoint = $("#willgetpoint").val();
+var clickHandler = true;
 
 $(document).ready(function(){
 	
@@ -47,6 +48,7 @@ $(document).ready(function(){
 			$("#floatforpurchasing").append(result);
 		}
 	});
+	
 });
 
 //모달창 띄우는 알고리즘
@@ -220,6 +222,18 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
+$("#floatforpurchasing").on("click", "#demobutton", function(){
+	if(clickHandler){
+		clickHandler = false;
+		if($("#floatforpurchasing").find("i").attr("class")=='fas fa-chevron-down'){
+			$("#floatforpurchasing").find("i").attr("class","fas fa-chevron-up");
+		}else{
+			$("#floatforpurchasing").find("i").attr("class","fas fa-chevron-down");
+		}
+		setTimeout(function(){clickHandler=true}, 380);
+	}
+});
+
 function applyPoint(){
 	const pointToUse = $("#typingpoint").val();
 	if(pointToUse>$("#typingpoint").attr("max")){
@@ -245,14 +259,6 @@ function applyPoint(){
 		}
 	});
 }
-
-$("#floatforpurchasing").on("click", "#demobutton", function(){
-	if($(this).find("i").attr("class")=='fas fa-chevron-down'){
-		$(this).find("i").attr("class","fas fa-chevron-up");
-	}else{
-		$(this).find("i").attr("class","fas fa-chevron-down");
-	}
-});
 
 //결제버튼
 $("#floatforpurchasing").on("click", "#payment", function(){
