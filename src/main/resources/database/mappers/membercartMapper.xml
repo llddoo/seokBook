@@ -22,16 +22,17 @@
 			<result property="author" column="author"/>
 			<result property="bookPubDate" column="bookpubdate"/>
 			<result property="scorecount" column="scorecount"/>
+			<result property="bpoint" column="bpoint"/>
 		</association>
 	</resultMap>
 	<select id="getCartList" parameterType="Pager" resultMap="getCartList">
 		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
-		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
+		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate, mb.bpoint
 		from (select rownum r, m.cartnum, m.bookcount, m.id, b.* from membercart m, booklist b where m.isbn = b.isbn and m.id = #{id} ) mb
 	</select>
 	<select id="getCartListforpurchase" parameterType="java.util.List" resultMap="getCartList">
 		select mb.cartNum, mb.bookcount, mb.id, mb.isbn, mb.bookName, mb.price, mb.gNumber, mb.eBookPrice, 
-		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate
+		mb.bookContent, mb.bookIdx, mb.bookPub, mb.bookImg, mb.bookScore, mb.author, mb.bookPubDate, mb.bpoint
 		from (select m.cartnum, m.bookcount, m.id, b.* from membercart m, booklist b where m.isbn = b.isbn) mb where
 		<foreach collection="list" item="item" separator="or">
 			mb.isbn=#{item.isbn} and mb.bookcount=#{item.bookcount} and mb.id=#{item.id}

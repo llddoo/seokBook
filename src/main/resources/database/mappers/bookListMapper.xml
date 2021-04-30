@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="getList" resultType="BookListDTO">
-		SELECT isbn,bookname,author,bookpub,bookpubdate,price,bookcontent,bookscore FROM 
+		SELECT isbn,bookname,author,bookpub,bookpubdate,price,bookcontent,bookscore,bpoint FROM 
 		(SELECT B.*, ROWNUM RN FROM (select * from booklist where gnumber = #{gNumber}) B) 
 	</select>
 	
@@ -25,7 +25,7 @@
 
 	<select id="searchBookList" parameterType="BookListDTO" resultType="BookListDTO">
 		select br.isbn, br.bookname, br.price, br.bookcontent, br.bookPub, 
-		br.bookimg, br.bookscore, br.author, br.bookpubdate 
+		br.bookimg, br.bookscore, br.author, br.bookpubdate, br.bpoint
 		from (select rownum r, bl.* from booklist bl where author like '%'||#{author}||'%' 
 			or bookname like '%'||#{bookName}||'%' or isbn like '%'||#{isbn}||'%' 
 			or bookpub like '%'||#{bookPub}||'%' or gnumber like '%'||#{gNumber}||'%')br 

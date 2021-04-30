@@ -42,6 +42,7 @@
 <c:import url="../template/body.jsp"></c:import>
 <div class="containmain">
 	<input type="hidden" readonly="readonly" id="getUserInfo" class="trans-chk" value="${user.id}">
+	<input type="hidden" readonly="readonly" id="forCartList" value="${user.isbn}">
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
 	<input type="hidden" readonly="readonly" id="allpricesum" value="${pricesum}">
 	<div id="userInfo"></div>

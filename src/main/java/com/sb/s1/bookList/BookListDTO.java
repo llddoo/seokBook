@@ -15,9 +15,15 @@ public class BookListDTO {
 	private String author;
 	private String bookPubDate;
 	private long scorecount;
+	private long bpoint;
 	
 	
-	
+	public long getBpoint() {
+		return bpoint;
+	}
+	public void setBpoint(long bpoint) {
+		this.bpoint = bpoint;
+	}
 	public long getScorecount() {
 		return scorecount;
 	}

@@ -5,7 +5,7 @@ const subnum=$("#subnum").val();
 function getList(){
 	const curPage = $("#currentPage").val();
 	const curBlock = $("#curBlock").val();
-	const boardsp = $("#boardsp").val();
+	const boardsp = $("#boardsp").val().trim();
 	$.ajax({
 		type:"get",
 		url:"./response/responseList",

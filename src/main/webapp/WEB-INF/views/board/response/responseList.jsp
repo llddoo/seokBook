@@ -21,12 +21,12 @@
 	    			<input class="selectresnum" type="hidden" readonly="readonly" value="${select.resnum}">
 	    			<input class="selectstep" type="hidden" readonly="readonly" value="${select.step}">
 	    			<input class="selectdepth" type="hidden" readonly="readonly" value="${select.depth}">
-	    			<c:if test="${pager.boardsp eq 'saleend' || pager.boardsp eq 'oldbooksale'}">
+	    			<c:if test='${!empty member}'>
 			    		<button class="commentreply btn">답글</button>
-			    	</c:if>
-		    		<c:if test="${member.id eq select.id}">	
-			    		<button class="commentupdate btn btn-secondary">수정</button>
-			    		<button class="commentdelete btn btn-danger">삭제</button>
+			    		<c:if test="${member.id eq select.id}">	
+				    		<button class="commentupdate btn btn-secondary">수정</button>
+				    		<button class="commentdelete btn btn-danger">삭제</button>
+				    	</c:if>
 			    	</c:if>
 		    	</td>
 	    	</tr>

@@ -1,12 +1,12 @@
 package com.sb.s1.address;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.sb.s1.member.MemberDTO;
 
 @Controller
 @RequestMapping("/address/**")
@@ -27,13 +27,12 @@ public class AddressController {
 	
 	@PostMapping("addressList")
 	public void addressList(AddressDTO addressDTO, Model model)throws Exception{
-		model.addAttribute("addressList", addressService.getAddressList(addressDTO));
+		model.addAttribute("user", addressDTO);
+		List<AddressDTO> list = addressService.getAddressList(addressDTO);
+		model.addAttribute("addressList", list);
+		model.addAttribute("listsize", list.size());
 	}
 	
-	@PostMapping("addressInsertform")
-	public void addressInsertform(MemberDTO memberDTO, Model model)throws Exception{
-		model.addAttribute("member", memberDTO);
-	}
 	
 	@PostMapping("addressDelete")
 	public void addressDelete(AddressDTO addressDTO, Model model)throws Exception{

@@ -2,6 +2,7 @@ const id = $("#getUserInfo").val();
 const allitemprice = $("#allpricesum").val();
 
 $(document).ready(function(){
+	
 	//결제관련 api를 사용하기 위한 조건
 	var IMP = window.IMP;
 	IMP.init("iamport");
@@ -50,18 +51,7 @@ $(document).ready(function(){
 $("body").on("click", '#manual-ajax', function(event) {
 	event.preventDefault();
 	this.blur();
-	const location = this.href;
-	$.post(location, {id:id},function(html){
-		$(html).appendTo('body').modal();
-	});
-});
-
-//addressList에서 addressInsert를 누르면 넘어갈 수 있게 하기 위한 코드
-$("body").on("click", '#insert-ajax', function(event) {
-	event.preventDefault();
-	this.blur();
-	const location = this.href;
-	$.post(location, {id:id},function(html){
+	$.post(this.href, {id:id},function(html){
 		$(html).appendTo('body').modal();
 	});
 });
