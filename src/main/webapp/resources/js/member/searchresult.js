@@ -4,7 +4,7 @@
 	const bookcount = $(this).siblings("select").val();
 	if(id==''){
 		alert('로그인을 하셔야 이용할 수 있습니다.');
-		return false;
+		return;
 	}
 	$.ajax({
 		type:"post",
@@ -22,17 +22,23 @@
 			}
 		}
 	});
-	return true;
+	return;
 });
 	
 $(".getPurchase").click(function(){
+	const id = $(this).siblings("input[name='id']").val();
 	const isbn = $(this).siblings("input[name='isbn']").val();
 	const bookcount = $(this).siblings("select").val();
 	const thisis = $(this);
+	if(id==''){
+		alert('로그인을 하셔야 이용할 수 있습니다.');
+		return;
+	}
 	let check = confirm('이 책을 바로 구입하시겠습니까?');
 	if(check){
 		thisis.parent().append("<form id='purchaseOption' method='post' action='./purchase/purchaseWindow'></form>");
-		$("#purchaseOption").append("<input name='isbnlist' value="+isbn+"><input name='countlist' value="+bookcount+">");
+		$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='isbnlist' value="+isbn+">");
+		$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='countlist' value="+bookcount+">");
 		$("#purchaseOption").submit();
 	}
 });
