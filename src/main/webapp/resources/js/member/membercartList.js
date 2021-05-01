@@ -93,7 +93,6 @@ $("#allpurchase").click(function(){
 	if(isbnlist.length>0){
 		$("#allpurchase").parent().append("<form id='allpurchasetransform' method='post' action='../../purchase/purchaseWindow'></form>");
 		for(let inputisbn of isbnlist){
-			console.log(inputisbn);
 			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='isbnlist' value='"+inputisbn+"'>");
 		}
 		for(let inputcount of countlist){

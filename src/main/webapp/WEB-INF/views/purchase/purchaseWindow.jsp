@@ -21,8 +21,8 @@
 		height:80%
 	}
 	#floatforpurchasing{
-		width: 15%;
-		padding-top: 5%;
+		width: 18%;
+		padding-top: 8%;
 		position: fixed;left: 75%;
 		display: inline-block;
 	}
@@ -45,7 +45,10 @@
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
 	<input type="hidden" readonly="readonly" id="allpricesum" value="${pricesum}">
 	<input type="hidden" readonly="readonly" id="willgetpoint" value="${willgetpoint}">
+	
+	<!-- 유저 정보 불러오는 창 -->
 	<div id="userInfo"></div>
+	
 	<label for="typingpoint">포인트 사용하기</label><br>
 	<input type="number" min="0" max="${user.point}" value="0" step="100" id="typingpoint">
 	<button id="applyPoint" onclick="applyPoint()">포인트 적용하기</button><br>
@@ -83,8 +86,40 @@
   	</div>
 </div>
  <div id="floatforpurchasing"></div>
+ 
+ <div class="modal container" id="forCheckingModal">
+	<div class="tab-content">
+		<h2>주소 관리 및 추가</h2>
+	  <!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-toggle="tab" href="#menu1">주소 목록</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" data-toggle="tab" href="#menu2">주소 추가하기</a>
+		  </li>
+		</ul>
+		
+		<!-- Tab panes -->
+	  	<div class="tab-pane container active" id="menu1">
+	  	
+	  	</div>
+		<div class="tab-pane container fade" id="menu2">
+			<input type='text' id='sample6_postcode' class="frm-chk" placeholder='우편번호'>
+			<input type='button' onclick='sample6_execDaumPostcode()' value='우편번호 찾기'><br>
+			<input type='text' id='sample6_address' class="frm-chk" placeholder='주소'><br>
+			<input type='text' id='sample6_detailAddress' class="frm-chk" placeholder='상세주소'>
+			<input type='text' id='sample6_extraAddress' class="frm-chk" placeholder='참고항목'>
+			<input type='text' id='sample6_name' class="frm-chk" placeholder='받는사람 이름'>
+			<input type='text' id='sample6_phonenum' class="frm-chk" placeholder='받는사람 전화번호'>
+			<br><br>
+			<input type="hidden" readonly="readonly" class="frm-chk" value="${user.id}">
+			<button id="addressInsert">우편번호 등록</button>
+		</div>   
+	</div>     
+ </div>
 <c:import url="../template/footer.jsp"></c:import>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=1"></script>
 </body>
 </html>

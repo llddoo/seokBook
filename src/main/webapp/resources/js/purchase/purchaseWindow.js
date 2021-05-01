@@ -35,6 +35,18 @@ $(document).ready(function(){
 		}
 	});
 	
+	//modal용 주소창 불러오기
+	$.post({
+		url:"../address/addressList",
+		data:{
+			id:id
+		},
+		success:function(result){
+			result=result.trim();
+			$("#menu1").append(result);
+		}
+	});
+	
 	//결제관련 side 창 불러오기
 	$.post({
 		url:"./purchaseSidebar",
@@ -47,16 +59,6 @@ $(document).ready(function(){
 			result=result.trim();
 			$("#floatforpurchasing").append(result);
 		}
-	});
-	
-});
-
-//모달창 띄우는 알고리즘
-$("body").on("click", '#manual-ajax', function(event) {
-	event.preventDefault();
-	this.blur();
-	$.post(this.href, {id:id},function(html){
-		$(html).appendTo('body').modal();
 	});
 });
 
@@ -93,24 +95,22 @@ $("body").on("click", '.selectRemoveAddress', function() {
 				result=Number(result.trim());
 				if(result>0){
 					alert('해당 주소를 지웠습니다.');
+					$.post({
+						url:"../address/addressList",
+						data:{
+							id:id
+						},
+						success:function(result){
+							result=result.trim();
+							$("#menu1").empty();
+							$("#menu1").append(result);
+						}
+					});
 				}else{
 					alert('해당 주소를 지우는 중 에러가 발생했습니다.');
 				}
 			}
 		});
-		$.ajax({
-			type:"post",
-			url:"../address/addressSelect",
-			data:{
-				id:id
-			},
-			success:function(result){
-				result=result.trim();
-				$("#useraddresslist").empty();
-				$("#useraddresslist").append(result);
-			}
-		});
-		$.modal.close();
 	}
 });
 
@@ -119,17 +119,16 @@ $("body").on("click", "#addressInsert", function(){
 	let frmchk = true;
 	$(".frm-chk").each(function(){
 		const thisform = $(this);
-		if(thisform.attr('id')!='sample6_detailAddress'){
-			if(thisform.val().trim()===''){
-				alert('비어있는 항목이 존재합니다.');
-				frmchk=false;
-				return;
-			}
+		if(thisform.attr('id')!='sample6_detailAddress'&&thisform.val().trim()===''){
+			alert('비어있는 항목이 존재합니다.');
+			frmchk=false;
+			return false;
 		}
 	});
 	if(!frmchk){
 		return;
 	}
+		
 	const postcode = $("#sample6_postcode").val().trim();
 	const address = $("#sample6_address").val().trim()+' '
 					+$("#sample6_detailAddress").val().trim()+' '
@@ -149,9 +148,6 @@ $("body").on("click", "#addressInsert", function(){
 			result=Number(result.trim());
 			if(result>0){
 				$.modal.close();
-				$("#useraddresslist").empty();
-				
-				//배송주소를 입력했기 때문에 modal창을 종료하고 입력한 내용을 집어넣는다.
 				$.post({
 					url:"../address/addressSelect",
 					data:{
@@ -162,7 +158,27 @@ $("body").on("click", "#addressInsert", function(){
 						if(result===''){
 							alert('오류가 발생했습니다. 다시 실행해 주세요');
 						}else{
+							$.modal.close();
+							$("#useraddresslist").empty();
 							$("#useraddresslist").append(result);
+							
+							$.post({
+								url:"../address/addressList",
+								data:{
+									id:id
+								},
+								success:function(result){
+									result=result.trim();
+									$("#menu1").empty();
+									$("#menu1").append(result);
+									$(".frm-chk").each(function(){
+										const thisinputs = $(this);
+										if(thisinputs.attr("type")!='hidden'){
+											thisinputs.val('');
+										}
+									});
+								}
+							});
 						}
 					}
 				});
@@ -237,10 +253,10 @@ $("#floatforpurchasing").on("click", "#demobutton", function(){
 
 //포인트 적용.(제한사항 적용)
 function applyPoint(){
-	const pointToUse = $("#typingpoint").val();
-	if(pointToUse>$("#typingpoint").attr("max")){
+	const pointToUse = Number($("#typingpoint").val());
+	if(pointToUse>Number($("#typingpoint").attr("max"))){
 		alert('가지고 있는 포인트보다 높게 적으셨습니다.');
-		$("#typingpoint").val($("#typingpoint").attr("max"));
+		$("#typingpoint").val(Number($("#typingpoint").attr("max")));
 		return;
 	}else if(pointToUse>allitemprice){
 		alert('결제 금액보다 더 많이 입력할 수 없습니다.');
@@ -264,7 +280,7 @@ function applyPoint(){
 
 //결제버튼
 $("#floatforpurchasing").on("click", "#payment", function(){
-	if(!$("#checkboxChecking").val()){
+	if($("#checkboxChecking").val()!='checked'){
 		alert('약관에 동의하셔야 합니다.');
 		return;
 	}
