@@ -222,6 +222,7 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
+//purchase바의 약관동의 아이콘 변경 딜레이
 $("#floatforpurchasing").on("click", "#demobutton", function(){
 	if(clickHandler){
 		clickHandler = false;
@@ -234,6 +235,7 @@ $("#floatforpurchasing").on("click", "#demobutton", function(){
 	}
 });
 
+//포인트 적용.(제한사항 적용)
 function applyPoint(){
 	const pointToUse = $("#typingpoint").val();
 	if(pointToUse>$("#typingpoint").attr("max")){

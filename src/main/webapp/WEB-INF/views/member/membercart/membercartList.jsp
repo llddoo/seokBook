@@ -28,6 +28,11 @@
     #emptycart{
     	text-align: center;
     }
+    .form-check-input{
+    	margin-left:0rem !important;
+    	zoom:2 !important;
+    	margin-top:0rem !important;
+    }
 </style>
 
 </head>
@@ -50,14 +55,12 @@
 				<tbody>
 					<tr>
 						<td class="textforline">
-							<div class="form-check">
-							  <label class="form-check-label">
-							    <input type="checkbox" class="form-check-input forpurchaselist">
-							    <input type="hidden" readonly="readonly" name="cartNumlist" value="${bookdto.cartNum}">
-							    <input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
-							    <input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
-							  </label>
-							</div>
+							<div style="display:inline-block;">
+								<input type="checkbox" class="form-check-input forpurchaselist">
+							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="hidden" readonly="readonly" name="cartNumlist" value="${bookdto.cartNum}">
+							<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
+							<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
 							<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
 				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
@@ -97,11 +100,11 @@
 		</c:if>
 		<br>
 		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p>
-		<div class="form-check">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" id="allpurchaselist">
-			</label>
+		<div style="display:inline-block;">
+			<input type="checkbox" class="form-check-input" id="allpurchaselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label for="allpurchaselist">전체선택</label>
 		</div>
+		&nbsp;&nbsp;&nbsp;
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
 		<button id="allpurchase" class="btn btn-primary">주문하기</button>
 		<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
