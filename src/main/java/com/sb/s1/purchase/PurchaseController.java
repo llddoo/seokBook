@@ -123,13 +123,21 @@ public class PurchaseController {
 	}	
 	
 	@PostMapping("purchaseWindow")
-	public void purchaseWindow(String[] isbnlist, long[] countlist ,HttpSession httpSession, Model model)throws Exception{
+	public void purchaseWindow(HttpServletRequest httpServletRequest ,HttpSession httpSession, Model model)throws Exception{
+		String[] isbnlist = httpServletRequest.getParameterValues("isbnlist");
+		final int arraysize= isbnlist.length;
+		
+		String[] countlists = httpServletRequest.getParameterValues("countlist");
+		long[] countlist = new long[arraysize];
+		for(int i = 0 ; i < arraysize; i++) {
+			countlist[i] = Long.parseLong(countlists[i]);
+		}
+		
 		MemberDTO memberDTO = (MemberDTO)httpSession.getAttribute("member");
 		memberDTO = memberService.getSelect(memberDTO);
 		model.addAttribute("user", memberDTO);
 		
 		ArrayList<MembercartDTO> list = new ArrayList<MembercartDTO>();
-		final int arraysize= isbnlist.length;
 		for(int i = 0 ; i < arraysize; i++) {
 			MembercartDTO membercartDTO = new MembercartDTO();
 			membercartDTO.setIsbn(isbnlist[i]);

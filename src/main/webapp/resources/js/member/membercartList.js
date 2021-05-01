@@ -83,8 +83,8 @@ $("#allpurchase").click(function(){
 	let isbnlist = new Array();
 	let countlist = new Array();
 	$(".forpurchaselist").each(function(){
-		const isbn = $(this).siblings("input[name='isbnlist']").val();
-		const count = $(this).siblings("input[name='countlist']").val();
+		const isbn = $(this).parent().siblings("input[name='isbnlist']").val();
+		const count = $(this).parent().siblings("input[name='countlist']").val();
 		if($(this).prop("checked")==true){
 			isbnlist.push(isbn);
 			countlist.push(count);
@@ -92,10 +92,12 @@ $("#allpurchase").click(function(){
 	});
 	if(isbnlist.length>0){
 		$("#allpurchase").parent().append("<form id='allpurchasetransform' method='post' action='../../purchase/purchaseWindow'></form>");
-		const isbnlength = isbnlist.length;
-		for(let i = 0 ; i < isbnlength; i++){
-			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='isbnlist' value="+isbnlist[i]+">");
-			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='countlist' value="+countlist[i]+">");
+		for(let inputisbn of isbnlist){
+			console.log(inputisbn);
+			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='isbnlist' value='"+inputisbn+"'>");
+		}
+		for(let inputcount of countlist){
+			$("#allpurchasetransform").append("<input type='hidden' readonly='readonly' name='countlist' value='"+inputcount+"'>");
 		}
 		$("#allpurchasetransform").submit();
 	}else{

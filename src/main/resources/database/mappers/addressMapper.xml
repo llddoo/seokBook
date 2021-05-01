@@ -22,6 +22,6 @@
 	</delete>
 	<update id="updateForRemove" parameterType="AddressDTO">
 		update address set recentuse='Y' where adrnum = 
-		(select min(adrnum) from address where adrnum != #{adrnum})
+		(select min(adrnum) from (select * from address where adrnum != #{adrnum}))
 	</update>
 </mapper>
