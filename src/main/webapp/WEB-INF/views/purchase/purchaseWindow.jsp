@@ -32,20 +32,14 @@
 		margin-top: 5%;
 		padding-top: 2%;
 		padding-bottom: 2%;
-		border-style: solid;
-		border-width: 2px;
-		border-bottom-color: black;
+		border: 2px black solid;
 		text-align: center;
 	}
 	#pointandprice{
-		border-bottom-style:solid;
-		border-bottom-width:2px; 
-		border-bottom-color:black;
+		border-bottom:2px black solid; 
 	}
 	#getpointandlosepay{
-		border-bottom-style:solid;
-		border-bottom-width:2px; 
-		border-bottom-color:black;
+		border-bottom:2px black solid;
 	}
 </style>
 </head>
