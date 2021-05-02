@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <table class="table table-hover" id="addresslisttable">
+	<thead>
+	</thead>
 	<c:if test="${listsize gt 0}">
 	<c:forEach items="${addressList}" var="item">
 		<tbody>

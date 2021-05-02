@@ -20,26 +20,39 @@
 	.modal{
 		height:80%
 	}
-	#floatforpurchasing{
-		width: 18%;
-		padding-top: 8%;
-		position: fixed;left: 75%;
-		display: inline-block;
-	}
 	.containmain{
 		display:inline-block;
 		padding-left: 18%;
 		width: 70%
 	}
+	#floatforpurchasing{
+		width: 18%;
+		position: fixed;left: 75%;
+		display: inline-block;
+		margin-top: 5%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		border-style: solid;
+		border-width: 2px;
+		border-bottom-color: black;
+		text-align: center;
+	}
 	#pointandprice{
 		border-bottom-style:solid;
 		border-bottom-width:2px; 
-		border-bottom-color:back;
+		border-bottom-color:black;
+	}
+	#getpointandlosepay{
+		border-bottom-style:solid;
+		border-bottom-width:2px; 
+		border-bottom-color:black;
 	}
 </style>
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
+
+<h1 style="text-align: center; margin-top:3%;">주문/결제</h1>
 <div class="containmain">
 	<input type="hidden" readonly="readonly" id="getUserInfo" class="trans-chk" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
@@ -47,14 +60,18 @@
 	<input type="hidden" readonly="readonly" id="willgetpoint" value="${willgetpoint}">
 	
 	<!-- 유저 정보 불러오는 창 -->
-	<div id="userInfo"></div>
+	<div id="userInfo" style="margin:5% 0 5% 8%;"></div>
 	
-	<label for="typingpoint">포인트 사용하기</label><br>
-	<input type="number" min="0" max="${user.point}" value="0" step="100" id="typingpoint">
-	<button id="applyPoint" onclick="applyPoint()">포인트 적용하기</button><br>
-	<p>현재 보유중인 표인트 : ${user.point}</p>
+	<div style="border:2px black solid; vertical-align: middle;">
+		<div style="margin-left:10%; display:inline-block;margin-top:1%">
+			<span>포인트 사용</span><br>
+			<input type="number" min="0" max="${user.point}" value="0" step="100" id="typingpoint">
+			<button id="applyPoint" onclick="applyPoint()">포인트 적용하기</button><br>
+			<p>현재 보유중인 표인트 : ${user.point}</p>
+		</div>
 	
-	<div id="useraddresslist"></div>
+		<div id="useraddresslist" style="display:inline-block; margin-left:10%;"></div>
+	</div>
 	
   	<div id="useritems">
   		<table class="table">
@@ -78,6 +95,7 @@
 		    		<td>총 ${book.bookListDTO.price * book.bookcount*9/10}원 | 수량 ${book.bookcount}개
 		    			<br><del>권당 ${book.bookListDTO.price}원</del>
 		    			<br>권당 ${book.bookListDTO.price*9/10}원
+		    			<br>획득 가능 포인트 : ${book.bookListDTO.bpoint} 포인트
 		    		</td>
 		    	</tr>
 		    </tbody>
@@ -88,7 +106,7 @@
  <div id="floatforpurchasing"></div>
  
  <!-- 모달용 div -->
- <div class="modal container" id="forCheckingModal">
+ <div class="modal container" id="forCheckingModal" style="height:80% important; overflow: scroll;">
 	<div class="tab-content">
 		<h2>주소 관리 및 추가</h2>
 	  <!-- Nav tabs -->
@@ -102,7 +120,7 @@
 		</ul>
 		
 		<!-- Tab panes -->
-	  	<div class="tab-pane container active" id="menu1">
+	  	<div class="tab-pane container active" id="menu1" style="overflow-y:scroll;">
 	  	
 	  	</div>
 		<div class="tab-pane container fade" id="menu2">
@@ -119,6 +137,7 @@
 		</div>   
 	</div>     
  </div>
+ <br><br>
 <c:import url="../template/footer.jsp"></c:import>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=1"></script>

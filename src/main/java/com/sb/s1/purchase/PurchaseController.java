@@ -156,11 +156,13 @@ public class PurchaseController {
 		model.addAttribute("purchasename", purchasename);
 		
 		long allprice = 0;
+		long allpoint = 0;
 		for(MembercartDTO membercartDTO : membercartList) {
 			allprice += membercartDTO.getBookListDTO().getPrice();
+			allpoint += membercartDTO.getBookListDTO().getBpoint();
 		}
 		model.addAttribute("pricesum", allprice*9/10);
-		model.addAttribute("willgetpoint", allprice/20);
+		model.addAttribute("willgetpoint", allpoint);
 	}
 	
 	@Transactional
