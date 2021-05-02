@@ -87,6 +87,7 @@
 </div>
  <div id="floatforpurchasing"></div>
  
+ <!-- 모달용 div -->
  <div class="modal container" id="forCheckingModal">
 	<div class="tab-content">
 		<h2>주소 관리 및 추가</h2>
