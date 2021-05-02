@@ -318,7 +318,7 @@
 							<tr>
 								<th scope="row">반품/교환방법</th>
 								<td><strong>마이페이지 &gt; 주문관리 &gt; 주문/배송내역 &gt; 주문조회
-										&gt; <a href="http://www.kyobobook.co.kr/myroom/orderList.laf">반품/교환신청</a> 또는 고객센터 (1544-1900)
+										&gt; <a href="../board/boardInsert/boardsp=qna">반품/교환신청</a> 또는 고객센터 (1544-1900)
 								</strong></td>
 							</tr>
 							<tr>

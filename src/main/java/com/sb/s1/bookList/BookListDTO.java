@@ -15,9 +15,15 @@ public class BookListDTO {
 	private String bookPubDate;
 	private String bookImg;
 	private long scoreCount;
-	
+	private String gName;
 	
 		
+	public String getgName() {
+		return gName;
+	}
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
 	public long getScoreCount() {
 		return scoreCount;
 	}
