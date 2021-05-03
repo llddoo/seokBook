@@ -111,8 +111,10 @@
 		</div>
 		&nbsp;&nbsp;&nbsp;
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
-		<button id="allpurchase" class="btn btn-primary" style="margin-left: 70%">주문하기</button>
-		<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
+		<div style="text-align: right; display: inline-block;">
+			<button id="allpurchase" class="btn btn-primary">주문하기</button>
+			<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
+		</div>
 	</div>
 	<br>
 	<c:import url="../../template/footer.jsp"></c:import>

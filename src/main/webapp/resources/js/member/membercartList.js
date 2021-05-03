@@ -109,7 +109,7 @@ $("#allcartdelete").click(function(){
 	if(answer){
 		let cartNumlist = new Array();
 		$(".forpurchaselist").each(function(){
-			const cartNum = $(this).siblings("input[name='cartNumlist']").val();
+			const cartNum = $(this).parent().siblings("input[name='cartNumlist']").val();
 			if($(this).prop("checked")){
 				cartNumlist.push(Number(cartNum));
 			}
