@@ -91,37 +91,37 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="rgb(238, 205, 246)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
-          <div class="carousel-caption text-left">
-          <img src="https://image.kyobobook.co.kr/ink/images/prom/2021/banner/210423/bnH_ad04.jpg" alt="어떤 죽음이 삶에게 말했다">
-            
+          <div class="carousel-caption text-left" >
+          
+         <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42118&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42b"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210416_bookday/bnH_w01_eecdf6.jpg" width="1000" height="400" alt="책의 날 이벤트"></a></div>
             
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="rgb(255, 242, 148)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
           <div class="carousel-caption">
-            <img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" alt="추천새책 애슝북엔">
+            
+            <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42128&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42c"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" width="1000" height="400" alt="추천새책 애슝북엔"></a></div>
             
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect class=d1 width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect class=d1 width="100%" height="100%" fill="rgb(245, 207, 153)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
           <div class="carousel-caption text-right">
-           <li data-color="#f5cf99" class="">
-											<div class="event_title"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"></a></div>
-											<div class="event_banner main" style="left: -100px;"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" alt="5월 포켓몬스"></a></div>
-			</li>
+          
+			<div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" width="1000" height="400" alt="5월 포켓몬스"></a></div>
 			
           </div>
+          
           
         </div>
       </div>
@@ -135,7 +135,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
+<!-- 여기까지 상단 메인페이지 -->
 
   <!-- Marketing messaging and featurettes
   ================================================== -->
