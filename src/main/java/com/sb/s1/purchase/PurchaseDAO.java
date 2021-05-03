@@ -1,4 +1,4 @@
-package com.sb.s1.mpurchase;
+package com.sb.s1.purchase;
 
 import java.util.List;
 

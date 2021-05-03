@@ -1,10 +1,8 @@
-package com.sb.s1.mpurchase;
+package com.sb.s1.purchase;
 
 import java.sql.Date;
 
-import com.sb.s1.bookList.BookListDTO;
-
-public class PurchaseDTO extends BookListDTO {
+public class PurchaseDTO{
 
 	private long purnum;
 	private Date purdate;

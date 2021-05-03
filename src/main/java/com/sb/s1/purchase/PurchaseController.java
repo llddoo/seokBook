@@ -1,4 +1,4 @@
-package com.sb.s1.mpurchase;
+package com.sb.s1.purchase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import com.sb.s1.orderList.OrderListDTO;
 import com.sb.s1.orderList.OrderListService;
 
 @Controller
-@RequestMapping("/mpurchase/**")
+@RequestMapping("/purchase/**")
 public class PurchaseController {
 
 	@Autowired
