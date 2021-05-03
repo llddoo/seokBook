@@ -11,7 +11,7 @@
 	<select id="getSelect" parameterType="BookListDTO" resultType="BookListDTO">
 	SELECT gb.isbn,gb.bookname,gb.price,gb.author,gb.gnumber,gb.ebookprice,gb.bookcontent,gb.bookidx,
 		gb.bookpub,gb.bookscore,gb.bookpubdate,gb.bookimg,gb.scorecount,gb.bpoint,gb.gname FROM 
-		(SELECT b.*,g.gname FROM booklist b, genre g where b.gnumber = g.gnumber and b.gnumber=#{gNumber})gb
+		(SELECT b.*,g.gname FROM booklist b, genre g where b.gnumber = g.gnumber and b.isbn=#{isbn})gb
 		
 	</select>
 	

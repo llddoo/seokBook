@@ -15,9 +15,16 @@ public class BookListDTO {
 	private String bookPubDate;
 	private String bookImg;
 	private long scoreCount;
+	private long bPoint;
 	private String gName;
 	
 		
+	public long getbPoint() {
+		return bPoint;
+	}
+	public void setbPoing(long bPoint) {
+		this.bPoint = bPoint;
+	}
 	public String getgName() {
 		return gName;
 	}

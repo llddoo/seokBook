@@ -30,11 +30,11 @@
 			</div>
 			<div class="box_detail_point">
 				<h1 class="title">
-					<strong>${dto.bookName}</strong> <span class="back"><strong>${dto.author}
+					<strong>${dto.bookName}</strong> <span class="back"><strong>${dto.author} |
 							${dto.gName}</strong></span>
 				</h1>
 				<div class="author">
-					<span class="name"><a>${dto.author}</a></span>지음 <span class="line">|</span>
+					<span class="name"><a>${dto.author}</a></span> 지음 <span class="line">|</span>
 					<span class="name" title="출판사"><a>${dto.bookPub}</a></span> <span
 						class="line">|</span> <span class="name" title="출간일"><a>${dto.bookPubDate}</a>
 						출간</span>

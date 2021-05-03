@@ -51,8 +51,8 @@ h2 {
 .content_middle {float:right; width:auto;}
 
 #container{
-	width:950px;min-height:500px;
-	
+	width:950px;min-height: 500px;
+    _height: 500px;	
 }
 
 div {display: block;}
@@ -129,6 +129,38 @@ strong {font-weight: bold;}
 }
 
 img {vertical-align: top;}
+
+
+
+.tab_detail_content {
+    width: 750px;
+    height: 36px;
+    background-color: #fff;
+    border: 1px solid #d7d7d7;
+    border-left-width: 0;
+}
+.tab_detail_content li {
+    float: left;
+    width: 30%;
+    text-align: center;
+}
+.tab_detail_content li.on a {
+    height: 24px;
+    border-bottom-width: 0;
+    color: #3c5fdf;
+}
+.tab_detail_content li a {
+    display: block;
+    padding-top: 13px;
+    height: 23px;
+    border: 1px solid #d7d7d7;
+    border-width: 0 1px;
+    margin-right: -1px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+
 
 .box_detail_version {
     border: 1px solid #ddd;

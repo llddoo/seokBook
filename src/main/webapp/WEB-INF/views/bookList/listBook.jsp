@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String gNameList[]={"소설","시/에세이","경제/경영","자기계발","인문","역사/문화","종교","정치/사회","예술/대중문화",
+			"과학","기술/공학","컴퓨터/IT","어린이","청소년","외국어","잡지","만화"};
+	request.setAttribute("gNameList",gNameList);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +32,11 @@
 	
 	<div class="container">
 	<h2>장르 > </h2>
-		<%-- <select class="genreSelect" name="genreSelect">
-		<c:forEach items="${list}" var="dto">
-				<option selected="selected" value="${dto.gNumber}">${dto.gName}</option>
+		<select class="genreSelect" name="genreSelect">
+		<c:forEach items="${gNameList}" var="gNameList">
+				<option>${gNameList}</option>
 		</c:forEach>
-		</select> --%>
+		</select>
 	
 		<h2 id="boardsp">${pager.boardsp}</h2>
 		<table class="table">
