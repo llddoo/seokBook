@@ -5,7 +5,7 @@
 	<select id="getList" parameterType="Pager" resultType="ResponseDTO">
 		SELECT res.resnum, res.id, res.regdate, res.content, res.subnum, res.step, res.depth 
 		FROM (select rownum r, re.* from RESPONSE re where re.subnum=#{subnum} order by re.step asc) res 
-		WHERE res.r between #{startRow} and #{endRow}
+		WHERE res.r between #{startRow} and #{endRow} order by res.step asc
 	</select>
 	<select id="getTotal" parameterType="ResponseDTO" resultType="Long">
 		SELECT COUNT(*) FROM RESPONSE where subnum=#{subnum}

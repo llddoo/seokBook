@@ -33,6 +33,7 @@ function getList(){
 			perBlock:5
 		},
 		success:function(data){
+			$("#comment").empty();
 			$("#comment").append(data.trim());
 			$(".commentcontent").each(function(){
 				$(this).css("display","inline-block");

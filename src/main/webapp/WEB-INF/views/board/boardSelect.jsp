@@ -89,7 +89,7 @@
 </div>
 <input type="hidden" readonly="readonly" id="contextpath" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="../resources/js/board/commentList.js?ver=1"></script>
+<script type="text/javascript" src="../resources/js/board/commentList.js?ver=2"></script>
 <script type="text/javascript">
 	//board에서 내용 삭제를 누르면 안에 있는 이미지파일이 지워질 수있게 함
 	const forsend = document.getElementById("forsend");

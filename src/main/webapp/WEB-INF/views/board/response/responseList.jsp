@@ -15,9 +15,9 @@
     			<input class="selectresnum" type="hidden" readonly="readonly" value="${select.resnum}">
     			<input class="selectstep" type="hidden" readonly="readonly" value="${select.step}">
     			<input class="selectdepth" type="hidden" readonly="readonly" value="${select.depth}">
-    			<c:if test='${member eq null}'>
+    			<c:if test="${user.id ne null}">
 		    		<button class="commentreply btn">답글</button>
-		    		<c:if test="${member.id eq select.id}">	
+		    		<c:if test="${user.id eq select.id}">	
 			    		<button class="commentupdate btn btn-secondary">수정</button>
 			    		<button class="commentdelete btn btn-danger">삭제</button>
 			    	</c:if>

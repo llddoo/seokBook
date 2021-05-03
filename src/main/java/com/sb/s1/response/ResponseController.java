@@ -2,6 +2,8 @@ package com.sb.s1.response;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.Pager;
 
 @Controller
@@ -19,11 +22,12 @@ public class ResponseController {
 	private ResponseService responseService;
 	
 	@GetMapping("responseList")
-	public void responseList(Pager pager, Model model)throws Exception{
+	public void responseList(Pager pager, HttpSession session, Model model)throws Exception{
 		List<ResponseDTO> list = responseService.getList(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("commentList", list);
 		model.addAttribute("listsize", list.size());
+		model.addAttribute("user", (MemberDTO)session.getAttribute("member"));
 	}
 	
 	@GetMapping("responseDelete")
