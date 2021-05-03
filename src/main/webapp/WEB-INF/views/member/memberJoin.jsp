@@ -42,10 +42,10 @@
 
 	
 </style>
-<c:import url="../template/header.jsp"></c:import>
 </head>
 
 <body>
+<c:import url="../template/body.jsp"></c:import>
 	<div id="div_page" class="container" style="text-align: center;">
 		
 		<h1>&nbsp;</h1>
@@ -95,7 +95,7 @@
 		</form>
 		</div>
 	</div>
-	<c:import url="../template/footer.jsp"></c:import>
+
 <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
 <c:import url="../template/footer.jsp"></c:import>
 </body>

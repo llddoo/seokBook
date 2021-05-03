@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../../template/bootStrap.jsp"></c:import>
-<c:import url="../../template/body.jsp"></c:import>
+<c:import url="../../template/header.jsp"></c:import>
+
 </head>
 <body>
-
+<c:import url="../../template/body.jsp"></c:import>
 	<h3>&nbsp;</h3>
 	<h1>&nbsp;</h1>
 	<h1> 북리스트</h1>
