@@ -62,8 +62,9 @@
 							<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
 							<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
+							&emsp;&emsp;
 							<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
-				        		<span class="booknametitle">&emsp;&emsp;${bookdto.bookListDTO.bookName}</span>
+				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
 				        	</a>
 						</td>
 						 <td class="fornextline" style="text-align: center;vertical-align: middle;"><p>
@@ -103,14 +104,14 @@
 			<h2 id="emptycart">장바구니가 비어있습니다.</h2>
 		</c:if>
 		<br>
-		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p>
+		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p><br>
 		<div style="display:inline-block;">
 			<input type="checkbox" class="form-check-input" id="allpurchaselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label for="allpurchaselist">전체선택</label>
 		</div>
 		&nbsp;&nbsp;&nbsp;
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
-		<button id="allpurchase" class="btn btn-primary">주문하기</button>
+		<button id="allpurchase" class="btn btn-primary" style="margin-left: 70%">주문하기</button>
 		<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
 	</div>
 	<br>
