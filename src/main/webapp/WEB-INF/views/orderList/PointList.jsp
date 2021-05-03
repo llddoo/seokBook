@@ -101,7 +101,7 @@
 
          <ul class="nav nav-pillsflex-column">
             <li class="nav-item"><a class="btn btn-link"
-               href="../../orderList/PointList">포인트 적립내역</a></li>
+               href="../orderList/PointList">포인트 적립내역</a></li>
          </ul>
       </div>
 
@@ -112,27 +112,27 @@
 
 
             <div id="div_size">
-               <a href="./memberBox"> <img id="img_size"
+               <a href="../member/memberFile/memberBox"> <img id="img_size"
                   src="../resources/image/member/box.png" alt="상품">
                   <p>상품</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="./memberProfile"> <img id="img_size2"
+               <a href="../member/memberFile/memberProfile"> <img id="img_size2"
                   src="../resources/image/member/profile.png" alt="프로필">
                   <p></p>
                   <p>내 정보</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="./memberPoint"> <img id="img_size2"
+               <a href="../member/memberFile/memberPoint"> <img id="img_size2"
                   src="../resources/image/member/point.png" alt="포인트">
                   <p></p>
                   <p>포인트</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="./?????Q&A"> <img id="img_size"
+               <a href="../member/memberFile/?????Q&A"> <img id="img_size"
                   src="../resources/image/member/qna.jpg" alt="Q&A">
                   <p>Q&A</p>
                </a>
