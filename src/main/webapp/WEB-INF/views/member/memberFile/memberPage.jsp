@@ -124,7 +124,8 @@ text-align:center;
 		</a>
 		</div>
 </div>
-
+</div>
+</div>
 
 </body>
 <div id ="div_footer">

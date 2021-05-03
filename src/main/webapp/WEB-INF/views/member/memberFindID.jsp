@@ -20,15 +20,16 @@
 }
 
 #div_main {
-	width: 100%;
-	text-align: center;
+	text-align: center;	 
+	 width:100%;
+		height:700px;
 	
 }
 
 #div_main2 {
 	position:absolute;
 	 left:50%;
-	width: 30%; height:100;
+	width: 30%; height:100px;
 	margin-left: -15%;
 	text-align: left;
 }
@@ -38,6 +39,7 @@
 </head>
 
 <body>
+
 <div id=div_main>
 	<h3>&nbsp;</h3>
 	<h1>&nbsp;</h1>
@@ -56,9 +58,13 @@
 	</script>
 	</div>
 	</div>
-</body>
-<div id=div_footer>
+
+	<div id=div_footer>
 <c:import url="../template/footer.jsp"></c:import>
 </div>
+</body>
+
+
+
 </html>
 

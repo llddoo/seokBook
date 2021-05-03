@@ -21,19 +21,25 @@
 #div_main {
 	position:absolute;
 	 left:50%;
-	width: 30%; height:100;
+	width: 30%; height:100px;
 	margin-left: -15%;
 	text-align: left;
+
 }
 	
 
 #div_footer{
+	position: relative;
 	width:100%;
-	position: absolute;
-    bottom: 0px;
-	
+
+    bottom: 1px;
+
 }
 
+#div_page{
+		width:100%;
+		height:700px;
+}
 
 	
 </style>
@@ -41,7 +47,7 @@
 
 <body>
 
-	<div class="container mt-2" style="text-align: center">
+	<div id="div_page" class="container" style="text-align: center;">
 		
 		<h1>&nbsp;</h1>
 		<h2 class="mt-4">Member Join Page1111</h2>
@@ -91,8 +97,12 @@
 		</div>
 	</div>
 <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
-</body>
-<div id=div_footer>
+<div id="div_footer">
 <c:import url="../template/footer.jsp"></c:import>
 </div>
+</body>
+
+
+
+
 </html>

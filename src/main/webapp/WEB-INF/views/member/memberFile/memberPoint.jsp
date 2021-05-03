@@ -113,7 +113,7 @@ text-align:center;
 
 			<ul class ="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="?????">포인트 적립내역</a></li>
+					href="../../orderList/PointList">포인트 적립내역1</a></li>
 			</ul>
 </div>
 
@@ -162,7 +162,7 @@ text-align:center;
 
 </div>
 
-
+</div>
 
 </body>
 <div id ="div_footer">

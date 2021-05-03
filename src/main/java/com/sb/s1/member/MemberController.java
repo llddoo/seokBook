@@ -222,6 +222,11 @@ public class MemberController {
 	      }      
 	      model.addAttribute("result", result);
 	   }
+	  
+	  @GetMapping("memberPointList")
+	  public void memberPointList() throws Exception{
+		  
+	  }
 
 	
 	

@@ -30,6 +30,11 @@
 	bottom: 0%;
 	height: 50px;
 }
+
+#div_page{
+		width:100%;
+		height:1400px;
+}
 </style>
 
 
@@ -38,7 +43,7 @@
 <body>
 	<c:import url="../template/body.jsp"></c:import>
 
-		<div class="container mt-2" style="text-align: center">
+		<div id="div_page" class="container mt-2" style="text-align: center">
 
 			<h2>&nbsp;</h2>
 			<h1>&nbsp;</h1>
@@ -99,16 +104,17 @@
 				<button class="btn btn-danger" id="btn">JOIN</button>
 				<script type="text/javascript"
 					src="../resources/js/member/memberJoinCheck.js"></script>
-
+				
+				
 			</div>
 
 			
 		</div>
-		<div id="div_footer">
+		
+	<div id="div_footer">
 
 				<c:import url="../template/footer.jsp"></c:import>
 			</div>
-
 </body>
 
 

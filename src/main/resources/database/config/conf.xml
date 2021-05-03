@@ -14,6 +14,7 @@
 		<typeAlias type="com.sb.s1.branch.BranchPager" alias="BranchPager"/>
 		<typeAlias type="com.sb.s1.storeBook.StoreBookDTO" alias="StoreBookDTO"/>
 		<typeAlias type="com.sb.s1.purchase.PurchaseDTO" alias="PurchaseDTO"/>
+		<typeAlias type="com.sb.s1.orderList.OrderListDTO" alias="OrderListDTO"/>
 		<typeAlias type="com.sb.s1.util.Pager" alias="Pager"/>
 		
 		

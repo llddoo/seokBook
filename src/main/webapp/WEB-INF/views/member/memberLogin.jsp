@@ -13,20 +13,27 @@
 <style type="text/css">
 #div_footer {
 	width: 100%;
-	position: absolute;
-	bottom: 0px;
+	height: 10%;
+	bottom: 0px;	
 }
 
 #div_main {
 	width: 100%;
+	height: 90%;
 	text-align: center;
 	
+}
+
+#div_page{
+		width:100%;
+		height:700px;
 }
 </style>
 
 </head>
 
 <body>
+<div id="div_page">
 	<div id="div_main">
 		<h3>&nbsp;</h3>
 		<h1>&nbsp;</h1>
@@ -53,8 +60,10 @@
 		<a class="btn btn-link" href="./memberFindID">아이디찾기</a> <a
 			class="btn btn-link" href="./memberFindPW">비밀번호찾기</a>
 	</div>
-</body>
-<div id=div_footer>
+	</div>
+	<div id=div_footer>
 	<c:import url="../template/footer.jsp"></c:import>
 </div>
+</body>
+
 </html>

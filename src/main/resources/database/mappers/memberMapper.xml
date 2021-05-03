@@ -9,11 +9,16 @@
 
 
 	<!-- <update id="memberPoint" parameterType="MemberDTO"> update member set 
-		point=point+100 where id=#{id} </update>
- 	-->
+		point=point+100 where id=#{id} </update> -->
+
 	<select id="memberFindPw" parameterType="MemberDTO"
 		resultType="MemberDTO">
 		select pw from member where email = #{email} and id = #{id}
+	</select>
+
+	<select id="memberBoxCheck" parameterType="PurchaseDTO"
+		resultType="PurchaseDTO">
+		select * from purchase where purnum = #{purnum}
 	</select>
 
 
@@ -24,12 +29,15 @@
 
 
 	<delete id="memberDelete" parameterType="MemberDTO">
-		delete member where id=#{id}
+		delete member where
+		id=#{id}
 	</delete>
 
 	<update id="memberUpdate" parameterType="MemberDTO">
-		update member set pw=#{pw}, name=#{name}, email=#{email},
-		phonenum=#{phonenum} where id=#{id}
+		update member set
+		pw=#{pw}, name=#{name}, email=#{email},
+		phonenum=#{phonenum} where
+		id=#{id}
 	</update>
 
 	<select id="getSelect" parameterType="MemberDTO"
@@ -46,22 +54,23 @@
 
 
 	<insert id="memberJoin" parameterType="MemberDTO">
-		insert into member values(#{id},#{pw},#{name},#{email},#{phonenum},'D',0)
+		insert into member
+		values(#{id},#{pw},#{name},#{email},#{phonenum},'일반등급',0)
 	</insert>
 
 
 	<select id="memberIdCheck" parameterType="MemberDTO"
-      resultType="MemberDTO">
-      select id from member where id = #{id}
-   </select>
-
-	
-	 
+		resultType="MemberDTO">
+		select id from member where id = #{id}
+	</select>
 
 
-	
 
-	
+
+
+
+
+
 
 
 

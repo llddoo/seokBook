@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sb.s1.orderList.OrderListDAO">
+
+
+
+<select id="PointList" parameterType="OrderListDTO" resultType="OrderListDTO">
+      select
+      member.*, orderlist.*, purchase.*
+      from
+      member inner join
+      purchase on member.id = purchase.id left outer join
+      orderlist on purchase.ordernumber = orderlist.ordernumber
+      where member.id = #{id} order by purdate desc
+ 	</select>
+ 	
+ 	</mapper>
