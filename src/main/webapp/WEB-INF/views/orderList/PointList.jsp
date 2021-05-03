@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 
 <style type="text/css">
 #div_root {

@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
-<c:import url="../template/body.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
+
 
 <style type="text/css">
 
@@ -39,6 +39,7 @@
 </head>
 
 <body>
+<c:import url="../template/body.jsp"></c:import>
 <div id=div_main>
 	<h3>&nbsp;</h3>
 	<h1>&nbsp;</h1>
