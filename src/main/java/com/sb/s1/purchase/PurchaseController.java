@@ -201,9 +201,9 @@ public class PurchaseController {
 		result += (membercartService.deleteListAfterPur(membercartDTOs) == 0) ? Integer.MIN_VALUE : 1;
 		
 		OrderListDTO orderListDTO = new OrderListDTO();
-		orderListDTO.setOrdernumber(ordernumber);
-		orderListDTO.setPointusage(spendpoint);
-		orderListDTO.setLumpsum(amount);
+		orderListDTO.setOrderNumber(ordernumber);
+		orderListDTO.setPointUsage(spendpoint);
+		orderListDTO.setLumpSum(amount);
 		result += (orderListService.insertOrderList(orderListDTO) == 0) ? Integer.MIN_VALUE : 1;
 		
 		ArrayList<PurchaseDTO> purchaseDTOs = new ArrayList<PurchaseDTO>();

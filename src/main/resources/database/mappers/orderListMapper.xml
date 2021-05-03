@@ -18,7 +18,7 @@
  	</select>
  	
  	<insert id="insertOrderList" parameterType="OrderListDTO">
-		insert into orderlist values(#{ordernumber}, #{pointusage}, #{lumpsum})
+		insert into orderlist values(#{orderNumber}, #{pointUsage}, #{lumpSum})
 	</insert>
 	
 </mapper>
