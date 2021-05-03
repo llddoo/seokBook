@@ -3,24 +3,37 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sb.s1.purchase.PurchaseDAO">
+<mapper namespace="com.sb.s1.mpurchase.PurchaseDAO">
 
-	<select id="getList" resultType="purchaseDTO" parameterType="BranchPager">
+
+	<update id="setUpdate" parameterType="PurchaseDTO">
+		update purchase set isbn=#{isbn}, id=#{id}, price=#{price}, purcount=#{purcount}, ordernum=#{ordernum} where purnum=#{purnum}
+	</update>
+
+	<delete id="setDelete" parameterType="PurchaseDTO">
+		delete purchase where purnum=#{purnum}
+	</delete>
+	
+	<insert id="setInsert" parameterType="PurchaseDTO">
+		insert into purchase values(p_pn_seq.nextval, sysdate, #{isbn}, #{yyyy-mm-dd}, #{id}, #{price}, #{purcount}, #{ordernum})
+	</insert>
+
+	<select id="getList" resultType="PurchaseDTO" parameterType="BranchPager">
 		select * from
 			(select rownum R, P.* from
 				(select * from purchase where
 					<choose>
 						
-						<when test="kind == 'Icbn'">
-							icbn
+						<when test="kind == 'Id'">
+							id
 						</when>
 						
-						<when test="kind == 'Price'">
-							price
+						<when test="kind == 'Ordernum'">
+							ordernum
 						</when>
 						
 						<otherwise>
-							id
+							isbn
 						</otherwise>
 					
 					</choose>
@@ -31,16 +44,16 @@
 	<select id="getTotalCount" resultType="Long" parameterType="BranchPager">
 		select count(purnum) from purchase where
 		<choose>
-						<when test="kind == 'Icbn'">
-							icbn
+						<when test="kind == 'Id'">
+							id
 						</when>
 						
-						<when test="kind == 'Price'">
-							price
+						<when test="kind == 'Ordernum'">
+							ordernum
 						</when>
 						
 						<otherwise>
-							id
+							isbn
 						</otherwise>
 		</choose>
 		like '%' || #{search} || '%' and purnum > 0

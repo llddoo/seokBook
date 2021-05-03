@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>지점 정보 수정</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/body.jsp"></c:import>
 	<div class="container">
 	<h2>지점 정보 수정</h2>
 	
@@ -29,6 +30,6 @@
 	</form>
 		
 	</div>
-
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

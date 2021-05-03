@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>지점목록</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 <body>
-	
+<c:import url="../template/body.jsp"></c:import>
 <div class="container">
 	<h2>지점목록</h2>
 
@@ -72,7 +72,7 @@
    </div> 
   
   <a href="./${branch}Insert" class="btn btn-primary" role="button">추가</a>
-  
+<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript">
    let kind= '${branchPager.kind}';
    $(".sel").each(function() {

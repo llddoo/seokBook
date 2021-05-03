@@ -1,4 +1,4 @@
-package com.sb.s1.purchase;
+package com.sb.s1.mpurchase;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class PurchaseDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.sb.s1.purchase.PurchaseDAO.";
+	private final String NAMESPACE="com.sb.s1.mpurchase.PurchaseDAO.";
 
 	public int setInsert(PurchaseDTO purchaseDTO) throws Exception {
 

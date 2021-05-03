@@ -1,8 +1,10 @@
-package com.sb.s1.purchase;
+package com.sb.s1.mpurchase;
 
 import java.sql.Date;
 
-public class PurchaseDTO {
+import com.sb.s1.bookList.BookListDTO;
+
+public class PurchaseDTO extends BookListDTO {
 
 	private long purnum;
 	private Date purdate;
@@ -62,7 +64,5 @@ public class PurchaseDTO {
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
-	
 	
 }
