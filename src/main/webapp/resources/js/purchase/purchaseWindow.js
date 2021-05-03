@@ -280,7 +280,7 @@ function applyPoint(){
 
 //결제버튼
 $("#floatforpurchasing").on("click", "#payment", function(){
-	if($("#checkboxChecking").val()!='checked'){
+	if($("#checkboxChecking").checked==false){
 		alert('약관에 동의하셔야 합니다.');
 		return;
 	}
