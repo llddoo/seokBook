@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.member.MemberDTO;
 import com.sb.s1.util.FileManager;
 import com.sb.s1.util.Pager;
 
@@ -64,10 +63,7 @@ public class BoardController {
 	
 	
 	@GetMapping("boardList")
-	public ModelAndView boardList(Pager pager, ModelAndView mav, HttpSession session) throws Exception {
-		MemberDTO memberDTO= new MemberDTO();
-		memberDTO.setId("admin");
-		session.setAttribute("member", memberDTO);
+	public ModelAndView boardList(Pager pager, ModelAndView mav) throws Exception {
 		List<BoardDTO> list = boardService.getList(pager);		
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);

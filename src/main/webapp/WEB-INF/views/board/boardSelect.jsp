@@ -9,6 +9,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <link href="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/resources/summernote/summernote-lite.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <style>
 	#nametag{
 		margin: 30px;
@@ -20,7 +21,7 @@
 </head>
 <body>
 <c:import url="../template/body.jsp"></c:import>
-	<div class="container">
+<div class="container">
 	<div id="nametag">
 		<c:choose>
 			<c:when test="${select.boardsp eq 'notice'}">
@@ -43,33 +44,33 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	  <table class="table">
-	    <thead class="thead-dark">
-	      <tr>
-	        <th>작성자 :${select.id}</th>
-	        <th>작성일자 : ${select.regdate}</th>
-	        <th>조회수 : ${select.visitcount}</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	    <tr>
-	    	<td colspan="2"><h3>글제목 : ${select.subname}</h3></td>
-	    	<td id="mainbuttonright">
-	    	<c:if test="${select.id eq member.id}">
-		  <form id="forsend" method="post" action="./boardDelete">
-		  	<input type="hidden" readonly="readonly" name="boardsp" id="boardsp" value="${select.boardsp}">
-		  	<input type="hidden" readonly="readonly" name="subnum" id="subnum" value="${select.subnum}">
-		  </form>
-		  <a class="btn btn-primary" href="./boardUpdate?boardsp=${select.boardsp}&subnum=${select.subnum}&id=${select.id}">글 수정</a>
-		  <button id="deleteCheck" class="btn btn-primary">글 삭제</button>
-  	  		</c:if>
-	    	</td>
-	    </tr>
-	    	<tr>
-	    	<td colspan="3">${select.content}</td>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+	    		<th>작성자 :${select.id}</th>
+	    		<th>작성일자 : ${select.regdate}</th>
+	    		<th>조회수 : ${select.visitcount}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="2"><h3>글제목 : ${select.subname}</h3></td>
+				<td id="mainbuttonright">
+					<form id="forsend" method="post" action="./boardDelete">
+		  				<input type="hidden" readonly="readonly" name="boardsp" id="boardsp" value="${select.boardsp}">
+		  				<input type="hidden" readonly="readonly" name="subnum" id="subnum" value="${select.subnum}">
+		  			</form>
+		  			<c:if test="${select.id eq member.id}">
+		  				<a class="btn btn-primary" href="./boardUpdate?boardsp=${select.boardsp}&subnum=${select.subnum}&id=${select.id}">글 수정</a>
+		  				<button id="deleteCheck" class="btn btn-primary">글 삭제</button>
+  	  				</c:if>
+	    		</td>
 	    	</tr>
-	    </tbody>
-	  </table>
+	    	<tr>
+	    		<td colspan="3">${select.content}</td>
+	    	</tr>
+		</tbody>
+	</table>
  	<div id="comment">
 		
 	</div>
@@ -77,20 +78,20 @@
 		<div class="form-group">
   			<input type="hidden" class="form-control" id="id" value="${member.id}" readonly="readonly">
 		</div>
-		<c:if test="${(select.boardsp eq 'oldbooksale') || (select.boardsp eq 'saleend')}">
+		<c:if test="${(member.id ne null) && ((select.boardsp eq 'oldbooksale') || (select.boardsp eq 'saleend'))}">
 			<div class="form-group">
-  				<label for="comment">Comment:</label>
+  				<label for="content">Comment:</label>
   				<textarea class="form-control" rows="5" id="content"></textarea>
 			</div>
-		
 			<button type="button" class="btn btn-success" id="write">글쓰기</button>
 		</c:if>
 	</div>
-	</div>
-	<input type="hidden" readonly="readonly" id="contextpath" value="${pageContext.request.contextPath}">
+</div>
+<input type="hidden" readonly="readonly" id="contextpath" value="${pageContext.request.contextPath}">
 <c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript" src="../resources/js/board/commentList.js"></script>
+<script type="text/javascript" src="../resources/js/board/commentList.js?ver=1"></script>
 <script type="text/javascript">
+	//board에서 내용 삭제를 누르면 안에 있는 이미지파일이 지워질 수있게 함
 	const forsend = document.getElementById("forsend");
 	const contextpath = document.getElementById("contextpath").value;
 	$("#deleteCheck").click(function(){

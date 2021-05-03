@@ -1,7 +1,22 @@
-
 let updatenum=-1;
 const subnum=$("#subnum").val();
  
+//로딩될때 전체 댓글 달 summernote 준비, 이후 댓글창 불러오기
+$(document).ready(function(){
+	$('#content').summernote({
+			height: 200,
+			mingheight: 200,
+			maxheight: 200,
+			disableResizeEditor: true,
+			disableDragAndDrop:true,
+			placeholder: '글 작성',
+	});
+	$('.note-statusbar').hide();
+	$('.note-toolbar').hide();
+	getList();
+});
+
+//댓글창 불러오는 함수
 function getList(){
 	const curPage = $("#currentPage").val();
 	const curBlock = $("#curBlock").val();
@@ -18,7 +33,7 @@ function getList(){
 			perBlock:5
 		},
 		success:function(data){
-			$("#comment").html(data.trim());
+			$("#comment").append(data.trim());
 			$(".commentcontent").each(function(){
 				$(this).css("display","inline-block");
 			});
@@ -40,21 +55,8 @@ function getList(){
 		}
 	});
 };
- 
- $(document).ready(function(){
-	$('#content').summernote({
-			height: 200,
-			mingheight: 200,
-			maxheight: 200,
-			disableResizeEditor: true,
-			disableDragAndDrop:true,
-			placeholder: '글 작성',
-	});
-	$('.note-statusbar').hide();
-	$('.note-toolbar').hide();
-	getList();
-});
 
+//댓글을 삭제버튼 누를시 댓글 삭제
 $("#comment").on("click", ".commentdelete",function(){
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const step = $(this).siblings("input.selectstep").val();
@@ -75,6 +77,7 @@ $("#comment").on("click", ".commentdelete",function(){
 	});
 });
 
+//댓글 수정 누를 경우 댓글을 수정할 수 있는 form 생성, 이전 form 삭제
 $("#comment").on("click", ".commentupdate",function(){
 	const content = $(this).parents("tr").siblings("tr").find("td[colspan='3']");
 	const resnum = $(this).siblings("input.selectresnum").val();
@@ -103,6 +106,7 @@ $("#comment").on("click", ".commentupdate",function(){
 	updatenum=resnum;
 });
 
+//수정한 댓글을 보내는 작업
 $("#comment").on("click", "#transrewrite",function(){
 	const resnum = parseInt($("#forupdate").val());
 	const content = $("#rewrite").val();
@@ -128,6 +132,7 @@ $("#comment").on("click", "#transrewrite",function(){
 	});
 });
 
+//댓글에 대한 답변을 위한 입력폼 생성, 이전거 삭제
 $("#comment").on("click", ".commentreply", function(){
 	const resnum = $(this).siblings("input.selectresnum").val();
 	const content = $(this).parents("tr").siblings("tr").find("td[colspan='3']");
@@ -159,6 +164,7 @@ $("#comment").on("click", ".commentreply", function(){
 	updatenum=resnum;
 });
 
+//댓글의 댓글 입력, 그리고 해당 입력 전송
 $("#comment").on("click", "#transreply", function(){
 	const resnum = $("#forinsert").val();
 	const id = $("#id").val();
@@ -191,6 +197,7 @@ $("#comment").on("click", "#transreply", function(){
 	});
 });
 
+//댓글 입력 form 구현
 $("#write").click(function(){
 	const id = $("#id").val();
 	let content = $("#content").val();
@@ -217,6 +224,7 @@ $("#write").click(function(){
 	});
 });
 
+//댓글이 많아질 경우를 대비한 페이지 세팅 js
 $("#comment").on("click", ".pagesetting", function(){
 	$("#currentPage").val($(this).val());
 	getList();

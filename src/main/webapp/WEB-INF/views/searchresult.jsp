@@ -17,9 +17,9 @@
     	<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
     	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-</div>
+</div><br><br>
 <div class="container">
-  <h2>책 검색 결과</h2>
+  <h2 style="text-align: center;">책 검색 결과</h2><br>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -35,16 +35,17 @@
     </c:if>
     <c:forEach items="${bookSearchList}" var="bookdto">
       <tr class="likeBookButton">
-        <td class="imgalign">
+        <td class="imgalign" style="vertical-align: middle;">
         	<img alt="${bookdto.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookImg}">
         </td>
-        <td><p>
-        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">${bookdto.bookName}</a><br>
+        <td style="vertical-align: middle; line-height: 1.5rem"><p>
+        	<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">${bookdto.bookName}</a>
+        	<br>
         	<b>작가</b> : ${bookdto.author}&nbsp;&nbsp;<b>출판사</b> : ${bookdto.bookPub}&nbsp;&nbsp;
         	<b>출판일</b> : ${bookdto.bookPubDate}<br>
         	<b>책설명</b> : ${bookdto.bookContent}</p>
         </td>
-        <td class="fornextline">${bookdto.price}원<br>평점 : ${bookdto.bookScore}</td>
+        <td class="fornextline">${bookdto.price}원<br>포인트 : ${bookdto.bpoint}<br>평점 : ${bookdto.bookScore}</td>
         <td class="fornextline">
         	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
         	<input type="hidden" readonly="readonly" name="id" value="${member.id}">
