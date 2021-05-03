@@ -38,10 +38,10 @@
 </head>
 <body>
 <c:import url="../../template/body.jsp"></c:import>
-	<div class="container">
-		<h2>장바구니</h2>
+	<div class="container" style="margin-top: 3%;">
+		<h2 style="text-align:center;"><b>장바구니</b></h2><br><br>
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="thead-dark" style="text-align: center;vertical-align: middle;">
 				<tr>
 					<th>상품정보</th>
 					<th>판매가</th>
@@ -63,31 +63,35 @@
 							<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
 							<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
-				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
+				        		<span class="booknametitle">&emsp;&emsp;${bookdto.bookListDTO.bookName}</span>
 				        	</a>
 						</td>
-						 <td class="fornextline"><p>
-				        	${bookdto.bookListDTO.price}원<br>
-				        	${bookdto.bookListDTO.price/20}Point
+						 <td class="fornextline" style="text-align: center;vertical-align: middle;"><p>
+				        	<del>${bookdto.bookListDTO.price}원</del>
+				        	<br>${bookdto.bookListDTO.price*9/10}원
+				        	<br>${bookdto.bookListDTO.price/20}Point
 				        </td>
-				        <td>
+				        <td style="text-align: center;vertical-align: middle;">
 				        	<input type="hidden" readonly="readonly" value="${bookdto.isbn}" name="isbn">
 					    	<input type="hidden" readonly="readonly" value="${bookdto.bookcount}" class="forchecklist">
 							<select class="custom-select-sm selectedbookcount" name="countlist">
 								<c:forEach begin="1" end="10" var="i">
 								   	<option value="${i}">${i}</option>
 								</c:forEach>
-							</select>
+							</select><br>
 							<button class="btn changebookcount">변경</button>
 					    </td>
-				        <td class="foralign">${bookdto.bookListDTO.price * bookdto.bookcount}원</td>
+				        <td class="foralign">
+				        	<del>${bookdto.bookListDTO.price * bookdto.bookcount}원</del>
+				        	<br>${bookdto.bookListDTO.price*bookdto.bookcount*9/10}원
+				        </td>
 				        <td class="foralign">
 				        	<form action="../../purchase/purchaseWindow" method="post">
 				        		<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
 				        		<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 				        	</form>
 					        <button class="getPurchase btn-sm btn-info">바로구매</button>
-					        <input type="hidden" readonly="readonly" value="${bookdto.isbn}" class="fordelete">
+					        <input type="hidden" readonly="readonly" value="${bookdto.isbn}" class="fordelete"><br>
 				        	<button class="getDelete btn-sm btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</button>
 				        </td>
 					</tr>
