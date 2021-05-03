@@ -222,4 +222,11 @@ public class MemberController {
 		  
 	  }
 	
+	  
+	  @GetMapping("selectUserInfo")
+	  public void selectUserInfo(MemberDTO memberDTO, Model model)throws Exception{
+		  memberDTO = memberService.selectUserInfo(memberDTO);
+		  model.addAttribute("user", memberDTO);
+	  }
+		
 }
