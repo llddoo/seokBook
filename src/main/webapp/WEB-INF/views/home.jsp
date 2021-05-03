@@ -43,11 +43,22 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
+      }
+      
+      .searchcontainer{
+      	padding: 1.5% 0 0 30%;
+      }
+      
+      #searchbar{
+      	width : 70% !important;
+      }
+      
+      #searchbar input{
+      	width : 70%;
       }
     </style>
 
@@ -65,6 +76,13 @@
 
 <main role="main">
 <c:import url="./template/body.jsp"></c:import>
+	<div class="input-group mb-3 searchcontainer">
+	  <form class="form-inline mt-2 mt-md-0" id="searchbar" action="${pageContext.request.contextPath}/searchresult" method="get">
+		<span>통합검색&nbsp;&nbsp;</span>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mainsearch" value="${mainsearch}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+	</div>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -77,9 +95,9 @@
 
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+          <img src="https://image.kyobobook.co.kr/ink/images/prom/2021/banner/210423/bnH_ad04.jpg" alt="어떤 죽음이 삶에게 말했다">
+            
+            
           </div>
         </div>
       </div>
@@ -88,21 +106,23 @@
 
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" alt="추천새책 애슝북엔">
+            
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect class=d1 width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+           <li data-color="#f5cf99" class="">
+											<div class="event_title"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"></a></div>
+											<div class="event_banner main" style="left: -100px;"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" alt="5월 포켓몬스"></a></div>
+			</li>
+			
           </div>
+          
         </div>
       </div>
     </div>
@@ -202,4 +222,3 @@
 
   </body>
 </html>
-
