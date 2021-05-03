@@ -9,12 +9,17 @@
 	
 
 	<select id="getSelect" parameterType="BookListDTO" resultType="BookListDTO">
-		select * from booklist where isbn=#{isbn}
+	SELECT gb.isbn,gb.bookname,gb.price,gb.author,gb.gnumber,gb.ebookprice,gb.bookcontent,gb.bookidx,
+		gb.bookpub,gb.bookscore,gb.bookpubdate,gb.bookimg,gb.scorecount,gb.bpoint,gb.gname FROM 
+		(SELECT b.*,g.gname FROM booklist b, genre g where b.gnumber = g.gnumber and b.isbn=#{isbn})gb
+		
 	</select>
 	
 	<select id="getList" resultType="BookListDTO">
-		SELECT isbn,bookname,author,bookpub,bookpubdate,price,bookcontent,bookscore,bpoint FROM 
-		(SELECT B.*, ROWNUM RN FROM (select * from booklist where gnumber = #{gNumber}) B) 
+		SELECT gb.isbn,gb.bookname,gb.price,gb.author,gb.gnumber,gb.ebookprice,gb.bookcontent,gb.bookidx,
+		gb.bookpub,gb.bookscore,gb.bookpubdate,gb.bookimg,gb.scorecount,gb.bpoint,gb.gname FROM 
+		(SELECT ROWNUM r, b.*,g.gname FROM booklist b, genre g where b.gnumber = g.gnumber and b.gnumber=#{gnumber})gb
+		where gb.r between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="getTotalCount" parameterType="Pager" resultType="Long">

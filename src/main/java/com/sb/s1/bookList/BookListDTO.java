@@ -10,25 +10,32 @@ public class BookListDTO {
 	private String bookContent;
 	private String bookIdx;
 	private String bookPub;
-	private String bookImg;
 	private long bookScore;
 	private String author;
 	private String bookPubDate;
-	private long scorecount;
-	private long bpoint;
+	private String bookImg;
+	private long scoreCount;
+	private long bPoint;
+	private String gName;
 	
-	
-	public long getBpoint() {
-		return bpoint;
+		
+	public long getbPoint() {
+		return bPoint;
 	}
-	public void setBpoint(long bpoint) {
-		this.bpoint = bpoint;
+	public void setbPoing(long bPoint) {
+		this.bPoint = bPoint;
 	}
-	public long getScorecount() {
-		return scorecount;
+	public String getgName() {
+		return gName;
 	}
-	public void setScorecount(long scorecount) {
-		this.scorecount = scorecount;
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
+	public long getScoreCount() {
+		return scoreCount;
+	}
+	public void setScoreCount(long scoreCount) {
+		this.scoreCount = scoreCount;
 	}
 	public String getAuthor() {
 		return author;

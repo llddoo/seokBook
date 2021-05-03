@@ -22,11 +22,16 @@ public class BookListController {
 	@Autowired
 	private BookListService bookListService;
 	
-	private String[] bookList = {"isbn", "bookName", "price", "gNumber", "ebookPrice","bookContent", "bookEx", "bookIdx", "bookPub", "bookScore", "author", "bookPubDate"};
+	
 	
 	@GetMapping("listBook")
-	public void bookList(Pager pager, Model model)throws Exception{
+	public void listBook(Pager pager, Model model)throws Exception{
 		List<BookListDTO> list=bookListService.getList(pager);
+		for(BookListDTO bookListDTO:list) {
+			if(bookListDTO.getBookContent()!=null&&bookListDTO.getBookContent().length()>160) {
+			bookListDTO.setBookContent(bookListDTO.getBookContent().substring(0,160));
+			}
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
 		model.addAttribute("listsize", list.size());

@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style type="text/css">
   	body{
-  		padding-top: 70px;
+  		padding-top: 100px !important;
   	}
   </style>
 </head>
