@@ -70,7 +70,7 @@
 						 <td class="fornextline" style="text-align: center;vertical-align: middle;"><p>
 				        	<del>${bookdto.bookListDTO.price}원</del>
 				        	<br>${bookdto.bookListDTO.price*9/10}원
-				        	<br>${bookdto.bookListDTO.price/20}Point
+				        	<br>${bookdto.bookListDTO.bPoint}Point
 				        </td>
 				        <td style="text-align: center;vertical-align: middle;">
 				        	<input type="hidden" readonly="readonly" value="${bookdto.isbn}" name="isbn">

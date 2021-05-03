@@ -45,7 +45,7 @@
         	<b>출판일</b> : ${bookdto.bookPubDate}<br>
         	<b>책설명</b> : ${bookdto.bookContent}</p>
         </td>
-        <td class="fornextline">${bookdto.price}원<br>포인트 : ${bookdto.bpoint}<br>평점 : ${bookdto.bookScore}</td>
+        <td class="fornextline">${bookdto.price}원<br>포인트 : ${bookdto.bPoint}<br>평점 : ${bookdto.bookScore}</td>
         <td class="fornextline">
         	<input type="hidden" readonly="readonly" name="isbn" value="${bookdto.isbn}">
         	<input type="hidden" readonly="readonly" name="id" value="${member.id}">

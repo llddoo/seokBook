@@ -83,7 +83,7 @@
 		    			총 ${book.bookListDTO.price * book.bookcount*9/10}원 | 수량 ${book.bookcount}개
 		    			<br><del>권당 ${book.bookListDTO.price}원</del>
 		    			<br>권당 ${book.bookListDTO.price*9/10}원
-		    			<br>획득 가능 포인트 : ${book.bookListDTO.bpoint} 포인트
+		    			<br>획득 가능 포인트 : ${book.bookListDTO.bPoint} 포인트
 		    		</td>
 		    	</tr>
 		    </tbody>
