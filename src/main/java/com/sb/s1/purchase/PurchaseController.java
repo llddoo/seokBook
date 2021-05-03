@@ -36,7 +36,7 @@ public class PurchaseController {
 	@Autowired
 	private OrderListService orderListService;
 
-	@GetMapping("purchaseSelect")
+	@GetMapping("mpurchase/purchaseSelect")
 	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
@@ -47,7 +47,7 @@ public class PurchaseController {
 		return mv;
 	}
 
-	@GetMapping("purchaseList")
+	@GetMapping("mpurchase/purchaseList")
 	public ModelAndView getList(BranchPager branchPager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<PurchaseDTO> ar = purchaseService.getList(branchPager);
@@ -58,7 +58,7 @@ public class PurchaseController {
 
 		return mv;
 	}
-	@GetMapping("purchaseInsert")
+	@GetMapping("mpurchase/purchaseInsert")
 	public ModelAndView setInsert() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mpurchase", "mpurchase");
@@ -66,7 +66,7 @@ public class PurchaseController {
 
 		return mv;
 	}
-	@PostMapping("purchaseInsert")
+	@PostMapping("mpurchase/purchaseInsert")
 	public ModelAndView setInsert(PurchaseDTO purchaseDTO, ModelAndView mv) throws Exception {
 		int result = purchaseService.setInsert(purchaseDTO);
 		mv.setViewName("redirect:./purchaseList");
@@ -74,7 +74,7 @@ public class PurchaseController {
 		return mv;
 	}
 
-	@PostMapping("purchaseDelete")
+	@PostMapping("mpurchase/purchaseDelete")
 	public ModelAndView setDelete(PurchaseDTO purchaseDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = purchaseService.setDelete(purchaseDTO);
@@ -93,7 +93,7 @@ public class PurchaseController {
 		return mv;
 	}
 
-	@GetMapping("purchaseUpdate")
+	@GetMapping("mpurchase/purchaseUpdate")
 	public ModelAndView setUpdate(PurchaseDTO purchaseDTO, ModelAndView mv) throws Exception {
 
 		purchaseDTO = purchaseService.getSelect(purchaseDTO);
@@ -103,7 +103,7 @@ public class PurchaseController {
 		return mv;
 	}
 
-	@PostMapping("purchaseUpdate")
+	@PostMapping("mpurchase/purchaseUpdate")
 	public ModelAndView setUpdate(PurchaseDTO purchaseDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 

@@ -23,30 +23,27 @@
 <c:import url="../template/body.jsp"></c:import>
 <div class="container">
 	<div id="nametag">
-		<c:choose>
+		<c:choose>	
 			<c:when test="${select.boardsp eq 'notice'}">
-				<h2 id="boardsp">공지사항</h2>
+				<h2 id="boardsp"><a href="./boardList?boardsp=notice" style="color: black;">공지사항</a></h2>
 			</c:when>
 			<c:when test="${select.boardsp eq 'event'}">
-				<h2 id="boardsp">이벤트</h2>
+				<h2 id="boardsp"><a href="./boardList?boardsp=event" style="color: black;">이벤트</a></h2>
 			</c:when>
 			<c:when test="${select.boardsp eq 'oldbooksale'}">
-				<h2 id="boardsp">중고 서적 판매 게시판</h2>
+				<h2 id="boardsp"><a href="./boardList?boardsp=oldbooklist" style="color: black;">중고 서적 판매 게시판</a></h2>
 			</c:when>
 			<c:when test="${select.boardsp eq 'saleend'}">
-				<h2 id="boardsp">중고 서적 판매 완료 게시판</h2>
-			</c:when>
-			<c:when test="${pager.boardsp eq 'oldbooklist'}">
-				<h2 id="boardsp">중고 서적 전체 게시판</h2>
+				<h2 id="boardsp"><a href="./boardList?boardsp=oldbooklist" style="color: black;">중고 서적 판매 완료 게시판</a></h2>
 			</c:when>
 			<c:otherwise>
-				<h2 id="boardsp">QNA</h2>
+				<h2 id="boardsp"><a href="./boardList?boardsp=qna&kind=id&search=${user.id}" style="color: black;">QNA</a></h2>
 			</c:otherwise>
 		</c:choose>
 	</div>
 	<table class="table">
 		<thead class="thead-dark">
-			<tr>
+			<tr style="text-align: center;">
 	    		<th>작성자 :${select.id}</th>
 	    		<th>작성일자 : ${select.regdate}</th>
 	    		<th>조회수 : ${select.visitcount}</th>
@@ -55,7 +52,7 @@
 		<tbody>
 			<tr>
 				<td colspan="2"><h3>글제목 : ${select.subname}</h3></td>
-				<td id="mainbuttonright">
+				<td id="mainbuttonright" style="text-align: center;">
 					<form id="forsend" method="post" action="./boardDelete">
 		  				<input type="hidden" readonly="readonly" name="boardsp" id="boardsp" value="${select.boardsp}">
 		  				<input type="hidden" readonly="readonly" name="subnum" id="subnum" value="${select.subnum}">
