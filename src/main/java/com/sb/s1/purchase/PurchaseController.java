@@ -159,7 +159,7 @@ public class PurchaseController {
 		long allpoint = 0;
 		for(MembercartDTO membercartDTO : membercartList) {
 			allprice += membercartDTO.getBookListDTO().getPrice();
-			allpoint += membercartDTO.getBookListDTO().getBpoint();
+			allpoint += membercartDTO.getBookListDTO().getbPoint();
 		}
 		model.addAttribute("pricesum", allprice*9/10);
 		model.addAttribute("willgetpoint", allpoint);
