@@ -24,28 +24,24 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
-//	public List<cartDTO> cartList(MemberPager pager)throws Exception{
-//		// ---- startRow, lastRow ----
-//		pager.makeRow();
-//
-//		// ---- 페이징 계산 -------------
-//		long totalCount = memberDAO.getTotalCount(pager);
-//		pager.makeNum(totalCount);
-//		
-//		
-//		return memberDAO.cartList(pager);
-//	}
 	
-	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
-		
-		return memberDAO.memberPoint(memberDTO);
-	}
+
+
+	
+//	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
+//		
+//		return memberDAO.memberPoint(memberDTO);
+//	}
 	
 	public MemberDTO memberFindID(MemberDTO memberDTO)throws Exception{
 		
 		return memberDAO.memberFindID(memberDTO);
 	}
 
+	public MemberDTO memberFindPw(MemberDTO memberDTO)throws Exception{
+		
+		return memberDAO.memberFindPw(memberDTO);
+	}
 
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 
@@ -70,8 +66,9 @@ public class MemberService {
 
 
 	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
-		return memberDAO.memberIdCheck(memberDTO);
-	}
+	      return memberDAO.memberIdCheck(memberDTO);
+	   }
+
 
 	public int memberJoin(MemberDTO memberDTO, HttpSession session)throws Exception{
 

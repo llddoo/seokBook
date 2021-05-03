@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../../template/header.jsp"></c:import>
+<c:import url="../../template/bootStrap.jsp"></c:import>
+
 <style type="text/css">
 
 #div_root{
@@ -77,8 +78,25 @@ text-align:center;
 	float: left;
 }
 
-</style>
+#div_view{
+	border: 2px solid gray;
+	width:600px;
+	height:300px;
 
+	margin-top:5%;
+ 	margin-left:15%;
+
+}
+#div_view2{
+	width:200px;
+	float:left;
+		text-align:left;
+	margin-left:5%;
+
+}
+
+
+</style>
 </head>
 
 <body>
@@ -86,9 +104,21 @@ text-align:center;
 <div id="div_root">
 	<div id="div_top" >
 
-	<h1>My Page</h1>
+	<h1>프로필</h1>
 </div>
-	
+	<div id="div_menu">
+		<h3>카테고리</h3>
+
+
+			<ul class ="nav nav-pillsflex-column">
+				<li class="nav-item"><a class="btn btn-link"
+					href="./memberUpdate">회원정보 수정</a></li>
+				<li class="nav-item"><a class="btn btn-link"
+					href="./memberDelete"
+					onclick="if(!confirm('회원 탈퇴 하시겠습니까?')){return false;}">회원 탈퇴</a></li>
+
+			</ul>
+</div>
 
 <div id = "div_con">
 
@@ -104,7 +134,7 @@ text-align:center;
 		</div>
 		<div id="div_size">	
 		<a  href="./memberProfile">
-		<img id="img_size2" src="../../resources/image/member/profile.png" alt="내정보"  >
+		<img id="img_size2" src="../../resources/image/member/profile.png" alt="프로필"  >
 		<p></p>
 		<p>내 정보</p>
 		</a>
@@ -123,9 +153,37 @@ text-align:center;
 		</a>
 		</div>
 </div>
-</div>
+
+<div id="div_view">
+		<div id="div_view2">
+		<h1>회원 정보</h1>
+		<p></p>
+		<h3>아이디 </h3>
+		<h3>이름</h3>
+		<h3>회원등급 </h3>
+		<h3>이메일  </h3>
+		<h3>휴대전화 </h3>
+        </div>
+		<div id="div_view2">
+		<h1>&nbsp;</h1>
+		<p></p>
+        <h3>${member.id}</h3>
+        <h3>${member.name}</h3>
+        <h3>${member.grade}</h3>
+        <h3>${member.email}</h3>
+        <h3>${member.phonenum}</h3>
+        </div>
+		</div>
+
 </div>
 
-<c:import url="../../template/footer.jsp"></c:import>
+</div>
+
+
+
 </body>
+<div id ="div_footer">
+<c:import url="../../template/footer.jsp"></c:import>
+</div>
+
 </html>

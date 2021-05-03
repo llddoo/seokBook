@@ -1,9 +1,17 @@
 package com.sb.s1.member;
 
+
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+import com.sb.s1.bookList.BookListDTO;
 
 
 
@@ -16,25 +24,26 @@ public class MemberDAO {
 
 	private final String NAMESPACE="com.sb.s1.member.MemberDAO.";
 
+
+
 	
-//	public long getTotalCount(MemberPager pager) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
-//	}
-//	
-//	public List<cartDTO> cartList(MemberPager pager) throws Exception {
-//		// TODO Auto-generated method stub
-//		return sqlSession.selectList(NAMESPACE+"cartList", pager);
-//	}
 	
-	public int memberPoint(MemberDTO memberDTO)throws Exception{
-		
-		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
-		}
+	
+	
+	
+//	public int memberPoint(MemberDTO memberDTO)throws Exception{
+//		
+//		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
+//		}
 	
 	public MemberDTO memberFindID(MemberDTO memberDTO) throws Exception{
-		return sqlSession.selectOne("memberFindID",memberDTO);
+		return sqlSession.selectOne(NAMESPACE+"memberFindID",memberDTO);
 	}
+	
+	public MemberDTO memberFindPw(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberFindPw",memberDTO);
+	}
+	
 	
 	//맴버 선택
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
@@ -49,8 +58,9 @@ public class MemberDAO {
 
 	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
 
-		return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
-	}
+	      return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
+	   }
+
 	//맴버 업데이트
 	public int memberUpdate(MemberDTO memberDTO)throws Exception{
 

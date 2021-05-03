@@ -16,33 +16,58 @@
 	.r2 {
 		color: blue;
 	}
+
+#div_main {
+	position:absolute;
+	 left:50%;
+	width: 30%; height:100px;
+	margin-left: -15%;
+	text-align: left;
+
+}
+	
+
+#div_footer{
+	position: relative;
+	width:100%;
+
+    bottom: 1px;
+
+}
+
+#div_page{
+		width:100%;
+		height:700px;
+}
+
+	
 </style>
+<c:import url="../template/header.jsp"></c:import>
 </head>
 
 <body>
-<c:import url="../template/body.jsp"></c:import>
-	<div class="container mt-2">
-
+	<div id="div_page" class="container" style="text-align: center;">
+		
 		<h1>&nbsp;</h1>
-		<h2 class="mt-4">Member Join Page</h2>
-
+		<h2 class="mt-4">Member Join Page1111</h2>
+			<div id="div_main" class="container mt-2">
 		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="id">아이디</label> 
-				<input type="text" class="form-control"	id="id" name="id">
+				<input type="text" class="form-control"	id="id" name="id" style="width:70%; height:40px;">
 				<h4 id="idResult"></h4>
 				<h4 id="idCheckResult"></h4>
 				<!-- ID 는 6글자 이상 -->
 			</div>
 			<div class="form-group">
 				<label for="pw">비밀번호</label> 
-				<input type="password"	class="form-control" id="pw" name="pw1">
+				<input type="password"	class="form-control" id="pw" name="pw">
 				<h4 id="pwResult"></h4>
 				<!-- PW는 8글자 이상 -->
 			</div>
 			<div class="form-group">
-				<label for="pw">비밀번호 확인</label> <input type="password"
-					class="form-control" id="pw2" name="pw">
+				<label for="pw2">비밀번호 확인</label> <input type="password"
+					class="form-control" id="pw2" name="pw2">
 					<h4 id="pw2Result"></h4>
 				<!-- PW 두개는 일치 -->	
 			</div>			
@@ -68,8 +93,14 @@
 			<input type="submit" id="btn" value="JOIN" class="btn btn-primary">
 			
 		</form>
+		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
+<c:import url="../template/footer.jsp"></c:import>
 </body>
+
+
+
+
 </html>

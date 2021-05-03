@@ -19,37 +19,51 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	
 	
-	
 	@Autowired
 	private MemberService memberService;
 	
+
+	@GetMapping("memberProfile")
+	public void memberProfiel()throws Exception{
+		
+	}
 	
-	@RequestMapping("memberFindID")
+	
+	@GetMapping("memberFindPW")
+	public void memberFindPw()throws Exception{
+		
+	}
+	
+	@GetMapping("memberSearchPw")
+	public void membersearchPw(MemberDTO memberDTO, Model model) throws Exception{
+		memberDTO = memberService.memberFindPw(memberDTO);
+		String str;
+		if(memberDTO==null) {
+			str="null";
+		}else {
+			str=memberDTO.getPw();
+		}
+		model.addAttribute("result", str);
+	}
+	
+	@GetMapping("memberFindID")
 	public void memberFindID()throws Exception{
 		
 	}
 	
-	@RequestMapping(value = "memberFindID", method = RequestMethod.POST)
-	public ModelAndView memberFindID(MemberDTO memberDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@GetMapping("memberSearchId")
+	public void membersearchId(MemberDTO memberDTO, Model model) throws Exception{
 		memberDTO = memberService.memberFindID(memberDTO);
-		String message="";
-		String id="";
-		if (memberDTO == null) {
-			System.out.println("가입된 아이디가 없습니다.");
-			message="가입된 아이디가 없습니다";
-			
-		} else {
-			 id = memberDTO.getId();
+		String str;
+		if(memberDTO==null) {
+			str="null";
+		}else {
+			str=memberDTO.getId();
 		}
-		
-		mv.addObject(message,"msg");
-		mv.addObject(id ,"id");
-		mv.setViewName("member/memberFindID");
-		return mv;
+		model.addAttribute("result", str);
 	}
 	
-	@RequestMapping("memberDelete")
+	@GetMapping("memberDelete")
 	public String memberDelete(HttpSession session)throws Exception{
 		MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
 		int result = memberService.memberDelete(memberDTO, session);
@@ -60,54 +74,66 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("memberUpdate")
+	@GetMapping("memberUpdate")
 	public void memberUpdate()throws Exception{
 		
 	}
 	
 	
-	
-//	@RequestMapping(value="memberPoint")
-//	public void memberPoint()throws Exception{
-//			
-//	}
-	
-	@RequestMapping(value="memberPoint")
-	public String memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
-		int result = memberService.memberPoint(memberDTO,session);
+	@GetMapping("memberPoint")
+	public void memberPoint()throws Exception{
 		
-		session.invalidate();
-		
-		return "redirect:../../";
-	
 	}
 	
+//	   @PostMapping("memberPoint")
+//	   public String memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
+//	      memberDTO =(MemberDTO)session.getAttribute("member");
+//	      int result = memberService.memberPoint(memberDTO, session);
+//	      memberDTO = memberService.getSelect(memberDTO);
+//	      
+//	      if(result>0) {
+//	         session.setAttribute("member", memberDTO);         
+//	      }
+//	      return "member/memberFile/memberPage";
+//	   
+//	   }
 	
-	@RequestMapping(value="memberUpdate", method = RequestMethod.POST)
+	
+	
+	
+	
+	@PostMapping("memberUpdate")
 	public String memberUpdate(MemberDTO memberDTO, HttpSession session)throws Exception{
 		int result = memberService.memberUpdate(memberDTO);
-		
+		memberDTO = memberService.getSelect(memberDTO);
 		if(result>0) {
 			session.setAttribute("member", memberDTO);
 		}
+		
+		
 		return "redirect:../../";
 	}
 	
 	
-	@RequestMapping("memberPage")
+	@GetMapping("memberPage")
 	public void memberPage()throws Exception{
 		
 	}
 	
 	
-	@RequestMapping("memberLogout")
+	@GetMapping("memberLogout")
 	public String memberLogout(HttpSession session)throws Exception{
 		session.invalidate();
 		return "redirect:../";
 	}
 	
 	
-	@RequestMapping("getSelect")
+	@GetMapping("memberBox")
+	public void memberBox() throws Exception{
+		
+	}
+	
+	@GetMapping("getSelect")
 	public ModelAndView getSelect(MemberDTO memberDTO,ModelAndView modelAndView)throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
@@ -121,28 +147,26 @@ public class MemberController {
 		return mv;
 	}
 	
-	@RequestMapping("memberLogin")
+	@GetMapping("memberLogin")
 	public void memberLogin()throws Exception{
 
 	}
 	
-	@RequestMapping(value="memberLogin", method = RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, HttpSession session,Model model)throws Exception{
+	@PostMapping("memberLogin")
+	public String memberLogin(MemberDTO memberDTO, HttpSession session)throws Exception{
 
 		memberDTO = memberService.memberLogin(memberDTO);
-		String result ="0";
+		boolean result =true;
 		String path;
-		String message ="";
 		if(memberDTO==null) {
-			result="1";
+			result = false;
 		}
 		
-		if(result=="0"){
+		if(result){
 			path = "redirect:../";
 		}else {
 			path = "member/memberLoginResult";
-			message = "로그인 실패";
-			model.addAttribute("msg", message);
+			
 		}
 			
 		session.setAttribute("member", memberDTO);
@@ -151,7 +175,7 @@ public class MemberController {
 		return path;
 	}
 	
-	@RequestMapping("memberJoinCheck")
+	@GetMapping("memberJoinCheck")
 	public ModelAndView memberJoinCheck()throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
@@ -161,10 +185,10 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("memberJoin")
+	@GetMapping("memberJoin")
 	public void memberJoin()throws Exception{}
 	
-	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
+	@PostMapping("memberJoin")
 	public String memberJoin(MemberDTO memberDTO, Model model,HttpSession session)throws Exception{
 		int result = memberService.memberJoin(memberDTO, session);
 		
@@ -181,25 +205,21 @@ public class MemberController {
 		return "common/commonResult";
 	}
 
-	
-	@GetMapping("memberIdCheck")
-	public String memberIdCheck (MemberDTO memberDTO,Model model)throws Exception{
-		memberDTO = memberService.memberIdCheck(memberDTO);
-		String result = "0";//0 사용 불가 1:사용가능
-		if(memberDTO==null) {
-			result="1";
-		}
-		
-		model.addAttribute("result", result);
-		
-		return "member/test";
-	}
-	
-	
-	@GetMapping("selectUserInfo")
-	public void selectUserInfo(MemberDTO memberDTO, Model model)throws Exception{
-		memberDTO = memberService.selectUserInfo(memberDTO);
-		model.addAttribute("user", memberDTO);
-	}
+
+	//////////////////////////
+	  @GetMapping("memberIdCheck")
+	   public void memberIdCheck (MemberDTO memberDTO,Model model)throws Exception{
+	      memberDTO = memberService.memberIdCheck(memberDTO);
+	      String result = "";//0 사용 불가 1:사용가능
+	      if(memberDTO==null) {
+	         result="null";
+	      }      
+	      model.addAttribute("result", result);
+	   }
+	  
+	  @GetMapping("memberPointList")
+	  public void memberPointList() throws Exception{
+		  
+	  }
 	
 }
