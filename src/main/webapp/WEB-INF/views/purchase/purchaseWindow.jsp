@@ -17,9 +17,6 @@
 <!-- icon -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <style type="text/css">
-	.modal{
-		height:80%
-	}
 	.containmain{
 		display:inline-block;
 		padding-left: 18%;
@@ -30,16 +27,9 @@
 		position: fixed;left: 75%;
 		display: inline-block;
 		margin-top: 5%;
-		padding-top: 2%;
-		padding-bottom: 2%;
+		padding:2% 0;
 		border: 2px black solid;
 		text-align: center;
-	}
-	#pointandprice{
-		border-bottom:2px black solid; 
-	}
-	#getpointandlosepay{
-		border-bottom:2px black solid;
 	}
 </style>
 </head>
@@ -48,6 +38,7 @@
 
 <h1 style="text-align: center; margin-top:3%;">주문/결제</h1>
 <div class="containmain">
+	<!-- 사이드 바에 나타내고, 결제를 하기 위한 임시저장용 input 태그 -->
 	<input type="hidden" readonly="readonly" id="getUserInfo" class="trans-chk" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
 	<input type="hidden" readonly="readonly" id="allpricesum" value="${pricesum}">
@@ -56,6 +47,7 @@
 	<!-- 유저 정보 불러오는 창 -->
 	<div id="userInfo" style="margin:5% 0 5% 8%;"></div>
 	
+	<!-- 포인트 적용과 주소 적용을 위한 칸 -->
 	<div style="border:2px black solid; vertical-align: middle;">
 		<div style="margin-left:10%; display:inline-block;margin-top:1%">
 			<span>포인트 사용</span><br>
@@ -65,14 +57,15 @@
 		</div>
 	
 		<div id="useraddresslist" style="display:inline-block; margin-left:10%;"></div>
-	</div>
+	</div><br><br>
 	
+	<!-- 선택한 책 목록들을 볼수 있게 해줌 -->
   	<div id="useritems">
   		<table class="table">
 		    <thead>
 		      <tr>
-		        <th>상품정보</th>
-		        <th>판매가</th>
+		        <th style="text-align: center;border-right:1px solid gray;" colspan="2">상품정보</th>
+		        <th style="text-align: center;">판매가</th>
 		      </tr>
 		    </thead>
 		    <c:forEach items="${booklist}" var="book">
@@ -81,12 +74,13 @@
 		    		<td>
 		    			<img alt="${book.bookListDTO.bookImg}" 
 		    				src="${pageContext.request.contextPath}/resources/uploaded/bookList/${book.bookListDTO.bookImg}">
-		    				<input type="hidden" readonly="readonly" class="isbnlist" value="${book.bookListDTO.isbn}">
-		    				<input type="hidden" readonly="readonly" class="countlist" value="${book.bookcount}">
-		    				<input type="hidden" readonly="readonly" class="pricelist" value="${book.bookListDTO.price}">
-		    			${book.bookListDTO.bookName}
+		    			<input type="hidden" readonly="readonly" class="isbnlist" value="${book.bookListDTO.isbn}">
+		    			<input type="hidden" readonly="readonly" class="countlist" value="${book.bookcount}">
+		    			<input type="hidden" readonly="readonly" class="pricelist" value="${book.bookListDTO.price}">
 		    		</td>
-		    		<td>총 ${book.bookListDTO.price * book.bookcount*9/10}원 | 수량 ${book.bookcount}개
+		    		<td style="vertical-align: middle;border-right:1px solid gray;">${book.bookListDTO.bookName}</td>
+		    		<td style="text-align: center; vertical-align: middle;">
+		    			총 ${book.bookListDTO.price * book.bookcount*9/10}원 | 수량 ${book.bookcount}개
 		    			<br><del>권당 ${book.bookListDTO.price}원</del>
 		    			<br>권당 ${book.bookListDTO.price*9/10}원
 		    			<br>획득 가능 포인트 : ${book.bookListDTO.bpoint} 포인트
@@ -97,7 +91,11 @@
 		 </table>
   	</div>
 </div>
- <div id="floatforpurchasing"></div>
+
+<!-- 결제 금액과 얻을 포인트, 사용할포인트, 약관등을 나타내주는 side bar -->
+ <div id="floatforpurchasing">
+ 
+ </div>
  
  <!-- 모달용 div -->
  <div class="modal container" id="forCheckingModal" style="height:80% important; overflow: scroll;">
@@ -134,6 +132,6 @@
  <br><br>
 <c:import url="../template/footer.jsp"></c:import>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=1"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=2"></script>
 </body>
 </html>

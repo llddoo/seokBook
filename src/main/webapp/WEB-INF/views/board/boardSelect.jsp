@@ -67,7 +67,7 @@
 	    		</td>
 	    	</tr>
 	    	<tr>
-	    		<td colspan="3">${select.content}</td>
+	    		<td colspan="3" style="padding:3em">${select.content}</td>
 	    	</tr>
 		</tbody>
 	</table>

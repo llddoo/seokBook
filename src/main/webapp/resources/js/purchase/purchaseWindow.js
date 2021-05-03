@@ -119,8 +119,7 @@ $("body").on("click", "#addressInsert", function(){
 	let frmchk = true;
 	$(".frm-chk").each(function(){
 		const thisform = $(this);
-		if(thisform.attr("id")!='sample6_detailAddress'&&thisform.val().trim()===''){
-			console.log(thisform.attr("id"));
+		if(thisform.attr("id")!='sample6_extraAddress'&&thisform.val().trim()===''){
 			alert('비어있는 항목이 존재합니다.');
 			frmchk=false;
 			return false;

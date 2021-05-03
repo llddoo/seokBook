@@ -58,7 +58,7 @@
 		</c:otherwise>
 	</c:choose>
 	</div>
-	  <table class="table">
+	  <table class="table table-hover">
 	    <thead class="thead-dark">
 	      <tr>
 	        <th class="boardcol1">글제목</th>
