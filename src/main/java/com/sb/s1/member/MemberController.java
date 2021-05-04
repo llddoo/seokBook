@@ -206,7 +206,6 @@ public class MemberController {
 	}
 
 
-	//////////////////////////
 	  @GetMapping("memberIdCheck")
 	   public void memberIdCheck (MemberDTO memberDTO,Model model)throws Exception{
 	      memberDTO = memberService.memberIdCheck(memberDTO);

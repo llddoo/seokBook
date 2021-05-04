@@ -109,9 +109,8 @@
 			<input type="checkbox" class="form-check-input" id="allpurchaselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label for="allpurchaselist">전체선택</label>
 		</div>
-		&nbsp;&nbsp;&nbsp;
 		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
-		<div style="text-align: right; display: inline-block;">
+		<div style="text-align: right; display: inline-block; width:90%;">
 			<button id="allpurchase" class="btn btn-primary">주문하기</button>
 			<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
 		</div>

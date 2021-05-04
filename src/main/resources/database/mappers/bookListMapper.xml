@@ -36,5 +36,11 @@
 			or bookpub like '%'||#{bookPub}||'%' or gnumber like '%'||#{gNumber}||'%')br 
 		where r between 1 and 10
 	</select>
+	<select id="getListforpur" parameterType="java.util.List" resultType="BookListDTO">
+		select * from Booklist where 
+		<foreach collection="list" item="item" separator="or">
+			isbn=#{item.isbn}
+		</foreach>
+	</select>
 
 </mapper>

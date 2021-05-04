@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.bookList.BookListDTO;
+import com.sb.s1.bookList.BookListService;
 import com.sb.s1.branch.BranchPager;
 import com.sb.s1.member.MemberDTO;
 import com.sb.s1.member.MemberService;
@@ -35,6 +37,8 @@ public class PurchaseController {
 	private MemberService memberService;
 	@Autowired
 	private OrderListService orderListService;
+	@Autowired
+	private BookListService bookListService;
 
 	@GetMapping("mpurchase/purchaseSelect")
 	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
@@ -126,6 +130,13 @@ public class PurchaseController {
 	public void purchaseWindow(HttpServletRequest httpServletRequest ,HttpSession httpSession, Model model)throws Exception{
 		String[] isbnlist = httpServletRequest.getParameterValues("isbnlist");
 		final int arraysize= isbnlist.length;
+		ArrayList<BookListDTO> bookListDTOs = new ArrayList<BookListDTO>();
+		for(String str1 : isbnlist) {
+			BookListDTO bookListDTO = new BookListDTO();
+			bookListDTO.setIsbn(str1);
+			
+			bookListDTOs.add(bookListDTO);
+		}
 		
 		String[] countlists = httpServletRequest.getParameterValues("countlist");
 		long[] countlist = new long[arraysize];
@@ -137,16 +148,17 @@ public class PurchaseController {
 		memberDTO = memberService.getSelect(memberDTO);
 		model.addAttribute("user", memberDTO);
 		
-		ArrayList<MembercartDTO> list = new ArrayList<MembercartDTO>();
+		ArrayList<MembercartDTO> membercartList = new ArrayList<MembercartDTO>();
+		List<BookListDTO> bookLists = bookListService.getListforpur(bookListDTOs);
 		for(int i = 0 ; i < arraysize; i++) {
 			MembercartDTO membercartDTO = new MembercartDTO();
 			membercartDTO.setIsbn(isbnlist[i]);
 			membercartDTO.setBookcount(countlist[i]);
 			membercartDTO.setId(memberDTO.getId());
+			membercartDTO.setBookListDTO(bookLists.get(i));
 			
-			list.add(membercartDTO);
+			membercartList.add(membercartDTO);
 		}
-		List<MembercartDTO> membercartList = membercartService.getCartListforpurchase(list);
 		model.addAttribute("booklist", membercartList);
 		
 		String purchasename = membercartList.get(0).getBookListDTO().getBookName();
@@ -198,7 +210,7 @@ public class PurchaseController {
 			
 			membercartDTOs.add(membercartDTO);
 		}
-		result += (membercartService.deleteListAfterPur(membercartDTOs) == 0) ? Integer.MIN_VALUE : 1;
+		result += membercartService.deleteListAfterPur(membercartDTOs);
 		
 		OrderListDTO orderListDTO = new OrderListDTO();
 		orderListDTO.setOrderNumber(ordernumber);
@@ -236,7 +248,15 @@ public class PurchaseController {
 	}
 	
 	@PostMapping("purchaseComplete")
-	public void purchaseComplete(MemberDTO memberDTO, Model model)throws Exception{
+	public void purchaseComplete(HttpServletRequest httpServletRequest, Model model)throws Exception{
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId(httpServletRequest.getParameter("id"));
+		
 		model.addAttribute("user", memberService.getSelect(memberDTO));
+		model.addAttribute("msg", httpServletRequest.getParameter("msg"));
+		model.addAttribute("amount", Long.parseLong(httpServletRequest.getParameter("amount")));
+		model.addAttribute("ordernumber", httpServletRequest.getParameter("ordernumber"));
+		model.addAttribute("purchasename", httpServletRequest.getParameter("purchasename"));
+		model.addAttribute("getpoint", Long.parseLong(httpServletRequest.getParameter("getpoint")));
 	}
 }

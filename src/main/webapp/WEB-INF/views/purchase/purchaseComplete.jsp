@@ -10,10 +10,17 @@
 </head>
 <body>
 <c:import url="../template/body.jsp"/>
+	<input type="hidden" readonly="readonly" id="msg" value="${msg}">
 	<div class="container">
 		<p>${user.name}님 결제가 성공적으로 완료되었습니다.<br>저희 인터넷 서점을 이용해주셔서 감사합니다.</p><br>
 		<a href="../">메인화면으로 돌아가기</a>
 	</div>
 <c:import url="../template/footer.jsp"/>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	swal("결제완료",$("#msg").val(),"success");
+});
+</script>
 </body>
 </html>

@@ -25,5 +25,8 @@ public class BookListService {
 	public BookListDTO getSelect(BookListDTO bookListDTO) throws Exception{
 		return bookListDAO.getSelect(bookListDTO);
 	}
+	public List<BookListDTO> getListforpur(List<BookListDTO> bookListDTO)throws Exception{
+		return bookListDAO.getListforpur(bookListDTO);
+	}
 	
 }

@@ -26,10 +26,10 @@
 });
 	
 $(".getPurchase").click(function(){
-	const id = $(this).siblings("input[name='id']").val();
-	const isbn = $(this).siblings("input[name='isbn']").val();
-	const bookcount = $(this).siblings("select").val();
 	const thisis = $(this);
+	const id = thisis.siblings("input[name='id']").val();
+	const isbn = thisis.siblings("input[name='isbn']").val();
+	const bookcount = thisis.siblings("select").val();
 	if(id==''){
 		alert('로그인을 하셔야 이용할 수 있습니다.');
 		return;

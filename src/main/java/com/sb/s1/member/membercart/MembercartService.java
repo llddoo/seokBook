@@ -38,10 +38,6 @@ public class MembercartService {
 		return membercartDAO.updateCart(membercartDTO);
 	}
 	
-	public List<MembercartDTO> getCartListforpurchase(ArrayList<MembercartDTO> list)throws Exception{
-		return membercartDAO.getCartListforpurchase(list);
-	}
-	
 	public long deleteListAfterPur(List<MembercartDTO> list)throws Exception{
 		return membercartDAO.deleteListAfterPur(list);
 	}

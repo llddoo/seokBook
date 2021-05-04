@@ -1,6 +1,7 @@
 const id = $("#getUserInfo").val();
 const allitemprice = $("#allpricesum").val();
 const willgetpoint = $("#willgetpoint").val();
+
 var clickHandler = true;
 
 $(document).ready(function(){
@@ -57,7 +58,7 @@ $(document).ready(function(){
 		},
 		success:function(result){
 			result=result.trim();
-			$("#floatforpurchasing").append(result);
+			$("#floatforpurchasing").prepend(result);
 		}
 	});
 });
@@ -94,7 +95,7 @@ $("body").on("click", '.selectRemoveAddress', function() {
 			success:function(result){
 				result=Number(result.trim());
 				if(result>0){
-					alert('해당 주소를 지웠습니다.');
+					swal('해당 주소를 지웠습니다.');
 					$.post({
 						url:"../address/addressList",
 						data:{
@@ -107,7 +108,7 @@ $("body").on("click", '.selectRemoveAddress', function() {
 						}
 					});
 				}else{
-					alert('해당 주소를 지우는 중 에러가 발생했습니다.');
+					swal('해당 주소를 지우는 중 에러가 발생했습니다.',"에러사유 : 서버오류","error");
 				}
 			}
 		});
@@ -120,7 +121,7 @@ $("body").on("click", "#addressInsert", function(){
 	$(".frm-chk").each(function(){
 		const thisform = $(this);
 		if(thisform.attr("id")!='sample6_extraAddress'&&thisform.val().trim()===''){
-			alert('비어있는 항목이 존재합니다.');
+			swal("입력에러",'비어있는 항목이 존재합니다.',"error");
 			frmchk=false;
 			return false;
 		}
@@ -156,7 +157,7 @@ $("body").on("click", "#addressInsert", function(){
 					success:function(result){
 						result = result.trim();
 						if(result===''){
-							alert('오류가 발생했습니다. 다시 실행해 주세요');
+							swal('오류가 발생했습니다.', '에러 : 서버오류','error');
 						}else{
 							$.modal.close();
 							$("#useraddresslist").empty();
@@ -184,7 +185,7 @@ $("body").on("click", "#addressInsert", function(){
 				});
 				
 			}else{
-				alert('전송에 실패하였습니다. 다시 시도해 주세요.');
+				swal('에러발생, 다시 실행해주세요', '에러 : 전송불가', 'error');
 			}
 		}
 	});
@@ -255,11 +256,11 @@ $("#floatforpurchasing").on("click", "#demobutton", function(){
 function applyPoint(){
 	const pointToUse = Number($("#typingpoint").val());
 	if(pointToUse>Number($("#typingpoint").attr("max"))){
-		alert('가지고 있는 포인트보다 높게 적으셨습니다.');
+		swal("입력에러",'가지고 있는 포인트보다 높게 적으셨습니다.',"error");
 		$("#typingpoint").val(Number($("#typingpoint").attr("max")));
 		return;
 	}else if(pointToUse>allitemprice){
-		alert('결제 금액보다 더 많이 입력할 수 없습니다.');
+		swal("입력에러",'결제 금액보다 더 많이 입력할 수 없습니다.',"error");
 		$("#typingpoint").val(allitemprice);
 		return;	
 	}
@@ -272,16 +273,16 @@ function applyPoint(){
 		},
 		success:function(result){
 			result=result.trim();
-			$("#floatforpurchasing").empty();
-			$("#floatforpurchasing").append(result);
+			$("#sidebarajaxdelete").remove();
+			$("#floatforpurchasing").prepend(result);
 		}
 	});
 }
 
 //결제버튼
 $("#floatforpurchasing").on("click", "#payment", function(){
-	if($("#checkboxChecking").checked==false){
-		alert('약관에 동의하셔야 합니다.');
+	if($("#checkboxChecking").prop("checked")==false){
+		swal('결제 실패',"약관에 동의하셔야 합니다.","error");
 		return;
 	}
 	
@@ -294,7 +295,7 @@ $("#floatforpurchasing").on("click", "#payment", function(){
 		}
 	});
 	if(checkingcount<5 || !checkingboolean){
-		alert('기입되지 않은 부분이 존재합니다. 모두 기입해 주세요.');
+		swal("입력 에러",'기입되지 않은 부분이 존재합니다. 모두 기입해 주세요.',"error");
 		return;
 	}
 	
@@ -341,8 +342,7 @@ $("#floatforpurchasing").on("click", "#payment", function(){
   	},
   	function(rsp) {
 		if ( rsp.success ) {
-			var msg = '결제가 완료되었습니다.\n';
-			msg += '고유ID : ' + rsp.imp_uid+'\n';
+			var	msg = '고유ID : ' + rsp.imp_uid+'\n';
 			msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
 			msg += '결제 금액 : ' + rsp.paid_amount+'\n';
 			msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
@@ -363,19 +363,22 @@ $("#floatforpurchasing").on("click", "#payment", function(){
 				success:function(result){
 					result = result.trim();
 					if(result>0){
-						alert(msg);
 						$("body").append("<form id='purchaseComplete' action='./purchaseComplete' method='post'></form>");
 						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="id" value="'+id+'">');
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="msg" value="'+msg+'"');
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="amount" value="'+amount+'">');
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="ordernumber" value="'+merchant_uid+'">');
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="purchasename" value="'+name+'">');
+						$("#purchaseComplete").append('<input type="hidden" readonly="readonly" name="getpoint" value="'+willgetpoint+'">');
 						$("#purchaseComplete").submit();
 					}else{
-						alert('에러가 발생했습니다.');
+						swal('에러가 발생했습니다.',"에러내용: 서버문제","error");
 					}
 				}
 			});
 		}else{
 			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-			alert(msg);
+			swal(msg, '에러내용 : ' + rsp.error_msg,"error");
 		}
 	});
 });

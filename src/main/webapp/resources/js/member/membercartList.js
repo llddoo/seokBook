@@ -21,6 +21,7 @@ $("#allpurchaselist").click(function(){
 		$(this).prop("checked", check);
 	});
 });
+
 $(".forpurchaselist").click(function(){
 	let value = true;
 	$(".forpurchaselist").each(function(){

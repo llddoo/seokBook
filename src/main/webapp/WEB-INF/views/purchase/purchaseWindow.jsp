@@ -17,11 +17,6 @@
 <!-- icon -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <style type="text/css">
-	.containmain{
-		display:inline-block;
-		padding-left: 18%;
-		width: 70%
-	}
 	#floatforpurchasing{
 		width: 18%;
 		position: fixed;left: 75%;
@@ -36,8 +31,11 @@
 <body>
 <c:import url="../template/body.jsp"></c:import>
 
-<h1 style="text-align: center; margin-top:3%;">주문/결제</h1>
-<div class="containmain">
+
+<div class="containmain" style="display:inline-block; padding-left: 18%; width: 70%;">
+	<h1 style="text-align: center; margin-top:3%;">
+		<span style="background-color: #42a5f5; display:inline-block;border-radius: 10px">&emsp;&emsp;주문/결제&emsp;&emsp;</span>
+	</h1>
 	<!-- 사이드 바에 나타내고, 결제를 하기 위한 임시저장용 input 태그 -->
 	<input type="hidden" readonly="readonly" id="getUserInfo" class="trans-chk" value="${user.id}">
 	<input type="hidden" readonly="readonly" id="purchasename" value="${purchasename}">
@@ -45,7 +43,7 @@
 	<input type="hidden" readonly="readonly" id="willgetpoint" value="${willgetpoint}">
 	
 	<!-- 유저 정보 불러오는 창 -->
-	<div id="userInfo" style="margin:5% 0 5% 8%;"></div>
+	<div id="userInfo" style="margin:5% 0 5% 10%;"></div>
 	
 	<!-- 포인트 적용과 주소 적용을 위한 칸 -->
 	<div style="border:2px black solid; vertical-align: middle;">
@@ -95,10 +93,26 @@
 <!-- 결제 금액과 얻을 포인트, 사용할포인트, 약관등을 나타내주는 side bar -->
  <div id="floatforpurchasing">
  
- </div>
+	 <div id="paymentclause">
+		<button id="demobutton" data-toggle="collapse" data-target="#demo" style="zoom:.7;display:inline-block;">
+			<i class="fas fa-chevron-down"></i>
+		</button>
+		<label for="checkboxChecking">결제 조항에 동의합니다.</label>
+		<input type="checkbox" id="checkboxChecking" style="margin-top:2%;zoom:1.3;margin-left:0;">
+	</div>
+	<div id="demo" class="collapse">
+		<ul class="list-group list-group-flush">
+		  <li class="list-group-item">주문시 입력하신 배송정보는 배송을 위한 목적으로 사용됩니다.</li>
+		  <li class="list-group-item">주문할 상품의 상품명, 가격, 배송정보 등을 최종 확인하였으며, 구매에 동의하십니까?<br>
+			(전자상거래법 제 8조 2항)</li>
+		</ul>
+	</div><br>
+	<div id="purchaseaccept"><button type="button" id="payment">결제하기</button></div>
+</div>
+
  
  <!-- 모달용 div -->
- <div class="modal container" id="forCheckingModal" style="height:80% important; overflow: scroll;">
+ <div class="modal container" id="forCheckingModal" style="height:85% !important; overflow-y: scroll;">
 	<div class="tab-content">
 		<h2>주소 관리 및 추가</h2>
 	  <!-- Nav tabs -->
@@ -131,7 +145,8 @@
  </div>
  <br><br>
 <c:import url="../template/footer.jsp"></c:import>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=2"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/purchase/purchaseWindow.js?ver=5"></script>
 </body>
 </html>
