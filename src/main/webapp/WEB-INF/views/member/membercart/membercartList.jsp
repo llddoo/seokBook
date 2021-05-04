@@ -43,7 +43,7 @@
 		<table class="table">
 			<thead class="thead-dark" style="text-align: center;vertical-align: middle;">
 				<tr>
-					<th>상품정보</th>
+					<th colspan="2">상품정보</th>
 					<th>판매가</th>
 					<th>수량</th>
 					<th>합계</th>
@@ -56,13 +56,15 @@
 					<tr>
 						<td class="textforline">
 							<div style="display:inline-block;">
-								<input type="checkbox" class="form-check-input forpurchaselist">
-							</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" class="form-check-input forpurchaselist check-click">
+							</div>&emsp;&emsp;
 							<input type="hidden" readonly="readonly" name="cartNumlist" value="${bookdto.cartNum}">
 							<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
 							<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
+							<input type="hidden" readonly="readonly" name="price" value="${bookdto.bookListDTO.price*9/10}">
 							<img alt="${bookdto.bookListDTO.bookImg}" src="${pageContext.request.contextPath}/resources/uploaded/bookList/${bookdto.bookListDTO.bookImg}">
-							&emsp;&emsp;
+						</td>
+						<td>
 							<a href="./bookList/bookListSelect?isbn=${bookdto.isbn}" class="bookselect">
 				        		<span class="booknametitle">${bookdto.bookListDTO.bookName}</span>
 				        	</a>
@@ -91,6 +93,7 @@
 				        		<input type="hidden" readonly="readonly" name="isbnlist" value="${bookdto.isbn}">
 				        		<input type="hidden" readonly="readonly" name="countlist" value="${bookdto.bookcount}">
 				        	</form>
+				        	<input type="hidden" readonly="readonly" name="price" value="${bookdto.bookListDTO.price*9/10}">
 					        <button class="getPurchase btn-sm btn-info">바로구매</button>
 					        <input type="hidden" readonly="readonly" value="${bookdto.isbn}" class="fordelete"><br>
 				        	<button class="getDelete btn-sm btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;삭제&nbsp;&nbsp;&nbsp;</button>
@@ -98,25 +101,40 @@
 					</tr>
 				</tbody>
 			</c:forEach>
+			<tfoot>
+				<tr>
+					<td colspan="6">
+						<div style="display:inline-block;">
+							<input type="checkbox" class="form-check-input check-click" id="allpurchaselist">&emsp;&emsp;
+							<label for="allpurchaselist">전체선택</label>
+						</div>	
+						<div style="display: inline-block; width:15%; margin-left:14%;">
+							항목 수 : <span id="bookspcount"></span>항목
+						</div>
+						<div style="display: inline-block; width:15%; margin-left:3%;">
+							총 권수 : <span id="bookcountsum"></span>권
+						</div>
+						<div style="display: inline-block; width:15%; margin-left:3%;">
+							총 가격 : <span id="bookpricesum"></span>원
+						</div> 
+						<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
+						<div style="text-align: right; display: inline-block; width: 21%; margin-left:3%;">
+							<button id="allpurchase" class="btn btn-primary">주문하기</button>
+							<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
+						</div>
+					</td>
+				</tr>
+			</tfoot>
 		</table>
 		<c:if test="${listsize eq 0}">
 			<br>
 			<h2 id="emptycart">장바구니가 비어있습니다.</h2>
 		</c:if>
-		<br>
-		<p>선택된 항목의 개수, 선택된 항목들의 전체 권수, 선택된 모든 책들의 가격합산</p><br>
-		<div style="display:inline-block;">
-			<input type="checkbox" class="form-check-input" id="allpurchaselist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<label for="allpurchaselist">전체선택</label>
-		</div>
-		<input type="hidden" readonly="readonly" name="id" id="forallcheck" value="${pager.id}">
-		<div style="text-align: right; display: inline-block; width:90%;">
-			<button id="allpurchase" class="btn btn-primary">주문하기</button>
-			<button id="allcartdelete" class="btn btn-danger">선택삭제</button>
-		</div>
+		<br><br>
 	</div>
 	<br>
+	<input type="hidden" readonly="readonly" id="listsize" value="${listsize}">
 	<c:import url="../../template/footer.jsp"></c:import>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/membercartList.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/membercartList.js?ver=1"></script>
 </body>
 </html>

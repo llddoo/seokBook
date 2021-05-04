@@ -11,9 +11,22 @@
 	$(".forpurchaselist").each(function(){
 		$(this).prop("checked", true);
 	});
+	
+	//페이지 시작하자마자 총 구매액 같은거 세팅
+	const bookspcount = $("#listsize").val();
+	let bookcountsum = 0;
+	let bookpricesum = 0;
+	$(".getPurchase").each(function(){
+		bookcountsum += Number($(this).siblings("form").find("input[name='countlist']").val());
+		bookpricesum += ($(this).siblings("form").find("input[name='countlist']").val()
+						*$(this).siblings("input[name='price']").val());
+	});
+	$("#bookspcount").append(bookspcount);
+	$("#bookcountsum").append(bookcountsum);
+	$("#bookpricesum").append(bookpricesum);
 });
 
-//체크박스 관련
+//체크박스 관련(전체선택 버튼 눌렸을때)
 $("#allpurchaselist").click(function(){
 	const check = $(this).prop("checked");
 	
@@ -22,6 +35,7 @@ $("#allpurchaselist").click(function(){
 	});
 });
 
+//체크박스 관련(개별선택 버튼 눌렸을때)
 $(".forpurchaselist").click(function(){
 	let value = true;
 	$(".forpurchaselist").each(function(){
@@ -32,8 +46,32 @@ $(".forpurchaselist").click(function(){
 	$("#allpurchaselist").prop("checked", value);
 });
 
- const id = $("#forallcheck").val();
+//체크박스 관련(체크를 눌렀을때 전체 내역들 변경)
+$(".check-click").click(function(){
+	let checkedcount = 0;
+	let bookcountsum = 0;
+	let bookpricesum = 0;
+	$(".forpurchaselist").each(function(){
+		const thisis = $(this);
+		if(thisis.prop("checked")){
+			checkedcount++;
+			const forcounting = Number(thisis.parent().siblings("input[name='countlist']").val());
+			bookcountsum += forcounting;
+			const forbookprice = Number(thisis.parent().siblings("input[name='price']").val());
+			bookpricesum += (forcounting*forbookprice);
+		}
+	});
+	$("#bookspcount").empty();
+	$("#bookspcount").append(checkedcount);
+	$("#bookcountsum").empty();
+	$("#bookcountsum").append(bookcountsum);
+	$("#bookpricesum").empty();
+	$("#bookpricesum").append(bookpricesum);
+});
 
+const id = $("#forallcheck").val();
+
+//장바구니에서 해당 항목을 제거
  $(".getDelete").click(function(){
 	const isbn = $(this).siblings("form").find("input[name='isbnlist']").val();
 	
@@ -58,6 +96,7 @@ $(".forpurchaselist").click(function(){
 	}
 });	
 
+//장바구니에서 하나만 구매하기 위함
 $(".getPurchase").click(function(){
 	const thisform = $(this).siblings("form");
 	let check = confirm('이 책을 바로 구입하시겠습니까?');
@@ -66,6 +105,7 @@ $(".getPurchase").click(function(){
 	}
 });
 
+//장바구니에서 구매하고 싶은 책의 개수를 지정
 $(".changebookcount").click(function(){
 	const bookcount = $(this).siblings("select[name='countlist']").val();
 	const isbn = $(this).siblings("input[name='isbn']").val();
@@ -80,6 +120,7 @@ $(".changebookcount").click(function(){
 	location.href="./membercartList?id="+id;
 });
 
+//장바구니에서 선택된 모든 항목을 전송
 $("#allpurchase").click(function(){
 	let isbnlist = new Array();
 	let countlist = new Array();
@@ -105,6 +146,7 @@ $("#allpurchase").click(function(){
 	}
 });
 
+//장바구니에서 선택한 모든 항목을 지움
 $("#allcartdelete").click(function(){
 	let answer = confirm("선택된 품목들을 장바구니에서 지우시겠습니까?");
 	if(answer){
