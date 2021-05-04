@@ -14,9 +14,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Carousel Template · Bootstrap v4.6</title>
+    <title>seokBook</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/resources/docs/4.6/examples/carousel/">
+    <link rel="canonical" href="//www.interpark.com/malls/index.html">
+    <link rel="shortcut icon" href="//openimage.interpark.com/interpark.ico">
 
     <!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -96,7 +97,7 @@
         <div class="container">
           <div class="carousel-caption text-left" >
           
-         <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42118&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42b"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210416_bookday/bnH_w01_eecdf6.jpg" width="1000" height="400" alt="책의 날 이벤트"></a></div>
+         <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42118&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42b" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210416_bookday/bnH_w01_eecdf6.jpg" width="1000" height="400" alt="책의 날 이벤트"></a></div>
             
           </div>
         </div>
@@ -107,7 +108,7 @@
         <div class="container">
           <div class="carousel-caption">
             
-            <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42128&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42c"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" width="1000" height="400" alt="추천새책 애슝북엔"></a></div>
+            <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42128&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42c" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" width="1000" height="400" alt="추천새책 애슝북엔"></a></div>
             
           </div>
         </div>
@@ -118,7 +119,7 @@
         <div class="container">
           <div class="carousel-caption text-right">
           
-			<div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" width="1000" height="400" alt="5월 포켓몬스"></a></div>
+			<div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" width="1000" height="400" alt="5월 포켓몬스"></a></div>
 			
           </div>
           
@@ -146,25 +147,19 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+		<body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_05?adsno=104722&amp;ctvno=69080&amp;clkno=69114" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/70245/left.jpg" width="316" height="128" border="0" alt="작은 별이지만 빛나고 있어"></a>
+		</body>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+     		<body marginwidth="0" marginheight="0">
+			<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_06?adsno=104315&amp;ctvno=69129&amp;clkno=69163" target="_blank""><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/46964/WM.jpg" width="316" height="128" border="0" alt="친애하는 20세기"></a>
+			</body>
+     		 </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        <body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_07?adsno=104514&amp;ctvno=69065&amp;clkno=69099" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/69970/1.jpg" width="316" height="128" border="0" alt="기린의 심장"></a>
+		</body>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
