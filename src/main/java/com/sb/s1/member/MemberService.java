@@ -23,23 +23,27 @@ public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
-	
-	
 
 
-	
-//	public int memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
-//		
-//		return memberDAO.memberPoint(memberDTO);
-//	}
-	
+
+
+	public MemberDTO memberGrade(MemberDTO memberDTO)throws Exception{
+
+		return memberDAO.memberGrade(memberDTO);
+	}
+
+	public int gradeUpdate(MemberDTO memberDTO)throws Exception{
+		return memberDAO.gradeUpdate(memberDTO);
+	}
+
+
 	public MemberDTO memberFindID(MemberDTO memberDTO)throws Exception{
-		
+
 		return memberDAO.memberFindID(memberDTO);
 	}
 
 	public MemberDTO memberFindPw(MemberDTO memberDTO)throws Exception{
-		
+
 		return memberDAO.memberFindPw(memberDTO);
 	}
 
@@ -58,16 +62,16 @@ public class MemberService {
 	public int memberUpdate(MemberDTO memberDTO)throws Exception{
 		return memberDAO.memberUpdate(memberDTO);
 	}
-	
+
 	public int memberDelete(MemberDTO memberDTO, HttpSession session)throws Exception{
-			
+
 		return memberDAO.memberDelete(memberDTO);
 	}
 
 
 	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
-	      return memberDAO.memberIdCheck(memberDTO);
-	   }
+		return memberDAO.memberIdCheck(memberDTO);
+	}
 
 
 	public int memberJoin(MemberDTO memberDTO, HttpSession session)throws Exception{
@@ -80,7 +84,7 @@ public class MemberService {
 	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
 		return memberDAO.selectUserInfo(memberDTO);
 	}
-	
+
 	public long pointAfterPur(MemberDTO memberDTO)throws Exception{
 		return memberDAO.pointAfterPur(memberDTO);
 	}

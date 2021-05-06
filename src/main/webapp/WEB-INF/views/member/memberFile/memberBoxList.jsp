@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/header.jsp"></c:import>
+<c:import url="../../template/header.jsp"></c:import>
 
 <style type="text/css">
+
 #div_root{
 width:1500px;
 min-height:100%;
@@ -35,7 +36,7 @@ min-height:450px;
 }
 
 #div_menu{
-width:12%;
+width:10%;
 margin-top:5%;
 float:left;
 text-align:reft;
@@ -93,17 +94,21 @@ text-align:center;
 
 #div_view{
 	border: 2px solid gray;
-	width:800px;
+	width:600px;
 	height:300px;
 	text-align:center;
 	margin-top:2%;
- 	margin-left:25%;
+ 	margin-left:30%;
  	margin-bottom:2%;
 
 }
 #div_view2{
-	width:600px;
-		text-align:center;
+
+	width:200px;
+	float:left;
+		text-align:left;
+	margin-left:5%;
+
 }
 
 
@@ -112,21 +117,29 @@ text-align:center;
 </head>
 
 <body>
-   <c:import url="../template/body.jsp"></c:import>
+   <c:import url="../../template/body.jsp"></c:import>
    <div id="div_root">
       <div id="div_top">
 
          <h1>Point 사용내역</h1>
       </div>
       <div id="div_menu">
-         <h3>카테고리</h3>
+			<h3>카테고리</h3>
 
 
-         <ul class="nav nav-pillsflex-column">
-            <li class="nav-item"><a class="btn btn-link"
-               href="../orderList/PointList">포인트 적립내역</a></li>
-         </ul>
-      </div>
+			<ul class="nav nav-pillsflex-column">
+				<li class="nav-item"><a class="btn btn-link"
+					href="./memberBoxList">구매내역</a></li>
+				<li class="nav-item"><a class="btn btn-link" href=../membercart/membercartList?id=${member.id}">장바구니</a></li>
+				<li class="nav-item"><a class="btn btn-link"
+					href="https://tracker.delivery/#/:${DTO.purnum}"
+					target="_blank">배송조회</a></li>
+					<button class="btn btn-primary" id="boxBtn">왜안대ㅐㅐㅐ</button>
+					
+	
+			</ul>
+		</div>
+
 
       <div id="div_con">
 
@@ -135,28 +148,28 @@ text-align:center;
 
 
             <div id="div_size">
-               <a href="../purchase/userPurchase"> <img id="img_size"
-                  src="../resources/image/member/box.png" alt="상품">
+               <a href="../../member/memberFile/memberBox"> <img id="img_size"
+                  src="../../resources/image/member/box.png" alt="상품">
                   <p>상품</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="../member/memberFile/memberProfile"> <img id="img_size2"
-                  src="../resources/image/member/profile.png" alt="프로필">
+               <a href="../../member/memberFile/memberProfile"> <img id="img_size2"
+                  src="../../resources/image/member/profile.png" alt="프로필">
                   <p></p>
                   <p>내 정보</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="../member/memberFile/memberPoint"> <img id="img_size2"
-                  src="../resources/image/member/point.png" alt="포인트">
+               <a href="../../member/memberFile/memberPoint"> <img id="img_size2"
+                  src="../../resources/image/member/point.png" alt="포인트">
                   <p></p>
                   <p>포인트</p>
                </a>
             </div>
             <div id="div_size">
-               <a href="../member/memberFile/?????Q&A"> <img id="img_size"
-                  src="../resources/image/member/qna.jpg" alt="Q&A">
+               <a href="../../member/memberFile/?????Q&A"> <img id="img_size"
+                  src="../../resources/image/member/qna.jpg" alt="Q&A">
                   <p>Q&A</p>
                </a>
             </div>
@@ -178,7 +191,8 @@ text-align:center;
                      <tr>
                         <td>${dto.purdate}</td>
                         <td>${dto.purnum}</td>
-                        <td>${dto.bpoint}</td>
+                        <td>${((dto.lumpSum+dto.pointUsage)*100/90)*0.05}</td>
+ <!--                     ((dto.lumpsum+spendpoint	)*100/90)*0.05   		-->
                         <td>${dto.pointUsage}</td>
                      </tr>
 
@@ -193,7 +207,7 @@ text-align:center;
 
 </body>
 <div id="div_footer">
-   <c:import url="../template/footer.jsp"></c:import>
+   <c:import url="../../template/footer.jsp"></c:import>
 </div>
 
 </html>

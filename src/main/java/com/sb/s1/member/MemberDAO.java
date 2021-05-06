@@ -26,25 +26,29 @@ public class MemberDAO {
 
 
 
-	
-	
-	
-	
-	
-//	public int memberPoint(MemberDTO memberDTO)throws Exception{
-//		
-//		return sqlSession.update(NAMESPACE+"memberPoint", memberDTO);
-//		}
-	
+
+
+	public MemberDTO memberGrade(MemberDTO memberDTO)throws Exception{
+
+		return sqlSession.selectOne(NAMESPACE+"memberGrade", memberDTO);
+	}
+
+	public int gradeUpdate(MemberDTO memberDTO)throws Exception{
+
+		return sqlSession.update(NAMESPACE+"gradeUpdate", memberDTO);
+	}
+
+
+
 	public MemberDTO memberFindID(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberFindID",memberDTO);
 	}
-	
+
 	public MemberDTO memberFindPw(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberFindPw",memberDTO);
 	}
-	
-	
+
+
 	//맴버 선택
 	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
 
@@ -58,15 +62,15 @@ public class MemberDAO {
 
 	public MemberDTO memberIdCheck(MemberDTO memberDTO)throws Exception{
 
-	      return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
-	   }
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck",memberDTO);
+	}
 
 	//맴버 업데이트
 	public int memberUpdate(MemberDTO memberDTO)throws Exception{
 
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberDTO);
 	}
-	
+
 	//맴버 탙퇴
 	public int memberDelete(MemberDTO memberDTO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberDTO);
@@ -81,7 +85,7 @@ public class MemberDAO {
 	public MemberDTO selectUserInfo(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectUserInfo", memberDTO);
 	}
-	
+
 	public long pointAfterPur(MemberDTO memberDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"pointAfterPur", memberDTO);
 	}

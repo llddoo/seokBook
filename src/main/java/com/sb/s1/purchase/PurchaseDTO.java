@@ -2,6 +2,8 @@ package com.sb.s1.purchase;
 
 import java.sql.Date;
 
+import com.sb.s1.bookList.BookListDTO;
+
 public class PurchaseDTO{
 
 	private long purnum;
@@ -12,8 +14,22 @@ public class PurchaseDTO{
 	private long price;
 	private long purcount;
 	private String ordernumber;
+	private BookListDTO bookListDTO;
+	private String bookName;
 	
 	
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+	public BookListDTO getBookListDTO() {
+		return bookListDTO;
+	}
+	public void setBookListDTO(BookListDTO bookListDTO) {
+		this.bookListDTO = bookListDTO;
+	}
 	public String getOrdernumber() {
 		return ordernumber;
 	}

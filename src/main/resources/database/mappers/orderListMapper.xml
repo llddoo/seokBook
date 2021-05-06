@@ -7,18 +7,20 @@
 
 
 
-	<select id="PointList" parameterType="OrderListDTO" resultType="OrderListDTO">
+   <select id="PointList" parameterType="OrderListDTO"
+      resultType="OrderListDTO">
       select
-      member.*, orderlist.*, purchase.*
+      booklist.*, orderlist.*, purchase.*
       from
-      member inner join
-      purchase on member.id = purchase.id left outer join
+      booklist inner join
+      purchase on booklist.isbn = purchase.isbn left outer join
       orderlist on purchase.ordernumber = orderlist.ordernumber
-      where member.id = #{id} order by purdate desc
- 	</select>
- 	
- 	<insert id="insertOrderList" parameterType="OrderListDTO">
-		insert into orderlist values(#{orderNumber}, #{pointUsage}, #{lumpSum})
-	</insert>
-	
+      where purchase.id = #{id} order by purdate desc
+   </select>
+
+   <insert id="insertOrderList" parameterType="OrderListDTO">
+      insert into orderlist
+      values(#{orderNumber}, #{pointUsage}, #{lumpSum})
+   </insert>
+
 </mapper>

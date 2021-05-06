@@ -10,78 +10,108 @@
 <c:import url="../../template/header.jsp"></c:import>
 
 <style type="text/css">
-#div_root {
-	margin: auto;
-	width: 1200px;
-	margin-top: 5%
+
+#div_root{
+width:1500px;
+min-height:100%;
 }
 
-#div_top {
-	width: 100%;
-	text-align: center;
+#div_top{
+
+width:100%;
+
+height:10%;
+margin-top:5%;
+text-align:center;
+
+
 }
 
-#div_menu {
-	width: 12%;
-	margin-top: 5%;
-	float: left;
-	text-align: reft;
+#div_con{
+
+width:100%;
+margin-top:2%;
+min-height:450px;
+
 }
 
-#div_con {
-	width: 88%;
-	height: 10%;
-	margin-top: 2%;
-	float: right;
-	text-align: center;
+#div_menu{
+width:10%;
+margin-top:5%;
+float:left;
+text-align:reft;
+margin-left:10%;
+
+
+}
+#div_main{
+width:900px;
+height:450px;
+ margin:0 auto; 
+
+text-align:center;
+
 }
 
 #div_footer {
 	width: 100%;
-	position: absolute;
-	bottom: 0px;
+	height:10%;
+	bottom:0;
+
 }
+
+
 
 #rcorners2 {
-	border-radius: 25px;
-	border: 2px solid black;
-	padding: 20px;
-	width: 600px;
-	height: 150px;
-	margin-left: 15%;
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  width: 600px;
+  height:150px;
+text-align:center;
+ margin:0 auto; 
 }
 
-#img_size {
-	width: 100px;
-	height: 95px;
-	object-fit: fill;
+
+#img_size{
+  width: 100px;
+  height: 95px;
+  object-fit: fill;
 }
 
-#img_size2 {
-	width: 80px;
-	height: 80px;
-	object-fit: fill;
+#img_size2{
+  width: 80px;
+  height: 80px;
+  object-fit: fill;
 }
 
-#div_size {
-	width: 25%;
-	height: 100%;
+
+#div_size{
+	width:25%;
+	height:100%;
 	float: left;
 }
 
-#div_view {
+#div_view{
 	border: 2px solid gray;
-	width: 600px;
-	height: 250px;
-	margin-top: 5%;
-	margin-left: 15%;
+	width:800px;
+	height:300px;
+	text-align:center;
+	margin-top:2%;
+ 	margin-left:25%;
+ 	margin-bottom:2%;
+
+}
+#div_view2{
+
+	width:200px;
+	float:left;
+		text-align:left;
+	margin-left:5%;
+
 }
 
-#div_view2 {
-	width: 200px;
-	float: left;
-	text-align: left;
-}
+
 </style>
 </head>
 
@@ -98,13 +128,11 @@
 
 			<ul class="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="./memberlist">구매내역</a></li>
-				<li class="nav-item"><a class="btn btn-link" href="./cart">장바구니</a></li>
-				<li class="nav-item"><a class="btn btn-link" href="./memberBoxList">배송조회</a></li>
+					href="./memberBoxList">구매내역</a></li>
+				<li class="nav-item"><a class="btn btn-link" href=../membercart/membercartList?id=${member.id}">장바구니</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="https://tracker.delivery/#/:${DTO.purnum}"
 					target="_blank">배송조회</a></li>
-					
 					<button class="btn btn-primary" id="boxBtn">왜안대ㅐㅐㅐ</button>
 					
 	
@@ -144,7 +172,38 @@
 					</a>
 				</div>
 			</div>
-			////
+	 <div id="div_view">
+
+            <table class="table">
+               <thead class="thead-dark">
+                  <tr>
+                     <th>날짜</th>
+                     <th>구매번호</th>
+                     <th>ISBN번호</th>
+                     <th>책이름</th>
+                     <th>구매갯수</th>
+                     <th>가격</th>
+                     <th>배송조회</th>
+                  </tr>
+
+               </thead>
+               <tbody>
+                  <c:forEach items="${list}" var="dto" >
+                     <tr>
+                        <td>${dto.purdate}</td>
+                        <td>${dto.purnum}</td>
+                        <td>${dto.isbn}</td>
+						<td>${dto.bookName}</td>
+                        <td>${dto.purcount}</td>
+                        <td>${dto.price}</td>
+                     </tr>
+
+                  </c:forEach>
+
+               </tbody>
+            </table>
+         </div>
+      
 			
 			
 

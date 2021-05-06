@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sb.s1.branch.BranchPager;
+import com.sb.s1.orderList.OrderListDTO;
 
 @Repository
 public class PurchaseDAO {
@@ -50,4 +51,9 @@ public class PurchaseDAO {
 	public long setPurchase(List<PurchaseDTO> list)throws Exception{
 		return sqlSession.insert(NAMESPACE+"setPurchase", list);
 	}
+	
+	public List<PurchaseDTO> userPurchase(PurchaseDTO purchaseDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"userPurchase",purchaseDTO);
+	}
+	
 }

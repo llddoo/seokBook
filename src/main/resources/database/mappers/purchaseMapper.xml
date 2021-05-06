@@ -71,5 +71,19 @@
 		</foreach>
 	</insert>
 	
+	
+	
+	<select id="userPurchase" parameterType="PurchaseDTO" resultType="PurchaseDTO">
+      select
+      member.*, booklist.*, purchase.*
+      from
+      member inner join
+      purchase on member.id = purchase.id left outer join
+      booklist on purchase.isbn = booklist.isbn
+      where member.id = #{id} order by purdate desc
+ 	</select>
+	
+	
+	
 
 </mapper>

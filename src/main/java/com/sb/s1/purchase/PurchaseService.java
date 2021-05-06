@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sb.s1.branch.BranchPager;
+import com.sb.s1.orderList.OrderListDTO;
 
 @Service
 public class PurchaseService {
@@ -48,4 +49,10 @@ public class PurchaseService {
 	public long setPurchase(List<PurchaseDTO> list) throws Exception{
 		return purchaseDAO.setPurchase(list);
 	}
+	
+	public  List<PurchaseDTO> userPurchase(PurchaseDTO purchaseDTO)throws Exception{
+		return purchaseDAO.userPurchase(purchaseDTO);
+	}
+	
+	
 }

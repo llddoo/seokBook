@@ -19,9 +19,10 @@ public class OrderListService {
 		return orderListDAO.insertOrderList(orderListDTO);
 	}
 	
-
 	
 	public  List<OrderListDTO> PointList(OrderListDTO orderListDTO)throws Exception{
+		
+		
 		return orderListDAO.PointList(orderListDTO);
 	}
 	

@@ -10,6 +10,26 @@
 
 	<!-- <update id="memberPoint" parameterType="MemberDTO"> update member set 
 		point=point+100 where id=#{id} </update> -->
+		
+		
+		
+	<select id="memberGrade" parameterType="MemberDTO"
+      resultType="MemberDTO">
+      select sum(booklist.price*10/9) as price, id
+      from orderlist, purchase, booklist
+      where purchase.ordernumber = orderlist.ordernumber
+      and booklist.isbn = purchase.isbn
+      and purdate between ADD_MONTHS(TRUNC(sysdate,'MM'), -2) and sysdate
+      and purchase.id = #{id}
+      group by purchase.id
+   </select>
+   
+   <update id="gradeUpdate" parameterType="MemberDTO">
+      update member set
+      grade=#{grade}
+      where id=#{id}
+   </update>
+   
 
 	<select id="memberFindPw" parameterType="MemberDTO"
 		resultType="MemberDTO">

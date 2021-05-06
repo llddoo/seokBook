@@ -239,4 +239,19 @@ public class PurchaseController {
 	public void purchaseComplete(MemberDTO memberDTO, Model model)throws Exception{
 		model.addAttribute("user", memberService.getSelect(memberDTO));
 	}
+	
+	
+	@GetMapping("userPurchase")
+	public ModelAndView userPurchase(PurchaseDTO purchaseDTO,HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
+		 purchaseDTO.setId(memberDTO.getId());
+		List<PurchaseDTO> ar =  purchaseService.userPurchase(purchaseDTO);
+		
+		mv.addObject("list",ar);
+		mv.setViewName("purchase/userPurchase");
+		
+		return mv;
+	}
+	
 }

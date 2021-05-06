@@ -12,6 +12,7 @@
 		<typeAlias type="com.sb.s1.response.ResponseDTO" alias="ResponseDTO"/>
 		<typeAlias type="com.sb.s1.branch.BranchDTO" alias="BranchDTO"/>
 		<typeAlias type="com.sb.s1.branch.BranchPager" alias="BranchPager"/>
+		<typeAlias type="com.sb.s1.orderList.OrderListPager" alias="OrderListPager"/>
 		<typeAlias type="com.sb.s1.storeBook.StoreBookDTO" alias="StoreBookDTO"/>
 		<typeAlias type="com.sb.s1.purchase.PurchaseDTO" alias="PurchaseDTO"/>
 		<typeAlias type="com.sb.s1.member.membercart.MembercartDTO" alias="MembercartDTO"/>

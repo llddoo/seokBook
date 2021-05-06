@@ -1,11 +1,20 @@
-package com.sb.s1.member;
+package com.sb.s1.orderList;
 
-public class MemberPager {
+public class OrderListPager {
+
+	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	private long perPage;
 	private long perBlock;
 	
-	public MemberPager() {
+	public OrderListPager() {
 			this.perPage = 10;
 			this.perBlock = 5;
 			this.curPage = 1;
