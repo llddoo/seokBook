@@ -5,9 +5,6 @@
 
 <mapper namespace="com.sb.s1.purchase.PurchaseDAO">
 
-
-	
-	
 	<insert id="setPurchase" parameterType="java.util.List">
 		<foreach collection="list" item="item" separator=";">
 			insert into purchase (purnum, purdate, isbn, remdate, id, price, ordernumber, purcount) 
@@ -17,13 +14,24 @@
 	</insert>
 	
 	<select id="getSelectList" resultType="PurchaseDTO">
-select genre.gname, sum(purchase.purcount) price
+	select genre.gname, sum(purchase.purcount) price
       from booklist inner join purchase 
       		on booklist.isbn = purchase.isbn 
       		left outer join genre 
       		on booklist.gnumber = genre.gnumber group by genre.gname
 	</select>
 	
+	 <select id="userPurchase" parameterType="Pager" resultType="PurchaseDTO">
+       select R isbn, price,purnum,bookname,purdate,purcount from(
+    select rownum R , B.isbn,B.bookname,B.price, P.purnum,P.purdate,P.purcount
+      from booklist B inner join purchase P on B.isbn = P.isbn
+      where P.id = #{id} order by P.purdate desc)
+      where R between #{startRow} and #{endRow}
+    </select>
+    
+    <select id="getTotalCount2"  parameterType="Pager"  resultType="long">
+      select count(purchase.ordernumber) from booklist inner join purchase on booklist.isbn =  purchase.isbn where purchase.id = #{id}
+   </select>
 	
 
 </mapper>

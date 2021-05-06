@@ -17,10 +17,7 @@ public class PurchaseDAO {
 	private final String NAMESPACE="com.sb.s1.purchase.PurchaseDAO.";
 	
 	
-	public List<PurchaseDTO> getSelectList() throws Exception {
-		
-		return sqlSession.selectList(NAMESPACE+"getSelectList");
-	}
+
 
 	public int setInsert(PurchaseDTO purchaseDTO) throws Exception {
 
@@ -41,11 +38,7 @@ public class PurchaseDAO {
 		return sqlSession.selectOne(NAMESPACE+"getSelect", purchaseDTO);
 	}
 
-	public List<PurchaseDTO> getList(BranchPager branchPager) throws Exception {
-
-		return sqlSession.selectList(NAMESPACE+"getList", branchPager);
-	}
-
+	
 	public long getTotalCount(BranchPager branchPager) throws Exception {
 
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", branchPager);
@@ -54,18 +47,27 @@ public class PurchaseDAO {
 	public long getNum()throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getNum");
 	}
-	public long setPurchase(List<PurchaseDTO> list)throws Exception{
-		return sqlSession.insert(NAMESPACE+"setPurchase", list);
+	
+	
+	
+	
+	public List<PurchaseDTO> getSelectList() throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getSelectList");
 	}
 	
+	public List<PurchaseDTO> getList(BranchPager branchPager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getList", branchPager);
+	}
+
 	public List<PurchaseDTO> userPurchase(Pager pager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"userPurchase",pager);
 	}
 	
 	public long getTotalCount2(Pager pager)throws Exception{
-		
-		
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount2",pager);
 	} 
 	
+	public long setPurchase(List<PurchaseDTO> list)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setPurchase", list);
+	}
 }
