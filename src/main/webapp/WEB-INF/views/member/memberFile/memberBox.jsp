@@ -129,12 +129,12 @@ text-align:center;
 			<ul class="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
 					href="./memberBoxList">구매내역</a></li>
-				<li class="nav-item"><a class="btn btn-link" href=../membercart/membercartList?id=${member.id}">장바구니</a></li>
+				<li class="nav-item"><a class="btn btn-link" href="../membercart/membercartList">장바구니</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="https://tracker.delivery/#/:${DTO.purnum}"
 					target="_blank">배송조회</a></li>
-					<button class="btn btn-primary" id="boxBtn">왜안대ㅐㅐㅐ</button>
-					
+
+						
 	
 			</ul>
 		</div>
