@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.branch.BranchDTO;
 import com.sb.s1.member.MemberDTO;
 import com.sb.s1.purchase.PurchaseDTO;
-import com.sb.s1.util.Pager;
 
 
 @Controller
@@ -28,18 +26,18 @@ public class OrderListController {
 	private OrderListService orderListService;
 	
 
-	   @GetMapping("PointList")
-	   public ModelAndView PointList(Pager pager, HttpSession session )throws Exception{
-	      ModelAndView mv = new ModelAndView();
-	      MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
-	      pager.setId(memberDTO.getId());
-	      // orderListDTO = memberService.memberPointList(orderListDTO);
-	      List<OrderListDTO> list =  orderListService.PointList(pager);
+	@GetMapping("PointList")
+	public ModelAndView PointList(OrderListDTO orderListDTO,HttpSession session )throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
+		 orderListDTO.setId(memberDTO.getId());
+		// orderListDTO = memberService.memberPointList(orderListDTO);
+		List<OrderListDTO> ar =  orderListService.PointList(orderListDTO);
+		
+		mv.addObject("list",ar);
+		mv.setViewName("orderList/PointList");
+		
+		return mv;
+	}
 
-	      mv.addObject("list",list);
-	      mv.addObject("pager", pager);
-	      mv.setViewName("orderList/PointList");
-
-	      return mv;
-	   }
 }

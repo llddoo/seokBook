@@ -21,36 +21,19 @@
         <li class="nav-item active">
           <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList?boardsp=event">이벤트</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList?boardsp=notice">공지사항</a>
-        </li>
       </ul>
-    
- 
-	<c:choose >
-
-    <c:when test="${empty member}">
+      
+       &nbsp;
+       <c:if test="${empty member}">
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogin">로그인</a>
         &nbsp;
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberJoinCheck">회원가입</a>
-    </c:when>
-       
-       <c:when  test="${member.id eq 'admin'}">
-       <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/purchase/mpurchase/purchaseList">관리자페이지</a>
-        &nbsp;
-		<a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberFile/memberPage">MyPage</a>
-		 &nbsp;
-        <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
-
-    	</c:when>
-    	
-    	<c:otherwise>
+       </c:if>
+       <c:if test="${not empty member}">
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberFile/memberPage">MyPage</a>
         &nbsp;
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
-    	</c:otherwise>
-       
-     </c:choose>
+      </c:if>
     </div>
   </nav>
   </body>

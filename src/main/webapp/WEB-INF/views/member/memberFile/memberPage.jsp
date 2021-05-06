@@ -11,54 +11,39 @@
 <style type="text/css">
 
 #div_root{
-width:1500px;
-min-height:100%;
+margin:auto;
+width:1200px;
+margin-top:5%
 }
 
 #div_top{
-
 width:100%;
-
-height:10%;
-margin-top:5%;
 text-align:center;
-
-
-}
-
-#div_con{
-
-width:100%;
-margin-top:2%;
-min-height:450px;
-
 }
 
 #div_menu{
-width:20%;
+width:12%;
 margin-top:5%;
 float:left;
 text-align:reft;
-margin-left:5%;
-
-
 
 }
-#div_main{
-width:900px;
-height:450px;
- margin:0 auto; 
+#div_con{
+width:88%;
+height:10%;
 
+margin-top:2%;
+float:right;
 text-align:center;
 
 }
 
-#div_footer {
-	width: 100%;
-	height:10%;
-	bottom:0;
+#div_footer{
+	width:100%;
+	position: absolute;
+    bottom: 0px;
+	
 }
-
 
 
 #rcorners2 {
@@ -68,7 +53,7 @@ text-align:center;
   width: 600px;
   height:150px;
 
- margin:0 auto; 
+  margin-left:15%;
 }
 
 
@@ -104,9 +89,18 @@ text-align:center;
 	<h1>My Page</h1>
 </div>
 	
-<div id= "div_con">
-<div id="div_menu"> <h1></h1></div>
-<div id = "div_main">
+
+<div id = "div_con">
+
+		<h1>오른쪽가라고</h1>
+		<h1>회원등급 ${member.grade}</h1>
+		<h1>${member.point}</h1>
+<form action="../memberPoint" method="post">
+    <input value="id" name="id">
+    <input value="point" name="point">
+</form>
+
+
 
 
 <div id ="rcorners2">
@@ -114,7 +108,7 @@ text-align:center;
 
 
 		<div id="div_size">
-		<a  href="../../purchase/userPurchase">
+		<a  href="./memberBox">
 		<img id="img_size" src="../../resources/image/member/box.png"  alt="상품">
 		<p>상품</p>
 		</a>
@@ -134,7 +128,7 @@ text-align:center;
 		</a>
 		</div>
 		<div id="div_size">
-		<a  href=" ../../board/boardList?boardsp=qna&kind=id&search=${member.id}">
+		<a  href="./?????Q&A">
 		<img id="img_size" src="../../resources/image/member/qna.jpg" alt="Q&A"  >
 		<p>Q&A</p>
 		</a>
@@ -142,9 +136,7 @@ text-align:center;
 </div>
 </div>
 </div>
-<div id=div_footer >
+
 <c:import url="../../template/footer.jsp"></c:import>
-</div>
-</div>
 </body>
 </html>

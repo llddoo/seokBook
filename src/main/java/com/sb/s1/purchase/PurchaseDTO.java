@@ -2,8 +2,6 @@ package com.sb.s1.purchase;
 
 import java.sql.Date;
 
-import com.sb.s1.bookList.BookListDTO;
-
 public class PurchaseDTO{
 
 	private long purnum;
@@ -14,6 +12,7 @@ public class PurchaseDTO{
 	private long price;
 	private long purcount;
 	private String ordernumber;
+<<<<<<< HEAD
 	private BookListDTO bookListDTO;
 	private String bookName;
 	private String gname;
@@ -36,6 +35,10 @@ public class PurchaseDTO{
 	public void setGname(String gname) {
 		this.gname = gname;
 	}
+=======
+	
+	
+>>>>>>> parent of dd91d8e (Merge branch 'min_3' into main)
 	public String getOrdernumber() {
 		return ordernumber;
 	}

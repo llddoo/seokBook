@@ -12,27 +12,14 @@
 <style type="text/css">
 
 #div_root{
-width:1500px;
-min-height:100%;
+margin:auto;
+width:1200px;
+margin-top:5%
 }
 
 #div_top{
-
 width:100%;
-
-height:10%;
-margin-top:5%;
 text-align:center;
-
-
-}
-
-#div_con{
-
-width:100%;
-margin-top:2%;
-min-height:450px;
-
 }
 
 #div_menu{
@@ -40,26 +27,24 @@ width:12%;
 margin-top:5%;
 float:left;
 text-align:reft;
-margin-left:10%;
-
 
 }
-#div_main{
-width:900px;
-height:450px;
- margin:0 auto; 
+#div_con{
+width:88%;
+height:10%;
 
+margin-top:2%;
+float:right;
 text-align:center;
 
 }
 
-#div_footer {
-	width: 100%;
-	height:10%;
-	bottom:0;
-
+#div_footer{
+	width:100%;
+	position: absolute;
+    bottom: 0px;
+	
 }
-
 
 
 #rcorners2 {
@@ -68,9 +53,10 @@ text-align:center;
   padding: 20px;
   width: 600px;
   height:150px;
-text-align:center;
- margin:0 auto; 
+
+  margin-left:15%;
 }
+
 
 
 #img_size{
@@ -96,14 +82,12 @@ text-align:center;
 	border: 2px solid gray;
 	width:600px;
 	height:300px;
-	text-align:center;
-	margin-top:2%;
- 	margin-left:30%;
- 	margin-bottom:2%;
+
+	margin-top:5%;
+ 	margin-left:15%;
 
 }
 #div_view2{
-
 	width:200px;
 	float:left;
 		text-align:left;
@@ -143,7 +127,7 @@ text-align:center;
 
 
 		<div id="div_size">
-		<a  href="../../purchase/userPurchase">
+		<a  href="./memberBox">
 		<img id="img_size" src="../../resources/image/member/box.png"  alt="상품">
 		<p>상품</p>
 		</a>
@@ -163,7 +147,7 @@ text-align:center;
 		</a>
 		</div>
 		<div id="div_size">
-		<a  href=" ../../board/boardList?boardsp=qna&kind=id&search=${member.id}">
+		<a  href="./?????Q&A">
 		<img id="img_size" src="../../resources/image/member/qna.jpg" alt="Q&A"  >
 		<p>Q&A</p>
 		</a>
@@ -171,16 +155,17 @@ text-align:center;
 </div>
 
 <div id="div_view">
+		<div id="div_view2">
 		<h1>회원 정보</h1>
-		<div id="div_view2" >
 		<p></p>
-		<h3>아이디 </h3>	
+		<h3>아이디 </h3>
 		<h3>이름</h3>
 		<h3>회원등급 </h3>
 		<h3>이메일  </h3>
 		<h3>휴대전화 </h3>
         </div>
-		<div id="div_view2" >
+		<div id="div_view2">
+		<h1>&nbsp;</h1>
 		<p></p>
         <h3>${member.id}</h3>
         <h3>${member.name}</h3>

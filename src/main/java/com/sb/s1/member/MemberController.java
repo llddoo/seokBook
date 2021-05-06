@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sb.s1.orderList.OrderListDTO;
-
 
 @Controller
 @RequestMapping("/member/**")
@@ -24,12 +22,9 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	
-	
-	
-	
-	@GetMapping("memberBoxList")
-	public void memberBoxList()throws Exception{
+
+	@GetMapping("memberProfile")
+	public void memberProfiel()throws Exception{
 		
 	}
 	
@@ -89,6 +84,20 @@ public class MemberController {
 	public void memberPoint()throws Exception{
 		
 	}
+	
+//	   @PostMapping("memberPoint")
+//	   public String memberPoint(MemberDTO memberDTO, HttpSession session)throws Exception{
+//	      memberDTO =(MemberDTO)session.getAttribute("member");
+//	      int result = memberService.memberPoint(memberDTO, session);
+//	      memberDTO = memberService.getSelect(memberDTO);
+//	      
+//	      if(result>0) {
+//	         session.setAttribute("member", memberDTO);         
+//	      }
+//	      return "member/memberFile/memberPage";
+//	   
+//	   }
+	
 	
 	
 	
@@ -211,37 +220,6 @@ public class MemberController {
 	  public void memberPointList() throws Exception{
 		  
 	  }
-	  
-	  
-	  @GetMapping("memberProfile")
-	   public void memberProfile(MemberDTO memberDTO, Model model, OrderListDTO orderListDTO ,HttpSession session)throws Exception{
-	      memberDTO =(MemberDTO)session.getAttribute("member");
-	      String grade;
-	      memberDTO = memberService.memberGrade(memberDTO);
-	      if(memberDTO.getPrice() >= 60000) {
-	         grade = "최우수등급";
-	      }else if(memberDTO.getPrice() >= 40000) {
-	         grade = "우수등급";
-	      }else if(memberDTO.getPrice() >= 20000) {
-	         grade = "맴버등급";
-	      }else{
-	         grade = "일반등급";
-	      }
-	      System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
-	      
-	      memberDTO.setGrade(grade);
-	      
-	      System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
-	      
-	      int result = memberService.gradeUpdate(memberDTO);
-	      memberDTO = memberService.getSelect(memberDTO);
-	      
-	      if(result > 0) {
-	         session.setAttribute("member", memberDTO);
-	      }
-	      
-	   }
-	  
 	
 	  
 	  @GetMapping("selectUserInfo")

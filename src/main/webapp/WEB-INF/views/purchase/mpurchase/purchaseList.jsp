@@ -5,8 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>관리자 페이지</title>
 <c:import url="../../template/header.jsp"></c:import>
+=======
+<title>구매 목록</title>
+<c:import url="../template/bootStrap.jsp"></c:import>
+>>>>>>> parent of dd91d8e (Merge branch 'min_3' into main)
 </head>
 <body>
 <c:import url="../../template/body.jsp"></c:import>

@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
-
 <style type="text/css">
 	.r1 {
 		color: red;
@@ -21,37 +20,37 @@
 #div_main {
 	position:absolute;
 	 left:50%;
-	width: 30%;
-	min-height:100px;
+	width: 30%; height:100px;
 	margin-left: -15%;
 	text-align: left;
 
 }
 	
 
-#div_footer {
-	width: 100%;
-	height:10%;
-	bottom:0;
+#div_footer{
+	position: relative;
+	width:100%;
+
+    bottom: 1px;
 
 }
 
 #div_page{
 		width:100%;
-		min-height:700px;
-
+		height:700px;
 }
 
 	
 </style>
+
 </head>
 
 <body>
 <c:import url="../template/body.jsp"></c:import>
 	<div id="div_page" class="container" style="text-align: center;">
 		
-
-		<h2 class="mt-4">Member Join Page</h2>
+		<h1>&nbsp;</h1>
+		<h2 class="mt-4">Member Join Page1111</h2>
 			<div id="div_main" class="container mt-2">
 		<form id="frm" action="./memberJoin" method="post" enctype="multipart/form-data">
 			<div class="form-group">
@@ -97,10 +96,9 @@
 		</form>
 		</div>
 	</div>
+	<c:import url="../template/footer.jsp"></c:import>
 <script type="text/javascript" src="../resources/js/member/memberJoin.js"></script>	
-<div id="div_footer">
 <c:import url="../template/footer.jsp"></c:import>
-</div>
 </body>
 
 

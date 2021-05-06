@@ -1,29 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지점목록</title>
-<c:import url="../template/header.jsp"></c:import>
+<title>Insert title here</title>
+<c:import url="../../template/header.jsp"></c:import>
 </head>
 <body>
-<c:import url="../template/body.jsp"></c:import>
+<c:import url="../../template/body.jsp"></c:import>
+	<h3>&nbsp;</h3>
+	<h1>&nbsp;</h1>
+	<h1> 북리스트</h1>
+	
 <div class="container">
-	<h2 style="padding: 0px 10px 1px; 
-	margin: 10px 0px 5px; 
-	border-left-width: 5px; 
-	border-left-style: solid; 
-	border-left-color: rgb(216, 60, 60); 
-	font-size: 14pt; color: rgb(51, 51, 51); 
-	font-family: '맑은 고딕', 'Noto Sans Korean'; 
-	border-bottom-color: rgb(211, 211, 211); 
-	border-bottom-width: 1px; 
-	border-bottom-style: solid; 
-	letter-spacing: -0.07em; 
-	line-height: 35px; 
-	background-color: rgb(250, 250, 250);">지점 목록</h2>
+	<h2>지점목록</h2>
 
 	<table class="table">
 		<thead class="thead-dark">
@@ -84,7 +76,7 @@
    </div> 
   
   <a href="./${branch}Insert" class="btn btn-primary" role="button">추가</a>
-<c:import url="../template/footer.jsp"></c:import>
+  
 <script type="text/javascript">
    let kind= '${branchPager.kind}';
    $(".sel").each(function() {
@@ -103,6 +95,9 @@
 </script>
 
 </div>
+	
+	
 
+    <c:import url="../../template/footer/jsp"></c:import>
 </body>
 </html>

@@ -2,7 +2,6 @@ package com.sb.s1.orderList;
 
 import java.sql.Date;
 
-import com.sb.s1.bookList.BookListDTO;
 import com.sb.s1.purchase.PurchaseDTO;
 
 public class OrderListDTO {
@@ -12,33 +11,14 @@ public class OrderListDTO {
    private long lumpSum;
    private PurchaseDTO purchaseDTO;
    private String id;
-   private BookListDTO bookListDTO;
 
    private long purnum;
    private Date purdate;
    private long price;
    private long point;
-   private long bpoint;
-
-   
-   public BookListDTO getBookListDTO() {
-	return bookListDTO;
-}
-
-public void setBookListDTO(BookListDTO bookListDTO) {
-	this.bookListDTO = bookListDTO;
-}
 
 
-   public long getBpoint() {
-	return bpoint;
-}
-
-public void setBpoint(long bpoint) {
-	this.bpoint = bpoint;
-}
-
-public long getPoint() {
+   public long getPoint() {
       return point;
    }
 

@@ -17,6 +17,7 @@
 	</insert>
 	
 
+<<<<<<< HEAD
 	<select id="getSelectList" resultType="PurchaseDTO">
 select genre.gname, sum(purchase.purcount) price
       from booklist inner join purchase 
@@ -26,4 +27,6 @@ select genre.gname, sum(purchase.purcount) price
 	</select>
 	
 	
+=======
+>>>>>>> parent of dd91d8e (Merge branch 'min_3' into main)
 </mapper>
