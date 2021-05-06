@@ -29,7 +29,7 @@
 	<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 	
 	
-		
+		<div id="getChartList"></div>
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		
 		<script type="text/javascript">
@@ -45,16 +45,37 @@
 		    		  success:function(result){
 		    			  console.log(result);
 		    			  result = result.trim();
-		    			  result = result.substring(0,result.length-1);
-		    			  data.addRows([result]);
+		    			  $("#getChartList").append(result);
+		    			  let gnames = new Array();
+		    			  let counts = new Array();
+		    			  let arr = new Array();
+		    			  $(".namelist").each(function(){
+		    				 gnames.push($(this).val()); 
+		    			  });
+		    			  $(".countlist").each(function(){
+		    				  counts.push($(this).val());
+		    			  });
+		    			  
+		    			  for(let i = 0 ; i < gnames.length; i++){
+		    				  let temp = new Array();
+		    				  temp.push(gnames[i]);
+		    				  temp.push(Number(counts[i]));
+		    				  arr.push(temp);
+		    			  }
+		    			  console.log(arr);
+		    			  data.addRows(arr);
+		    			  
+		    			  
+		    			  
+		    			  var options = {
+		    				         title: '구매 현황'
+		    				       };
+		    				       var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+		    				       chart.draw(data, options);
 		    		  }
 		    	  });
 		      
-		       var options = {
-		         title: '구매 현황'
-		       };
-		       var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-		       chart.draw(data, options);
+		      
 		    }
 		});
 		  
