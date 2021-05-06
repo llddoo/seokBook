@@ -16,7 +16,7 @@ public class PurchaseDTO{
 	private String ordernumber;
 	private BookListDTO bookListDTO;
 	private String bookName;
-	
+	private String gname;
 	
 	public String getBookName() {
 		return bookName;
@@ -29,6 +29,12 @@ public class PurchaseDTO{
 	}
 	public void setBookListDTO(BookListDTO bookListDTO) {
 		this.bookListDTO = bookListDTO;
+	}
+	public String getGname() {
+		return gname;
+	}
+	public void setGname(String gname) {
+		this.gname = gname;
 	}
 	public String getOrdernumber() {
 		return ordernumber;

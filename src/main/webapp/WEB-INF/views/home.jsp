@@ -14,9 +14,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Carousel Template · Bootstrap v4.6</title>
+    <title>seokBook</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/resources/docs/4.6/examples/carousel/">
+    <link rel="canonical" href="//www.interpark.com/malls/index.html">
+    <link rel="shortcut icon" href="//openimage.interpark.com/interpark.ico">
 
     <!-- Bootstrap core CSS -->
 	<link href="${pageContext.request.contextPath}/resources/docs/4.6/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -91,37 +92,37 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="rgb(238, 205, 246)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
-          <div class="carousel-caption text-left">
-          <img src="https://image.kyobobook.co.kr/ink/images/prom/2021/banner/210423/bnH_ad04.jpg" alt="어떤 죽음이 삶에게 말했다">
-            
+          <div class="carousel-caption text-left" >
+          
+         <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42118&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42b" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210416_bookday/bnH_w01_eecdf6.jpg" width="1000" height="400" alt="책의 날 이벤트"></a></div>
             
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="rgb(255, 242, 148)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
           <div class="carousel-caption">
-            <img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" alt="추천새책 애슝북엔">
+            
+            <div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventPid=42128&amp;classGb=KOR&amp;PRE=Y&amp;orderClick=42c" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210415_new/bnF_w01_fff294.jpg" width="1000" height="400" alt="추천새책 애슝북엔"></a></div>
             
           </div>
         </div>
       </div>
       <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect class=d1 width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect class=d1 width="100%" height="100%" fill="rgb(245, 207, 153)"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
         <div class="container">
           <div class="carousel-caption text-right">
-           <li data-color="#f5cf99" class="">
-											<div class="event_title"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"></a></div>
-											<div class="event_banner main" style="left: -100px;"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" alt="5월 포켓몬스"></a></div>
-			</li>
+          
+			<div class="event_banner main"><a href="http://www.kyobobook.co.kr/eventRenewal/eventViewByPid.laf?eventId=91268&amp;classGb=KOR&amp;orderClick=42a" target="_blank"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/book/210428_pokemon/bn/bnE_w01_f5cf99.jpg" width="1000" height="400" alt="5월 포켓몬스"></a></div>
 			
           </div>
+          
           
         </div>
       </div>
@@ -135,7 +136,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
+<!-- 여기까지 상단 메인페이지 -->
 
   <!-- Marketing messaging and featurettes
   ================================================== -->
@@ -144,49 +145,80 @@
   <div class="container marketing">
 
     <!-- Three columns of text below the carousel -->
+    
+    <hr class="featurette-divider">
+    
+    <p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">인기도서</span></p><br>
+    
     <div class="row">
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+		<body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_05?adsno=104722&amp;ctvno=69080&amp;clkno=69114" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/70245/left.jpg" width="316" height="128" border="0" alt="작은 별이지만 빛나고 있어"></a>
+		</body>
       </div><!-- /.col-lg-4 -->
+      
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      <body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_05?adsno=104772&amp;ctvno=68911&amp;clkno=68945" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/46403/N1.jpg" width="316" height="128" border="0" alt="심리학이 돈을 말하다"></a>
+		</body>
       </div><!-- /.col-lg-4 -->
+      
+       <div class="col-lg-4">
+       <body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_06?adsno=104762&amp;ctvno=68920&amp;clkno=68954" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/66092/2.jpg" width="316" height="128" border="0" alt="심리학자에게 배우는 자존감 관계법"></a>
+		</body>
+       </div><!-- /.col-lg-4 -->
+      
+       <div class="col-lg-4">
+      <body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_07?adsno=104732&amp;ctvno=69138&amp;clkno=69172" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/70245/rightco.jpg" width="316" height="128" border="0" alt="안녕  소중한 사람"></a>
+		</body>
+      </div><!-- /.col-lg-4 -->
+      
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-
-        <h2>Heading</h2>
-        <p>And lastly this, the third column of representative placeholder content.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+     		<body marginwidth="0" marginheight="0">
+			<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_06?adsno=104315&amp;ctvno=69129&amp;clkno=69163" target="_blank""><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/46964/WM.jpg" width="316" height="128" border="0" alt="친애하는 20세기"></a>
+			</body>
+     		 </div><!-- /.col-lg-4 -->
+     		 
+      <div class="col-lg-4">
+        <body marginwidth="0" marginheight="0">
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_07?adsno=104514&amp;ctvno=69065&amp;clkno=69099" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/69970/1.jpg" width="316" height="128" border="0" alt="기린의 심장"></a>
+		</body>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
 
     <!-- START THE FEATURETTES -->
 
-    <hr class="featurette-divider">
+<hr class="featurette-divider">
 
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
 
-      </div>
-    </div>
+				
+				<p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">신간도서</span></p><br>
+					
+							
+											
+											<div class="event_banner"><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9788965464013&amp;orderClick=43a"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210429/bnH_ad02.jpg" alt="우리는 우주를 꿈꾼다"></a></div><br>
+										
+										
+											
+											<div class="event_banner"><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791196961893&amp;orderClick=43b"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210429/bnH_ad04.jpg" alt="인간의 종말"></a></div><br>
+										
+										
+											
+											<div class="event_banner"><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791197426377&amp;orderClick=43c"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210429/bnH_ad01.jpg" alt="당신의 가격은 틀렸습니다"></a></div><br>
+										
+										
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
+											<div class="event_banner"><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&amp;ejkGb=KOR&amp;barcode=9791191071573&amp;orderClick=43d"><img src="http://image.kyobobook.co.kr/ink/images/prom/2021/banner/210429/bnH_ad03.jpg" alt="부서진 여름"></a></div>
+										
+  
+  
+   <hr class="featurette-divider">
+  
+    <!--  <div class="row featurette">
+    
       <div class="col-md-7 order-md-2">
         <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
         <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
@@ -196,21 +228,7 @@
 
       </div>
     </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
+-->
 
     <!-- /END THE FEATURETTES -->
 

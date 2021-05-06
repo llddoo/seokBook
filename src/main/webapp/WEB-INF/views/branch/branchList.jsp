@@ -11,7 +11,19 @@
 <body>
 <c:import url="../template/body.jsp"></c:import>
 <div class="container">
-	<h2>지점목록</h2>
+	<h2 style="padding: 0px 10px 1px; 
+	margin: 10px 0px 5px; 
+	border-left-width: 5px; 
+	border-left-style: solid; 
+	border-left-color: rgb(216, 60, 60); 
+	font-size: 14pt; color: rgb(51, 51, 51); 
+	font-family: '맑은 고딕', 'Noto Sans Korean'; 
+	border-bottom-color: rgb(211, 211, 211); 
+	border-bottom-width: 1px; 
+	border-bottom-style: solid; 
+	letter-spacing: -0.07em; 
+	line-height: 35px; 
+	background-color: rgb(250, 250, 250);">지점 목록</h2>
 
 	<table class="table">
 		<thead class="thead-dark">
