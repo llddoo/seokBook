@@ -3,65 +3,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sb.s1.mpurchase.PurchaseDAO">
+<mapper namespace="com.sb.s1.purchase.PurchaseDAO">
 
 
-	<update id="setUpdate" parameterType="PurchaseDTO">
-		update purchase set isbn=#{isbn}, id=#{id}, price=#{price}, purcount=#{purcount}, ordernum=#{ordernum} where purnum=#{purnum}
-	</update>
-
-	<delete id="setDelete" parameterType="PurchaseDTO">
-		delete purchase where purnum=#{purnum}
-	</delete>
 	
-	<insert id="setInsert" parameterType="PurchaseDTO">
-		insert into purchase values(p_pn_seq.nextval, sysdate, #{isbn}, #{yyyy-mm-dd}, #{id}, #{price}, #{purcount}, #{ordernum})
-	</insert>
-
-	<select id="getList" resultType="PurchaseDTO" parameterType="BranchPager">
-		select * from
-			(select rownum R, P.* from
-				(select * from purchase where
-					<choose>
-						
-						<when test="kind == 'Id'">
-							id
-						</when>
-						
-						<when test="kind == 'Ordernum'">
-							ordernum
-						</when>
-						
-						<otherwise>
-							isbn
-						</otherwise>
-					
-					</choose>
-				like '%' || #{search} || '%' and purnum > 0 order by purnum desc) P)
-				where R between #{startRow} and #{endRow}	
-	</select>
-	
-	<select id="getTotalCount" resultType="Long" parameterType="BranchPager">
-		select count(purnum) from purchase where
-		<choose>
-						<when test="kind == 'Id'">
-							id
-						</when>
-						
-						<when test="kind == 'Ordernum'">
-							ordernum
-						</when>
-						
-						<otherwise>
-							isbn
-						</otherwise>
-		</choose>
-		like '%' || #{search} || '%' and purnum > 0
-	</select>
-
-	<select id="getSelect" parameterType="PurchaseDTO" resultType="PurchaseDTO">
-		select * from purchase where purnum=#{purnum}
-	</select>
 	
 	<insert id="setPurchase" parameterType="java.util.List">
 		<foreach collection="list" item="item" separator=";">
@@ -71,23 +16,13 @@
 		</foreach>
 	</insert>
 	
-	
-	
-	<select id="userPurchase" parameterType="Pager" resultType="PurchaseDTO">
-      
-       select R isbn, price,purnum,bookname,purdate,purcount from(
-    select rownum R , B.isbn,B.bookname,B.price, P.purnum,P.purdate,P.purcount
-      from booklist B inner join purchase P on B.isbn = P.isbn
-      where P.id = #{id} order by P.purdate desc)
-      where R between #{startRow} and #{endRow}
-      
- 	</select>
- 	
- 	<select id="getTotalCount2"  parameterType="Pager"  resultType="long">
- 	
-      select count(purchase.ordernumber) from booklist inner join purchase on booklist.isbn =  purchase.isbn where purchase.id = #{id}
-   </select>
-	
+	<select id="getSelectList" resultType="PurchaseDTO">
+select genre.gname, sum(purchase.purcount) price
+      from booklist inner join purchase 
+      		on booklist.isbn = purchase.isbn 
+      		left outer join genre 
+      		on booklist.gnumber = genre.gnumber group by genre.gname
+	</select>
 	
 	
 
