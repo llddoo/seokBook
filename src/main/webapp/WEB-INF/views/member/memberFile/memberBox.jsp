@@ -99,7 +99,7 @@
 			<ul class="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
 					href="./memberlist">구매내역</a></li>
-				<li class="nav-item"><a class="btn btn-link" href="./cart">장바구니</a></li>
+				<li class="nav-item"><a class="btn btn-link" href="../membercart/membercartList">장바구니</a></li>
 				<li class="nav-item"><a class="btn btn-link" href="./memberBoxList">배송조회</a></li>
 				<li class="nav-item"><a class="btn btn-link"
 					href="https://tracker.delivery/#/:${DTO.purnum}"
