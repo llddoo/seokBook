@@ -45,7 +45,7 @@
 		    	  $.ajax({
 		    		  url:"./purchaseGetList",
 		    		  success:function(result){
-		    			  console.log(result);
+		    			  
 		    			  result = result.trim();
 		    			  $("#getChartList").append(result);
 		    			  let gnames = new Array();
@@ -64,7 +64,7 @@
 		    				  temp.push(Number(counts[i]));
 		    				  arr.push(temp);
 		    			  }
-		    			  console.log(arr);
+		    			  
 		    			  data.addRows(arr);
 		    			  
 		    			  
