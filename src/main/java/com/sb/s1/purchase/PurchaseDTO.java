@@ -12,8 +12,15 @@ public class PurchaseDTO{
 	private long price;
 	private long purcount;
 	private String ordernumber;
+	private String gname;
 	
 	
+	public String getGname() {
+		return gname;
+	}
+	public void setGname(String gname) {
+		this.gname = gname;
+	}
 	public String getOrdernumber() {
 		return ordernumber;
 	}

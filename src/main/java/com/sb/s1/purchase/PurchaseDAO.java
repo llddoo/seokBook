@@ -13,7 +13,13 @@ public class PurchaseDAO {
 
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.sb.s1.mpurchase.PurchaseDAO.";
+	private final String NAMESPACE="com.sb.s1.purchase.PurchaseDAO.";
+	
+	
+	public List<PurchaseDTO> getSelectList() throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE+"getSelectList");
+	}
 
 	public int setInsert(PurchaseDTO purchaseDTO) throws Exception {
 

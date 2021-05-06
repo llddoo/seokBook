@@ -148,7 +148,7 @@
     
     <hr class="featurette-divider">
     
-    <p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">잘나가는책</span></p><br>
+    <p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">인기도서</span></p><br>
     
     <div class="row">
       <div class="col-lg-4">
@@ -159,19 +159,19 @@
       
       <div class="col-lg-4">
       <body marginwidth="0" marginheight="0">
-		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_05?adsno=104772&amp;ctvno=68911&amp;clkno=68945" target="_top"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/46403/N1.jpg" width="316" height="128" border="0" alt="심리학이 돈을 말하다"></a>
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_05?adsno=104772&amp;ctvno=68911&amp;clkno=68945" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/46403/N1.jpg" width="316" height="128" border="0" alt="심리학이 돈을 말하다"></a>
 		</body>
       </div><!-- /.col-lg-4 -->
       
        <div class="col-lg-4">
        <body marginwidth="0" marginheight="0">
-		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_06?adsno=104762&amp;ctvno=68920&amp;clkno=68954" target="_top"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/66092/2.jpg" width="316" height="128" border="0" alt="심리학자에게 배우는 자존감 관계법"></a>
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_06?adsno=104762&amp;ctvno=68920&amp;clkno=68954" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/28/66092/2.jpg" width="316" height="128" border="0" alt="심리학자에게 배우는 자존감 관계법"></a>
 		</body>
        </div><!-- /.col-lg-4 -->
       
        <div class="col-lg-4">
       <body marginwidth="0" marginheight="0">
-		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_07?adsno=104732&amp;ctvno=69138&amp;clkno=69172" target="_top"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/70245/rightco.jpg" width="316" height="128" border="0" alt="안녕  소중한 사람"></a>
+		<a href="http://imac.kyobobook.co.kr/click/INK/ink_wel_2016/ink_wel_2016@wel_07?adsno=104732&amp;ctvno=69138&amp;clkno=69172" target="_blank"><img src="http://image.kyobobook.co.kr/newimages/adcenter/IMAC/creatives/2021/04/30/70245/rightco.jpg" width="316" height="128" border="0" alt="안녕  소중한 사람"></a>
 		</body>
       </div><!-- /.col-lg-4 -->
       
@@ -195,7 +195,7 @@
 
 
 				
-				<p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">새로나온책</span></p><br>
+				<p><span style="border-radius: 15px 15px 15px 0; border: 3px solid #FFAD5B; padding: 0.5em 0.6em; color: #FF8000; font-size:23px;">신간도서</span></p><br>
 					
 							
 											
