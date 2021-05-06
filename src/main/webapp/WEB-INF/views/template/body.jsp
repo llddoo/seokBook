@@ -22,18 +22,29 @@
           <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList?boardsp=event">이벤트</a>
         </li>
       </ul>
-      
-       &nbsp;
-       <c:if test="${empty member}">
+    
+ 
+	<c:choose >
+
+    <c:when test="${empty member}">
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogin">로그인</a>
         &nbsp;
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberJoinCheck">회원가입</a>
-       </c:if>
-       <c:if test="${not empty member}">
+    </c:when>
+       
+       <c:when  test="${member.id eq 'admin'}">
+       <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/purchase/mpurchase/purchaseList">관리자페이지</a>
+        &nbsp;
+        <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
+    	</c:when>
+    	
+    	<c:otherwise>
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberFile/memberPage">MyPage</a>
         &nbsp;
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
-      </c:if>
+    	</c:otherwise>
+       
+     </c:choose>
     </div>
   </nav>
   </body>

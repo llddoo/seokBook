@@ -248,7 +248,7 @@ text-align:center;
                         <td>${dto.purdate}</td>
                         <td><a class="btn btn-link" onclick="openDetailModal(this)">${dto.purnum}</a></td>
                         <td>${dto.price}</td>
-                        <td><a class="btn btn-link"href="https://tracker.delivery/#/kr.epost/:${dto.purnum}">배송조회</a></td>
+                        <td><a class="btn btn-link"href="https://tracker.delivery/#/kr.epost/:${dto.purnum}" target="_blank">배송조회</a></td>
                      </tr>
 
                   </c:forEach>
