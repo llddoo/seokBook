@@ -71,5 +71,24 @@
 		</foreach>
 	</insert>
 	
+	
+	
+	<select id="userPurchase" parameterType="Pager" resultType="PurchaseDTO">
+      
+       select R isbn, price,purnum,bookname,purdate,purcount from(
+    select rownum R , B.isbn,B.bookname,B.price, P.purnum,P.purdate,P.purcount
+      from booklist B inner join purchase P on B.isbn = P.isbn
+      where P.id = #{id} order by P.purdate desc)
+      where R between #{startRow} and #{endRow}
+      
+ 	</select>
+ 	
+ 	<select id="getTotalCount2"  parameterType="Pager"  resultType="long">
+ 	
+      select count(purchase.ordernumber) from booklist inner join purchase on booklist.isbn =  purchase.isbn where purchase.id = #{id}
+   </select>
+	
+	
+	
 
 </mapper>

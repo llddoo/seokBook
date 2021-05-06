@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>구매 목록</title>
-<c:import url="../template/bootStrap.jsp"></c:import>
+<c:import url="../../template/header.jsp"></c:import>
 </head>
 <body>
 

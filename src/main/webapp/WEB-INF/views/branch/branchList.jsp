@@ -32,7 +32,7 @@
 		
 	</table>
 
-</div>
+</div>d
 
  <div class="container">
   <ul class="pagination">
