@@ -7,20 +7,25 @@
 
 
 
-   <select id="PointList" parameterType="OrderListDTO"
+   <select id="PointList" parameterType="Pager"
       resultType="OrderListDTO">
-      select
-      booklist.*, orderlist.*, purchase.*
-      from
-      booklist inner join
-      purchase on booklist.isbn = purchase.isbn left outer join
-      orderlist on purchase.ordernumber = orderlist.ordernumber
-      where purchase.id = #{id} order by purdate desc
-   </select>
+      
+      select purdate,purnum,bpoint,pointusage from (select rownum R, booklist.*, orderlist.*, purchase.*
+            from booklist inner join purchase on booklist.isbn = purchase.isbn left outer join
+            orderlist on purchase.ordernumber = orderlist.ordernumber
+            where purchase.id =  #{id} order by purdate desc)
+           where R between  #{startRow} and #{endRow}
+      
+              </select>
 
    <insert id="insertOrderList" parameterType="OrderListDTO">
       insert into orderlist
       values(#{orderNumber}, #{pointUsage}, #{lumpSum})
    </insert>
+   
+   <select id="getTotalCount"  parameterType="Pager"  resultType="long">
+   select count(orderlist.ordernumber) from orderlist inner join purchase on orderlist.ordernumber =  purchase.ordernumber where purchase.id = #{id}
+     
+   </select>
 
 </mapper>

@@ -186,11 +186,30 @@ text-align:center;
 
                </tbody>
             </table>
+            
+            
+		
+		<br><br>
          </div>
+         <ul class="pagination justify-content-center" id="pagerList">
+		  <li class="page-item" id="prebutton"><button class="page-link">Previous</button></li>
+		  <c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
+		  	<li class="page-item"><button class="page-link pagesetting" value="${i}">${i}</button></li>
+		  </c:forEach>
+		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
+		</ul>
       </div>
 
    </div>
 
+
+	<form action="./PointList" id="getListSearching">
+		<input type="hidden" readonly="readonly" id="currentPage" name="curPage" value="${pager.curPage}">
+		<input type="hidden" readonly="readonly" id="curBlock" name="curBlock" value="${pager.curBlock}">
+		<input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">
+		<input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
+		</form>
+<script type="text/javascript" src="../resources/js/orderList/orderListPager.js"></script>
 </body>
 <div id="div_footer">
    <c:import url="../template/footer.jsp"></c:import>
