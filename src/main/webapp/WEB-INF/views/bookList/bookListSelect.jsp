@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <c:import url="../template/header.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/bookNGenre/book.css">
+
 </head>
 <body>
 	<c:import url="../template/body.jsp"></c:import>
@@ -30,13 +31,13 @@
 			</div>
 			<div class="box_detail_point">
 				<h1 class="title">
-					<strong>${dto.bookName}</strong> <span class="back"><strong>${dto.author} |
-							${dto.gName}</strong></span>
+					<strong>${dto.bookName}</strong> <span class="back"><strong>${dto.author}
+							| ${dto.gName}</strong></span>
 				</h1>
 				<div class="author">
-					<span class="name"><a>${dto.author}</a></span> 지음 <span class="line">|</span>
-					<span class="name" title="출판사"><a>${dto.bookPub}</a></span> <span
-						class="line">|</span> <span class="name" title="출간일"><a>${dto.bookPubDate}</a>
+					<span class="name"><a>${dto.author}</a></span> 지음 <span
+						class="line">|</span> <span class="name" title="출판사"><a>${dto.bookPub}</a></span>
+					<span class="line">|</span> <span class="name" title="출간일"><a>${dto.bookPubDate}</a>
 						출간</span>
 				</div>
 				<div class="review">
@@ -152,8 +153,46 @@
 				<li class="on"><a href="#review">회원리뷰 <span>(${dto.scoreCount})</span></a></li>
 				<li><a href="#guide">교환/반품/품절</a></li>
 			</ul>
-
-
+			<table>
+			<td>
+			<h2>평점 : </h2> </td>
+			
+			<td>
+			<div class="startRadio">
+				<label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">1</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">2</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">3</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">4</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">5</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">6</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">7</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">8</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">9</span></span>
+				</label> <label class="startRadio__box"> <input type="radio"
+					name="star" id=""> <span class="startRadio__img"><span
+						class="blind">10</span></span>
+				</label>
+			</div>
+			</td>
+			</table>
 
 
 
@@ -248,7 +287,6 @@
 		</div>
 
 	</div>
-
 
 
 
