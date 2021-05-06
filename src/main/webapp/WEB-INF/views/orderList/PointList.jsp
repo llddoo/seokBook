@@ -94,7 +94,7 @@ text-align:center;
 #div_view{
 	border: 2px solid gray;
 	width:800px;
-	height:300px;
+	height:400px;
 	text-align:center;
 	margin-top:2%;
  	margin-left:25%;

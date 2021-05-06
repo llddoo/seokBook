@@ -21,6 +21,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList?boardsp=event">이벤트</a>
         </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="${pageContext.request.contextPath}/board/boardList?boardsp=notice">공지사항</a>
+        </li>
       </ul>
     
  

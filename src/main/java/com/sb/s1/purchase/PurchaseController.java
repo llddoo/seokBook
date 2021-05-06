@@ -22,6 +22,7 @@ import com.sb.s1.member.membercart.MembercartDTO;
 import com.sb.s1.member.membercart.MembercartService;
 import com.sb.s1.orderList.OrderListDTO;
 import com.sb.s1.orderList.OrderListService;
+import com.sb.s1.util.Pager;
 
 @Controller
 @RequestMapping("/purchase/**")
@@ -241,13 +242,14 @@ public class PurchaseController {
 	
 	
 	@GetMapping("userPurchase")
-	public ModelAndView userPurchase(PurchaseDTO purchaseDTO,HttpSession session) throws Exception{
+	public ModelAndView userPurchase(Pager pager,HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
-		 purchaseDTO.setId(memberDTO.getId());
-		List<PurchaseDTO> ar =  purchaseService.userPurchase(purchaseDTO);
+		 pager.setId(memberDTO.getId());
+		List<PurchaseDTO> list =  purchaseService.userPurchase(pager);
 		
-		mv.addObject("list",ar);
+		 mv.addObject("list",list);
+	      mv.addObject("pager", pager);
 		mv.setViewName("purchase/userPurchase");
 		
 		return mv;

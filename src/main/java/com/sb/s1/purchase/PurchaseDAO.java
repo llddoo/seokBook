@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sb.s1.branch.BranchPager;
-import com.sb.s1.orderList.OrderListDTO;
+import com.sb.s1.util.Pager;
 
 @Repository
 public class PurchaseDAO {
@@ -52,8 +52,14 @@ public class PurchaseDAO {
 		return sqlSession.insert(NAMESPACE+"setPurchase", list);
 	}
 	
-	public List<PurchaseDTO> userPurchase(PurchaseDTO purchaseDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"userPurchase",purchaseDTO);
+	public List<PurchaseDTO> userPurchase(Pager pager) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"userPurchase",pager);
 	}
+	
+	public long getTotalCount2(Pager pager)throws Exception{
+		
+		
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount2",pager);
+	} 
 	
 }

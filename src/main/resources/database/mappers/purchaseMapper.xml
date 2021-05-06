@@ -73,15 +73,20 @@
 	
 	
 	
-	<select id="userPurchase" parameterType="PurchaseDTO" resultType="PurchaseDTO">
-      select
-      member.*, booklist.*, purchase.*
-      from
-      member inner join
-      purchase on member.id = purchase.id left outer join
-      booklist on purchase.isbn = booklist.isbn
-      where member.id = #{id} order by purdate desc
+	<select id="userPurchase" parameterType="Pager" resultType="PurchaseDTO">
+      
+       select R isbn, price,purnum,bookname,purdate,purcount from(
+    select rownum R , B.isbn,B.bookname,B.price, P.purnum,P.purdate,P.purcount
+      from booklist B inner join purchase P on B.isbn = P.isbn
+      where P.id = #{id} order by P.purdate desc)
+      where R between #{startRow} and #{endRow}
+      
  	</select>
+ 	
+ 	<select id="getTotalCount2"  parameterType="Pager"  resultType="long">
+ 	
+      select count(purchase.ordernumber) from booklist inner join purchase on booklist.isbn =  purchase.isbn where purchase.id = #{id}
+   </select>
 	
 	
 	

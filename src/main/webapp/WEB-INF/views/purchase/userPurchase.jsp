@@ -157,7 +157,7 @@ text-align:center;
 #div_view{
 	border: 2px solid gray;
 	width:800px;
-	height:300px;
+	height:400px;
 	text-align:center;
 	margin-top:2%;
  	margin-left:25%;
@@ -255,18 +255,31 @@ text-align:center;
 
                </tbody>
             </table>
+            
+            <br><br>
          </div>
-      
-			
-			
+         <ul class="pagination justify-content-center" id="pagerList">
+		  <li class="page-item" id="prebutton"><button class="page-link">Previous</button></li>
+		  <c:forEach begin="${pager.startBlock}" end="${pager.endBlock}" var="i">
+		  	<li class="page-item"><button class="page-link pagesetting" value="${i}">${i}</button></li>
+		  </c:forEach>
+		  <li class="page-item" id="nextbutton"><button class="page-link">Next</button></li>
+		</ul>
+      </div>
 
-		</div>
-	</div>
+   </div>
+         
 
+	<form action="./userPurchase" id="getListSearching">
+		<input type="hidden" readonly="readonly" id="currentPage" name="curPage" value="${pager.curPage}">
+		<input type="hidden" readonly="readonly" id="curBlock" name="curBlock" value="${pager.curBlock}">
+		<input type="hidden" readonly="readonly" id="preavail" value="${pager.pre}">
+		<input type="hidden" readonly="readonly" id="nextavail" value="${pager.next}">
+		</form>
 
 
 <div class="modal fade" id="purchaseDetail"  style="z-index:1050;"  role="dialog" aria-labelledby="purchaseDetail" aria-hidden="true">
-   <div class="modal-dialog modal-md">
+   <div class="modal-dialog modal-lg">
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>   
@@ -274,17 +287,18 @@ text-align:center;
          </div>
          <div class="modal-body">
                <table class="table">
-                  <colgroup>
-                     <col style="width: 40%;"></col>
+                  <colgroup >
                      <col style="width: 30%;"></col>
-                     <col style="width: 40%;"></col>
+                     <col style="width: 30%;"></col>
+                     <col style="width: 30%;"></col>
+                     <col style="width: 10%;"></col>
                   </colgroup>
                   <thead>
                      <tr>
                         <th colspan="1">구매번호</th>
                         <th colspan="1">책이름</th>
                         <th colspan="1">ISBN번호</th>
-                        <th colspan="1">구매갯수</th>
+                        <th colspan="1">갯수</th>
                      </tr>
                   </thead>
                   <tbody id ="purDetail">                                                                                                                                                                      
@@ -302,7 +316,7 @@ text-align:center;
 
 
 
-<script type="text/javascript" src="../resources/js/member/memberBox.js"></script>	
+<script type="text/javascript" src="../resources/js/purchase/purchasePager1.js"></script>
 </body>
 <div id="div_footer">
 	<c:import url="../template/footer.jsp"></c:import>
