@@ -3,5 +3,22 @@
 
 <mapper namespace="com.sb.s1.review.ReviewDAO">
 
+	<select id="getList" resultType="ReviewDTO" parameterType="Pager">
+		SELECT isbn, reviewnum,id, revcontent,regdate,revscore FROM
+		(SELECT ROWNUM ro,r.* FROM review r where r.isbn=#{isbn} order by regdate desc)
+		where ro between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="getTotalCount" parameterType="Pager" resultType="Long">
+		select count(isbn) from review where isbn=#{isbn}
+	</select>
+	
+	<insert id="setReview" parameterType="ReviewDTO">
+		INSERT INTO review VALUES(rv_rvn_SEQ.NEXTVAL, #{id}, #{isbn},#{revContent},SYSDATE, #{revScore})
+	</insert>
+	
+	<delete id="delReview" parameterType="ReviewDTO">
+		DELETE FROM review WHERE reviewnum= #{reviewNum}
+	</delete>
 
 </mapper>

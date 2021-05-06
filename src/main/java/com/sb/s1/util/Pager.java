@@ -136,8 +136,17 @@ public class Pager {
 	private long subnum;
 	private long gNumber;
 	private String id;
+	private String isbn;
 	
 	
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
 	public long getgNumber() {
 		return gNumber;
 	}

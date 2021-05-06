@@ -36,5 +36,12 @@
 			or bookpub like '%'||#{bookPub}||'%' or gnumber like '%'||#{gNumber}||'%')br 
 		where r between 1 and 10
 	</select>
+	
+	<update id="updateScore" parameterType="ReviewDTO">
+		update booklist set bookscore=bookscore+#{revScore}, scorecount=scorecount+1 where isbn=#{isbn}
+	</update>
+	<update id="deleteScore" parameterType="ReviewDTO">
+		update booklist set bookscore=bookscore-#{revScore}, scorecount=scorecount-1 where isbn=#{isbn}
+	</update>
 
 </mapper>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sb.s1.member.membercart.MembercartDTO;
+import com.sb.s1.review.ReviewDTO;
 import com.sb.s1.util.Pager;
 
 @Service
@@ -26,4 +27,11 @@ public class BookListService {
 		return bookListDAO.getSelect(bookListDTO);
 	}
 	
+	public long updateScore(ReviewDTO reviewDTO) throws Exception{
+		return bookListDAO.updateScore(reviewDTO);
+	}
+	
+	public long deleteScore(ReviewDTO reviewDTO) throws Exception{
+		return bookListDAO.deleteScore(reviewDTO);
+	}
 }
