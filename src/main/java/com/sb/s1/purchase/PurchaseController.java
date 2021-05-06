@@ -41,91 +41,10 @@ public class PurchaseController {
 	@Autowired
 	private BookListService bookListService;
 
-	@GetMapping("mpurchase/purchaseSelect")
-	public ModelAndView getSelect(PurchaseDTO purchaseDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-
-		purchaseDTO = purchaseService.getSelect(purchaseDTO);
-		mv.addObject("mpurchase", "mpurchase");
-		mv.addObject("dto", purchaseDTO);
-
-		return mv;
-	}
 
 	@GetMapping("mpurchase/purchaseList")
-	public ModelAndView getList(BranchPager branchPager) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		List<PurchaseDTO> ar = purchaseService.getList(branchPager);
-		mv.addObject("list", ar);
-		mv.addObject("mpurchase", "mpurchase");
-		mv.addObject("branchPager", branchPager);
+	public void getList() throws Exception {	}
 
-		return mv;
-	}
-	@GetMapping("mpurchase/purchaseInsert")
-	public ModelAndView setInsert() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("mpurchase", "mpurchase");
-		mv.setViewName("mpurchase/purchaseInsert");
-
-		return mv;
-	}
-	@PostMapping("mpurchase/purchaseInsert")
-	public ModelAndView setInsert(PurchaseDTO purchaseDTO, ModelAndView mv) throws Exception {
-		int result = purchaseService.setInsert(purchaseDTO);
-		mv.setViewName("redirect:./purchaseList");
-
-		return mv;
-	}
-
-	@PostMapping("mpurchase/purchaseDelete")
-	public ModelAndView setDelete(PurchaseDTO purchaseDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		int result = purchaseService.setDelete(purchaseDTO);
-
-		String message = "삭제 실패";
-		String path = "./purchaseList";
-
-		if(result>0) {
-			message = "삭제 성공";
-		}
-
-		mv.addObject("msg", message);
-		mv.addObject("path", path);
-		mv.setViewName("mpurchase/purchaseResult");
-
-		return mv;
-	}
-
-	@GetMapping("mpurchase/purchaseUpdate")
-	public ModelAndView setUpdate(PurchaseDTO purchaseDTO, ModelAndView mv) throws Exception {
-
-		purchaseDTO = purchaseService.getSelect(purchaseDTO);
-		mv.addObject("dto", purchaseDTO);
-		mv.addObject("mpurchase", "mpurchase");
-		mv.setViewName("mpurchase/purchaseUpdate");
-		return mv;
-	}
-
-	@PostMapping("mpurchase/purchaseUpdate")
-	public ModelAndView setUpdate(PurchaseDTO purchaseDTO) throws Exception {
-		ModelAndView mv = new ModelAndView();
-
-		int result = purchaseService.setUpdate(purchaseDTO);
-
-		String message = "수정 실패";
-		String path = "./purchaseList";
-
-		if(result>0) {
-			message="수정 성공";
-		}
-		mv.addObject("msg", message);
-		mv.addObject("path", path);
-		mv.setViewName("mpurchase/purchaseResult");
-
-		return mv;
-	}	
-	
 	@PostMapping("purchaseWindow")
 	public void purchaseWindow(HttpServletRequest httpServletRequest ,HttpSession httpSession, Model model)throws Exception{
 		String[] isbnlist = httpServletRequest.getParameterValues("isbnlist");
