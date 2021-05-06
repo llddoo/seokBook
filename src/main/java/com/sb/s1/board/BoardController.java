@@ -57,6 +57,7 @@ public class BoardController {
 		boardService.setBoard(boardDTO);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("boardsp", boardDTO.getBoardsp());
+		mav.addObject("id", boardDTO.getId());
 		mav.setViewName("/board/boardCheck");
 		return mav;
 	}

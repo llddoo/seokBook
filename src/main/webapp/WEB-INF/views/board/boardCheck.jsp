@@ -13,14 +13,21 @@ window.history.forward();
 function noBack(){
 	window.history.forward();
 	const justgo = document.getElementById("justgo");
+	if($("#boardsp").val()=='qna'){
+		$("#justgo").append($("#fortransfer").html());
+	}
 	justgo.submit();
 }
 </script>
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <c:import url="../template/body.jsp"></c:import>
 <h1>만료된 페이지 입니다.</h1>
+<div id="fortransfer">
+	<input type="hidden" readonly="readonly" name="kind" value="id">
+	<input type="hidden" readonly="readonly" name="search" value="${id}">
+</div>
 <form action="./boardList" method="get" id="justgo">
-	<input type="hidden" readonly="readonly" name="boardsp" value="${boardsp}">
+	<input type="hidden" readonly="readonly" name="boardsp" id="boardsp" value="${boardsp}">
 </form>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
