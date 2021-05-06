@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 구매내역 확인</title>
+<title>관리자 페이지</title>
 <c:import url="../../template/header.jsp"></c:import>
 </head>
 <body>
@@ -23,10 +23,12 @@
 	border-bottom-style: solid; 
 	letter-spacing: -0.07em; 
 	line-height: 35px; 
-	background-color: rgb(250, 250, 250);">구매 내역</h2>
+	background-color: rgb(250, 250, 250);">구매 현황</h2>
 
 	<!-- 도넛 차트 -->	
-	<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+	<div id="piechart_3d" style="width: 1300px; height: 900px;"></div>
+	
+	<a href="../../branch/branchList" class="btn btn-primary">지점관리</a>
 	
 	
 		<div id="getChartList"></div>
