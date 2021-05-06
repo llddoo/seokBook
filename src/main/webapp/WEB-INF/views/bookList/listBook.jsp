@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String gNameList[]={"소설","시/에세이","경제/경영","자기계발","인문","역사/문화","종교","정치/사회","예술/대중문화",
-			"과학","기술/공학","컴퓨터/IT","어린이","청소년","외국어","잡지","만화"};
-	request.setAttribute("gNameList",gNameList);
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,16 +21,17 @@
 	width: 13%
 }
 </style>
+
 </head>
 <body>
 	<c:import url="../template/body.jsp"></c:import>
-	
+	<input type="hidden" readonly="readonly" id="selectorcheck" value="${pager.gnumber}">
 	
 	<div class="container">
 	<h2>장르 > </h2>
-		<select class="genreSelect" name="genreSelect">
-		<c:forEach items="${gNameList}" var="gNameList">
-				<option>${gNameList}</option>
+		<select id="genreList" name="genreList">
+		<c:forEach items="${glist}" var="glist">
+				<option value="${glist.gnumber}">${glist.gname}</option>
 		</c:forEach>
 		</select>
 	
@@ -100,5 +97,16 @@
 
 
 	<c:import url="../template/footer.jsp"></c:import>
+<script type="text/javascript">
+	const gnumber = $("#selectorcheck").val();
+	$(document).ready(function(){
+		$("#genreList").val(gnumber);
+	});
+	$("#genreList").change(function(){
+		if(gnumber!=$(this).val()){
+			location.href="./listBook?gnumber="+$(this).val();
+		}
+	});
+</script>
 </body>
 </html>
