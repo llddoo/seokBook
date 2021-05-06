@@ -38,7 +38,10 @@
        <c:when  test="${member.id eq 'admin'}">
        <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/purchase/mpurchase/purchaseList">관리자페이지</a>
         &nbsp;
+		<a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberFile/memberPage">MyPage</a>
+		 &nbsp;
         <a class="nav-link btn btn-outline-primary" href="${pageContext.request.contextPath}/member/memberLogout">로그아웃</a>
+
     	</c:when>
     	
     	<c:otherwise>
