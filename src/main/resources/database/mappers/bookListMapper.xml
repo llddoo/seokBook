@@ -42,5 +42,12 @@
 			isbn=#{item.isbn}
 		</foreach>
 	</select>
+	
+	<update id="updateScore" parameterType="ReviewDTO">
+		update booklist set bookscore=bookscore+#{revScore}, scorecount=scorecount+1 where isbn=#{isbn}
+	</update>
+	<update id="deleteScore" parameterType="ReviewDTO">
+		update booklist set bookscore=bookscore-#{revScore}, scorecount=scorecount-1 where isbn=#{isbn}
+	</update>
 
 </mapper>

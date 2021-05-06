@@ -83,7 +83,8 @@
 				</div>
 
 				<div class="box_detail_button">
-					<label for="proForm_qty">주문수량</label> <input type="hidden"
+					<label for="proForm_qty">주문수량</label> 
+					<input type="hidden" id="bookisbn"
 						name="isbn" value="${dto.isbn}"> <select name="amount">
 						<c:forEach begin="1" end="10" var="i">
 							<option value="${i}">${i}</option>
@@ -118,11 +119,11 @@
 				<tbody>
 					<tr>
 						<th scope="row">ISBN</th>
-						<td><span title="ISBN-13">${dto.isbn}</span></td>
+						<td><span title="ISBN-13">&nbsp ${dto.isbn}</span></td>
 					</tr>
 					<tr>
 						<th scope="row">장르</th>
-						<td>${dto.gName}</td>
+						<td>&nbsp ${dto.gName}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -153,46 +154,65 @@
 				<li class="on"><a href="#review">회원리뷰 <span>(${dto.scoreCount})</span></a></li>
 				<li><a href="#guide">교환/반품/품절</a></li>
 			</ul>
-			<table>
-			<td>
-			<h2>평점 : </h2> </td>
-			
-			<td>
-			<div class="startRadio">
-				<label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">1</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">2</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">3</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">4</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">5</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">6</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">7</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">8</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">9</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="star" id=""> <span class="startRadio__img"><span
-						class="blind">10</span></span>
-				</label>
+
+			<div class="wrap">
+				<h2>리뷰</h2>
+				<form name="reviewform" class="reviewform" method="post"
+					action="/save">
+					<input type="hidden" name="rate" id="rate" value="0" />
+
+
+					<div class="rating">
+						<label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">1</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">2</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">3</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">4</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">5</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">6</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">7</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">8</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">9</span></span>
+						</label> <label class="startRadio__box"> <input type="radio"
+							name="star" id=""> <span class="startRadio__img"><span
+								class="blind">10</span></span>
+						</label>
+					</div>
+					<div class="review_contents">
+						<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
+						<textarea rows="10" class="review_textarea"></textarea>
+					</div>
+					<div class="cmd">
+						<input type="button" name="save" id="save" value="등록">
+					</div>
+				</form>
 			</div>
-			</td>
-			</table>
+
+			<!--리뷰 페이지  -->
+			<div id="reviewpage">
+			
+			
+			
+			
+			</div>
+
 
 
 
@@ -292,9 +312,53 @@
 
 	<c:import url="../template/footer.jsp"></c:import>
 	<script src="//code.jquery.com/jquery-3.3.1.min.js">
+		function getList(){
+			const bookisbn = $("#bookisbn").val();
+			$.ajax({
+				type: 'post',
+				url : '../review/reviewGetList',
+				data:{
+					isbn:bookisbn
+				},
+				success:function(result){
+					result=result.trim();
+					$("#reviewpage").append(result);
+				}
+			});
+		}	
+		
+
+		//상품평 작성 글자수 초과 체크 이벤트 리스너
+		document.querySelector('.review_textarea').addEventListener('keydown',
+				function() {
+					//리뷰 400자 초과 안되게 자동 자름
+					let review = document.querySelector('.review_textarea');
+					let lengthCheckEx = /^.{400,}$/;
+					if (lengthCheckEx.test(review.value)) {
+						//400자 초과 컷
+						review.value = review.value.substr(0, 400);
+					}
+				});
+
+		//저장 전송전 필드 체크 이벤트 리스너
+		document.querySelector('#save').addEventListener('click', function(e) {
+			//별점 선택 안했으면 메시지 표시
+			if (rating.rate == 0) {
+				rating.showMessage('rate');
+				return false;
+			}
+			//리뷰 5자 미만이면 메시지 표시
+			if (document.querySelector('.review_textarea').value.length < 5) {
+				rating.showMessage('review');
+				return false;
+			}
+			//폼 서밋
+		});
+
 		$(document).ready(function() {
 			const index = $("#index").val();
 			$("insertindex").append(index);
+			getList();
 		});
 	</script>
 

@@ -277,6 +277,35 @@ img {vertical-align: top;}
 
 
 
+
+/* 리뷰  */
+.wrap{
+    max-width: 480px;
+    margin: 0 auto; /* 화면 가운데로 */
+    background-color: #fff;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+.reviewform textarea{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.warning_msg {
+    display: none;
+    position: relative;
+    text-align: center;
+    background: #ffffff;
+    line-height: 26px;
+    width: 100%;
+    color: red;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+}
+
 /* 별점  */
 .blind {
   position: absolute;
@@ -288,12 +317,12 @@ img {vertical-align: top;}
   border: none;
   clip: rect(0, 0, 0, 0);
 }
-.startRadio {
+.rating {
   display: inline-block;
   overflow: hidden;
   height: 40px;
 }
-.startRadio:after {
+.rating:after {
   content: "";
   display: block;
   position: relative;
@@ -327,4 +356,4 @@ img {vertical-align: top;}
   width: 500px;
   height: 40px;
   pointer-events: none;
-}
+} 

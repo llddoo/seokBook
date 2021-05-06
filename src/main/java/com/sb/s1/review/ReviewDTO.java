@@ -9,9 +9,15 @@ public class ReviewDTO {
 	private String isbn;
 	private String revContent;
 	private Date regDate;
-	
+	private long revScore;
 
 	
+	public long getRevScore() {
+		return revScore;
+	}
+	public void setRevScore(long revScore) {
+		this.revScore = revScore;
+	}
 	public long getReviewNum() {
 		return reviewNum;
 	}

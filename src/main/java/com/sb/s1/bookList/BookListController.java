@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sb.s1.board.BoardDTO;
 import com.sb.s1.genre.GenreService;
 import com.sb.s1.util.Pager;
 
@@ -45,6 +46,7 @@ public class BookListController {
 		bookListDTO = bookListService.getSelect(bookListDTO);
 		mv.addAttribute("dto", bookListDTO);
 	}
+	
 	
 	
 }
