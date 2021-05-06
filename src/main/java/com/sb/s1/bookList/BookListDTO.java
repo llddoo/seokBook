@@ -22,7 +22,7 @@ public class BookListDTO {
 	public long getbPoint() {
 		return bPoint;
 	}
-	public void setbPoing(long bPoint) {
+	public void setbPoint(long bPoint) {
 		this.bPoint = bPoint;
 	}
 	public String getgName() {

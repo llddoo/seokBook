@@ -333,7 +333,7 @@ $("#floatforpurchasing").on("click", "#payment", function(){
 	    pay_method: "card",
 	    merchant_uid: merchant_uid,
 	    name: name,
-	    amount: amount,
+	    amount: Number(amount)-Number(spendpoint),
 	    buyer_email: buyer_email,
 	    buyer_name: buyer_name,
 	    buyer_tel: buyer_tel,

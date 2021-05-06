@@ -65,7 +65,7 @@
 	
 	<insert id="setPurchase" parameterType="java.util.List">
 		<foreach collection="list" item="item" separator=";">
-			insert into purchase 
+			insert into purchase (purnum, purdate, isbn, remdate, id, price, ordernumber, purcount) 
 			values(P_PN_SEQ.nextval, sysdate, #{item.isbn}, #{item.remdate}, #{item.id}, #{item.price}, 
 					#{item.ordernumber}, #{item.purcount})
 		</foreach>

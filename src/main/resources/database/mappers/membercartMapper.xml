@@ -22,7 +22,7 @@
 			<result property="author" column="author"/>
 			<result property="bookPubDate" column="bookpubdate"/>
 			<result property="scorecount" column="scorecount"/>
-			<result property="bpoint" column="bpoint"/>
+			<result property="bPoint" column="bpoint"/>
 		</association>
 	</resultMap>
 	<select id="getCartList" parameterType="Pager" resultMap="getCartList">
