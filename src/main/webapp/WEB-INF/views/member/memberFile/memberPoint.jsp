@@ -12,14 +12,27 @@
 <style type="text/css">
 
 #div_root{
-margin:auto;
-width:1200px;
-margin-top:5%
+width:1500px;
+min-height:100%;
 }
 
 #div_top{
+
 width:100%;
+
+height:10%;
+margin-top:5%;
 text-align:center;
+
+
+}
+
+#div_con{
+
+width:100%;
+margin-top:2%;
+min-height:450px;
+
 }
 
 #div_menu{
@@ -27,24 +40,26 @@ width:12%;
 margin-top:5%;
 float:left;
 text-align:reft;
+margin-left:10%;
+
 
 }
-#div_con{
-width:88%;
-height:10%;
+#div_main{
+width:900px;
+height:450px;
+ margin:0 auto; 
 
-margin-top:2%;
-float:right;
 text-align:center;
 
 }
 
-#div_footer{
-	width:100%;
-	position: absolute;
-    bottom: 0px;
-	
+#div_footer {
+	width: 100%;
+	height:10%;
+	bottom:0;
+
 }
+
 
 
 #rcorners2 {
@@ -53,10 +68,9 @@ text-align:center;
   padding: 20px;
   width: 600px;
   height:150px;
-
-  margin-left:15%;
+text-align:center;
+ margin:0 auto; 
 }
-
 
 
 #img_size{
@@ -82,19 +96,17 @@ text-align:center;
 	border: 2px solid gray;
 	width:600px;
 	height:100px;
-	font-color:yellow;
-	margin-top:5%;
- 	margin-left:15%;
+
+	margin-top:2%;
+ 	margin-left:30%;
+ 	margin-bottom:2%;
 
 }
 #div_view2{
-	margin-top:5%;
-	width:200px;
-	margin-left:15%;
-	float:left;
-		text-align:left;
-
+	width:600px;
+		text-align:center;
 }
+
 
 
 </style>
@@ -113,7 +125,7 @@ text-align:center;
 
 			<ul class ="nav nav-pillsflex-column">
 				<li class="nav-item"><a class="btn btn-link"
-					href="../../orderList/PointList">포인트 적립내역1</a></li>
+					href="../../orderList/PointList">포인트 적립내역</a></li>
 			</ul>
 </div>
 
@@ -124,7 +136,7 @@ text-align:center;
 
 
 		<div id="div_size">
-		<a  href="./memberBox">
+		<a  href="../../purchase/userPurchase">
 		<img id="img_size" src="../../resources/image/member/box.png"  alt="상품">
 		<p>상품</p>
 		</a>
@@ -144,7 +156,7 @@ text-align:center;
 		</a>
 		</div>
 		<div id="div_size">
-		<a  href="./?????Q&A">
+		<a  href=" ../../board/boardList?boardsp=qna&kind=id&search=${member.id}">
 		<img id="img_size" src="../../resources/image/member/qna.jpg" alt="Q&A"  >
 		<p>Q&A</p>
 		</a>
@@ -152,7 +164,7 @@ text-align:center;
 </div>
 
 <div id="div_view">
-		<div id="div_view2">
+		<div id="div_view2" >
 		<h2>보유 포인트:</h2>
         </div>
 		<div id="div_view2">

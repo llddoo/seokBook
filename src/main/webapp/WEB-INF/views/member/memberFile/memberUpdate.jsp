@@ -50,13 +50,92 @@ width: 300px;
 }
 	
 
-#div_footer{
-	width:100%;
-	position: absolute;
-    bottom: 0px;
-	
+
+
+----------------------------
+
+#div_root{
+width:1500px;
+min-height:100%;
 }
 
+#div_top{
+
+width:100%;
+
+height:10%;
+margin-top:5%;
+text-align:center;
+
+
+}
+
+#div_con{
+
+width:100%;
+margin-top:2%;
+min-height:450px;
+
+}
+
+#div_menu{
+width:20%;
+margin-top:5%;
+float:left;
+text-align:reft;
+margin-left:5%;
+
+
+
+}
+#div_main{
+width:900px;
+height:450px;
+ margin:0 auto; 
+
+text-align:center;
+
+}
+
+#div_footer {
+	width: 100%;
+	height:10%;
+	bottom:0;
+	margin-top:40px;
+}
+
+
+
+#rcorners2 {
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 20px;
+  width: 600px;
+  height:150px;
+
+ margin:0 auto; 
+}
+
+
+
+#img_size{
+  width: 100px;
+  height: 95px;
+  object-fit: fill;
+}
+
+#img_size2{
+  width: 80px;
+  height: 80px;
+  object-fit: fill;
+}
+
+
+#div_size{
+	width:25%;
+	height:100%;
+	float: left;
+}
 
 	
 </style>
@@ -65,8 +144,7 @@ width: 300px;
 <body>
 <c:import url="../../template/body.jsp"></c:import>
 	<div class="container mt-2" style="text-align: center">
-	<h3>&nbsp;</h3>
-	<h1>&nbsp;</h1>
+
 <h1> 내 정보수정</h1>
 <div id="div_view">
 
