@@ -222,7 +222,7 @@ text-align:center;
 					</a>
 				</div>
 				<div id="div_size">
-					<a href="./?????Q&A"> <img id="img_size"
+					<a  href=" ../board/boardList?boardsp=qna&kind=id&search=${member.id}"> <img id="img_size"
 						src="../resources/image/member/qna.jpg" alt="Q&A">
 						<p>Q&A</p>
 					</a>
