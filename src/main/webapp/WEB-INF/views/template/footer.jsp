@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <footer class="container">
-	<img id="img_seokBook" src="./resources/image/seokBook.PNG" alt="seokBook">
+	<img id="img_seokBook" src="<%=request.getContextPath()%>/resources/image/seokBook.PNG"  alt="seokBook">
     <p class="float-right"><a href="#">위로</a></p>
     <address>
 	㈜ seokBook &nbsp; 서울시 종로구 종로 1 &nbsp; 대표이사 : 이리희<br>
