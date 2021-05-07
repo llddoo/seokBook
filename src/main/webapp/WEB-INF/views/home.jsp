@@ -84,6 +84,7 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
 	</div>
+
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -233,7 +234,7 @@
     <!-- /END THE FEATURETTES -->
 
   </div><!-- /.container -->
-
+  
 <c:import url="./template/footer.jsp"></c:import>
   
 </main>
