@@ -12,7 +12,7 @@
 </head>
 <body>
 	<c:import url="../template/body.jsp"></c:import>
-
+	<input type="hidden" readonly="readonly" id="getmemberid" value="${member.id}">
 	<div id="container">
 
 		<div class=content_middle>
@@ -85,13 +85,13 @@
 				<div class="box_detail_button">
 					<label for="proForm_qty">주문수량</label> 
 					<input type="hidden" id="bookisbn"
-						name="isbn" value="${dto.isbn}"> <select name="amount">
+						name="isbn" value="${dto.isbn}"> <select id="amount">
 						<c:forEach begin="1" end="10" var="i">
 							<option value="${i}">${i}</option>
 						</c:forEach>
 					</select>&nbsp;개
 					<div class="button_set">
-						<a href="" class="btn_xlarge btn_blue">장바구니 담기</a>
+						<button id="getCart">장바구니 담기</button>
 					</div>
 				</div>
 			</div>
@@ -316,6 +316,7 @@
 
 	<c:import url="../template/footer.jsp"></c:import>
 	<script>
+		const isbn = $("#bookisbn").val();
 		$(document).ready(function() {
 			const index = $("#index").val();
 			$("insertindex").append(index);
@@ -323,12 +324,11 @@
 		});
 	
 		function getList(){
-			const bookisbn = $("#bookisbn").val();
 			$.ajax({
 				type: 'post',
 				url : '../review/reviewGetList',
 				data:{
-					isbn:bookisbn
+					isbn:isbn
 				},
 				success:function(result){
 					result=result.trim();
@@ -338,7 +338,6 @@
 		}	
 		
 		$("#save").click(function(){
-			const isbn = $("#bookisbn").val();
 			const revContent = $("#revContent").val();
 			const revScore = Number($("#rating").find("input[name='star']:checked").val());
 			console.log(revScore);
@@ -362,7 +361,27 @@
 				}
 			});
 		});
-
+	$("#getCart").click(function(){
+		const bookcount = Number($("#amount").find("option:selected").val());
+		const id = $("#getmemberid").val();
+		$.ajax({
+			type:"post",
+			url:"../member/membercart/membercartInsert",
+			data:{
+				isbn:isbn,
+				id:id,
+				bookcount:bookcount
+			},
+			success:function(result){
+				result = Number(result.trim());
+				if(result>0){
+					alert("장바구니에 담았습니다.");
+				}else{
+					alert("장바구니에 넣을 수 없습니다. 다시 시도해 주세요.");
+				}
+			}
+		});
+	});
 		
 	</script>
 
