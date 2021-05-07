@@ -88,7 +88,7 @@ public class PurchaseController {
 		long allprice = 0;
 		long allpoint = 0;
 		for(MembercartDTO membercartDTO : membercartList) {
-			allprice += membercartDTO.getBookListDTO().getPrice();
+			allprice += membercartDTO.getBookListDTO().getPrice()*membercartDTO.getBookcount();
 			allpoint += membercartDTO.getBookListDTO().getbPoint();
 		}
 		model.addAttribute("pricesum", allprice*9/10);
