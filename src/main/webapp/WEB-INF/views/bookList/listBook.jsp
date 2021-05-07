@@ -25,7 +25,10 @@
 </head>
 <body>
 	<c:import url="../template/body.jsp"></c:import>
+
 	<input type="hidden" readonly="readonly" id="selectorcheck" value="${pager.gnumber}">
+	<input type="hidden" readonly="readonly" id="bookisbn" name="isbn" value="${dto.isbn}">
+	<input type="hidden" readonly="readonly" id="getmemberid" name="id" value="${member.id}"> 
 	
 	<div class="container">
 	<h2>장르 > </h2>
@@ -63,16 +66,18 @@
 						</td>
 						
 						<td class="fornextline">
-							<input type="hidden" readonly="readonly" name="isbn" value="${dto.isbn}">
-							<input type="hidden" readonly="readonly" name="id" value="${member.id}"> 
-								<select class="custom-select-sm" name="bookcount">								
-								<option selected="selected" value="1">1</option>
-								<c:forEach begin="2" end="10" var="i">
-									<option value="${i}">${i}</option>
-								</c:forEach>
-						</select><br>
-							<button class="getCart btn-sm btn-info">장바구니</button> <br>
-							<button class="getPurchase btn-sm btn-primary">구매하기</button>
+
+								<select class="custom-select-sm" id="amount">
+									<c:forEach begin="1" end="10" var="i">
+										<option value="${i}">${i}</option>
+									</c:forEach>
+								</select>
+							<div class="button_set">
+								<button class="getCart btn-sm btn-info" id="getCart">장바구니</button><br>
+     						   	<button class="getPurchase btn-sm btn-primary" id="getPurchase">구매하기</button>
+							</div>
+								
+							
 						</td>
 					</tr>
 				</c:forEach>
@@ -97,14 +102,56 @@
 
 
 	<c:import url="../template/footer.jsp"></c:import>
-<script type="text/javascript">
+<script>
 	const gnumber = $("#selectorcheck").val();
+	const isbn = $("#bookisbn").val();
 	$(document).ready(function(){
 		$("#genreList").val(gnumber);
 	});
 	$("#genreList").change(function(){
 		if(gnumber!=$(this).val()){
 			location.href="./listBook?gnumber="+$(this).val();
+		}
+	});
+	
+	
+	$("#getCart").click(function(){
+		const bookcount = Number($("#amount").find("option:selected").val());
+		const id = $("#getmemberid").val();
+		$.ajax({
+			type:"post",
+			url:"../member/membercart/membercartInsert",
+			data:{
+				isbn:isbn,
+				id:id,
+				bookcount:bookcount
+			},
+			success:function(result){
+				result = Number(result.trim());
+				if(result>0){
+					alert("장바구니에 담았습니다.");
+				}else{
+					alert("이미 장바구니에 담았습니다.");
+				}
+			}
+		});
+	});
+	
+	$("#getPurchase").click(function(){
+		const thisis = $(this);
+		const id = thisis.siblings("input[name='id']").val();
+		const isbn = thisis.siblings("input[name='isbn']").val();
+		const bookcount = thisis.siblings("select").val();
+		if(id==''){
+			alert('로그인을 하셔야 이용할 수 있습니다.');
+			return;
+		}
+		let check = confirm('이 책을 바로 구입하시겠습니까?');
+		if(check){
+			thisis.parent().append("<form id='purchaseOption' method='post' action='./purchase/purchaseWindow'></form>");
+			$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='isbnlist' value="+isbn+">");
+			$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='countlist' value="+bookcount+">");
+			$("#purchaseOption").submit();
 		}
 	});
 </script>

@@ -91,7 +91,8 @@
 						</c:forEach>
 					</select>&nbsp;개
 					<div class="button_set">
-						<button id="getCart">장바구니 담기</button>
+						<button class="getCart btn-sm btn-info" id="getCart">장바구니</button>
+     				   	<button class="getPurchase btn-sm btn-primary" id="getPurchase">구매하기</button>
 					</div>
 				</div>
 			</div>
@@ -377,10 +378,28 @@
 				if(result>0){
 					alert("장바구니에 담았습니다.");
 				}else{
-					alert("장바구니에 넣을 수 없습니다. 다시 시도해 주세요.");
+					alert("이미 장바구니에 담았습니다.");
 				}
 			}
 		});
+	});
+	
+	$("#getPurchase").click(function(){
+		const thisis = $(this);
+		const id = thisis.siblings("input[name='id']").val();
+		const isbn = thisis.siblings("input[name='isbn']").val();
+		const bookcount = thisis.siblings("select").val();
+		if(id==''){
+			alert('로그인을 하셔야 이용할 수 있습니다.');
+			return;
+		}
+		let check = confirm('이 책을 바로 구입하시겠습니까?');
+		if(check){
+			thisis.parent().append("<form id='purchaseOption' method='post' action='./purchase/purchaseWindow'></form>");
+			$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='isbnlist' value="+isbn+">");
+			$("#purchaseOption").append("<input type='hidden' readonly='readonly' name='countlist' value="+bookcount+">");
+			$("#purchaseOption").submit();
+		}
 	});
 		
 	</script>
