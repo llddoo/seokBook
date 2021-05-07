@@ -32,6 +32,7 @@
     <select id="getTotalCount2"  parameterType="Pager"  resultType="long">
       select count(purchase.ordernumber) from booklist inner join purchase on booklist.isbn =  purchase.isbn where purchase.id = #{id}
    </select>
+   
 	
 
 </mapper>

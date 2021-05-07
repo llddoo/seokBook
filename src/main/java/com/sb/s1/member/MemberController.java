@@ -214,33 +214,43 @@ public class MemberController {
 	  
 	  
 	  @GetMapping("memberProfile")
-	   public void memberProfile(MemberDTO memberDTO, Model model, OrderListDTO orderListDTO ,HttpSession session)throws Exception{
-	      memberDTO =(MemberDTO)session.getAttribute("member");
-	      String grade;
-	      memberDTO = memberService.memberGrade(memberDTO);
-	      if(memberDTO.getPrice() >= 60000) {
-	         grade = "최우수등급";
-	      }else if(memberDTO.getPrice() >= 40000) {
-	         grade = "우수등급";
-	      }else if(memberDTO.getPrice() >= 20000) {
-	         grade = "맴버등급";
-	      }else{
-	         grade = "일반등급";
-	      }
-	      System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
-	      
-	      memberDTO.setGrade(grade);
-	      
-	      System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
-	      
-	      int result = memberService.gradeUpdate(memberDTO);
-	      memberDTO = memberService.getSelect(memberDTO);
-	      
-	      if(result > 0) {
-	         session.setAttribute("member", memberDTO);
-	      }
-	      
-	   }
+      public void memberProfile(Model model,HttpSession session)throws Exception{
+         MemberDTO memberDTO =(MemberDTO)session.getAttribute("member");
+
+         String grade;
+         
+         memberDTO = memberService.memberGrade(memberDTO);
+         if(memberDTO!=null) {
+            
+            if(memberDTO.getPrice() >= 60000) {   
+                grade = "최우수등급";
+             }else if(memberDTO.getPrice() >= 40000) {
+                grade = "우수등급";
+             }else if(memberDTO.getPrice() >= 20000) {
+                grade = "맴버등급";
+             }else{
+                grade = "일반등급";
+             }
+             System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
+             
+             memberDTO.setGrade(grade);
+             
+             System.out.println(memberDTO.getGrade() + "//////" + memberDTO.getPrice() + "////" + memberDTO.getId());
+             
+             int result = memberService.gradeUpdate(memberDTO);
+             memberDTO = memberService.getSelect(memberDTO);
+             
+             if(result > 0) {
+                session.setAttribute("member", memberDTO);
+             }
+            
+            
+         }
+         
+         
+         
+      }
+
 	  
 	
 	  

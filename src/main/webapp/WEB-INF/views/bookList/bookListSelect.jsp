@@ -164,34 +164,34 @@
 
 					<div class="rating">
 						<label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">1</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">2</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">3</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">4</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">5</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">6</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">7</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">8</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">9</span></span>
 						</label> <label class="startRadio__box"> <input type="radio"
-							name="star" id=""> <span class="startRadio__img"><span
+							name="star"> <span class="startRadio__img"><span
 								class="blind">10</span></span>
 						</label>
 					</div>
