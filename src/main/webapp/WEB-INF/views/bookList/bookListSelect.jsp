@@ -158,8 +158,7 @@
 
 			<div class="wrap">
 				<h2>리뷰</h2>
-				<form name="reviewform" class="reviewform" method="post"
-					action="/save">
+				<form name="reviewform" class="reviewform" method="post">
 					<input type="hidden" name="rate" id="rate" value="0" />
 
 					<div class="review_rating">
