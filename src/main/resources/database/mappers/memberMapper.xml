@@ -15,13 +15,13 @@
 		
 	<select id="memberGrade" parameterType="MemberDTO"
       resultType="MemberDTO">
-      select sum(booklist.price*10/9) as price, id
-      from orderlist, purchase, booklist
-      where purchase.ordernumber = orderlist.ordernumber
-      and booklist.isbn = purchase.isbn
-      and purdate between ADD_MONTHS(TRUNC(sysdate,'MM'), -2) and sysdate
+      
+      select sum((purchase.price*10/9)+0) as price, id
+      from purchase
+      where purdate between ADD_MONTHS(TRUNC(sysdate,'MM'), -2) and sysdate
       and purchase.id = #{id}
       group by purchase.id
+      
    </select>
    
    <update id="gradeUpdate" parameterType="MemberDTO">
