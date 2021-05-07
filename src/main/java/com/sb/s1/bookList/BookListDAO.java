@@ -38,9 +38,9 @@ public class BookListDAO {
 		return sqlSession.selectList(NAMESPACE+"getListforpur", bookListDTO);
 	}
 	public long updateScore(ReviewDTO reviewDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"updateScore", reviewDTO);
+		return sqlSession.update(NAMESPACE+"updateScore", reviewDTO);
 	}
 	public long deleteScore(ReviewDTO reviewDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"deleteScore", reviewDTO);
+		return sqlSession.update(NAMESPACE+"deleteScore", reviewDTO);
 	}
 }

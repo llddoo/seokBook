@@ -1,23 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<table>
-<thead>
-  <tr>
-    <th>Column 1 Heading</th>
-    <th>Column 2 Heading</th>
-  </tr>
-  </thead>
+<table class="table">
+<c:forEach items="${reviews}" var="item">
   <tbody>
-  
-  <c:forEach items="" var="">
-  <tr>
-    <td>Row 1: Col 1</td>
-    <td>Row 1: Col 2</td>
+  	<tr>
+    	<td>${item.id}</td>
+    	<td>${item.regDate}</td>
+    	<td>${item.revScore}점</td>
     </tr>
-	</c:forEach>
-  
+    <tr>
+    	<td colspan="3">${item.revContent}</td>
+    </tr>
   </tbody>
+</c:forEach>
 </table>
 
 

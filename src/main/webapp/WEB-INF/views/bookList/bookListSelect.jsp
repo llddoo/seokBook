@@ -157,52 +157,56 @@
 
 			<div class="wrap">
 				<h2>리뷰</h2>
-				<form name="reviewform" class="reviewform" method="post"
-					action="/save">
 					<input type="hidden" name="rate" id="rate" value="0" />
 
 
-					<div class="rating">
-						<label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">1</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">2</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">3</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">4</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">5</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">6</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">7</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">8</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">9</span></span>
-						</label> <label class="startRadio__box"> <input type="radio"
-							name="star"> <span class="startRadio__img"><span
-								class="blind">10</span></span>
+					<div id="rating" class="rating">
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="1"> 
+							<span class="startRadio__img"><span	class="blind">1</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="2"> 
+							<span class="startRadio__img"><span	class="blind">2</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio" name="star" value="3"> 
+							<span class="startRadio__img"><span	class="blind">3</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="4"> 
+							<span class="startRadio__img"><span	class="blind">4</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="5"> 
+							<span class="startRadio__img"><span	class="blind">5</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="6"> 
+							<span class="startRadio__img"><span	class="blind">6</span></span>
+						</label>
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="7"> 
+							<span class="startRadio__img"><span	class="blind">7</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="8"> 
+							<span class="startRadio__img"><span	class="blind">8</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="9"> 
+							<span class="startRadio__img"><span	class="blind">9</span></span>
+						</label> 
+						<label class="startRadio__box"> 
+							<input type="radio"	name="star" value="10"> 
+							<span class="startRadio__img"><span class="blind">10</span></span>
 						</label>
 					</div>
 					<div class="review_contents">
 						<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-						<textarea rows="10" class="review_textarea"></textarea>
+						<textarea rows="10" id="revContent" class="review_textarea"></textarea>
 					</div>
-					<div class="cmd">
-						<input type="button" name="save" id="save" value="등록">
-					</div>
-				</form>
+					<button id="save">등록</button>
 			</div>
 
 			<!--리뷰 페이지  -->
@@ -311,7 +315,13 @@
 
 
 	<c:import url="../template/footer.jsp"></c:import>
-	<script src="//code.jquery.com/jquery-3.3.1.min.js">
+	<script>
+		$(document).ready(function() {
+			const index = $("#index").val();
+			$("insertindex").append(index);
+			getList();
+		});
+	
 		function getList(){
 			const bookisbn = $("#bookisbn").val();
 			$.ajax({
@@ -327,39 +337,33 @@
 			});
 		}	
 		
-
-		//상품평 작성 글자수 초과 체크 이벤트 리스너
-		document.querySelector('.review_textarea').addEventListener('keydown',
-				function() {
-					//리뷰 400자 초과 안되게 자동 자름
-					let review = document.querySelector('.review_textarea');
-					let lengthCheckEx = /^.{400,}$/;
-					if (lengthCheckEx.test(review.value)) {
-						//400자 초과 컷
-						review.value = review.value.substr(0, 400);
+		$("#save").click(function(){
+			const isbn = $("#bookisbn").val();
+			const revContent = $("#revContent").val();
+			const revScore = Number($("#rating").find("input[name='star']:checked").val());
+			console.log(revScore);
+			$.ajax({
+				type:"post",
+				url:"../review/setReview",
+				data:{
+					isbn:isbn,
+					revContent:revContent,
+					revScore:revScore
+				},
+				success:function(result){
+					result = Number(result.trim());
+					if(result>0){
+						alert("리뷰를 등록하셨습니다. 등록해 주셔서 감사합니다.");
+						$("#reviewpage").empty();
+						getList();
+					}else{
+						alert("등록에 실패하였습니다. 다시 시도해 주세요");
 					}
-				});
-
-		//저장 전송전 필드 체크 이벤트 리스너
-		document.querySelector('#save').addEventListener('click', function(e) {
-			//별점 선택 안했으면 메시지 표시
-			if (rating.rate == 0) {
-				rating.showMessage('rate');
-				return false;
-			}
-			//리뷰 5자 미만이면 메시지 표시
-			if (document.querySelector('.review_textarea').value.length < 5) {
-				rating.showMessage('review');
-				return false;
-			}
-			//폼 서밋
+				}
+			});
 		});
 
-		$(document).ready(function() {
-			const index = $("#index").val();
-			$("insertindex").append(index);
-			getList();
-		});
+		
 	</script>
 
 </body>
