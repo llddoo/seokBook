@@ -1,3 +1,4 @@
+
 let updatenum=-1;
 const subnum=$("#subnum").val();
  
@@ -198,7 +199,7 @@ $("#comment").on("click", "#transreply", function(){
 	});
 });
 
-//댓글 입력 form 구현
+//댓글 전송
 $("#write").click(function(){
 	const id = $("#id").val();
 	let content = $("#content").val();

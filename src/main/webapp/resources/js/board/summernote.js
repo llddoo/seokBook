@@ -27,7 +27,6 @@ let delfilearray=new Array();
 						delfilearray.push(file);
 					}
 				}
-					
 			}// -- callbacks
 	});
 	$('.note-statusbar').hide();
@@ -76,7 +75,8 @@ function uploadFile(file) {
 		contentType:false,
 		success:function(result){
 			fileName=result.trim();
-			let node = '<img class="formoveimg" alt="'+fileName+'" src="'+$("#rootcontext").val()+'/resources/uploaded/'+name+'/'+fileName+'">';
+			let node = '<img class="formoveimg" alt="'+fileName+'" src="'
+						+$("#rootcontext").val()+'/resources/uploaded/'+name+'/'+fileName+'">';
 			$("#content").summernote('pasteHTML', node);
 		} 
 	});		
